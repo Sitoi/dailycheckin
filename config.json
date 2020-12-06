@@ -1,18 +1,38 @@
 {
   "dingtalk": {
-    "dingtalk_secret": "xxxx",
-    "dingtalk_access_token": "xxxx"
+    "dingtalk_secret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "dingtalk_access_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   },
   "iqiyi": [
     {
-      "iqyi_cookie": "xxxx"
+      "iqiyi_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "vqq": [
+    {
+      "vqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "52pojie": [
+    {
+      "pojie_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "youdao": [
+    {
+      "youdao_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "kgqq": [
+    {
+      "kgqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
   "BaiduUrlSubmit": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
-      "submit_url": "xxxx",
-      "times": 100
+      "submit_url": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "times": 10
     }
   ]
 }

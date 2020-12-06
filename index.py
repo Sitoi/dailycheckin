@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf8 -*-
 import json
 
 from baidu_url_submit.baidu_url_submit import BaiduUrlSubmit
 from iqiyi.iqiyi import IQIYICheckIn
+from pojie.pojie import PojieCheckIn
+from vqq.vqq import VQQCheckIn
+from youdao.youdao import YouDaoCheckIn
 
 
 def main_handler(event, context):
@@ -26,6 +28,29 @@ def main_handler(event, context):
             dingtalk_secret=dingtalk_secret,
             dingtalk_access_token=dingtalk_access_token,
             baidu_url_submit_list=baidu_url_submit_list,
+        ).main()
+
+    vqq_cookie_list = data.get("vqq", [])
+    if vqq_cookie_list:
+        VQQCheckIn(
+            dingtalk_secret=dingtalk_secret,
+            dingtalk_access_token=dingtalk_access_token,
+            vqq_cookie_list=vqq_cookie_list,
+        ).main()
+
+    youdao_cookie_list = data.get("youdao", [])
+    if youdao_cookie_list:
+        YouDaoCheckIn(
+            dingtalk_secret=dingtalk_secret,
+            dingtalk_access_token=dingtalk_access_token,
+            youdao_cookie_list=youdao_cookie_list,
+        ).main()
+    pojie_cookie_list = data.get("52pojie", [])
+    if pojie_cookie_list:
+        PojieCheckIn(
+            dingtalk_secret=dingtalk_secret,
+            dingtalk_access_token=dingtalk_access_token,
+            pojie_cookie_list=pojie_cookie_list,
         ).main()
     return
 

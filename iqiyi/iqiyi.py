@@ -181,7 +181,7 @@ class IQIYICheckIn:
 
     def main(self):
         for iqiyi_cookie in self.iqiyi_cookie_list:
-            p00001, p00003 = self.parse_cookie(iqiyi_cookie.get("iqyi_cookie"))
+            p00001, p00003 = self.parse_cookie(iqiyi_cookie.get("iqiyi_cookie"))
             # 签到
             sign_msg = self.sign(p00001=p00001)
 
