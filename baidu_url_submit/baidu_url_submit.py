@@ -70,7 +70,7 @@ if __name__ == "__main__":
         data = json.loads(f.read())
     dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
     dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
-    baidu_url_submit_list = data.get("BaiduUrlSubmit", [])
+    baidu_url_submit_list = data.get("baidu_url_submit", [])
     BaiduUrlSubmit(
         dingtalk_secret=dingtalk_secret,
         dingtalk_access_token=dingtalk_access_token,

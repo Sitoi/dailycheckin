@@ -34,7 +34,7 @@
       "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
-  "BaiduUrlSubmit": [
+  "baidu_url_submit": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
       "submit_url": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",

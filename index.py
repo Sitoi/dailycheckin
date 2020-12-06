@@ -24,7 +24,7 @@ def main_handler(event, context):
             iqiyi_cookie_list=iqiyi_cookie_list,
         ).main()
 
-    baidu_url_submit_list = data.get("BaiduUrlSubmit", [])
+    baidu_url_submit_list = data.get("baidu_url_submit", [])
     if baidu_url_submit_list:
         BaiduUrlSubmit(
             dingtalk_secret=dingtalk_secret,
