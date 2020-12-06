@@ -28,6 +28,12 @@
       "kgqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
+  "music163": [
+    {
+      "music163_phone": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
   "BaiduUrlSubmit": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",

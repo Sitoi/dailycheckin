@@ -1,0 +1,176 @@
+# -*- coding: utf-8 -*-
+import base64
+import hashlib
+import hmac
+import json
+import os
+import time
+import urllib.parse
+
+import requests
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+
+
+class Music163CheckIn:
+    def __init__(self, dingtalk_secret, dingtalk_access_token, music163_account_list):
+        self.dingtalk_secret = dingtalk_secret
+        self.dingtalk_access_token = dingtalk_access_token
+        self.music163_account_list = music163_account_list
+
+    def message_to_dingtalk(self, content):
+        timestamp = str(round(time.time() * 1000))
+        secret_enc = self.dingtalk_secret.encode("utf-8")
+        string_to_sign = "{}\n{}".format(timestamp, self.dingtalk_secret)
+        string_to_sign_enc = string_to_sign.encode("utf-8")
+        hmac_code = hmac.new(secret_enc, string_to_sign_enc, digestmod=hashlib.sha256).digest()
+        sign = urllib.parse.quote_plus(base64.b64encode(hmac_code))
+        send_data = {"msgtype": "text", "text": {"content": content}}
+        requests.post(
+            url="https://oapi.dingtalk.com/robot/send?access_token={0}&timestamp={1}&sign={2}".format(
+                self.dingtalk_access_token, timestamp, sign
+            ),
+            headers={"Content-Type": "application/json", "Charset": "UTF-8"},
+            data=json.dumps(send_data),
+        )
+        return content
+
+    @staticmethod
+    def md5(text):
+        hl = hashlib.md5()
+        hl.update(text.encode(encoding="utf-8"))
+        return hl.hexdigest()
+
+    @staticmethod
+    def encrypt(key, text):
+        backend = default_backend()
+        cipher = Cipher(algorithms.AES(key.encode('utf8')), modes.CBC(b'0102030405060708'), backend=backend)
+        encryptor = cipher.encryptor()
+        length = 16
+        count = len(text.encode('utf-8'))
+        if count % length != 0:
+            add = length - (count % length)
+        else:
+            add = 16
+        pad = chr(add)
+        text1 = text + (pad * add)
+        ciphertext = encryptor.update(text1.encode('utf-8')) + encryptor.finalize()
+        crypted_str = str(base64.b64encode(ciphertext), encoding='utf-8')
+        return crypted_str
+
+    def protect(self, text):
+        return {
+            "params": self.encrypt("TA3YiYCfY2dDJQgg", self.encrypt("0CoJUm6Qyw8W8jud", text)),
+            "encSecKey": "84ca47bca10bad09a6b04c5c927ef077d9b9f1e37098aa3eac6ea70eb59df0aa28b691b7e75e4f1f9831754919ea784c8f74fbfadf2898b0be17849fd656060162857830e241aba44991601f137624094c114ea8d17bce815b0cd4e5b8e2fbaba978c6d1d14dc3d1faf852bdd28818031ccdaaa13a6018e1024e2aae98844210",
+        }
+
+    def sign(self, session, phone, password):
+        sign_msg, music_count_msg = None, None
+        url = "https://music.163.com/weapi/login/cellphone"
+        daily_task_url = "https://music.163.com/weapi/point/dailyTask"
+        resource_url = "https://music.163.com/weapi/v1/discovery/recommend/resource"
+        logindata = {
+            "phone": phone,
+            "countrycode": "86",
+            "password": self.md5(password),
+            "rememberLogin": "true",
+        }
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
+            "Referer": "http://music.163.com/",
+            "Accept-Encoding": "gzip, deflate",
+        }
+        headers2 = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36",
+            "Referer": "http://music.163.com/",
+            "Accept-Encoding": "gzip, deflate",
+            "Cookie": "os=pc; osver=Microsoft-Windows-10-Professional-build-10586-64bit; appver=2.0.3.131777; channel=netease; __remember_me=true;",
+        }
+
+        res = session.post(url=url, data=self.protect(json.dumps(logindata)), headers=headers2)
+        temp_cookie = res.cookies
+        res_data = res.json()
+        if res_data["code"] != 200:
+            sign_msg = "登录失败！请检查密码是否正确！"
+            return sign_msg, music_count_msg
+        res = session.post(url=daily_task_url, data=self.protect('{"type":0}'), headers=headers)
+        res_data = json.loads(res.text)
+        if res_data["code"] != 200 and res_data["code"] != -2:
+            sign_msg = res_data["msg"]
+        else:
+            if res_data["code"] == 200:
+                sign_msg = "签到成功，经验+" + str(res_data["point"])
+            else:
+                sign_msg = "重复签到"
+
+        res = session.post(
+            url=resource_url,
+            data=self.protect('{"csrf_token":"' + requests.utils.dict_from_cookiejar(temp_cookie)["__csrf"] + '"}'),
+            headers=headers,
+        )
+        res_data = json.loads(res.text, strict=False)
+        for x in res_data["recommend"]:
+            url = (
+                "https://music.163.com/weapi/v3/playlist/detail?csrf_token="
+                + requests.utils.dict_from_cookiejar(temp_cookie)["__csrf"]
+            )
+            protect_data = {
+                "id": x["id"],
+                "n": 1000,
+                "csrf_token": requests.utils.dict_from_cookiejar(temp_cookie)["__csrf"],
+            }
+            res = session.post(url=url, data=self.protect(json.dumps(protect_data)), headers=headers)
+            res_data = json.loads(res.text, strict=False)
+            buffer = []
+            count = 0
+            for j in res_data["playlist"]["trackIds"]:
+                data2 = {
+                    "action": "play",
+                    "json": {
+                        "download": 0,
+                        "end": "playend",
+                        "id": j["id"],
+                        "sourceId": "",
+                        "time": "240",
+                        "type": "type",
+                        "wifi": 0,
+                    },
+                }
+                buffer.append(data2)
+                count += 1
+                if count >= 310:
+                    break
+            if count >= 310:
+                break
+        postdata = {"logs": json.dumps(buffer)}
+        res = session.post(url="http://music.163.com/weapi/feedback/weblog", data=self.protect(json.dumps(postdata)))
+        res_data = json.loads(res.text, strict=False)
+        if res_data["code"] == 200:
+            music_count_msg = f"{count} 首"
+        else:
+            music_count_msg = res_data["message"]
+        return sign_msg, music_count_msg
+
+    def main(self):
+        for music163_account in self.music163_account_list:
+            phone = music163_account.get("music163_phone")
+            password = music163_account.get("music163_password")
+            session = requests.session()
+            sign_msg, music_count_msg = self.sign(session=session, phone=phone, password=password)
+            msg = f"【网易云音乐签到】\n签到奖励: {sign_msg}\n刷单数量: {music_count_msg}"
+            print(msg)
+            if self.dingtalk_secret and self.dingtalk_access_token:
+                self.message_to_dingtalk(msg)
+
+
+if __name__ == "__main__":
+    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+        data = json.loads(f.read())
+    dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
+    dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
+    music163_account_list = data.get("music163", [])
+    Music163CheckIn(
+        dingtalk_secret=dingtalk_secret,
+        dingtalk_access_token=dingtalk_access_token,
+        music163_account_list=music163_account_list,
+    ).main()
