@@ -12,12 +12,7 @@ import requests
 
 
 class VQQCheckIn:
-    """
-    腾讯视频签到
-    """
-
     def __init__(self, dingtalk_secret, dingtalk_access_token, vqq_cookie_list):
-
         self.dingtalk_secret = dingtalk_secret
         self.dingtalk_access_token = dingtalk_access_token
         self.vqq_cookie_list = vqq_cookie_list
@@ -40,9 +35,6 @@ class VQQCheckIn:
         return content
 
     def sign_once(self, session, headers):
-        """
-        一次签到
-        """
         url = "http://v.qq.com/x/bu/mobile_checkin?isDarkMode=0&uiType=REGULAR"
         res = session.get(url=url, headers=headers)
         match = re.search(r'isMultiple" />\s+(.*?)\s+<', res.text)
@@ -54,9 +46,6 @@ class VQQCheckIn:
         return msg
 
     def sign_twice(self, session, headers):
-        """
-        二次签到
-        """
         this_time = int(round(time.time() * 1000))
         url = "https://vip.video.qq.com/fcgi-bin/comm_cgi?name=hierarchical_task_system&cmd=2&_=" + str(this_time)
         res = session.get(url=url, headers=headers)

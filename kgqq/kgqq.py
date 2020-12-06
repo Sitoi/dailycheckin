@@ -106,7 +106,7 @@ class KGQQCheckIn:
             new_num = new_proto_profile_response.json()["data"]["profile.getProfile"]["uFlowerNum"]
             get_num = int(new_num) - int(old_num)
             if get_num == 0:
-                kg_message = "√"
+                kg_message = "今日鲜花已领取"
             else:
                 kg_message = "+{0}朵".format(get_num)
         except Exception as e:

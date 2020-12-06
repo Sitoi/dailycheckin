@@ -11,11 +11,6 @@ import requests
 
 
 class PojieCheckIn:
-    """
-    吾爱破解论坛签到
-    *签到得2个爱币
-    """
-
     def __init__(self, dingtalk_secret, dingtalk_access_token, pojie_cookie_list):
         self.dingtalk_secret = dingtalk_secret
         self.dingtalk_access_token = dingtalk_access_token
@@ -39,9 +34,6 @@ class PojieCheckIn:
         return content
 
     def sign(self, headers):
-        """
-        签到
-        """
         url = "https://www.52pojie.cn/home.php?mod=task&do=apply&id=2"
         res = requests.get(url=url, headers=headers)
         if "任务已完成" in res.content.decode("gbk"):

@@ -11,7 +11,6 @@ import requests
 
 
 class YouDaoCheckIn:
-
     def __init__(self, dingtalk_secret, dingtalk_access_token, youdao_cookie_list):
         self.dingtalk_secret = dingtalk_secret
         self.dingtalk_access_token = dingtalk_access_token

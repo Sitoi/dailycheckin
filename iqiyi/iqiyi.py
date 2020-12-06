@@ -12,11 +12,6 @@ import requests
 
 
 class IQIYICheckIn:
-    """
-    爱奇艺签到、抽奖、做日常任务(签到、任务仅限 VIP)
-    *奖励：签 7天奖 1天，14天奖 2天，28天奖 7天；日常任务；随机成长值
-    """
-
     def __init__(self, dingtalk_secret, dingtalk_access_token, iqiyi_cookie_list):
         self.dingtalk_secret = dingtalk_secret
         self.dingtalk_access_token = dingtalk_access_token
@@ -24,7 +19,8 @@ class IQIYICheckIn:
         self.task_list = []
         self.growth_task = 0
 
-    def parse_cookie(self, cookie):
+    @staticmethod
+    def parse_cookie(cookie):
         p00001 = re.findall(r"P00001=(.*?);", cookie)[0]
         p00003 = re.findall(r"P00003=(.*?);", cookie)[0]
         return p00001, p00003
@@ -119,12 +115,10 @@ class IQIYICheckIn:
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/joinTask"
         params = {"P00001": p00001, "taskCode": "", "platform": "bb136ff4276771f3", "lang": "zh_CN"}
-        # 遍历任务，仅做一次
         for item in self.task_list:
             if item["status"] == 2:
                 params["taskCode"] = item["taskCode"]
-                res = requests.get(url=url, params=params)
-                # print(res.text)
+                requests.get(url=url, params=params)
 
     def get_task_rewards(self, p00001):
         """
@@ -146,6 +140,8 @@ class IQIYICheckIn:
         """
         查询抽奖次数(必),抽奖
         :param draw_type: 类型。0 查询次数；1 抽奖
+        :param p00001: 关键参数
+        :param p00003: 关键参数
         :return: {status, msg, chance}
         """
         url = "https://iface2.iqiyi.com/aggregate/3.0/lottery_activity"
@@ -182,10 +178,7 @@ class IQIYICheckIn:
     def main(self):
         for iqiyi_cookie in self.iqiyi_cookie_list:
             p00001, p00003 = self.parse_cookie(iqiyi_cookie.get("iqiyi_cookie"))
-            # 签到
             sign_msg = self.sign(p00001=p00001)
-
-            # 抽奖
             chance = self.draw(0, p00001=p00001, p00003=p00003)["chance"]
             if chance:
                 draw_msg = ""
@@ -194,12 +187,8 @@ class IQIYICheckIn:
                     draw_msg += ret["msg"] + ";" if ret["status"] else ""
             else:
                 draw_msg = "抽奖机会不足"
-
-            # 日常任务
             self.query_user_task(p00001=p00001).join_task(p00001=p00001)
             task_msg = self.query_user_task(p00001=p00001).get_task_rewards(p00001=p00001)
-
-            # 查询用户信息
             user_msg = self.user_information(p00001=p00001)
             msg = (
                 f"【爱奇艺等级】\n{user_msg}\n-----------------------------\n"
