@@ -1,0 +1,18 @@
+{
+  "dingtalk": {
+    "dingtalk_secret": "xxxx",
+    "dingtalk_access_token": "xxxx"
+  },
+  "iqiyi": [
+    {
+      "iqyi_cookie": "xxxx"
+    }
+  ],
+  "BaiduUrlSubmit": [
+    {
+      "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
+      "submit_url": "xxxx",
+      "times": 100
+    }
+  ]
+}
