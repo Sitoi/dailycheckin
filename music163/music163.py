@@ -1,39 +1,17 @@
 # -*- coding: utf-8 -*-
 import base64
 import hashlib
-import hmac
 import json
 import os
-import time
-import urllib.parse
 
 import requests
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
 
 class Music163CheckIn:
-    def __init__(self, dingtalk_secret, dingtalk_access_token, music163_account_list):
-        self.dingtalk_secret = dingtalk_secret
-        self.dingtalk_access_token = dingtalk_access_token
+    def __init__(self, music163_account_list):
         self.music163_account_list = music163_account_list
-
-    def message_to_dingtalk(self, content):
-        timestamp = str(round(time.time() * 1000))
-        secret_enc = self.dingtalk_secret.encode("utf-8")
-        string_to_sign = "{}\n{}".format(timestamp, self.dingtalk_secret)
-        string_to_sign_enc = string_to_sign.encode("utf-8")
-        hmac_code = hmac.new(secret_enc, string_to_sign_enc, digestmod=hashlib.sha256).digest()
-        sign = urllib.parse.quote_plus(base64.b64encode(hmac_code))
-        send_data = {"msgtype": "text", "text": {"content": content}}
-        requests.post(
-            url="https://oapi.dingtalk.com/robot/send?access_token={0}&timestamp={1}&sign={2}".format(
-                self.dingtalk_access_token, timestamp, sign
-            ),
-            headers={"Content-Type": "application/json", "Charset": "UTF-8"},
-            data=json.dumps(send_data),
-        )
-        return content
 
     @staticmethod
     def md5(text):
@@ -44,18 +22,18 @@ class Music163CheckIn:
     @staticmethod
     def encrypt(key, text):
         backend = default_backend()
-        cipher = Cipher(algorithms.AES(key.encode('utf8')), modes.CBC(b'0102030405060708'), backend=backend)
+        cipher = Cipher(algorithms.AES(key.encode("utf8")), modes.CBC(b"0102030405060708"), backend=backend)
         encryptor = cipher.encryptor()
         length = 16
-        count = len(text.encode('utf-8'))
+        count = len(text.encode("utf-8"))
         if count % length != 0:
             add = length - (count % length)
         else:
             add = 16
         pad = chr(add)
         text1 = text + (pad * add)
-        ciphertext = encryptor.update(text1.encode('utf-8')) + encryptor.finalize()
-        crypted_str = str(base64.b64encode(ciphertext), encoding='utf-8')
+        ciphertext = encryptor.update(text1.encode("utf-8")) + encryptor.finalize()
+        crypted_str = str(base64.b64encode(ciphertext), encoding="utf-8")
         return crypted_str
 
     def protect(self, text):
@@ -152,25 +130,20 @@ class Music163CheckIn:
         return sign_msg, music_count_msg
 
     def main(self):
+        msg_list = []
         for music163_account in self.music163_account_list:
             phone = music163_account.get("music163_phone")
             password = music163_account.get("music163_password")
             session = requests.session()
             sign_msg, music_count_msg = self.sign(session=session, phone=phone, password=password)
-            msg = f"【网易云音乐签到】\n签到奖励: {sign_msg}\n刷单数量: {music_count_msg}"
+            msg = f"【网易云音乐签到】\n帐号信息: {phone}\n签到状态: {sign_msg}\n刷歌数量: {music_count_msg}"
             print(msg)
-            if self.dingtalk_secret and self.dingtalk_access_token:
-                self.message_to_dingtalk(msg)
+            msg_list.append(msg)
+        return msg_list
 
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
         data = json.loads(f.read())
-    dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
-    dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
-    music163_account_list = data.get("music163", [])
-    Music163CheckIn(
-        dingtalk_secret=dingtalk_secret,
-        dingtalk_access_token=dingtalk_access_token,
-        music163_account_list=music163_account_list,
-    ).main()
+    _music163_account_list = data.get("music163", [])
+    Music163CheckIn(music163_account_list=_music163_account_list).main()

@@ -1,40 +1,17 @@
 # -*- coding: utf-8 -*-
-import base64
-import hashlib
-import hmac
 import json
 import os
-import time
-import urllib.parse
 from urllib import parse
 
 import requests
 
 
 class BaiduUrlSubmit:
-    def __init__(self, dingtalk_secret, dingtalk_access_token, baidu_url_submit_list):
-        self.dingtalk_secret = dingtalk_secret
-        self.dingtalk_access_token = dingtalk_access_token
+    def __init__(self, baidu_url_submit_list: list):
         self.baidu_url_submit_list = baidu_url_submit_list
 
-    def message_to_dingtalk(self, content: str):
-        timestamp = str(round(time.time() * 1000))
-        secret_enc = self.dingtalk_secret.encode("utf-8")
-        string_to_sign = "{}\n{}".format(timestamp, self.dingtalk_secret)
-        string_to_sign_enc = string_to_sign.encode("utf-8")
-        hmac_code = hmac.new(secret_enc, string_to_sign_enc, digestmod=hashlib.sha256).digest()
-        sign = urllib.parse.quote_plus(base64.b64encode(hmac_code))
-        send_data = {"msgtype": "text", "text": {"content": content}}
-        requests.post(
-            url="https://oapi.dingtalk.com/robot/send?access_token={0}&timestamp={1}&sign={2}".format(
-                self.dingtalk_access_token, timestamp, sign
-            ),
-            headers={"Content-Type": "application/json", "Charset": "UTF-8"},
-            data=json.dumps(send_data),
-        )
-        return content
-
-    def url_submit(self, data_url: str, submit_url: str, times: int = 100) -> str:
+    @staticmethod
+    def url_submit(data_url: str, submit_url: str, times: int = 100) -> str:
         site = parse.parse_qs(parse.urlsplit(submit_url).query).get("site")[0]
         urls_data = requests.get(url=data_url)
         remian = 100000
@@ -54,6 +31,7 @@ class BaiduUrlSubmit:
         return msg
 
     def main(self):
+        msg_list = []
         for baidu_url_submit in self.baidu_url_submit_list:
             data_url = baidu_url_submit.get("data_url")
             submit_url = baidu_url_submit.get("submit_url")
@@ -61,18 +39,12 @@ class BaiduUrlSubmit:
             if data_url and submit_url:
                 msg = self.url_submit(data_url=data_url, submit_url=submit_url, times=times)
                 print(msg)
-                if self.dingtalk_secret and self.dingtalk_access_token:
-                    self.message_to_dingtalk(msg)
+                msg_list.append(msg)
+        return msg_list
 
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
         data = json.loads(f.read())
-    dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
-    dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
-    baidu_url_submit_list = data.get("baidu_url_submit", [])
-    BaiduUrlSubmit(
-        dingtalk_secret=dingtalk_secret,
-        dingtalk_access_token=dingtalk_access_token,
-        baidu_url_submit_list=baidu_url_submit_list,
-    ).main()
+    _baidu_url_submit_list = data.get("baidu_url_submit", [])
+    BaiduUrlSubmit(baidu_url_submit_list=_baidu_url_submit_list).main()
