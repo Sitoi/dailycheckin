@@ -11,11 +11,12 @@
 - [x] 吾爱破解每日签到: 每日签到获取2枚吾爱币
 - [x] 有道云笔记每日签到: 每日签到获取存储空间
 - [x] 网易云音乐每日签到升级: 每日自动登录签到 + 刷歌 310 首
+- [x] 每日天气预报: 可以获取指定的多个城市天气信息
+- [x] 每日一句: 从词霸中获取每日一句，带英文
 
 ## TODO
 
 - [ ] 添加其他通知服务
-- [ ] 修改通知结构
 - [ ] 添加 GitHub Actions 使用
 - [ ] 添加新的签到脚本，请到 [ISSUE](https://github.com/Sitoi/DailyCheckIn/issues) 中提交
 
@@ -120,4 +121,5 @@ TODO
 |music163.`music163_password`|网易云音乐|非必须|[网易云音乐](https://music.163.com/) 帐号的密码|
 |baidu_url_submit.`data_url`|百度搜索资源平台|非必须|提交网站的 URL 链接，参考：[baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)|
 |baidu_url_submit.`submit_url`|百度搜索资源平台|非必须|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/) 提交百度网站的目标 URL，参考格式：`http://data.zz.baidu.com/urls?site=https://sitoi.cn&token=xxxxx`|
-|baidu_url_submit.`times`|百度搜索资源平台|非必须|每日对同一个网站提交次数|
+|`weather`|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|
+|`motto`|每日一句|非必须|是否开启默认为 false|

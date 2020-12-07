@@ -5,15 +5,18 @@ import hmac
 import json
 import time
 import urllib.parse
+from datetime import datetime
 
 import requests
 
 from baidu_url_submit import BaiduUrlSubmit
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
+from motto.motto import Motto
 from music163 import Music163CheckIn
 from pojie import PojieCheckIn
 from vqq import VQQCheckIn
+from weather import Weather
 from youdao import YouDaoCheckIn
 
 
@@ -41,7 +44,7 @@ def main_handler(event, context):
         data = json.loads(f.read())
     dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
     dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
-    content_list = []
+    content_list = [f'当前时间: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}']
     iqiyi_cookie_list = data.get("iqiyi", [])
     if iqiyi_cookie_list:
         msg_list = IQIYICheckIn(iqiyi_cookie_list=iqiyi_cookie_list).main()
@@ -74,13 +77,24 @@ def main_handler(event, context):
 
     music163_account_list = data.get("music163", [])
     if music163_account_list:
-        msg_list = Music163CheckIn(music163_account_list=music163_account_list, ).main()
+        msg_list = Music163CheckIn(music163_account_list=music163_account_list).main()
         content_list += msg_list
 
-    use_time_info = f"\n\n本次任务使用时间: {time.time() - start_time} 秒"
+    city_name_list = data.get("weather", [])
+    if city_name_list:
+        msg_list = Weather(city_name_list=city_name_list).main()
+        content_list += msg_list
+
+    motto = data.get("motto")
+    if motto:
+        msg_list = Motto().main()
+        content_list += msg_list
+
+    use_time_info = f"本次任务使用时间: {time.time() - start_time} 秒"
     content_list.append(use_time_info)
-    content = "\n-----------------------------\n".join(content_list)
+    content = "\n-----------------------------\n\n".join(content_list)
     print(content)
+
     if dingtalk_access_token and dingtalk_secret:
         message_to_dingtalk(
             dingtalk_secret=dingtalk_secret,
