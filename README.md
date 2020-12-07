@@ -65,6 +65,10 @@ TODO
     "dingtalk_secret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "dingtalk_access_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   },
+  "weather": [
+    "上海"
+  ],
+  "motto": true,
   "iqiyi": [
     {
       "iqiyi_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
