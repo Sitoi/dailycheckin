@@ -3,6 +3,16 @@
     "dingtalk_secret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "dingtalk_access_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   },
+  "server": {
+    "sckey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "qmsg": {
+    "qmsg_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "telegram": {
+    "tg_bot_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tg_user_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
   "weather": [
     "上海"
   ],
@@ -36,6 +46,11 @@
     {
       "music163_phone": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
       "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "xmly": [
+    {
+      "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
   "baidu_url_submit": [

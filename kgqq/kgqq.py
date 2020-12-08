@@ -61,27 +61,31 @@ class KGQQCheckIn:
             old_num = old_proto_profile_response.json()["data"]["profile.getProfile"]["uFlowerNum"]
 
             for url in url_list:
-                requests.get(url=url, headers=headers)
-
+                try:
+                    requests.get(url=url, headers=headers)
+                except Exception as e:
+                    print(e)
             for g_tk_openkey in range(16):
-                proto_music_station_resp = requests.get(
-                    url=proto_music_station_url + str(g_tk_openkey), headers=headers
-                )
-                vct_music_cards = proto_music_station_resp.json()["data"]["message.batch_get_music_cards"][
-                    "vctMusicCards"
-                ]
-                vct_music_cards_list = sorted(vct_music_cards, key=lambda x: x["stReward"]["uFlowerNum"], reverse=True)[
-                    0
-                ]
-                str_ugc_id = vct_music_cards_list["strUgcId"]
-                str_key = vct_music_cards_list["strKey"]
-                url = str_ugc_id + "&t_strKey=" + str_key
-                u_flower_num = vct_music_cards_list["stReward"]["uFlowerNum"]
-                if u_flower_num > 10:
-                    requests.get(url=url_10 + url, headers=headers)
-                elif 1 < u_flower_num < 10:
-                    requests.get(url=url_15 + url, headers=headers)
-
+                try:
+                    proto_music_station_resp = requests.get(
+                        url=proto_music_station_url + str(g_tk_openkey), headers=headers
+                    )
+                    vct_music_cards = proto_music_station_resp.json()["data"]["message.batch_get_music_cards"][
+                        "vctMusicCards"
+                    ]
+                    vct_music_cards_list = sorted(
+                        vct_music_cards, key=lambda x: x["stReward"]["uFlowerNum"], reverse=True
+                    )[0]
+                    str_ugc_id = vct_music_cards_list["strUgcId"]
+                    str_key = vct_music_cards_list["strKey"]
+                    url = str_ugc_id + "&t_strKey=" + str_key
+                    u_flower_num = vct_music_cards_list["stReward"]["uFlowerNum"]
+                    if u_flower_num > 10:
+                        requests.get(url=url_10 + url, headers=headers)
+                    elif 1 < u_flower_num < 10:
+                        requests.get(url=url_15 + url, headers=headers)
+                except Exception as e:
+                    print(e)
             new_proto_profile_response = requests.get(proto_profile_url, headers=headers)
             new_num = new_proto_profile_response.json()["data"]["profile.getProfile"]["uFlowerNum"]
             get_num = int(new_num) - int(old_num)
