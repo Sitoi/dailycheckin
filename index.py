@@ -5,7 +5,7 @@ import hmac
 import json
 import time
 import urllib.parse
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -67,6 +67,7 @@ def main_handler(event, context):
     else:
         message = None
     start_time = time.time()
+    utc_time = datetime.utcnow() + timedelta(hours=8)
     with open("config.json", "r", encoding="utf-8") as f:
         data = json.loads(f.read())
     dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
@@ -75,7 +76,7 @@ def main_handler(event, context):
     tg_bot_token = data.get("telegram", {}).get("tg_bot_token")
     tg_user_id = data.get("telegram", {}).get("tg_user_id")
     qmsg_key = data.get("qmsg", {}).get("qmsg_key")
-    content_list = [f'当前时间: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}']
+    content_list = [f'当前时间: {utc_time}']
     if message != "xmly":
         iqiyi_cookie_list = data.get("iqiyi", [])
         if iqiyi_cookie_list:
@@ -130,17 +131,25 @@ def main_handler(event, context):
     content_list.append(use_time_info)
     content = "\n-----------------------------\n\n".join(content_list)
     print(content)
-    if dingtalk_access_token and dingtalk_secret:
-        message_to_dingtalk(
-            dingtalk_secret=dingtalk_secret, dingtalk_access_token=dingtalk_access_token, content=content
-        )
-    if sckey:
-        message_to_server(sckey=sckey, content=content)
-    if qmsg_key:
-        for content in content_list:
-            message_to_qmsg(qmsg_key=qmsg_key, content=content)
-    if tg_user_id and tg_bot_token:
-        message_to_telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=content)
+    if message == "xmly":
+        if utc_time.hour in [9, 18] and utc_time.minute == 0:
+            flag = True
+        else:
+            flag = False
+    else:
+        flag = True
+    if flag:
+        if dingtalk_access_token and dingtalk_secret:
+            message_to_dingtalk(
+                dingtalk_secret=dingtalk_secret, dingtalk_access_token=dingtalk_access_token, content=content
+            )
+        if sckey:
+            message_to_server(sckey=sckey, content=content)
+        if qmsg_key:
+            for content in content_list:
+                message_to_qmsg(qmsg_key=qmsg_key, content=content)
+        if tg_user_id and tg_bot_token:
+            message_to_telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=content)
     return
 
 

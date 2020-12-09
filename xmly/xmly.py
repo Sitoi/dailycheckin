@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from itertools import groupby
 
 import requests
+
 import rsa
 
 
@@ -691,7 +692,7 @@ class XMLYCheckIn:
             print(f"网络请求异常: {e}")
             return
         result = response.json()
-        index_baoxiang_award_msg = "宝箱奖励: " + str(result.get("msg"))
+        baoxiang_award = int(result.get("msg", 0))
         if "ret" in result and result["ret"] == 0:
             award_receive_id = result["awardReceiveId"]
             headers = {
@@ -713,10 +714,12 @@ class XMLYCheckIn:
                     params=params,
                     cookies=cookies,
                 )
+                print("宝箱奖励翻倍 ", response.text)
+                baoxiang_award += int(response.json().get("amount", 0))
             except Exception as e:
                 print(f"网络请求异常: {e}")
                 return
-            print("宝箱奖励翻倍 ", response.text)
+        index_baoxiang_award_msg = f"宝箱奖励: {baoxiang_award}"
         uid = self.get_uid(cookies)
         params = {
             "activtyId": "indexSegAward",
@@ -736,7 +739,7 @@ class XMLYCheckIn:
             print(f"网络请求异常: {e}")
             return
         result = response.json()
-        index_baoxiang_award_msg += "\n首页奖励: " + str(result.get("msg"))
+        index_award = int(result.get("msg", 0))
         if "ret" in result and result["ret"] == 0:
             award_receive_id = result["awardReceiveId"]
             headers = {
@@ -759,10 +762,14 @@ class XMLYCheckIn:
                     params=params,
                     cookies=cookies,
                 )
+                print("首页奖励翻倍: ", response.text)
+                index_award = int(response.json().get("amount", 0))
+
             except Exception as e:
                 print(f"网络请求异常: {e}")
                 return
-            print("首页奖励翻倍: ", response.text)
+        index_baoxiang_award_msg += f"\n首页奖励: {index_award}"
+
         return index_baoxiang_award_msg
 
     def card_exchange_card(self, cookies, to_card_award_id, from_record_id_list):
