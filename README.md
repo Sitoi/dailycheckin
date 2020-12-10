@@ -1,6 +1,6 @@
 # 每日签到集合
 
-基于腾讯云函数的每日签到脚本（支持多账号使用）
+基于【腾讯云函数】/【GitHub Actions】的每日签到脚本（支持多账号使用）
 
 ## 签到列表
 
@@ -23,7 +23,6 @@
 
 ## TODO
 
-- [ ] 添加 GitHub Actions 使用
 - [ ] 如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/DailyCheckIn/issues) 中提交
 
 ## 使用方法
@@ -50,7 +49,28 @@
 
 ### 方法三: GitHub Action 使用
 
-TODO
+#### 环境变量说明
+
+> 可以将 json 类型的数据到 [Json.cn](http://www.json.cn/) 网站格式化一下，确保数据格式的准确性
+
+|Secret|归属|属性|说明|例子|
+|:---:|:---:|:---:|:---|:---|
+|DINGTALK_SECRET|钉钉推送|非必须|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|DINGTALK_ACCESS_TOKEN|钉钉推送|非必须|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`， 注：如果钉钉推送只填写 `DD_BOT_TOKEN`，那么安全设置需勾选`自定义关键词`，内容输入输入`账号`即可，其他安全设置不要勾选|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|SCKEY|server 酱推送|非必须|server 酱推送[官方文档](https://sc.ftqq.com/3.version) ,填写 `SCKEY` 代码即可|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|QMSG_KEY|qmsg 酱推送|非必须|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|TG_BOT_TOKEN|telegram 推送|非必须|telegram 推送 `tg_bot_token`|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|TG_USER_ID|telegram 推送|非必须|telegram 推送 `tg_user_id`|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|IQIYI_COOKIE_LIST|爱奇艺|非必须|[爱奇艺](https://www.iqiyi.com/) 帐号的 cookie 信息列表 参考 `config.json`|[ { "iqiyi_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|VQQ_COOKIE_LIST|腾讯视频|非必须|[腾讯视频](https://v.qq.com/) 帐号的 cookie 信息|[ { "vqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|POJIE_COOKIE_LIST|吾爱破解|非必须|[吾爱破解](https://www.52pojie.cn/index.php) 帐号的 cookie 信息|[ { "pojie_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|YOUDAO_COOKIE_LIST|有道云笔记|非必须|[有道云笔记](https://note.youdao.com/web/) 帐号的 cookie 信息|[ { "youdao_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|KGQQ_COOKIE_LIST|全民K歌|非必须|[全民K歌](https://kg.qq.com/index-pc.html) 帐号的 cookie 信息|[ { "kgqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|MUSIC163_ACCOUNT_LIST|网易云音乐|非必须|[网易云音乐](https://music.163.com/) 帐号的手机号|[ { "music163_phone": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|BAIDU_URL_SUBMIT_LIST|百度搜索资源平台|非必须|提交网站的 URL 链接，参考：[baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)|[ { "iqiyi_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|CITY_NAME_LIST|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|[ { "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt", "submit_url": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "times": 10 } ]|
+|MOTTO|每日一句|非必须|是否开启默认为 false|true|
+|XMLY_COOKIE_LIST|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|[ { "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
 
 ## 获取 Cookie 教程（以爱奇艺为例）
 

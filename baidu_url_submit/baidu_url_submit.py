@@ -18,11 +18,14 @@ class BaiduUrlSubmit:
         success_count = 0
         error_count = 0
         for one in range(times):
-            response = requests.post(url=submit_url, data=urls_data)
-            if response.json().get("success"):
-                remian = response.json().get("remain")
-                success_count += response.json().get("success")
-            else:
+            try:
+                response = requests.post(url=submit_url, data=urls_data)
+                if response.json().get("success"):
+                    remian = response.json().get("remain")
+                    success_count += response.json().get("success")
+                else:
+                    error_count += 1
+            except Exception as e:
                 error_count += 1
         msg = (
             f"【百度站点提交】\n站点地址: {site}\n当天剩余的可推送 url 条数: {remian}\n成功推送的 url 条数: {success_count}\n"
