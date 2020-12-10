@@ -1,0 +1,43 @@
+name: 喜马拉雅极速版
+
+on:
+  schedule:
+    - cron: '*/30 * * * * '
+  watch:
+    types: [ started ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: 'Install requirements'
+        run: pip install -r ./requirements.txt
+
+      - name: 'run 喜马拉雅极速版'
+        run: python3 index.py
+        env:
+          IS_GITHUB_ACTION: true
+          ONLY_XMLY: true
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
+          SCKEY: ${{secrets.SCKEY}}
+          TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}
+          TG_USER_ID: ${{secrets.TG_USER_ID}}
+          QMSG_KEY: ${{secrets.QMSG_KEY}}
+          MOTTO: ${{secrets.MOTTO}}
+          IQIYI_COOKIE_LIST: ${{secrets.IQIYI_COOKIE_LIST}}
+          BAIDU_URL_SUBMIT_LIST: ${{secrets.BAIDU_URL_SUBMIT_LIST}}
+          VQQ_COOKIE_LIST: ${{secrets.VQQ_COOKIE_LIST}}
+          YOUDAO_COOKIE_LIST: ${{secrets.YOUDAO_COOKIE_LIST}}
+          POJIE_COOKIE_LIST: ${{secrets.POJIE_COOKIE_LIST}}
+          KGQQ_COOKIE_LIST: ${{secrets.KGQQ_COOKIE_LIST}}
+          MUSIC163_ACCOUNT_LIST: ${{secrets.MUSIC163_ACCOUNT_LIST}}
+          CITY_NAME_LIST: ${{secrets.CITY_NAME_LIST}}
+          XMLY_COOKIE_LIST: ${{secrets.XMLY_COOKIE_LIST}}

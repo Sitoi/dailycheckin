@@ -3,6 +3,7 @@ import base64
 import hashlib
 import hmac
 import json
+import os
 import time
 import urllib.parse
 from datetime import datetime, timedelta
@@ -62,68 +63,91 @@ def message_to_dingtalk(dingtalk_secret, dingtalk_access_token, content):
 
 
 def main_handler(event, context):
-    if isinstance(event, dict):
-        message = event.get("Message")
+    """
+    判断是否运行自GitHub action,"XMLY_SPEED_COOKIE" 该参数与 repo里的Secrets的名称保持一致
+    """
+    if "IS_GITHUB_ACTION" in os.environ:
+        message = os.environ["ONLY_XMLY"]
+        dingtalk_secret = os.environ["DINGTALK_SECRET"]
+        dingtalk_access_token = os.environ["DINGTALK_ACCESS_TOKEN"]
+        sckey = os.environ["SCKEY"]
+        tg_bot_token = os.environ["TG_BOT_TOKEN"]
+        tg_user_id = os.environ["TG_USER_ID"]
+        qmsg_key = os.environ["QMSG_KEY"]
+        motto = os.environ["MOTTO"]
+        iqiyi_cookie_list = json.loads(os.environ.get("IQIYI_COOKIE_LIST"))
+        baidu_url_submit_list = json.loads(os.environ.get("BAIDU_URL_SUBMIT_LIST", []))
+        vqq_cookie_list = json.loads(os.environ.get("VQQ_COOKIE_LIST", []))
+        youdao_cookie_list = json.loads(os.environ.get("YOUDAO_COOKIE_LIST", []))
+        pojie_cookie_list = json.loads(os.environ.get("POJIE_COOKIE_LIST", []))
+        kgqq_cookie_list = json.loads(os.environ.get("KGQQ_COOKIE_LIST", []))
+        music163_account_list = json.loads(os.environ.get("MUSIC163_ACCOUNT_LIST", []))
+        city_name_list = json.loads(os.environ.get("CITY_NAME_LIST", []))
+        xmly_cookie_list = json.loads(os.environ.get("XMLY_COOKIE_LIST", []))
     else:
-        message = None
-    start_time = time.time()
-    utc_time = datetime.utcnow() + timedelta(hours=8)
-    with open("config.json", "r", encoding="utf-8") as f:
-        data = json.loads(f.read())
-    dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
-    dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
-    sckey = data.get("server", {}).get("sckey")
-    tg_bot_token = data.get("telegram", {}).get("tg_bot_token")
-    tg_user_id = data.get("telegram", {}).get("tg_user_id")
-    qmsg_key = data.get("qmsg", {}).get("qmsg_key")
+        if isinstance(event, dict):
+            message = event.get("Message")
+        else:
+            message = None
+        start_time = time.time()
+        utc_time = datetime.utcnow() + timedelta(hours=8)
+        with open("config.json", "r", encoding="utf-8") as f:
+            data = json.loads(f.read())
+        dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
+        dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
+        sckey = data.get("server", {}).get("sckey")
+        tg_bot_token = data.get("telegram", {}).get("tg_bot_token")
+        tg_user_id = data.get("telegram", {}).get("tg_user_id")
+        qmsg_key = data.get("qmsg", {}).get("qmsg_key")
+        iqiyi_cookie_list = data.get("iqiyi", [])
+        baidu_url_submit_list = data.get("baidu_url_submit", [])
+        vqq_cookie_list = data.get("vqq", [])
+        youdao_cookie_list = data.get("youdao", [])
+        pojie_cookie_list = data.get("52pojie", [])
+        kgqq_cookie_list = data.get("kgqq", [])
+        music163_account_list = data.get("music163", [])
+        city_name_list = data.get("weather", [])
+        motto = data.get("motto")
+        xmly_cookie_list = data.get("xmly")
+
     content_list = [f'当前时间: {utc_time}']
     if message != "xmly":
-        iqiyi_cookie_list = data.get("iqiyi", [])
         if iqiyi_cookie_list:
             msg_list = IQIYICheckIn(iqiyi_cookie_list=iqiyi_cookie_list).main()
             content_list += msg_list
 
-        baidu_url_submit_list = data.get("baidu_url_submit", [])
         if baidu_url_submit_list:
             msg_list = BaiduUrlSubmit(baidu_url_submit_list=baidu_url_submit_list).main()
             content_list += msg_list
 
-        vqq_cookie_list = data.get("vqq", [])
         if vqq_cookie_list:
             msg_list = VQQCheckIn(vqq_cookie_list=vqq_cookie_list).main()
             content_list += msg_list
 
-        youdao_cookie_list = data.get("youdao", [])
         if youdao_cookie_list:
             msg_list = YouDaoCheckIn(youdao_cookie_list=youdao_cookie_list).main()
             content_list += msg_list
 
-        pojie_cookie_list = data.get("52pojie", [])
         if pojie_cookie_list:
             msg_list = PojieCheckIn(pojie_cookie_list=pojie_cookie_list).main()
             content_list += msg_list
 
-        kgqq_cookie_list = data.get("kgqq", [])
         if kgqq_cookie_list:
             msg_list = KGQQCheckIn(kgqq_cookie_list=kgqq_cookie_list).main()
             content_list += msg_list
 
-        music163_account_list = data.get("music163", [])
         if music163_account_list:
             msg_list = Music163CheckIn(music163_account_list=music163_account_list).main()
             content_list += msg_list
 
-        city_name_list = data.get("weather", [])
         if city_name_list:
             msg_list = Weather(city_name_list=city_name_list).main()
             content_list += msg_list
 
-        motto = data.get("motto")
         if motto:
             msg_list = Motto().main()
             content_list += msg_list
     else:
-        xmly_cookie_list = data.get("xmly")
         if xmly_cookie_list:
             msg_list = XMLYCheckIn(xmly_cookie_list=xmly_cookie_list).main()
             content_list += msg_list
