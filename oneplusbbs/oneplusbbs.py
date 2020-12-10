@@ -8,6 +8,7 @@ import requests
 
 
 class OnePlusBBSCheckIn:
+    # 待测试
     def __init__(self, oneplusbbs_cookie_list):
         self.oneplusbbs_cookie_list = oneplusbbs_cookie_list
 
@@ -57,26 +58,30 @@ class OnePlusBBSCheckIn:
             ("do", "draw"),
         )
         sum_list = []
+        msg = ""
         for i in range(10):
-            data = requests.post(url="https://www.oneplusbbs.com/plugin.php", headers=headers, params=params).json()
-            if data["ret"] != "":
-                ret_map = {
-                    "2": 18,
-                    "4": 188,
-                    "5": 88,
-                    "7": 8,
-                }
-                ret = data["ret"]
-                sum_list.append(ret_map.get(ret, 0))
-                one_msg = data["msg"]
-                if str(ret) in ["-1", "-6", "-7"]:
-                    msg = one_msg
-                    break
-            else:
-                one_msg = "抽奖失败"
+            try:
+                data = requests.post(url="https://www.oneplusbbs.com/plugin.php", headers=headers, params=params).json()
+                if data["ret"] != "":
+                    ret_map = {
+                        "2": 18,
+                        "4": 188,
+                        "5": 88,
+                        "7": 8,
+                    }
+                    ret = data["ret"]
+                    sum_list.append(ret_map.get(ret, 0))
+                    one_msg = data["msg"]
+                    if str(ret) in ["-1", "-6", "-7"]:
+                        msg = one_msg
+                        break
+                else:
+                    one_msg = "抽奖失败"
+            except Exception as e:
+                one_msg = f"抽奖失败: {e}"
+                msg = one_msg
             print(f"第{i + 1}次抽奖结果：" + str(one_msg))
             time.sleep(5)
-
         draw_msg = "抽奖状态：" + str(msg)
         draw_msg += f"\n抽奖信息：获得 {sum(sum_list)} 加油"
         print(draw_msg)
@@ -89,7 +94,7 @@ class OnePlusBBSCheckIn:
             bbs_uname = re.findall(r"bbs_uname=(.*?);", oneplusbbs_cookie)[0].split("%7C")[0]
             sign_msg = self.sign(cookie=oneplusbbs_cookie)
             draw_msg = self.draw(cookie=oneplusbbs_cookie)
-            msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n签到状态: {sign_msg}\n{draw_msg}"
+            msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n{sign_msg}\n{draw_msg}"
             print(msg)
             msg_list.append(msg)
         return msg_list
