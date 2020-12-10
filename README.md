@@ -286,5 +286,5 @@
 
 ## 特别鸣谢（排名不分先后）
 
-[@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
-[@Water008](https://github.com/Water008/qqread) - QQRead
+- [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
+- [@Water008](https://github.com/Water008/qqread) - QQRead
