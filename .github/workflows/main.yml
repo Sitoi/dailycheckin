@@ -20,7 +20,7 @@ jobs:
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt
 
-      - name: 'run 每日签到合集'
+      - name: '运行【每日签到合集】'
         run: python3 index.py
         env:
           IS_GITHUB_ACTION: true
