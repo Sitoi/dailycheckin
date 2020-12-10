@@ -1,0 +1,34 @@
+name: 企鹅读书
+
+on:
+  schedule:
+    - cron: '*/15 * * * * '
+  watch:
+    types: [ started ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: 'Install requirements'
+        run: pip install -r ./requirements.txt
+
+      - name: '运行【企鹅读书】'
+        run: python3 index.py
+        env:
+          IS_GITHUB_ACTION: true
+          ONLY_MESSAGE: qqread
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
+          SCKEY: ${{secrets.SCKEY}}
+          TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}
+          TG_USER_ID: ${{secrets.TG_USER_ID}}
+          QMSG_KEY: ${{secrets.QMSG_KEY}}
+          QQREAD_ACCOUNT_LIST: ${{secrets.QQREAD_ACCOUNT_LIST}}
