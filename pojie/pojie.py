@@ -12,16 +12,20 @@ class PojieCheckIn:
 
     @staticmethod
     def sign(headers):
-        url = "https://www.52pojie.cn/home.php?mod=task&do=apply&id=2"
-        res = requests.get(url=url, headers=headers)
-        if "任务已完成" in res.content.decode("gbk"):
-            msg = "任务已完成"
-        elif "本期您已申请过此任务" in res.content.decode("gbk"):
-            msg = "签到过了"
-        elif "需要先登录" in res.content.decode("gbk"):
-            msg = "未登录，请检查 Cookies"
-        else:
-            print("（52）签到错误信息", res.content.decode("gbk"))
+        try:
+            url = "https://www.52pojie.cn/home.php?mod=task&do=apply&id=2"
+            res = requests.get(url=url, headers=headers)
+            if "任务已完成" in res.content.decode("gbk"):
+                msg = "任务已完成"
+            elif "本期您已申请过此任务" in res.content.decode("gbk"):
+                msg = "签到过了"
+            elif "需要先登录" in res.content.decode("gbk"):
+                msg = "未登录，请检查 Cookies"
+            else:
+                print("（52）签到错误信息", res.content.decode("gbk"))
+                msg = "未知错误，检查日志"
+        except Exception as e:
+            print("错误信息", str(e))
             msg = "未知错误，检查日志"
         return msg
 
