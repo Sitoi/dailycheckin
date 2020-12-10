@@ -66,6 +66,8 @@ def main_handler(event, context):
     """
     判断是否运行自GitHub action,"XMLY_SPEED_COOKIE" 该参数与 repo里的Secrets的名称保持一致
     """
+    start_time = time.time()
+    utc_time = datetime.utcnow() + timedelta(hours=8)
     if "IS_GITHUB_ACTION" in os.environ:
         message = os.environ["ONLY_XMLY"]
         dingtalk_secret = os.environ["DINGTALK_SECRET"]
@@ -89,8 +91,6 @@ def main_handler(event, context):
             message = event.get("Message")
         else:
             message = None
-        start_time = time.time()
-        utc_time = datetime.utcnow() + timedelta(hours=8)
         with open("config.json", "r", encoding="utf-8") as f:
             data = json.loads(f.read())
         dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
