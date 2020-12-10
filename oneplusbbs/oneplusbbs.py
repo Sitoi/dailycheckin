@@ -89,7 +89,7 @@ class OnePlusBBSCheckIn:
             bbs_uname = re.findall(r"bbs_uname=(.*?);", oneplusbbs_cookie)[0].split("%7C")[0]
             sign_msg = self.sign(cookie=oneplusbbs_cookie)
             draw_msg = self.draw(cookie=oneplusbbs_cookie)
-            msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n签到状态: {sign_msg}\n{draw_msg}"
+            msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n{sign_msg}\n{draw_msg}"
             print(msg)
             msg_list.append(msg)
         return msg_list
