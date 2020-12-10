@@ -24,7 +24,7 @@ jobs:
         run: python3 index.py
         env:
           IS_GITHUB_ACTION: true
-          ONLY_XMLY: true
+          ONLY_XMLY: xmly
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
           SCKEY: ${{secrets.SCKEY}}
