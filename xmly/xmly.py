@@ -692,7 +692,10 @@ class XMLYCheckIn:
             print(f"网络请求异常: {e}")
             return
         result = response.json()
-        baoxiang_award = int(result.get("msg", 0))
+        try:
+            baoxiang_award = int(result.get("msg", 0))
+        except Exception as e:
+            baoxiang_award = 0
         if "ret" in result and result["ret"] == 0:
             award_receive_id = result["awardReceiveId"]
             headers = {
@@ -739,7 +742,10 @@ class XMLYCheckIn:
             print(f"网络请求异常: {e}")
             return
         result = response.json()
-        index_award = int(result.get("msg", 0))
+        try:
+            index_award = int(result.get("msg", 0))
+        except Exception as e:
+            index_award = 0
         if "ret" in result and result["ret"] == 0:
             award_receive_id = result["awardReceiveId"]
             headers = {
