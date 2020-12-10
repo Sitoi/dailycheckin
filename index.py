@@ -75,7 +75,7 @@ def main_handler(event, context):
         tg_user_id = os.environ["TG_USER_ID"]
         qmsg_key = os.environ["QMSG_KEY"]
         motto = os.environ["MOTTO"]
-        iqiyi_cookie_list = json.loads(os.environ.get("IQIYI_COOKIE_LIST"))
+        iqiyi_cookie_list = json.loads(os.environ.get("IQIYI_COOKIE_LIST", []))
         baidu_url_submit_list = json.loads(os.environ.get("BAIDU_URL_SUBMIT_LIST", []))
         vqq_cookie_list = json.loads(os.environ.get("VQQ_COOKIE_LIST", []))
         youdao_cookie_list = json.loads(os.environ.get("YOUDAO_COOKIE_LIST", []))
