@@ -20,11 +20,11 @@ jobs:
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt
 
-      - name: 'run 喜马拉雅极速版'
+      - name: '运行【喜马拉雅极速版】'
         run: python3 index.py
         env:
           IS_GITHUB_ACTION: true
-          ONLY_XMLY: xmly
+          ONLY_MESSAGE: xmly
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
           SCKEY: ${{secrets.SCKEY}}
