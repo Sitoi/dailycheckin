@@ -74,7 +74,7 @@
 |CITY_NAME_LIST|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|["上海"]|
 |MOTTO|每日一句|非必须|是否开启默认为 false|true|
 |XMLY_COOKIE_LIST|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|[ { "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|ONEPLUSBBS_COOKIE_LIST|一加手机社区官方论坛|非必须|一加手机社区官方论坛 cookie|[ { "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|ONEPLUSBBS_COOKIE_LIST|一加手机社区官方论坛|非必须|[一加手机社区官方论坛](https://www.oneplusbbs.com/) 账户的 cookie|[ { "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
 
 ## 获取 Cookie 教程（以爱奇艺为例）
 
@@ -187,7 +187,7 @@
 |`weather`|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|
 |`motto`|每日一句|非必须|是否开启默认为 false|
 |xmly.`xmly_cookie`|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|
-|oneplusbbs.`oneplusbbs_cookie`|一加手机社区官方论坛|非必须|一加手机社区官方论坛 cookie|
+|oneplusbbs.`oneplusbbs_cookie`|一加手机社区官方论坛|非必须|[一加手机社区官方论坛](https://www.oneplusbbs.com/) 账户的 cookie|
 
 ## 鸣谢
 
