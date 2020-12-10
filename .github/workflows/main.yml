@@ -39,3 +39,4 @@ jobs:
           KGQQ_COOKIE_LIST: ${{secrets.KGQQ_COOKIE_LIST}}
           MUSIC163_ACCOUNT_LIST: ${{secrets.MUSIC163_ACCOUNT_LIST}}
           CITY_NAME_LIST: ${{secrets.CITY_NAME_LIST}}
+          ONEPLUSBBS_COOKIE_LIST: ${{secrets.ONEPLUSBBS_COOKIE_LIST}}
