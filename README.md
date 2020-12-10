@@ -34,6 +34,8 @@
 8. 每日天气预报: 可以获取指定的多个城市天气信息
 9. 每日一句: 从词霸中获取每日一句，带英文
 10. 一加手机社区官方论坛: 论坛每日签到 + 10 次抽奖
+11. 喜马拉雅极速版: 每日金币获取
+12. QQ 阅读: 每日金币获取
 
 ## 支持的通知列表
 
@@ -91,6 +93,7 @@
 |MOTTO|每日一句|非必须|是否开启默认为 false|true|
 |XMLY_COOKIE_LIST|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|[ { "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
 |ONEPLUSBBS_COOKIE_LIST|一加手机社区官方论坛|非必须|[一加手机社区官方论坛](https://www.oneplusbbs.com/) 账户的 cookie|[ { "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|QQREAD_ACCOUNT_LIST|QQ Read|非必须|QQ Read 账户的 `qqread_bodys`,`qqread_bodys`,`qqread_timeurl` 信息，获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|[ { "qqread_bodys": { "common": { "appid": "xxxxxxxxxx", "areaid": "xxxxxxxxxx", "qq_ver": "xxxxxxxxxx", "os_ver": "xxxxxxxxxx", "mp_ver": "xxxxxxxxxx", "mpos_ver": "xxxxxxxxxx", "brand": "xxxxxxxxxx", "model": "xxxxxxxxxx", "screenWidth": "xxxxxxxxxx", "screenHeight": "xxxxxxxxxx", "windowWidth": "xxxxxxxxxx", "windowHeight": "xxxxxxxxxx", "openid": "xxxxxxxxxx", "guid": "xxxxxxxxxx", "session": "xxxxxxxxxx", "scene": "xxxxxxxxxx", "source": "xxxxxxxxxx", "hasRedDot": "xxxxxxxxxx", "missions": "xxxxxxxxxx", "caseID": "xxxxxxxxxx" }, "dataList": [ { "click1": "xxxxxxxxxx", "click2": "xxxxxxxxxx", "route": "xxxxxxxxxx", "refer": "xxxxxxxxxx", "options": { "bid": "xxxxxxxxxx", "cid": "xxxxxxxxxx" }, "dis": 1607589409986, "ext6": 26, "eventID": "xxxxxxxxxx", "type": "xxxxxxxxxx", "ccid": 1, "bid": "xxxxxxxxxx", "bookStatus": 1, "bookPay": 0, "chapterStatus": 0, "ext1": { "font": 18, "bg": 0, "pageMode": 1 }, "from": "xxxxxxxxxx" } ] }, "qqread_headers": { "Accept": "*/*", "ywsession": "xxxxxxxxxx", "Connection": "keep-alive", "Content-Type": "application/json", "Cookie": "ywguid=xxxxxxxxxx", "Host": "mqqapi.reader.qq.com", "User-Agent": "xxxxxxxxxx", "Referer": "xxxxxxxxxx", "Accept-Language": "zh-cn", "Accept-Encoding": "gzip, deflate, br", "mpversion": "0.32.5" }, "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx" } ]|
 
 ## 获取 Cookie 教程（以爱奇艺为例）
 
@@ -170,6 +173,75 @@
       "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
+  "qqread": [
+    {
+      "qqread_bodys": {
+        "common": {
+          "appid": "xxxxxxxxxx",
+          "areaid": "xxxxxxxxxx",
+          "qq_ver": "xxxxxxxxxx",
+          "os_ver": "xxxxxxxxxx",
+          "mp_ver": "xxxxxxxxxx",
+          "mpos_ver": "xxxxxxxxxx",
+          "brand": "xxxxxxxxxx",
+          "model": "xxxxxxxxxx",
+          "screenWidth": "xxxxxxxxxx",
+          "screenHeight": "xxxxxxxxxx",
+          "windowWidth": "xxxxxxxxxx",
+          "windowHeight": "xxxxxxxxxx",
+          "openid": "xxxxxxxxxx",
+          "guid": "xxxxxxxxxx",
+          "session": "xxxxxxxxxx",
+          "scene": "xxxxxxxxxx",
+          "source": "xxxxxxxxxx",
+          "hasRedDot": "xxxxxxxxxx",
+          "missions": "xxxxxxxxxx",
+          "caseID": "xxxxxxxxxx"
+        },
+        "dataList": [
+          {
+            "click1": "xxxxxxxxxx",
+            "click2": "xxxxxxxxxx",
+            "route": "xxxxxxxxxx",
+            "refer": "xxxxxxxxxx",
+            "options": {
+              "bid": "xxxxxxxxxx",
+              "cid": "xxxxxxxxxx"
+            },
+            "dis": 1607589409986,
+            "ext6": 26,
+            "eventID": "xxxxxxxxxx",
+            "type": "xxxxxxxxxx",
+            "ccid": 1,
+            "bid": "xxxxxxxxxx",
+            "bookStatus": 1,
+            "bookPay": 0,
+            "chapterStatus": 0,
+            "ext1": {
+              "font": 18,
+              "bg": 0,
+              "pageMode": 1
+            },
+            "from": "xxxxxxxxxx"
+          }
+        ]
+      },
+      "qqread_headers": {
+        "Accept": "*/*",
+        "ywsession": "xxxxxxxxxx",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Cookie": "ywguid=xxxxxxxxxx",
+        "Host": "mqqapi.reader.qq.com",
+        "User-Agent": "xxxxxxxxxx",
+        "Referer": "xxxxxxxxxx",
+        "Accept-Language": "zh-cn",
+        "Accept-Encoding": "gzip, deflate, br",
+        "mpversion": "0.32.5"
+      },
+      "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx"
+    }
+  ],
   "baidu_url_submit": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
@@ -204,11 +276,15 @@
 |`motto`|每日一句|非必须|是否开启默认为 false|
 |xmly.`xmly_cookie`|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|
 |oneplusbbs.`oneplusbbs_cookie`|一加手机社区官方论坛|非必须|[一加手机社区官方论坛](https://www.oneplusbbs.com/) 账户的 cookie|
+|qqread.`qqread_bodys`|QQ Read|非必须|QQ Read 的请求体,获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|
+|qqread.`qqread_headers`|QQ Read|非必须|QQ Read 的请求头,获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|
+|qqread.`qqread_timeurl`|QQ Read|非必须|QQ Read 上传阅读时长功能需要的 URL,获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|
 
 ## 新增签到脚本需求
 
 如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/DailyCheckIn/issues) 中提交
 
-## 鸣谢
+## 特别鸣谢（排名不分先后）
 
 [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
+[@Water008](https://github.com/Water008/qqread) - QQRead

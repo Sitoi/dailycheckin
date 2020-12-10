@@ -17,6 +17,7 @@ from motto.motto import Motto
 from music163 import Music163CheckIn
 from oneplusbbs.oneplusbbs import OnePlusBBSCheckIn
 from pojie import PojieCheckIn
+from qqread.qqread import QQReadCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
 from xmly.xmly import XMLYCheckIn
@@ -64,13 +65,10 @@ def message_to_dingtalk(dingtalk_secret, dingtalk_access_token, content):
 
 
 def main_handler(event, context):
-    """
-    判断是否运行自GitHub action,"XMLY_SPEED_COOKIE" 该参数与 repo里的Secrets的名称保持一致
-    """
     start_time = time.time()
     utc_time = datetime.utcnow() + timedelta(hours=8)
     if "IS_GITHUB_ACTION" in os.environ:
-        message = os.environ.get("ONLY_XMLY")
+        message = os.environ.get("ONLY_MESSAGE")
         dingtalk_secret = os.environ.get("DINGTALK_SECRET")
         dingtalk_access_token = os.environ.get("DINGTALK_ACCESS_TOKEN")
         sckey = os.environ.get("SCKEY")
@@ -104,6 +102,9 @@ def main_handler(event, context):
         oneplusbbs_cookie_list = (
             json.loads(os.environ.get("ONEPLUSBBS_COOKIE_LIST", [])) if os.environ.get("ONEPLUSBBS_COOKIE_LIST") else []
         )
+        qqread_account_list = (
+            json.loads(os.environ.get("QQREAD_ACCOUNT_LIST", [])) if os.environ.get("QQREAD_ACCOUNT_LIST") else []
+        )
 
     else:
         if isinstance(event, dict):
@@ -127,11 +128,20 @@ def main_handler(event, context):
         music163_account_list = data.get("music163", [])
         city_name_list = data.get("weather", [])
         motto = data.get("motto")
-        xmly_cookie_list = data.get("xmly")
-        oneplusbbs_cookie_list = data.get("oneplusbbs")
+        xmly_cookie_list = data.get("xmly", [])
+        oneplusbbs_cookie_list = data.get("oneplusbbs", [])
+        qqread_account_list = data.get("qqread", [])
 
     content_list = [f"当前时间: {utc_time}"]
-    if message != "xmly":
+    if message == "xmly":
+        if xmly_cookie_list:
+            msg_list = XMLYCheckIn(xmly_cookie_list=xmly_cookie_list).main()
+            content_list += msg_list
+    elif message == "qqread":
+        if qqread_account_list:
+            msg_list = QQReadCheckIn(qqread_account_list=qqread_account_list).main()
+            content_list += msg_list
+    else:
         if iqiyi_cookie_list:
             msg_list = IQIYICheckIn(iqiyi_cookie_list=iqiyi_cookie_list).main()
             content_list += msg_list
@@ -171,15 +181,16 @@ def main_handler(event, context):
         if motto:
             msg_list = Motto().main()
             content_list += msg_list
-    else:
-        if xmly_cookie_list:
-            msg_list = XMLYCheckIn(xmly_cookie_list=xmly_cookie_list).main()
-            content_list += msg_list
     use_time_info = f"本次任务使用时间: {time.time() - start_time} 秒"
     content_list.append(use_time_info)
     content = "\n-----------------------------\n\n".join(content_list)
     print(content)
     if message == "xmly":
+        if utc_time.hour in [9, 18] and utc_time.minute == 0:
+            flag = True
+        else:
+            flag = False
+    elif message == "qqread":
         if utc_time.hour in [9, 18] and utc_time.minute == 0:
             flag = True
         else:

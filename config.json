@@ -58,6 +58,75 @@
       "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
+  "qqread": [
+    {
+      "qqread_bodys": {
+        "common": {
+          "appid": "xxxxxxxxxx",
+          "areaid": "xxxxxxxxxx",
+          "qq_ver": "xxxxxxxxxx",
+          "os_ver": "xxxxxxxxxx",
+          "mp_ver": "xxxxxxxxxx",
+          "mpos_ver": "xxxxxxxxxx",
+          "brand": "xxxxxxxxxx",
+          "model": "xxxxxxxxxx",
+          "screenWidth": "xxxxxxxxxx",
+          "screenHeight": "xxxxxxxxxx",
+          "windowWidth": "xxxxxxxxxx",
+          "windowHeight": "xxxxxxxxxx",
+          "openid": "xxxxxxxxxx",
+          "guid": "xxxxxxxxxx",
+          "session": "xxxxxxxxxx",
+          "scene": "xxxxxxxxxx",
+          "source": "xxxxxxxxxx",
+          "hasRedDot": "xxxxxxxxxx",
+          "missions": "xxxxxxxxxx",
+          "caseID": "xxxxxxxxxx"
+        },
+        "dataList": [
+          {
+            "click1": "xxxxxxxxxx",
+            "click2": "xxxxxxxxxx",
+            "route": "xxxxxxxxxx",
+            "refer": "xxxxxxxxxx",
+            "options": {
+              "bid": "xxxxxxxxxx",
+              "cid": "xxxxxxxxxx"
+            },
+            "dis": 1607589409986,
+            "ext6": 26,
+            "eventID": "xxxxxxxxxx",
+            "type": "xxxxxxxxxx",
+            "ccid": 1,
+            "bid": "xxxxxxxxxx",
+            "bookStatus": 1,
+            "bookPay": 0,
+            "chapterStatus": 0,
+            "ext1": {
+              "font": 18,
+              "bg": 0,
+              "pageMode": 1
+            },
+            "from": "xxxxxxxxxx"
+          }
+        ]
+      },
+      "qqread_headers": {
+        "Accept": "*/*",
+        "ywsession": "xxxxxxxxxx",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Cookie": "ywguid=xxxxxxxxxx",
+        "Host": "mqqapi.reader.qq.com",
+        "User-Agent": "xxxxxxxxxx",
+        "Referer": "xxxxxxxxxx",
+        "Accept-Language": "zh-cn",
+        "Accept-Encoding": "gzip, deflate, br",
+        "mpversion": "0.32.5"
+      },
+      "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx"
+    }
+  ],
   "baidu_url_submit": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
