@@ -69,23 +69,37 @@ def main_handler(event, context):
     start_time = time.time()
     utc_time = datetime.utcnow() + timedelta(hours=8)
     if "IS_GITHUB_ACTION" in os.environ:
-        message = os.environ["ONLY_XMLY"]
-        dingtalk_secret = os.environ["DINGTALK_SECRET"]
-        dingtalk_access_token = os.environ["DINGTALK_ACCESS_TOKEN"]
-        sckey = os.environ["SCKEY"]
-        tg_bot_token = os.environ["TG_BOT_TOKEN"]
-        tg_user_id = os.environ["TG_USER_ID"]
-        qmsg_key = os.environ["QMSG_KEY"]
-        motto = os.environ["MOTTO"]
-        iqiyi_cookie_list = json.loads(os.environ.get("IQIYI_COOKIE_LIST", [])) if os.environ.get("IQIYI_COOKIE_LIST") else []
-        baidu_url_submit_list = json.loads(os.environ.get("BAIDU_URL_SUBMIT_LIST", [])) if os.environ.get("BAIDU_URL_SUBMIT_LIST") else []
+        message = os.environ.get("ONLY_XMLY")
+        dingtalk_secret = os.environ.get("DINGTALK_SECRET")
+        dingtalk_access_token = os.environ.get("DINGTALK_ACCESS_TOKEN")
+        sckey = os.environ.get("SCKEY")
+        tg_bot_token = os.environ.get("TG_BOT_TOKEN")
+        tg_user_id = os.environ.get("TG_USER_ID")
+        qmsg_key = os.environ.get("QMSG_KEY")
+        motto = os.environ.get("MOTTO")
+        iqiyi_cookie_list = (
+            json.loads(os.environ.get("IQIYI_COOKIE_LIST", [])) if os.environ.get("IQIYI_COOKIE_LIST") else []
+        )
+        baidu_url_submit_list = (
+            json.loads(os.environ.get("BAIDU_URL_SUBMIT_LIST", [])) if os.environ.get("BAIDU_URL_SUBMIT_LIST") else []
+        )
         vqq_cookie_list = json.loads(os.environ.get("VQQ_COOKIE_LIST", [])) if os.environ.get("VQQ_COOKIE_LIST") else []
-        youdao_cookie_list = json.loads(os.environ.get("YOUDAO_COOKIE_LIST", [])) if os.environ.get("YOUDAO_COOKIE_LIST") else []
-        pojie_cookie_list = json.loads(os.environ.get("POJIE_COOKIE_LIST", [])) if os.environ.get("POJIE_COOKIE_LIST") else []
-        kgqq_cookie_list = json.loads(os.environ.get("KGQQ_COOKIE_LIST", [])) if os.environ.get("KGQQ_COOKIE_LIST") else []
-        music163_account_list = json.loads(os.environ.get("MUSIC163_ACCOUNT_LIST", [])) if os.environ.get("MUSIC163_ACCOUNT_LIST") else []
+        youdao_cookie_list = (
+            json.loads(os.environ.get("YOUDAO_COOKIE_LIST", [])) if os.environ.get("YOUDAO_COOKIE_LIST") else []
+        )
+        pojie_cookie_list = (
+            json.loads(os.environ.get("POJIE_COOKIE_LIST", [])) if os.environ.get("POJIE_COOKIE_LIST") else []
+        )
+        kgqq_cookie_list = (
+            json.loads(os.environ.get("KGQQ_COOKIE_LIST", [])) if os.environ.get("KGQQ_COOKIE_LIST") else []
+        )
+        music163_account_list = (
+            json.loads(os.environ.get("MUSIC163_ACCOUNT_LIST", [])) if os.environ.get("MUSIC163_ACCOUNT_LIST") else []
+        )
         city_name_list = json.loads(os.environ.get("CITY_NAME_LIST", [])) if os.environ.get("CITY_NAME_LIST") else []
-        xmly_cookie_list = json.loads(os.environ.get("XMLY_COOKIE_LIST", [])) if os.environ.get("XMLY_COOKIE_LIST") else []
+        xmly_cookie_list = (
+            json.loads(os.environ.get("XMLY_COOKIE_LIST", [])) if os.environ.get("XMLY_COOKIE_LIST") else []
+        )
     else:
         if isinstance(event, dict):
             message = event.get("Message")
@@ -110,7 +124,7 @@ def main_handler(event, context):
         motto = data.get("motto")
         xmly_cookie_list = data.get("xmly")
 
-    content_list = [f'当前时间: {utc_time}']
+    content_list = [f"当前时间: {utc_time}"]
     if message != "xmly":
         if iqiyi_cookie_list:
             msg_list = IQIYICheckIn(iqiyi_cookie_list=iqiyi_cookie_list).main()
