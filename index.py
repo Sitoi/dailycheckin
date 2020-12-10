@@ -75,15 +75,15 @@ def main_handler(event, context):
         tg_user_id = os.environ["TG_USER_ID"]
         qmsg_key = os.environ["QMSG_KEY"]
         motto = os.environ["MOTTO"]
-        iqiyi_cookie_list = json.loads(os.environ.get("IQIYI_COOKIE_LIST", []))
-        baidu_url_submit_list = json.loads(os.environ.get("BAIDU_URL_SUBMIT_LIST", []))
-        vqq_cookie_list = json.loads(os.environ.get("VQQ_COOKIE_LIST", []))
-        youdao_cookie_list = json.loads(os.environ.get("YOUDAO_COOKIE_LIST", []))
-        pojie_cookie_list = json.loads(os.environ.get("POJIE_COOKIE_LIST", []))
-        kgqq_cookie_list = json.loads(os.environ.get("KGQQ_COOKIE_LIST", []))
-        music163_account_list = json.loads(os.environ.get("MUSIC163_ACCOUNT_LIST", []))
-        city_name_list = json.loads(os.environ.get("CITY_NAME_LIST", []))
-        xmly_cookie_list = json.loads(os.environ.get("XMLY_COOKIE_LIST", []))
+        iqiyi_cookie_list = json.loads(os.environ.get("IQIYI_COOKIE_LIST", [])) if os.environ.get("IQIYI_COOKIE_LIST") else []
+        baidu_url_submit_list = json.loads(os.environ.get("BAIDU_URL_SUBMIT_LIST", [])) if os.environ.get("BAIDU_URL_SUBMIT_LIST") else []
+        vqq_cookie_list = json.loads(os.environ.get("VQQ_COOKIE_LIST", [])) if os.environ.get("VQQ_COOKIE_LIST") else []
+        youdao_cookie_list = json.loads(os.environ.get("YOUDAO_COOKIE_LIST", [])) if os.environ.get("YOUDAO_COOKIE_LIST") else []
+        pojie_cookie_list = json.loads(os.environ.get("POJIE_COOKIE_LIST", [])) if os.environ.get("POJIE_COOKIE_LIST") else []
+        kgqq_cookie_list = json.loads(os.environ.get("KGQQ_COOKIE_LIST", [])) if os.environ.get("KGQQ_COOKIE_LIST") else []
+        music163_account_list = json.loads(os.environ.get("MUSIC163_ACCOUNT_LIST", [])) if os.environ.get("MUSIC163_ACCOUNT_LIST") else []
+        city_name_list = json.loads(os.environ.get("CITY_NAME_LIST", [])) if os.environ.get("CITY_NAME_LIST") else []
+        xmly_cookie_list = json.loads(os.environ.get("XMLY_COOKIE_LIST", [])) if os.environ.get("XMLY_COOKIE_LIST") else []
     else:
         if isinstance(event, dict):
             message = event.get("Message")
