@@ -53,6 +53,11 @@
       "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
+  "oneplusbbs": [
+    {
+      "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
   "baidu_url_submit": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",

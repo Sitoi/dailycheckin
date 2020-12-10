@@ -13,6 +13,7 @@
 - [x] 网易云音乐每日签到升级: 每日自动登录签到 + 刷歌 310 首
 - [x] 每日天气预报: 可以获取指定的多个城市天气信息
 - [x] 每日一句: 从词霸中获取每日一句，带英文
+- [x] 一加手机社区官方论坛: 论坛每日签到 + 10 次抽奖
 
 ## 支持的通知列表
 
@@ -32,6 +33,8 @@
 1. 根据各个使用文档获取对应的参数，并修改 `config.json`
 2. 安装 Pypi 依赖包
 3. 运行 `index.py` 即可
+
+> 对单个签到进行测试，配置好 `config.json` 进入对应的签到脚本目录运行即可
 
 ### 方法二: 腾讯云函数使用
 
@@ -66,11 +69,12 @@
 |POJIE_COOKIE_LIST|吾爱破解|非必须|[吾爱破解](https://www.52pojie.cn/index.php) 帐号的 cookie 信息|[ { "pojie_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
 |YOUDAO_COOKIE_LIST|有道云笔记|非必须|[有道云笔记](https://note.youdao.com/web/) 帐号的 cookie 信息|[ { "youdao_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
 |KGQQ_COOKIE_LIST|全民K歌|非必须|[全民K歌](https://kg.qq.com/index-pc.html) 帐号的 cookie 信息|[ { "kgqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|MUSIC163_ACCOUNT_LIST|网易云音乐|非必须|[网易云音乐](https://music.163.com/) 帐号的手机号|[ { "music163_phone": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|BAIDU_URL_SUBMIT_LIST|百度搜索资源平台|非必须|提交网站的 URL 链接，参考：[baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)|[ { "iqiyi_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|CITY_NAME_LIST|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|[ { "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt", "submit_url": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "times": 10 } ]|
+|MUSIC163_ACCOUNT_LIST|网易云音乐|非必须|[网易云音乐](https://music.163.com/) 帐号的手机号,密码|[ { "music163_phone": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|BAIDU_URL_SUBMIT_LIST|百度搜索资源平台|非必须|百度链接提交的相关参数|[ { "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt", "submit_url": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "times": 10 } ]|
+|CITY_NAME_LIST|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|["上海"]|
 |MOTTO|每日一句|非必须|是否开启默认为 false|true|
 |XMLY_COOKIE_LIST|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|[ { "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
+|ONEPLUSBBS_COOKIE_LIST|一加手机社区官方论坛|非必须|一加手机社区官方论坛 cookie|[ { "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
 
 ## 获取 Cookie 教程（以爱奇艺为例）
 
@@ -145,6 +149,11 @@
       "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   ],
+  "oneplusbbs": [
+    {
+      "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
   "baidu_url_submit": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
@@ -178,6 +187,7 @@
 |`weather`|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|
 |`motto`|每日一句|非必须|是否开启默认为 false|
 |xmly.`xmly_cookie`|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|
+|oneplusbbs.`oneplusbbs_cookie`|一加手机社区官方论坛|非必须|一加手机社区官方论坛 cookie|
 
 ## 鸣谢
 

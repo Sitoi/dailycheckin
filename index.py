@@ -15,6 +15,7 @@ from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
 from motto.motto import Motto
 from music163 import Music163CheckIn
+from oneplusbbs.oneplusbbs import OnePlusBBSCheckIn
 from pojie import PojieCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
@@ -100,6 +101,10 @@ def main_handler(event, context):
         xmly_cookie_list = (
             json.loads(os.environ.get("XMLY_COOKIE_LIST", [])) if os.environ.get("XMLY_COOKIE_LIST") else []
         )
+        oneplusbbs_cookie_list = (
+            json.loads(os.environ.get("ONEPLUSBBS_COOKIE_LIST", [])) if os.environ.get("ONEPLUSBBS_COOKIE_LIST") else []
+        )
+
     else:
         if isinstance(event, dict):
             message = event.get("Message")
@@ -123,6 +128,7 @@ def main_handler(event, context):
         city_name_list = data.get("weather", [])
         motto = data.get("motto")
         xmly_cookie_list = data.get("xmly")
+        oneplusbbs_cookie_list = data.get("oneplusbbs")
 
     content_list = [f"当前时间: {utc_time}"]
     if message != "xmly":
@@ -152,6 +158,10 @@ def main_handler(event, context):
 
         if music163_account_list:
             msg_list = Music163CheckIn(music163_account_list=music163_account_list).main()
+            content_list += msg_list
+
+        if oneplusbbs_cookie_list:
+            msg_list = OnePlusBBSCheckIn(oneplusbbs_cookie_list=oneplusbbs_cookie_list).main()
             content_list += msg_list
 
         if city_name_list:
