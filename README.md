@@ -54,7 +54,11 @@
 
 > 对单个签到进行测试，配置好 `config.json` 进入对应的签到脚本目录运行即可
 
-### 方法二: 腾讯云函数使用
+### 方法二: Docker 使用
+
+文档待完成
+
+### 方法三: 腾讯云函数使用
 
 > （腾讯云函数相关教程请自行百度）
 
@@ -64,11 +68,7 @@
 4. 上传至【腾讯云函数】
 5. 配置定时触发器
 
-#### TODO
-
-喜马拉雅极速版脚本运行方式
-
-### 方法三: GitHub Action 使用
+### 方法四: GitHub Action 使用
 
 #### 环境变量说明
 
@@ -93,7 +93,8 @@
 |MOTTO|每日一句|非必须|是否开启默认为 false|true|
 |XMLY_COOKIE_LIST|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|[ { "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
 |ONEPLUSBBS_COOKIE_LIST|一加手机社区官方论坛|非必须|[一加手机社区官方论坛](https://www.oneplusbbs.com/) 账户的 cookie|[ { "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|QQREAD_ACCOUNT_LIST|QQ Read|非必须|QQ Read 账户的 `qqread_bodys`,`qqread_bodys`,`qqread_timeurl` 信息，获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|[ { "qqread_bodys": { "common": { "appid": "xxxxxxxxxx", "areaid": "xxxxxxxxxx", "qq_ver": "xxxxxxxxxx", "os_ver": "xxxxxxxxxx", "mp_ver": "xxxxxxxxxx", "mpos_ver": "xxxxxxxxxx", "brand": "xxxxxxxxxx", "model": "xxxxxxxxxx", "screenWidth": "xxxxxxxxxx", "screenHeight": "xxxxxxxxxx", "windowWidth": "xxxxxxxxxx", "windowHeight": "xxxxxxxxxx", "openid": "xxxxxxxxxx", "guid": "xxxxxxxxxx", "session": "xxxxxxxxxx", "scene": "xxxxxxxxxx", "source": "xxxxxxxxxx", "hasRedDot": "xxxxxxxxxx", "missions": "xxxxxxxxxx", "caseID": "xxxxxxxxxx" }, "dataList": [ { "click1": "xxxxxxxxxx", "click2": "xxxxxxxxxx", "route": "xxxxxxxxxx", "refer": "xxxxxxxxxx", "options": { "bid": "xxxxxxxxxx", "cid": "xxxxxxxxxx" }, "dis": 1607589409986, "ext6": 26, "eventID": "xxxxxxxxxx", "type": "xxxxxxxxxx", "ccid": 1, "bid": "xxxxxxxxxx", "bookStatus": 1, "bookPay": 0, "chapterStatus": 0, "ext1": { "font": 18, "bg": 0, "pageMode": 1 }, "from": "xxxxxxxxxx" } ] }, "qqread_headers": { "Accept": "*/*", "ywsession": "xxxxxxxxxx", "Connection": "keep-alive", "Content-Type": "application/json", "Cookie": "ywguid=xxxxxxxxxx", "Host": "mqqapi.reader.qq.com", "User-Agent": "xxxxxxxxxx", "Referer": "xxxxxxxxxx", "Accept-Language": "zh-cn", "Accept-Encoding": "gzip, deflate, br", "mpversion": "0.32.5" }, "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx" } ]|
+|QQREAD_ACCOUNT_LIST|QQ Read|非必须|QQ Read 账户的 `qqread_bodys`,`qqread_bodys`,`qqread_timeurl` 信息，获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|[ { "qqread_bodys": { "common": { "appid": "xxxxxxxxxx", "areaid": "xxxxxxxxxx", "qq_ver": "xxxxxxxxxx", "os_ver": "xxxxxxxxxx", "mp_ver": "xxxxxxxxxx", "mpos_ver": "xxxxxxxxxx", "brand": "xxxxxxxxxx", "model": "xxxxxxxxxx", "screenWidth": "xxxxxxxxxx", "screenHeight": "xxxxxxxxxx", "windowWidth": "xxxxxxxxxx", "windowHeight": "xxxxxxxxxx", "openid": "xxxxxxxxxx", "guid": "xxxxxxxxxx", "session": "xxxxxxxxxx", "scene": "xxxxxxxxxx", "source": "xxxxxxxxxx", "hasRedDot": "xxxxxxxxxx", "missions": "xxxxxxxxxx", "caseID": "xxxxxxxxxx" }, "dataList": [ { "click1": "xxxxxxxxxx", "click2": "xxxxxxxxxx", "route": "xxxxxxxxxx", "refer": "xxxxxxxxxx", "options": { "bid": "xxxxxxxxxx", "cid": "xxxxxxxxxx" }, "dis": 1607589409986, "ext6": 26, "eventID": "xxxxxxxxxx", "type": "xxxxxxxxxx", "ccid": 1, "bid": "xxxxxxxxxx", "bookStatus": 1, "bookPay": 0, "chapterStatus": 0, "ext1": { "font": 18, "bg": 0, "pageMode": 1 }, "from": "xxxxxxxxxx" } ] }, "qqread_headers": { "Accept": "*
+/*", "ywsession": "xxxxxxxxxx", "Connection": "keep-alive", "Content-Type": "application/json", "Cookie": "ywguid=xxxxxxxxxx", "Host": "mqqapi.reader.qq.com", "User-Agent": "xxxxxxxxxx", "Referer": "xxxxxxxxxx", "Accept-Language": "zh-cn", "Accept-Encoding": "gzip, deflate, br", "mpversion": "0.32.5" }, "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx" } ]|
 
 ## 获取 Cookie 教程（以爱奇艺为例）
 
