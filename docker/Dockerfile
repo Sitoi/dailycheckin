@@ -15,11 +15,13 @@ RUN git clone https://github.com/Sitoi/DailyCheckIn.git /dailycheckin \
         && mkdir logs \
         && pip install -r requirements.txt
 
-COPY . /dailycheckin
 
 # GitHub Actions 构建
+COPY ./docker /dailycheckin
 COPY ./docker/start.sh /usr/local/bin
+
 # 本地构建
+# COPY . /dailycheckin
 # COPY ./start.sh /usr/local/bin
 
 RUN chmod +x /usr/local/bin/start.sh
