@@ -122,11 +122,13 @@ class QQReadCheckIn:
         wkpick_data = self.get_template(headers=headers, function_id=f"pickPackage?readTime={num}")
         return wkpick_data
 
-    def qqreadtodaytime(self, headers):
+    def qqreadtodaytime(self, headers, bidnum):
         """获取本日阅读时长"""
+        bid = re.findall(r'bid=(\d+)&', bidnum)[0]
         todaytime_data = self.get_template(
-            headers=headers, function_id="page/config?router=/pages/book-read/index&options="
-        )["data"]["pageParams"]["todayReadSeconds"]
+            headers=headers,
+            function_id=f"page/config?router=%2Fpages%2Fbook-read%2Findex&options=%7B%22bid%22%3A%22{bid}%22%7D")[
+            'data']['pageParams']['todayReadSeconds']
         return todaytime_data // 60
 
     def qqreadtodaygift(self, headers, sec):
@@ -139,7 +141,7 @@ class QQReadCheckIn:
         sectime = random.randint(self.once_time * 60 * 1000, (self.once_time + 1) * 60 * 1000)
         # findtime = re.compile(r"readTime=(.*?)&read_")
         # url = re.sub(findtime.findall(addtimeurl)[0], str(sectime), str(addtimeurl))
-        findtime1 = re.compile(r"readTime%22%3A(.*?)%2C")
+        findtime1 = re.compile(r'readTime%22%3A(\d+)%2C')
         url = re.sub(findtime1.findall(addtimeurl)[0], str(sectime), str(addtimeurl))
         self.delay()
         addtime_data = requests.get(url=url, headers=headers).json()
@@ -200,7 +202,7 @@ class QQReadCheckIn:
             valid_flag, valid_msg = self.valid(headers=qqread_headers)
             if valid_flag:
                 info_data = self.qqreadinfo(qqread_headers)
-                todaytime_data = self.qqreadtodaytime(qqread_headers)
+                todaytime_data = self.qqreadtodaytime(qqread_headers, qqread_timeurl)
                 wktime_data = self.qqreadwktime(qqread_headers)
                 print(f"Track update {self.qqreadtrack(qqread_headers, qqread_bodys)['msg']}")
                 task_data = self.qqreadtask(qqread_headers)
@@ -295,9 +297,9 @@ class QQReadCheckIn:
                         msg_list.append(f"【阅读时长】: 成功上传{self.once_time}分钟")
 
                 if (
-                    self.drawamount != 0
-                    and task_data["user"]["amount"] >= self.drawamount * 10000
-                    and self.gettime().hour == 21
+                        self.drawamount != 0
+                        and task_data["user"]["amount"] >= self.drawamount * 10000
+                        and self.gettime().hour == 21
                 ):
                     withdrawinfo_data = self.qqreadwithdrawinfo(qqread_headers)["createTime"]
                     if withdrawinfo_data < self.get_timestamp():
