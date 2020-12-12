@@ -6,7 +6,7 @@
 
 ##############每日签到一次任务##############
 # 每日签到(8：45 执行一次)
-45 9 * * * python /dailycheckin/index.py >> /dailycheckin/logs/dailycheckin.log 2>&1
+45 8 * * * python /dailycheckin/index.py >> /dailycheckin/logs/dailycheckin.log 2>&1
 
 ##############每日签到定时任务##############
 # 企鹅读书
