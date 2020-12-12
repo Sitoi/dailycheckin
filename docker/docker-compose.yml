@@ -3,17 +3,10 @@ services:
   dailycheckin:
     build:
       context: .
-    image: sitoi/dailycheckin:latest
+    image: docker.pkg.github.com/sitoi/dailycheckin/dailycheckin:latest
     container_name: dailycheckin
     restart: always
     tty: true
     volumes:
       - ./config.json:/dailycheckin/config.json
       - ./logs:/dailycheckin/logs
-#    environment:
-#      - IS_GITHUB_ACTION=true
-#      - ONLY_MESSAGE=xmly
-#      - DINGTALK_SECRET=SECb7ee6efb290d5497fe1cf4c023a4c2c15b11e69e7e449b4dc38fd0aa1d18ae47
-#      - DINGTALK_ACCESS_TOKEN=c4eb939ba9e3a802abb152e32aeab8cce2b2453cb89105448661ffb78eb8155e
-#      - SCKEY=SCU95609Tf17dfd3ca51ec0afddd831889067168f5ea58ce80ded2
-#      - XMLY_COOKIE_LIST=[{"xmly_cookie":"1&_device=iPhone&7776C49C-5461-4DCB-A826-E9A03CA1C42E&1.1.12; 1&_token=250646404&DB430390140NDACAA6CCAE7A22D60D1CDB29E34C0571ED9ACB921227BA3264F5781424808B3613M36522277A472443_; NSUP=; XUM=7776C49C-5461-4DCB-A826-E9A03CA1C42E; ainr=0; c-oper=%E6%9C%AA%E7%9F%A5; channel=ios-b1; device_model=iPhone 11; idfa=00000000-0000-0000-0000-000000000000; impl=com.ximalaya.tingLite; ip=2409:8804:883a:954c:42:908:100:0; net-mode=WIFI; res=828%2C1792; _xmLog=xm_khcrooun81cmpf"}]
