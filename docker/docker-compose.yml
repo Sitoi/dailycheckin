@@ -1,9 +1,7 @@
 version: '3'
 services:
   dailycheckin:
-    build:
-      context: .
-    image: docker.pkg.github.com/sitoi/dailycheckin/dailycheckin:latest
+    image: sitoi/dailycheckin:latest
     container_name: dailycheckin
     restart: always
     tty: true
