@@ -4,6 +4,7 @@ import hashlib
 import hmac
 import json
 import os
+import sys
 import time
 import urllib.parse
 from datetime import datetime, timedelta
@@ -111,7 +112,7 @@ def main_handler(event, context):
             message = event.get("Message")
         else:
             message = None
-        with open("config.json", "r", encoding="utf-8") as f:
+        with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
             data = json.loads(f.read())
         dingtalk_secret = data.get("dingtalk", {}).get("dingtalk_secret")
         dingtalk_access_token = data.get("dingtalk", {}).get("dingtalk_access_token")
@@ -213,4 +214,11 @@ def main_handler(event, context):
 
 
 if __name__ == "__main__":
-    main_handler(event=None, context=None)
+    args = sys.argv
+    if len(args) > 1:
+        event = {
+            "Message": args[1]
+        }
+    else:
+        event = None
+    main_handler(event=event, context=None)
