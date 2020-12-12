@@ -5,7 +5,7 @@ export LANG="zh_CN.UTF-8"
 
 echo "定时任务更新代码，git 拉取最新代码，并安装更新依赖..."
 git -C /dailycheckin pull
-pip install -r requirements.txt
+pip install -r /dailycheckin/requirements.txt
 
 sed -i 's/>>/|ts >>/g' $CRONTAB_LIST_FILE
 crontab $CRONTAB_LIST_FILE
