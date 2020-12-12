@@ -83,18 +83,18 @@
 |QMSG_KEY|qmsg 酱推送|非必须|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |TG_BOT_TOKEN|telegram 推送|非必须|telegram 推送 `tg_bot_token`|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |TG_USER_ID|telegram 推送|非必须|telegram 推送 `tg_user_id`|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|IQIYI_COOKIE_LIST|爱奇艺|非必须|[爱奇艺](https://www.iqiyi.com/) 帐号的 cookie 信息列表 参考 `config.json`|[ { "iqiyi_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|VQQ_COOKIE_LIST|腾讯视频|非必须|[腾讯视频](https://v.qq.com/) 帐号的 cookie 信息|[ { "vqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|POJIE_COOKIE_LIST|吾爱破解|非必须|[吾爱破解](https://www.52pojie.cn/index.php) 帐号的 cookie 信息|[ { "pojie_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|YOUDAO_COOKIE_LIST|有道云笔记|非必须|[有道云笔记](https://note.youdao.com/web/) 帐号的 cookie 信息|[ { "youdao_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|KGQQ_COOKIE_LIST|全民K歌|非必须|[全民K歌](https://kg.qq.com/index-pc.html) 帐号的 cookie 信息|[ { "kgqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|MUSIC163_ACCOUNT_LIST|网易云音乐|非必须|[网易云音乐](https://music.163.com/) 帐号的手机号,密码|[ { "music163_phone": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|BAIDU_URL_SUBMIT_LIST|百度搜索资源平台|非必须|百度链接提交的相关参数|[ { "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt", "submit_url": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "times": 10 } ]|
+|IQIYI_COOKIE_LIST|爱奇艺|非必须|[爱奇艺](https://www.iqiyi.com/) 帐号的 cookie 信息列表 参考 `config.json`|[{"iqiyi_cookie":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|VQQ_COOKIE_LIST|腾讯视频|非必须|[腾讯视频](https://v.qq.com/) 帐号的 cookie 信息|[{"vqq_cookie":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|POJIE_COOKIE_LIST|吾爱破解|非必须|[吾爱破解](https://www.52pojie.cn/index.php) 帐号的 cookie 信息|[{"pojie_cookie":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|YOUDAO_COOKIE_LIST|有道云笔记|非必须|[有道云笔记](https://note.youdao.com/web/) 帐号的 cookie 信息|[{"youdao_cookie":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|KGQQ_COOKIE_LIST|全民K歌|非必须|[全民K歌](https://kg.qq.com/index-pc.html) 帐号的 cookie 信息|[{"kgqq_cookie":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|MUSIC163_ACCOUNT_LIST|网易云音乐|非必须|[网易云音乐](https://music.163.com/) 帐号的手机号,密码|[{"music163_phone":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","music163_password":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|BAIDU_URL_SUBMIT_LIST|百度搜索资源平台|非必须|百度链接提交的相关参数|[{"data_url":"https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt","submit_url":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","times":10}]|
 |CITY_NAME_LIST|每日天气|非必须|填写城市名称，点击查看[城市名称列表](./weather/city.json)|["上海"]|
 |MOTTO|每日一句|非必须|是否开启默认为 false|true|
-|XMLY_COOKIE_LIST|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|[ { "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|ONEPLUSBBS_COOKIE_LIST|一加手机社区官方论坛|非必须|[一加手机社区官方论坛](https://www.oneplusbbs.com/) 账户的 cookie|[ { "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" } ]|
-|QQREAD_ACCOUNT_LIST|企鹅读书|非必须|企鹅读书 账户的 `qqread_bodys`,`qqread_bodys`,`qqread_timeurl` 信息，获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|[ { "qqread_bodys": { "common": { "appid": "xxxxxxxxxx", "areaid": "xxxxxxxxxx", "qq_ver": "xxxxxxxxxx", "os_ver": "xxxxxxxxxx", "mp_ver": "xxxxxxxxxx", "mpos_ver": "xxxxxxxxxx", "brand": "xxxxxxxxxx", "model": "xxxxxxxxxx", "screenWidth": "xxxxxxxxxx", "screenHeight": "xxxxxxxxxx", "windowWidth": "xxxxxxxxxx", "windowHeight": "xxxxxxxxxx", "openid": "xxxxxxxxxx", "guid": "xxxxxxxxxx", "session": "xxxxxxxxxx", "scene": "xxxxxxxxxx", "source": "xxxxxxxxxx", "hasRedDot": "xxxxxxxxxx", "missions": "xxxxxxxxxx", "caseID": "xxxxxxxxxx" }, "dataList": [ { "click1": "xxxxxxxxxx", "click2": "xxxxxxxxxx", "route": "xxxxxxxxxx", "refer": "xxxxxxxxxx", "options": { "bid": "xxxxxxxxxx", "cid": "xxxxxxxxxx" }, "dis": 1607589409986, "ext6": 26, "eventID": "xxxxxxxxxx", "type": "xxxxxxxxxx", "ccid": 1, "bid": "xxxxxxxxxx", "bookStatus": 1, "bookPay": 0, "chapterStatus": 0, "ext1": { "font": 18, "bg": 0, "pageMode": 1 }, "from": "xxxxxxxxxx" } ] }, "qqread_headers": { "Accept": "*/*", "ywsession": "xxxxxxxxxx", "Connection": "keep-alive", "Content-Type": "application/json", "Cookie": "ywguid=xxxxxxxxxx", "Host": "mqqapi.reader.qq.com", "User-Agent": "xxxxxxxxxx", "Referer": "xxxxxxxxxx", "Accept-Language": "zh-cn", "Accept-Encoding": "gzip, deflate, br", "mpversion": "0.32.5" }, "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx" } ]|
+|XMLY_COOKIE_LIST|喜马拉雅极速版|非必须|喜马拉雅极速版 cookie|[{"xmly_cookie":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|ONEPLUSBBS_COOKIE_LIST|一加手机社区官方论坛|非必须|[一加手机社区官方论坛](https://www.oneplusbbs.com/) 账户的 cookie|[{"oneplusbbs_cookie":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}]|
+|QQREAD_ACCOUNT_LIST|企鹅读书|非必须|企鹅读书 账户的 `qqread_bodys`,`qqread_bodys`,`qqread_timeurl` 信息，获取方法参考：[README.md](https://github.com/Water008/qqread/blob/main/README.md#%E4%B8%BB%E8%A6%81%E5%8F%82%E6%95%B0)|[{"qqread_bodys":{"common":{"appid":"xxxxxxxxxx","areaid":"xxxxxxxxxx","qq_ver":"xxxxxxxxxx","os_ver":"xxxxxxxxxx","mp_ver":"xxxxxxxxxx","mpos_ver":"xxxxxxxxxx","brand":"xxxxxxxxxx","model":"xxxxxxxxxx","screenWidth":"xxxxxxxxxx","screenHeight":"xxxxxxxxxx","windowWidth":"xxxxxxxxxx","windowHeight":"xxxxxxxxxx","openid":"xxxxxxxxxx","guid":"xxxxxxxxxx","session":"xxxxxxxxxx","scene":"xxxxxxxxxx","source":"xxxxxxxxxx","hasRedDot":"xxxxxxxxxx","missions":"xxxxxxxxxx","caseID":"xxxxxxxxxx"},"dataList":[{"click1":"xxxxxxxxxx","click2":"xxxxxxxxxx","route":"xxxxxxxxxx","refer":"xxxxxxxxxx","options":{"bid":"xxxxxxxxxx","cid":"xxxxxxxxxx"},"dis":1607589409986,"ext6":26,"eventID":"xxxxxxxxxx","type":"xxxxxxxxxx","ccid":1,"bid":"xxxxxxxxxx","bookStatus":1,"bookPay":0,"chapterStatus":0,"ext1":{"font":18,"bg":0,"pageMode":1},"from":"xxxxxxxxxx"}]},"qqread_headers":{"Accept":"*/*","ywsession":"xxxxxxxxxx","Connection":"keep-alive","Content-Type":"application/json","Cookie":"ywguid=xxxxxxxxxx","Host":"mqqapi.reader.qq.com","User-Agent":"xxxxxxxxxx","Referer":"xxxxxxxxxx","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br","mpversion":"0.32.5"},"qqread_timeurl":"https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx"}]|
 
 ## 获取 Cookie 教程（以爱奇艺为例）
 
@@ -288,4 +288,4 @@
 ## 特别鸣谢（排名不分先后）
 
 - [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
-- [@Water008](https://github.com/Water008/qqread) - QQRead
+- [@Water008](https://github.com/Water008/qqread) - 企鹅读书

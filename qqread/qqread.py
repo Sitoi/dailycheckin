@@ -139,8 +139,6 @@ class QQReadCheckIn:
     def qqreadaddtime(self, headers, addtimeurl):
         """上传阅读时长"""
         sectime = random.randint(self.once_time * 60 * 1000, (self.once_time + 1) * 60 * 1000)
-        # findtime = re.compile(r"readTime=(.*?)&read_")
-        # url = re.sub(findtime.findall(addtimeurl)[0], str(sectime), str(addtimeurl))
         findtime1 = re.compile(r'readTime%22%3A(\d+)%2C')
         url = re.sub(findtime1.findall(addtimeurl)[0], str(sectime), str(addtimeurl))
         self.delay()
@@ -174,7 +172,7 @@ class QQReadCheckIn:
         dis = data.get("dataList", [{}])[0].get("dis")
         data = re.sub(str(dis), str(int(time.time() * 1000)), str(data))
         self.delay()
-        track_data = requests.post(url=qqreadtrackurl, data=json.dumps(data), headers=headers).json()
+        track_data = requests.post(url=qqreadtrackurl, data=json.dumps(eval(data)), headers=headers).json()
         return track_data
 
     def totalamount(self, headers) -> str:
