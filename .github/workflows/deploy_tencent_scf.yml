@@ -1,0 +1,55 @@
+name: 部署到腾讯云函数
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: "安装依赖和 serverless 工具"
+        run: |
+          npm install
+          sudo npm install serverless -g
+
+      - name: "将 Secrets 里面配置的变量渲染成 config.json 文件"
+        run: |
+          bash deploy.sh
+        env: #因为直接读取secrets里面的值很多字符不会自动转译，导致写入serverless.yml异常，所以设置到环境变量，在读取环境变量转译过的值
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
+          SCKEY: ${{secrets.SCKEY}}
+          TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}
+          TG_USER_ID: ${{secrets.TG_USER_ID}}
+          QMSG_KEY: ${{secrets.QMSG_KEY}}
+          MOTTO: ${{secrets.MOTTO}}
+          IQIYI_COOKIE_LIST: ${{secrets.IQIYI_COOKIE_LIST}}
+          BAIDU_URL_SUBMIT_LIST: ${{secrets.BAIDU_URL_SUBMIT_LIST}}
+          VQQ_COOKIE_LIST: ${{secrets.VQQ_COOKIE_LIST}}
+          YOUDAO_COOKIE_LIST: ${{secrets.YOUDAO_COOKIE_LIST}}
+          POJIE_COOKIE_LIST: ${{secrets.POJIE_COOKIE_LIST}}
+          KGQQ_COOKIE_LIST: ${{secrets.KGQQ_COOKIE_LIST}}
+          MUSIC163_ACCOUNT_LIST: ${{secrets.MUSIC163_ACCOUNT_LIST}}
+          CITY_NAME_LIST: ${{secrets.CITY_NAME_LIST}}
+          ONEPLUSBBS_COOKIE_LIST: ${{secrets.ONEPLUSBBS_COOKIE_LIST}}
+          QQREAD_ACCOUNT_LIST: ${{secrets.QQREAD_ACCOUNT_LIST}}
+          XMLY_COOKIE_LIST: ${{secrets.XMLY_COOKIE_LIST}}
+
+      - name: "部署到腾讯云函数"
+        run: serverless deploy
+        env:
+          STAGE: dev
+          SERVERLESS_PLATFORM_VENDOR: tencent
+          TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
