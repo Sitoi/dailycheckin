@@ -47,7 +47,7 @@ jobs:
           XMLY_COOKIE_LIST: ${{secrets.XMLY_COOKIE_LIST}}
 
       - name: "部署到腾讯云函数"
-        run: serverless deploy
+        run: sls deploy --debug
         env:
           STAGE: dev
           SERVERLESS_PLATFORM_VENDOR: tencent
