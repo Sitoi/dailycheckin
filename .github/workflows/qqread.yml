@@ -2,7 +2,7 @@ name: 企鹅读书
 
 on:
   schedule:
-    - cron: '*/15 * * * * '
+    - cron: '*/11 * * * * '
   watch:
     types: [ started ]
 jobs:
