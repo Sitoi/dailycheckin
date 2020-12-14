@@ -284,7 +284,7 @@
 
 ## 新增签到脚本需求
 
-如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/DailyCheckIn/issues) 中提交
+如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/DailyCheckIn/issues/new/choose) 中提交
 
 ## 特别鸣谢（排名不分先后）
 
