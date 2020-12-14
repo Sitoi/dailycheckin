@@ -21,11 +21,15 @@ if [[ $QQREAD_ACCOUNT_LIST ]]; then echo "QQREAD_ACCOUNT_LIST 变量存在，并
 
 JSONSTR="{
   \"dingtalk\": {
-    \"dingtalk_secret\": \"$DINGTALK_SECRET\",
-    \"dingtalk_access_token\": \"$DINGTALK_ACCESS_TOKEN\"
+    \"dingtalk_secret\": \"${DINGTALK_SECRET}\",
+    \"dingtalk_access_token\": \"${DINGTALK_ACCESS_TOKEN}\"
   },
-  \"server\": \"${SCKEY}\",
-  \"qmsg\": \"${QMSG_KEY}\",
+  \"server\": {
+    \"sckey\": \"${SCKEY}\"
+  },
+  \"qmsg\": {
+    \"qmsg_key\": \"${QMSG_KEY}\"
+  },
   \"telegram\": {
     \"tg_bot_token\": \"${TG_BOT_TOKEN}\",
     \"tg_user_id\": \"${TG_USER_ID}\"
