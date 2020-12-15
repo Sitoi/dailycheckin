@@ -13,6 +13,10 @@ RUN set -ex \
     && apk add --no-cache tzdata moreutils git gcc g++ py-pip mysql-dev linux-headers libffi-dev openssl-dev\
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
-    && chmod +x /usr/local/bin/start.sh
+    && chmod +x /usr/local/bin/start.sh \
+    && git clone https://github.com/Sitoi/dailycheckin.git /dailycheckin \
+    && cd /dailycheckin \
+    && mkdir logs \
+    && pip install -r requirements.txt
 
 ENTRYPOINT ["start.sh"]

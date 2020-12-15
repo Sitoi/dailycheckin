@@ -4,8 +4,7 @@ set -e
 export LANG="zh_CN.UTF-8"
 
 echo "Git 拉取最新代码，并安装更新依赖..."
-git clone https://github.com/Sitoi/dailycheckin.git /dailycheckin
-mkdir -p /dailycheckin/logs
+git -C /dailycheckin pull
 pip install -r /dailycheckin/requirements.txt
 
 echo "Load the latest crontab task file..."
