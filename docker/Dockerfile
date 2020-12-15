@@ -10,7 +10,7 @@ RUN set -ex \
         && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone
 
-RUN git clone https://github.com/Sitoi/DailyCheckIn.git /dailycheckin \
+RUN git clone https://github.com/Sitoi/dailycheckin.git /dailycheckin \
         && cd /dailycheckin \
         && mkdir logs \
         && pip install -r requirements.txt
