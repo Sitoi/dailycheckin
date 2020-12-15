@@ -53,6 +53,6 @@ class VQQCheckIn:
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
-        data = json.loads(f.read())
-    _vqq_cookie_list = data.get("vqq", [])
+        datas = json.loads(f.read())
+    _vqq_cookie_list = datas.get("VQQ_COOKIE_LIST", [])
     VQQCheckIn(vqq_cookie_list=_vqq_cookie_list).main()

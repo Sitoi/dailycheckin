@@ -185,6 +185,6 @@ class IQIYICheckIn:
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
-        data = json.loads(f.read())
-    _iqiyi_cookie_list = data.get("iqiyi", [])
+        datas = json.loads(f.read())
+    _iqiyi_cookie_list = datas.get("IQIYI_COOKIE_LIST", [])
     IQIYICheckIn(iqiyi_cookie_list=_iqiyi_cookie_list).main()

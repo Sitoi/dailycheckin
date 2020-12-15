@@ -20,32 +20,24 @@ if [[ $QQREAD_ACCOUNT_LIST ]]; then echo "QQREAD_ACCOUNT_LIST 变量存在，并
 
 
 JSONSTR="{
-  \"dingtalk\": {
-    \"dingtalk_secret\": \"${DINGTALK_SECRET}\",
-    \"dingtalk_access_token\": \"${DINGTALK_ACCESS_TOKEN}\"
-  },
-  \"server\": {
-    \"sckey\": \"${SCKEY}\"
-  },
-  \"qmsg\": {
-    \"qmsg_key\": \"${QMSG_KEY}\"
-  },
-  \"telegram\": {
-    \"tg_bot_token\": \"${TG_BOT_TOKEN}\",
-    \"tg_user_id\": \"${TG_USER_ID}\"
-  },
-  \"weather\": ${CITY_NAME_LIST},
-  \"motto\": ${MOTTO},
-  \"iqiyi\": ${IQIYI_COOKIE_LIST},
-  \"vqq\": ${VQQ_COOKIE_LIST},
-  \"52pojie\": ${POJIE_COOKIE_LIST},
-  \"youdao\": ${YOUDAO_COOKIE_LIST},
-  \"kgqq\": ${KGQQ_COOKIE_LIST},
-  \"music163\": ${MUSIC163_ACCOUNT_LIST},
-  \"xmly\": ${XMLY_COOKIE_LIST},
-  \"oneplusbbs\": ${ONEPLUSBBS_COOKIE_LIST},
-  \"qqread\": ${QQREAD_ACCOUNT_LIST},
-  \"baidu_url_submit\": ${BAIDU_URL_SUBMIT_LIST}
+  \"DINGTALK_SECRET\": \"${DINGTALK_SECRET}\",
+  \"DINGTALK_ACCESS_TOKEN\": \"${DINGTALK_ACCESS_TOKEN}\",
+  \"SCKEY\": \"${SCKEY}\",
+  \"QMSG_KEY\": \"${QMSG_KEY}\",
+  \"TG_BOT_TOKEN\": \"${TG_BOT_TOKEN}\",
+  \"TG_USER_ID\": \"${TG_USER_ID}\",
+  \"CITY_NAME_LIST\": ${CITY_NAME_LIST},
+  \"MOTTO\": ${MOTTO},
+  \"IQIYI_COOKIE_LIST\": ${IQIYI_COOKIE_LIST},
+  \"VQQ_COOKIE_LIST\": ${VQQ_COOKIE_LIST},
+  \"POJIE_COOKIE_LIST\": ${POJIE_COOKIE_LIST},
+  \"YOUDAO_COOKIE_LIST\": ${YOUDAO_COOKIE_LIST},
+  \"KGQQ_COOKIE_LIST\": ${KGQQ_COOKIE_LIST},
+  \"MUSIC163_ACCOUNT_LIST\": ${MUSIC163_ACCOUNT_LIST},
+  \"XMLY_COOKIE_LIST\": ${XMLY_COOKIE_LIST},
+  \"ONEPLUSBBS_COOKIE_LIST\": ${ONEPLUSBBS_COOKIE_LIST},
+  \"QQREAD_ACCOUNT_LIST\": ${QQREAD_ACCOUNT_LIST},
+  \"BAIDU_URL_SUBMIT_LIST\": ${BAIDU_URL_SUBMIT_LIST}
 }"
 echo $JSONSTR > config.json
 

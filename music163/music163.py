@@ -144,6 +144,6 @@ class Music163CheckIn:
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
-        data = json.loads(f.read())
-    _music163_account_list = data.get("music163", [])
+        datas = json.loads(f.read())
+    _music163_account_list = datas.get("MUSIC163_ACCOUNT_LIST", [])
     Music163CheckIn(music163_account_list=_music163_account_list).main()

@@ -48,6 +48,6 @@ class BaiduUrlSubmit:
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
-        data = json.loads(f.read())
-    _baidu_url_submit_list = data.get("baidu_url_submit", [])
+        datas = json.loads(f.read())
+    _baidu_url_submit_list = datas.get("BAIDU_URL_SUBMIT_LIST", [])
     BaiduUrlSubmit(baidu_url_submit_list=_baidu_url_submit_list).main()

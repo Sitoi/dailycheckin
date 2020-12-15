@@ -103,5 +103,5 @@ class OnePlusBBSCheckIn:
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
         datas = json.loads(f.read())
-    _oneplusbbs_cookie_list = datas.get("oneplusbbs", [])
+    _oneplusbbs_cookie_list = datas.get("ONEPLUSBBS_COOKIE_LIST", [])
     OnePlusBBSCheckIn(oneplusbbs_cookie_list=_oneplusbbs_cookie_list).main()

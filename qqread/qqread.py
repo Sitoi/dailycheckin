@@ -317,5 +317,5 @@ class QQReadCheckIn:
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
         datas = json.loads(f.read())
-    _qqread_account_list = datas.get("qqread", [])
+    _qqread_account_list = datas.get("QQREAD_ACCOUNT_LIST", [])
     QQReadCheckIn(qqread_account_list=_qqread_account_list).main()

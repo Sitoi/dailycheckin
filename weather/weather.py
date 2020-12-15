@@ -40,6 +40,6 @@ class Weather:
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
-        data = json.loads(f.read())
-    _city_name_list = data.get("weather")
+        datas = json.loads(f.read())
+    _city_name_list = datas.get("CITY_NAME_LIST")
     Weather(city_name_list=_city_name_list).main()

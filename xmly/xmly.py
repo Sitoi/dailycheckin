@@ -1002,5 +1002,5 @@ class XMLYCheckIn:
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
         datas = json.loads(f.read())
-    _xmly_cookie_list = datas.get("xmly")
+    _xmly_cookie_list = datas.get("XMLY_COOKIE_LIST")
     XMLYCheckIn(xmly_cookie_list=_xmly_cookie_list).main()

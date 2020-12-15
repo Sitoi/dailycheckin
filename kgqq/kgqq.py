@@ -90,9 +90,9 @@ class KGQQCheckIn:
             new_num = new_proto_profile_response.json()["data"]["profile.getProfile"]["uFlowerNum"]
             get_num = int(new_num) - int(old_num)
             if get_num == 0:
-                kg_message = "今日鲜花已领取"
+                kg_message = f"今日鲜花已领取\n当前鲜花: {new_num}朵"
             else:
-                kg_message = "+{0}朵".format(get_num)
+                kg_message = f"+{get_num}朵\n当前鲜花: {new_num}朵"
         except Exception as e:
             kg_message = str(e)
         return kg_message
@@ -111,6 +111,6 @@ class KGQQCheckIn:
 
 if __name__ == "__main__":
     with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
-        data = json.loads(f.read())
-    _kgqq_cookie_list = data.get("kgqq", [])
+        datas = json.loads(f.read())
+    _kgqq_cookie_list = datas.get("KGQQ_COOKIE_LIST", [])
     KGQQCheckIn(kgqq_cookie_list=_kgqq_cookie_list).main()
