@@ -11,9 +11,11 @@ pip install -r /dailycheckin/requirements.txt
 echo "Load the latest crontab task file..."
 echo "加载最新的定时任务文件..."
 
+CRONTAB_LIST_FILE="/dailycheckin/docker/default_list.sh"
+
 sed -i 's/>>/|ts >>/g' $CRONTAB_LIST_FILE
 crontab $CRONTAB_LIST_FILE
 
 echo "Start crontab task main process..."
-echo "启动crondtab定时任务主进程..."
+echo "启动 crondtab 定时任务主进程..."
 crond -f

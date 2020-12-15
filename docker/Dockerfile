@@ -1,16 +1,11 @@
 FROM python:3.8-alpine
 MAINTAINER Sitoi <Sitoi0418@gmail.com>
 
-ENV CRONTAB_LIST_FILE crontab_list.sh
-
 WORKDIR /dailycheckin
 
 #GitHub Actions 构建
-COPY ./docker /dailycheckin
 COPY ./docker/start.sh /usr/local/bin
-
 #本地构建
-#COPY . /dailycheckin
 #COPY ./start.sh /usr/local/bin
 
 RUN set -ex \
