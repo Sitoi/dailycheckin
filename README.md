@@ -48,19 +48,19 @@
 
 ### 方法一: 本地使用
 
-参考教程: [本地使用教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/local.md)
+参考教程: [本地使用教程](./docs/local.md)
 
 ### 方法二: Docker 使用
 
-参考教程: [Docker 使用教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/dockers.md)
+参考教程: [Docker 使用教程](./docs/docker.md)
 
 ### 方法三: GitHub Action 使用
 
-参考教程: [GitHub Action 使用教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/github-actions.md)
+参考教程: [GitHub Action 使用教程](./docs/github-actions.md)
 
 ### 方法四: 腾讯云函数使用
 
-参考教程: [腾讯云函数使用教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/tencent-scf.md)
+参考教程: [腾讯云函数使用教程](./docs/tencent-scf.md)
 
 
 ## 新增签到脚本需求

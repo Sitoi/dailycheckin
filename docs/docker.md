@@ -22,7 +22,7 @@ dailycheckin
 
 #### dailycheckin/config.json
 
-参考[配置说明文档](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/settings.md) ，并修改 `config.json`
+参考[配置说明文档](./settings.md) ，并修改 `config.json`
 
 #### dailycheckin/docker-compose.yml
 

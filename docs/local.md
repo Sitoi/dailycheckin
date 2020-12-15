@@ -10,7 +10,7 @@ Clone 地址: [https://github.com/Sitoi/dailycheckin.git](https://github.com/Sit
 
 ### 一、修改 `config.json`
 
-参考[配置说明文档](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/settings.md) ，并修改 `config.json`
+参考[配置说明文档](./settings.md) ，并修改 `config.json`
 
 ### 二、安装 Pypi 依赖包
 
