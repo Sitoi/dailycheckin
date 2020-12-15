@@ -8,7 +8,7 @@ Clone 地址: [https://github.com/Sitoi/dailycheckin.git](https://github.com/Sit
 
 > 下载的需要解析压缩包
 
-### 一、修改 `config.json`
+### 一、拷贝 `config.template.json` 到 `config.json` 并修改
 
 参考[配置说明文档](./settings.md) ，并修改 `config.json`
 
