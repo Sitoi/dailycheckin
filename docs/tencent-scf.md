@@ -2,8 +2,20 @@
 
 > （腾讯云函数相关教程请自行百度）
 
-1. [点击下载代码](https://github.com/Sitoi/dailycheckin/archive/main.zip)
-2. 解压代码压缩包
-3. 根据各个使用文档获取对应的参数，并修改 `config.json`
-4. 上传至【腾讯云函数】
-5. 配置定时触发器
+## 一、下载（Clone）本项目到本地
+
+> 下载的需要解析压缩包
+
+下载地址: [https://github.com/Sitoi/DailyCheckIn/archive/main.zip](https://github.com/Sitoi/DailyCheckIn/archive/main.zip)
+
+Clone 地址: [https://github.com/Sitoi/dailycheckin.git](https://github.com/Sitoi/dailycheckin.git)
+
+## 二、拷贝 `config.template.json` 到 `config.json` 并修改
+
+参考[配置说明文档](https://github.com/Sitoi/dailycheckin/blob/main/docs/settings.md) ，并修改 `config.json`
+
+## 三、上传至【腾讯云函数】
+
+## 四、配置定时触发器
+
+待完善

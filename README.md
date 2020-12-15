@@ -46,26 +46,23 @@
 
 ## 使用方法
 
-### 方法一: 本地使用
+> 不同的使用方法都需要参考配置说明，请详细阅读[【配置说明文档】](https://github.com/Sitoi/dailycheckin/blob/main/docs/settings.md)
 
-参考教程: [本地使用教程](./docs/local.md)
+> 不同的使用方法都需要参考配置说明，请详细阅读[【配置说明文档】](https://github.com/Sitoi/dailycheckin/blob/main/docs/settings.md)
 
-### 方法二: Docker 使用
+> 不同的使用方法都需要参考配置说明，请详细阅读[【配置说明文档】](https://github.com/Sitoi/dailycheckin/blob/main/docs/settings.md)
 
-参考教程: [Docker 使用教程](./docs/docker.md)
+### 方法一: 本地使用[教程](https://github.com/Sitoi/dailycheckin/blob/main/docs/local.md)
 
-### 方法三: GitHub Action 使用
+### 方法二: Docker 使用[教程](https://github.com/Sitoi/dailycheckin/blob/main/docs/docker.md)
 
-参考教程: [GitHub Action 使用教程](./docs/github-actions.md)
+### 方法三: GitHub Action 使用[教程](https://github.com/Sitoi/dailycheckin/blob/main/docs/github-actions.md)
 
-### 方法四: 腾讯云函数使用
-
-参考教程: [腾讯云函数使用教程](./docs/tencent-scf.md)
-
+### 方法四: 腾讯云函数使用[教程](https://github.com/Sitoi/dailycheckin/blob/main/docs/tencent-scf.md)
 
 ## 新增签到脚本需求
 
-如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/DailyCheckIn/issues/new/choose) 中提交
+如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/dailycheckin/issues/new/choose) 中提交
 
 ## 特别鸣谢（排名不分先后）
 

@@ -1,4 +1,4 @@
-## 配置说明
+# 配置说明
 
 配置文件：`config.json`
 
@@ -211,6 +211,10 @@
 
 [百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)
 
+
+![获取百度云提交链接教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/submit_url.png)
+
+
 - _**BAIDU_URL_SUBMIT_LIST**_.data_url: 提交网站的 URL
   链接，参考链接：[https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)
 - _**BAIDU_URL_SUBMIT_LIST**_.submit_url: 提交百度网站的目标
@@ -223,7 +227,7 @@
 
 ![获取 cookie 教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/iqiyi_cookie.png)
 
-1. 进入[爱奇艺（IQIYI）官网](https://www.iqiyi.com/)
+1. 进入[爱奇艺官网](https://www.iqiyi.com/)
 2. 按 `F12` 打开开发者工具，刷新页面
 3. 点击 `Network` 标签
 4. 选择 `Doc` 标签
