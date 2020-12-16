@@ -18,13 +18,21 @@ class QQReadCheckIn:
         self.drawamount = 0  # [0, 10, 30, 50, 100] 分别为关闭自动提现、提现10元、30元、50元、100元，默认为关闭
 
     @staticmethod
-    def valid(headers):
+    def valid(headers, timeurl, bodys):
         qqnum = "未获取到"
         try:
             response = requests.get(url="https://mqqapi.reader.qq.com/mqq/user/init", headers=headers)
             if not response.json()["data"]["isLogin"]:
                 qqnum = re.findall(r"ywguid=(.*?);ywkey", headers["Cookie"])[0]
                 return False, f"【HEADERS 过期】: {qqnum}"
+
+            timeurl_bid = re.findall(r"&bid=(\d+)&", timeurl)[0] if re.findall(r"&bid=(\d+)&", timeurl) else None
+            bodys_bid1 = bodys.get("dataList", [{}])[0].get("bid")
+            bodys_bid2 = bodys.get("dataList", [{}])[0].get("options", {}).get("bid")
+            bodys_bid3 = bodys.get("dataList", [{}])[0].get("from")
+            qqnum = bodys.get("common", {}).get("guid")
+            if len(list({str(timeurl_bid), str(bodys_bid1), str(bodys_bid2)})) != 1 or bodys_bid1 not in bodys_bid3:
+                return False, f"【BID 参数错误】: {qqnum}"
             return True, ""
         except Exception as e:
             print(e)
@@ -197,7 +205,7 @@ class QQReadCheckIn:
             qqread_timeurl = secrets.get("qqread_timeurl")
             msg_list.append(f"=== {self.gettime().strftime('%Y-%m-%d %H:%M:%S')} ===")
             msg_list.append(f"=== 📣系统通知📣 ===")
-            valid_flag, valid_msg = self.valid(headers=qqread_headers)
+            valid_flag, valid_msg = self.valid(headers=qqread_headers, timeurl=qqread_timeurl, bodys=qqread_bodys)
             if valid_flag:
                 info_data = self.qqreadinfo(qqread_headers)
                 todaytime_data = self.qqreadtodaytime(qqread_headers, qqread_timeurl)
@@ -295,9 +303,9 @@ class QQReadCheckIn:
                         msg_list.append(f"【阅读时长】: 成功上传{self.once_time}分钟")
 
                 if (
-                        self.drawamount != 0
-                        and task_data["user"]["amount"] >= self.drawamount * 10000
-                        and self.gettime().hour == 21
+                    self.drawamount != 0
+                    and task_data["user"]["amount"] >= self.drawamount * 10000
+                    and self.gettime().hour == 21
                 ):
                     withdrawinfo_data = self.qqreadwithdrawinfo(qqread_headers)["createTime"]
                     if withdrawinfo_data < self.get_timestamp():
