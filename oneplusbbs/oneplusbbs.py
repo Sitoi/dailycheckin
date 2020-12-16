@@ -58,7 +58,8 @@ class OnePlusBBSCheckIn:
             ("do", "draw"),
         )
         sum_list = []
-        msg = ""
+        success_count = 0
+        error_count = 0
         for i in range(10):
             try:
                 data = requests.post(url="https://www.oneplusbbs.com/plugin.php", headers=headers, params=params).json()
@@ -73,17 +74,20 @@ class OnePlusBBSCheckIn:
                     sum_list.append(ret_map.get(ret, 0))
                     one_msg = data["msg"]
                     if str(ret) in ["-1", "-6", "-7"]:
-                        msg = one_msg
                         break
+                    else:
+                        success_count += 1
                 else:
+                    error_count += 1
                     one_msg = "抽奖失败"
             except Exception as e:
                 one_msg = f"抽奖失败: {e}"
-                msg = one_msg
+                error_count += 1
             print(f"第{i + 1}次抽奖结果：" + str(one_msg))
             time.sleep(5)
-        draw_msg = "抽奖状态：" + str(msg)
-        draw_msg += f"\n抽奖信息：获得 {sum(sum_list)} 加油"
+        msg = f"成功抽奖 {success_count} 次,{one_msg}"
+        draw_msg = "抽奖状态: " + str(msg)
+        draw_msg += f"\n抽奖结果: 获得 {sum(sum_list) - success_count * 10} 加油"
         print(draw_msg)
         return draw_msg
 
@@ -94,7 +98,7 @@ class OnePlusBBSCheckIn:
             bbs_uname = re.findall(r"bbs_uname=(.*?);", oneplusbbs_cookie)[0].split("%7C")[0]
             sign_msg = self.sign(cookie=oneplusbbs_cookie)
             draw_msg = self.draw(cookie=oneplusbbs_cookie)
-            msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n{sign_msg}\n{draw_msg}"
+            msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n签到信息: {sign_msg}\n{draw_msg}"
             print(msg)
             msg_list.append(msg)
         return msg_list
