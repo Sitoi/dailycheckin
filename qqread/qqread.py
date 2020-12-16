@@ -73,11 +73,6 @@ class QQReadCheckIn:
         mytask_data = self.get_template(headers=headers, function_id="v1/task/list")["data"]["taskList"]
         return mytask_data
 
-    def qqreadinfo(self, headers):
-        """获取用户名"""
-        info_data = self.get_template(headers=headers, function_id="user/init")["data"]
-        return info_data
-
     def qqreadticket(self, headers):
         """书券签到"""
         qqreadticketurl = "https://mqqapi.reader.qq.com/mqq/sign_in/user"
@@ -207,15 +202,13 @@ class QQReadCheckIn:
             msg_list.append(f"=== 📣系统通知📣 ===")
             valid_flag, valid_msg = self.valid(headers=qqread_headers, timeurl=qqread_timeurl, bodys=qqread_bodys)
             if valid_flag:
-                info_data = self.qqreadinfo(qqread_headers)
                 todaytime_data = self.qqreadtodaytime(qqread_headers, qqread_timeurl)
                 wktime_data = self.qqreadwktime(qqread_headers)
                 print(f"Track update {self.qqreadtrack(qqread_headers, qqread_bodys)['msg']}")
                 task_data = self.qqreadtask(qqread_headers)
                 mytask_data = self.qqreadmytask(qqread_headers)
                 task_list = task_data["taskList"]
-
-                msg_list.append(f"【用户信息】: {info_data['user']['nickName']}")
+                msg_list.append(f"【用户信息】: {qqread_bodys['common']['guid']}")
                 msg_list.append(f"【账户余额】: {task_data['user']['amount']}金币")
                 msg_list.append(f"【今日阅读】: {todaytime_data}分钟")
                 msg_list.append(f"【本周阅读】: {wktime_data}分钟")

@@ -126,6 +126,13 @@
       "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx"
     }
   ],
+  "FMAPP_ACCOUNT_LIST": [
+    {
+      "fmapp_token": "xxxxxx",
+      "fmapp_cookie": "xxxxxx",
+      "fmapp_device_id": "xxxxxx-xxxxxx-xxx-xxx-xxxxxx"
+    }
+  ],
   "BAIDU_URL_SUBMIT_LIST": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
@@ -146,8 +153,10 @@
 
 |Name|归属|属性|说明|
 |:---:|:---:|:---:|:---|
-|_**DINGTALK_SECRET**_|钉钉推送|非必须|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选|
-|_**DINGTALK_ACCESS_TOKEN**_|钉钉推送|非必须|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`|
+|_**
+DINGTALK_SECRET**_|钉钉推送|非必须|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选|
+|_**
+DINGTALK_ACCESS_TOKEN**_|钉钉推送|非必须|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`|
 |_**SCKEY**_|server 酱推送|非必须|server 酱推送[官方文档](https://sc.ftqq.com/3.version) ,填写 `SCKEY` 代码即可|
 |_**QMSG_KEY**_|qmsg 酱推送|非必须|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
 |_**TG_BOT_TOKEN**_|telegram 推送|非必须|telegram 推送 `TG_BOT_TOKEN`|
@@ -169,6 +178,9 @@
 |_**BAIDU_URL_SUBMIT_LIST**_.data_url|百度搜索资源平台|非必须|提交网站的 URL 链接|
 |_**BAIDU_URL_SUBMIT_LIST**_.submit_url|百度搜索资源平台|非必须|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/) 提交百度网站的目标 URL|
 |_**BAIDU_URL_SUBMIT_LIST**_.times|百度搜索资源平台|非必须|每日对同一个网站提交次数|
+|_**FMAPP_ACCOUNT_LIST**_.fmapp_token|Fa米家|非必须|Fa米家 APP headers 中的 token|
+|_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|非必须|Fa米家 APP headers 中的 cookie|
+|_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|非必须|Fa米家 APP headers 中的 deviceId|
 
 ## 参数获取方法
 
@@ -211,9 +223,7 @@
 
 [百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)
 
-
 ![获取百度云提交链接教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/submit_url.png)
-
 
 - _**BAIDU_URL_SUBMIT_LIST**_.data_url: 提交网站的 URL
   链接，参考链接：[https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)
@@ -263,6 +273,10 @@
 #### 喜马拉雅极速版 Cookie 参数获取
 
 抓包 APP 中域名为 `m.ximalaya.com` 中的 `cookie` 即可
+
+#### Fa米家 Cookie 等参数获取
+
+抓包 APP 的请求中的 headers 信息中提取 token、deviceId、cookie 即可
 
 #### 企鹅读书参数获取
 

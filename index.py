@@ -12,6 +12,7 @@ from datetime import datetime, timedelta
 import requests
 
 from baidu_url_submit import BaiduUrlSubmit
+from fmapp.fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
 from motto.motto import Motto
@@ -106,6 +107,10 @@ def main_handler(event, context):
         qqread_account_list = (
             json.loads(os.environ.get("QQREAD_ACCOUNT_LIST", [])) if os.environ.get("QQREAD_ACCOUNT_LIST") else []
         )
+        fmapp_account_list = (
+            json.loads(os.environ.get("FMAPP_ACCOUNT_LIST", [])) if os.environ.get("FMAPP_ACCOUNT_LIST") else []
+        )
+
 
     else:
         if isinstance(event, dict):
@@ -132,6 +137,7 @@ def main_handler(event, context):
         oneplusbbs_cookie_list = data.get("ONEPLUSBBS_COOKIE_LIST", [])
         qqread_account_list = data.get("QQREAD_ACCOUNT_LIST", [])
         baidu_url_submit_list = data.get("BAIDU_URL_SUBMIT_LIST", [])
+        fmapp_account_list = data.get("FMAPP_ACCOUNT_LIST", [])
 
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
@@ -173,6 +179,10 @@ def main_handler(event, context):
 
         if oneplusbbs_cookie_list:
             msg_list = OnePlusBBSCheckIn(oneplusbbs_cookie_list=oneplusbbs_cookie_list).main()
+            content_list += msg_list
+
+        if fmapp_account_list:
+            msg_list = FMAPPCheckIn(fmapp_account_list=fmapp_account_list).main()
             content_list += msg_list
 
         if city_name_list:
