@@ -1,3 +1,5 @@
+![description](https://socialify.git.ci/Sitoi/dailycheckin/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark)
+
 # 每日签到集合
 
 可基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本（支持多账号使用）
@@ -69,3 +71,7 @@
 - [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
 - [@Water008](https://github.com/Water008/qqread) - 企鹅读书
 - [@lxk0301](https://github.com/lxk0301/jd_scripts) - 京东签到
+
+## 历史star数
+
+[![Stargazers over time](https://starchart.cc/Sitoi/dailycheckin.svg)](https://starchart.cc/Sitoi/dailycheckin)
