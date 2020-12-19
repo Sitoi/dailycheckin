@@ -17,6 +17,7 @@ if [[ $MOTTO ]]; then echo "MOTTO 变量存在，并成功赋值" ;else MOTTO=fa
 if [[ $XMLY_COOKIE_LIST ]]; then echo "XMLY_COOKIE_LIST 变量存在，并成功赋值" ;else XMLY_COOKIE_LIST=[]; fi;
 if [[ $ONEPLUSBBS_COOKIE_LIST ]]; then echo "ONEPLUSBBS_COOKIE_LIST 变量存在，并成功赋值" ;else ONEPLUSBBS_COOKIE_LIST=[]; fi;
 if [[ $QQREAD_ACCOUNT_LIST ]]; then echo "QQREAD_ACCOUNT_LIST 变量存在，并成功赋值" ;else QQREAD_ACCOUNT_LIST=[]; fi;
+if [[ $FMAPP_ACCOUNT_LIST ]]; then echo "FMAPP_ACCOUNT_LIST 变量存在，并成功赋值" ;else FMAPP_ACCOUNT_LIST=[]; fi;
 
 
 JSONSTR="{
@@ -37,6 +38,7 @@ JSONSTR="{
   \"XMLY_COOKIE_LIST\": ${XMLY_COOKIE_LIST},
   \"ONEPLUSBBS_COOKIE_LIST\": ${ONEPLUSBBS_COOKIE_LIST},
   \"QQREAD_ACCOUNT_LIST\": ${QQREAD_ACCOUNT_LIST},
+  \"FMAPP_ACCOUNT_LIST\": ${FMAPP_ACCOUNT_LIST},
   \"BAIDU_URL_SUBMIT_LIST\": ${BAIDU_URL_SUBMIT_LIST}
 }"
 echo $JSONSTR > config.json
