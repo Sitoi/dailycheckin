@@ -12,17 +12,19 @@ from datetime import datetime, timedelta
 import requests
 
 from baidu_url_submit import BaiduUrlSubmit
-from fmapp.fmapp import FMAPPCheckIn
+from bilibili import BiliBiliCheckIn
+from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
-from motto.motto import Motto
+from motto import Motto
 from music163 import Music163CheckIn
-from oneplusbbs.oneplusbbs import OnePlusBBSCheckIn
+from oneplusbbs import OnePlusBBSCheckIn
 from pojie import PojieCheckIn
-from qqread.qqread import QQReadCheckIn
+from qqread import QQReadCheckIn
+from tieba import TiebaCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
-from xmly.xmly import XMLYCheckIn
+from xmly import XMLYCheckIn
 from youdao import YouDaoCheckIn
 
 
@@ -110,7 +112,12 @@ def main_handler(event, context):
         fmapp_account_list = (
             json.loads(os.environ.get("FMAPP_ACCOUNT_LIST", [])) if os.environ.get("FMAPP_ACCOUNT_LIST") else []
         )
-
+        tieba_cookie_list = (
+            json.loads(os.environ.get("TIEBA_COOKIE_LIST", [])) if os.environ.get("TIEBA_COOKIE_LIST") else []
+        )
+        bilibili_cookie_list = (
+            json.loads(os.environ.get("BILIBILI_COOKIE_LIST", [])) if os.environ.get("BILIBILI_COOKIE_LIST") else []
+        )
 
     else:
         if isinstance(event, dict):
@@ -138,6 +145,8 @@ def main_handler(event, context):
         qqread_account_list = data.get("QQREAD_ACCOUNT_LIST", [])
         baidu_url_submit_list = data.get("BAIDU_URL_SUBMIT_LIST", [])
         fmapp_account_list = data.get("FMAPP_ACCOUNT_LIST", [])
+        tieba_cookie_list = data.get("TIEBA_COOKIE_LIST", [])
+        bilibili_cookie_list = data.get("BILIBILI_COOKIE_LIST", [])
 
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
@@ -183,6 +192,14 @@ def main_handler(event, context):
 
         if fmapp_account_list:
             msg_list = FMAPPCheckIn(fmapp_account_list=fmapp_account_list).main()
+            content_list += msg_list
+
+        if tieba_cookie_list:
+            msg_list = TiebaCheckIn(tieba_cookie_list=tieba_cookie_list).main()
+            content_list += msg_list
+
+        if bilibili_cookie_list:
+            msg_list = BiliBiliCheckIn(bilibili_cookie_list=bilibili_cookie_list).main()
             content_list += msg_list
 
         if city_name_list:

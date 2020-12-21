@@ -144,6 +144,14 @@
     {
       "tieba_cookie": "xxxxxx"
     }
+  ],
+  "BILIBILI_COOKIE_LIST": [
+    {
+      "bilibili_cookie": "xxxxxx",
+      "coin_num": 0,
+      "coin_type": 1,
+      "silver2coin": true
+    }
   ]
 }
 ```
@@ -185,6 +193,10 @@
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|非必须|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|非必须|Fa米家 APP headers 中的 deviceId|
 |_**TIEBA_COOKIE_LIST**_.tieba_cookie|百度贴吧|非必须|[百度贴吧](https://tieba.baidu.com/index.html) cookie|
+|_**BILIBILI_COOKIE_LIST**_.bilibili_cookie|Bilibili|非必须|[Bilibili](https://www.bilibili.com) cookie|
+|_**BILIBILI_COOKIE_LIST**_.coin_num|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 每日投币数量|
+|_**BILIBILI_COOKIE_LIST**_.coin_type|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币|
+|_**BILIBILI_COOKIE_LIST**_.silver2coin|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 是否开启银瓜子换硬币，默认为 True 开启|
 
 ## 参数获取方法
 
@@ -275,6 +287,10 @@
 #### 百度贴吧 Cookie 参数获取
 
 [百度贴吧](https://tieba.baidu.com/index.html)
+
+#### Bilibili Cookie 参数获取
+
+[Bilibili](https://www.bilibili.com)
 
 ### APP抓包
 

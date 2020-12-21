@@ -126,7 +126,7 @@
       "times": 10
     }
   ],
-    "FMAPP_ACCOUNT_LIST": [
+  "FMAPP_ACCOUNT_LIST": [
     {
       "fmapp_token": "xxxxxx",
       "fmapp_cookie": "xxxxxx",
@@ -136,6 +136,14 @@
   "TIEBA_COOKIE_LIST": [
     {
       "tieba_cookie": "xxxxxx"
+    }
+  ],
+  "BILIBILI_COOKIE_LIST": [
+    {
+      "bilibili_cookie": "xxxxxx",
+      "coin_num": 0,
+      "coin_type": 1,
+      "silver2coin": true
     }
   ]
 }
