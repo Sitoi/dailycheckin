@@ -46,6 +46,7 @@ jobs:
           QQREAD_ACCOUNT_LIST: ${{secrets.QQREAD_ACCOUNT_LIST}}
           FMAPP_ACCOUNT_LIST: ${{secrets.FMAPP_ACCOUNT_LIST}}
           BAIDU_URL_SUBMIT_LIST: ${{secrets.BAIDU_URL_SUBMIT_LIST}}
+          TIEBA_COOKIE_LIST: ${{secrets.TIEBA_COOKIE_LIST}}
 
       - name: "部署到腾讯云函数"
         run: sls deploy --debug

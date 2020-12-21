@@ -8,7 +8,6 @@ import requests
 
 
 class OnePlusBBSCheckIn:
-    # 待测试
     def __init__(self, oneplusbbs_cookie_list):
         self.oneplusbbs_cookie_list = oneplusbbs_cookie_list
 
@@ -85,7 +84,7 @@ class OnePlusBBSCheckIn:
                 error_count += 1
             print(f"第{i + 1}次抽奖结果：" + str(one_msg))
             time.sleep(5)
-        msg = f"成功抽奖 {success_count} 次,{one_msg}"
+        msg = f"成功抽奖 {success_count} 次"
         draw_msg = "抽奖状态: " + str(msg)
         draw_msg += f"\n抽奖结果: 获得 {sum(sum_list) - success_count * 10} 加油"
         print(draw_msg)

@@ -4,7 +4,7 @@
   "SCKEY": "xxxxxx",
   "QMSG_KEY": "xxxxxx",
   "TG_BOT_TOKEN": "xxxxxx",
-  "TG_USER_ID": "",
+  "TG_USER_ID": "xxxxxx",
   "CITY_NAME_LIST": [
     "上海"
   ],
@@ -41,9 +41,6 @@
     }
   ],
   "XMLY_COOKIE_LIST": [
-    {
-      "xmly_cookie": "xxxxxx"
-    },
     {
       "xmly_cookie": "xxxxxx"
     }
@@ -127,6 +124,18 @@
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
       "submit_url": "http://data.zz.baidu.com/urls?site=https://sitoi.cn&token=xxxxxx",
       "times": 10
+    }
+  ],
+    "FMAPP_ACCOUNT_LIST": [
+    {
+      "fmapp_token": "xxxxxx",
+      "fmapp_cookie": "xxxxxx",
+      "fmapp_device_id": "xxxxxx"
+    }
+  ],
+  "TIEBA_COOKIE_LIST": [
+    {
+      "tieba_cookie": "xxxxxx"
     }
   ]
 }

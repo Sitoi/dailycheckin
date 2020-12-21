@@ -6,98 +6,98 @@
 
 ```json
 {
-  "DINGTALK_SECRET": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "DINGTALK_ACCESS_TOKEN": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "SCKEY": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "QMSG_KEY": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "TG_BOT_TOKEN": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "TG_USER_ID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "DINGTALK_SECRET": "xxxxxx",
+  "DINGTALK_ACCESS_TOKEN": "xxxxxx",
+  "SCKEY": "xxxxxx",
+  "QMSG_KEY": "xxxxxx",
+  "TG_BOT_TOKEN": "xxxxxx",
+  "TG_USER_ID": "xxxxxx",
   "CITY_NAME_LIST": [
     "上海"
   ],
   "MOTTO": true,
   "IQIYI_COOKIE_LIST": [
     {
-      "iqiyi_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "iqiyi_cookie": "xxxxxx"
     }
   ],
   "VQQ_COOKIE_LIST": [
     {
-      "vqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "vqq_cookie": "xxxxxx"
     }
   ],
   "POJIE_COOKIE_LIST": [
     {
-      "pojie_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "pojie_cookie": "xxxxxx"
     }
   ],
   "YOUDAO_COOKIE_LIST": [
     {
-      "youdao_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "youdao_cookie": "xxxxxx"
     }
   ],
   "KGQQ_COOKIE_LIST": [
     {
-      "kgqq_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "kgqq_cookie": "xxxxxx"
     }
   ],
   "MUSIC163_ACCOUNT_LIST": [
     {
-      "music163_phone": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "music163_password": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "music163_phone": "xxxxxx",
+      "music163_password": "xxxxxx"
     }
   ],
   "XMLY_COOKIE_LIST": [
     {
-      "xmly_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "xmly_cookie": "xxxxxx"
     }
   ],
   "ONEPLUSBBS_COOKIE_LIST": [
     {
-      "oneplusbbs_cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "oneplusbbs_cookie": "xxxxxx"
     }
   ],
   "QQREAD_ACCOUNT_LIST": [
     {
       "qqread_bodys": {
         "common": {
-          "appid": "xxxxxxxxxx",
-          "areaid": "xxxxxxxxxx",
-          "qq_ver": "xxxxxxxxxx",
-          "os_ver": "xxxxxxxxxx",
-          "mp_ver": "xxxxxxxxxx",
-          "mpos_ver": "xxxxxxxxxx",
-          "brand": "xxxxxxxxxx",
-          "model": "xxxxxxxxxx",
-          "screenWidth": "xxxxxxxxxx",
-          "screenHeight": "xxxxxxxxxx",
-          "windowWidth": "xxxxxxxxxx",
-          "windowHeight": "xxxxxxxxxx",
-          "openid": "xxxxxxxxxx",
-          "guid": "xxxxxxxxxx",
-          "session": "xxxxxxxxxx",
-          "scene": "xxxxxxxxxx",
-          "source": "xxxxxxxxxx",
-          "hasRedDot": "xxxxxxxxxx",
-          "missions": "xxxxxxxxxx",
-          "caseID": "xxxxxxxxxx"
+          "appid": 1111111111,
+          "areaid": 5,
+          "qq_ver": "8.4.17",
+          "os_ver": "iOS 14.2",
+          "mp_ver": "0.32.5",
+          "mpos_ver": "1.21.0",
+          "brand": "iPhone",
+          "model": "iPhone 11<iPhone12,1>",
+          "screenWidth": 414,
+          "screenHeight": 896,
+          "windowWidth": 414,
+          "windowHeight": 813,
+          "openid": "xxxxxx",
+          "guid": 111111111111,
+          "session": "xxxxxx",
+          "scene": 2016,
+          "source": "xxxxxx",
+          "hasRedDot": "false",
+          "missions": -1,
+          "caseID": -1
         },
         "dataList": [
           {
-            "click1": "xxxxxxxxxx",
-            "click2": "xxxxxxxxxx",
-            "route": "xxxxxxxxxx",
-            "refer": "xxxxxxxxxx",
+            "click1": "bookDetail_bottomBar_read_C",
+            "click2": "bookLib2_bookList_bookClick_C",
+            "route": "pages/book-read/index",
+            "refer": "pages/book-detail/index",
             "options": {
-              "bid": "xxxxxxxxxx",
-              "cid": "xxxxxxxxxx"
+              "bid": "888888",
+              "cid": "1"
             },
-            "dis": 1607589409986,
+            "dis": 1666666666666,
             "ext6": 26,
-            "eventID": "xxxxxxxxxx",
-            "type": "xxxxxxxxxx",
+            "eventID": "bookRead_show_I",
+            "type": "shown",
             "ccid": 1,
-            "bid": "xxxxxxxxxx",
+            "bid": "888888",
             "bookStatus": 1,
             "bookPay": 0,
             "chapterStatus": 0,
@@ -106,38 +106,43 @@
               "bg": 0,
               "pageMode": 1
             },
-            "from": "xxxxxxxxxx"
+            "from": "bookLib2_bookList_bookClick_C_2_888888"
           }
         ]
       },
+      "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=888888&readTime=8888&read_type=0&conttype=1&read_status=0&chapter_info=xxxxxx&sp=-1",
       "qqread_headers": {
         "Accept": "*/*",
-        "ywsession": "xxxxxxxxxx",
+        "ywsession": "xxxxxx",
         "Connection": "keep-alive",
         "Content-Type": "application/json",
-        "Cookie": "ywguid=xxxxxxxxxx",
+        "Cookie": "xxxxxx",
         "Host": "mqqapi.reader.qq.com",
-        "User-Agent": "xxxxxxxxxx",
-        "Referer": "xxxxxxxxxx",
+        "User-Agent": "QQ/8.4.17.638 CFNetwork/1206 Darwin/20.1.0",
+        "Referer": "https://appservice.qq.com/xxxxxx/0.32.5/page-frame.html",
         "Accept-Language": "zh-cn",
         "Accept-Encoding": "gzip, deflate, br",
         "mpversion": "0.32.5"
-      },
-      "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?xxxxxxxxxx"
+      }
+    }
+  ],
+  "BAIDU_URL_SUBMIT_LIST": [
+    {
+      "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
+      "submit_url": "http://data.zz.baidu.com/urls?site=https://sitoi.cn&token=xxxxxx",
+      "times": 10
     }
   ],
   "FMAPP_ACCOUNT_LIST": [
     {
       "fmapp_token": "xxxxxx",
       "fmapp_cookie": "xxxxxx",
-      "fmapp_device_id": "xxxxxx-xxxxxx-xxx-xxx-xxxxxx"
+      "fmapp_device_id": "xxxxxx"
     }
   ],
-  "BAIDU_URL_SUBMIT_LIST": [
+  "TIEBA_COOKIE_LIST": [
     {
-      "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
-      "submit_url": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "times": 10
+      "tieba_cookie": "xxxxxx"
     }
   ]
 }
@@ -179,6 +184,7 @@
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_token|Fa米家|非必须|Fa米家 APP headers 中的 token|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|非必须|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|非必须|Fa米家 APP headers 中的 deviceId|
+|_**TIEBA_COOKIE_LIST**_.tieba_cookie|百度贴吧|非必须|[百度贴吧](https://tieba.baidu.com/index.html) cookie|
 
 ## 参数获取方法
 
@@ -265,6 +271,10 @@
 #### 一加手机社区官方论坛 Cookie 参数获取
 
 [一加手机社区官方论坛](https://www.oneplusbbs.com/)
+
+#### 百度贴吧 Cookie 参数获取
+
+[百度贴吧](https://tieba.baidu.com/index.html)
 
 ### APP抓包
 
