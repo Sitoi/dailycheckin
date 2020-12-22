@@ -13,7 +13,7 @@ class BiliBiliCheckIn(object):
     @staticmethod
     def get_nav(session):
         url = "https://api.bilibili.com/x/web-interface/nav"
-        ret = session.get(url).json()
+        ret = session.get(url=url).json()
         print(ret)
         uname = ret.get("data", {}).get("uname")
         uid = ret.get("data", {}).get("mid")
@@ -27,7 +27,7 @@ class BiliBiliCheckIn(object):
     def reward(session) -> dict:
         """取B站经验信息"""
         url = "https://account.bilibili.com/home/reward"
-        ret = session.get(url).json()
+        ret = session.get(url=url).json()
         return ret
 
     @staticmethod
@@ -35,9 +35,9 @@ class BiliBiliCheckIn(object):
         """B站直播签到"""
         try:
             url = "https://api.live.bilibili.com/xlive/web-ucenter/v1/sign/DoSign"
-            ret = session.get(url).json()
+            ret = session.get(url=url).json()
             if ret["code"] == 0:
-                msg = f'签到成功，信息:{ret["data"]["text"]}，特别信息:{ret["data"]["specialText"]}，本月已签到{ret["data"]["hadSignDays"]}天'
+                msg = f'签到成功，{ret["data"]["text"]}，特别信息:{ret["data"]["specialText"]}，本月已签到{ret["data"]["hadSignDays"]}天'
             elif ret["code"] == 1011040:
                 msg = "今日已签到过,无法重复签到"
             else:
@@ -73,14 +73,14 @@ class BiliBiliCheckIn(object):
         """
         url = "https://api.bilibili.com/x/vip/privilege/receive"
         post_data = {"type": receive_type, "csrf": bili_jct}
-        ret = session.post(url, data=post_data).json()
+        ret = session.post(url=url, data=post_data).json()
         return ret
 
     @staticmethod
     def vip_manga_reward(session) -> dict:
         """获取漫画大会员福利"""
         url = "https://manga.bilibili.com/twirp/user.v1.User/GetVipReward"
-        ret = session.post(url, json={"reason_id": 1}).json()
+        ret = session.post(url=url, json={"reason_id": 1}).json()
         return ret
 
     @staticmethod
@@ -104,7 +104,7 @@ class BiliBiliCheckIn(object):
         """
         url = "https://api.bilibili.com/x/web-interface/share/add"
         post_data = {"aid": aid, "csrf": bili_jct}
-        ret = session.post(url, data=post_data).json()
+        ret = session.post(url=url, data=post_data).json()
         return ret
 
     @staticmethod
@@ -119,8 +119,15 @@ class BiliBiliCheckIn(object):
         order str 排序方式，默认desc
         order_type 排序类型，默认attention
         """
-        url = f"https://api.bilibili.com/x/relation/followings?vmid={uid}&pn={pn}&ps={ps}&order={order}&order_type={order_type}"
-        ret = session.get(url).json()
+        params = {
+            "vmid": uid,
+            "pn": pn,
+            "ps": ps,
+            "order": order,
+            "order_type": order_type,
+        }
+        url = f"https://api.bilibili.com/x/relation/followings"
+        ret = session.get(url=url, params=params).json()
         return ret
 
     @staticmethod
@@ -136,15 +143,18 @@ class BiliBiliCheckIn(object):
         order str 排序方式，默认pubdate
         keyword str 关键字，默认为空
         """
-        url = f"https://api.bilibili.com/x/space/arc/search?mid={uid}&pn={pn}&ps={ps}&tid={tid}&order={order}&keyword={keyword}"
-        ret = session.get(url).json()
+        params = {
+            "mid": uid,
+            "pn": pn,
+            "ps": ps,
+            "tid": tid,
+            "order": order,
+            "keyword": keyword,
+        }
+        url = f"https://api.bilibili.com/x/space/arc/search"
+        ret = session.get(url=url, params=params).json()
         data_list = [
-            {
-                "aid": one.get("aid"),
-                "cid": 0,
-                "title": one.get("title"),
-                "owner": one.get("author")
-            }
+            {"aid": one.get("aid"), "cid": 0, "title": one.get("title"), "owner": one.get("author")}
             for one in ret.get("data", {}).get("list", {}).get("vlist", [])
         ]
         return data_list
@@ -158,7 +168,7 @@ class BiliBiliCheckIn(object):
         """
         url = "https://api.bilibili.com/x/ugcpay/trade/elec/pay/quick"
         post_data = {"elec_num": num, "up_mid": uid, "otype": "up", "oid": uid, "csrf": bili_jct}
-        ret = session.post(url, data=post_data).json()
+        ret = session.post(url=url, data=post_data).json()
         return ret
 
     @staticmethod
@@ -177,7 +187,7 @@ class BiliBiliCheckIn(object):
             "cross_domain": "true",
             "csrf": bili_jct,
         }
-        ret = session.post(url, data=post_data).json()
+        ret = session.post(url=url, data=post_data).json()
 
         return ret
 
@@ -185,7 +195,7 @@ class BiliBiliCheckIn(object):
     def live_status(session) -> dict:
         """B站直播获取金银瓜子状态"""
         url = "https://api.live.bilibili.com/pay/v1/Exchange/getStatus"
-        ret = session.get(url).json()
+        ret = session.get(url=url).json()
         data = ret.get("data")
         silver = data.get("silver", 0)
         gold = data.get("gold", 0)
@@ -198,7 +208,7 @@ class BiliBiliCheckIn(object):
         """银瓜子兑换硬币"""
         url = "https://api.live.bilibili.com/pay/v1/Exchange/silver2coin"
         post_data = {"csrf_token": bili_jct}
-        ret = session.post(url, data=post_data).json()
+        ret = session.post(url=url, data=post_data).json()
         return ret
 
     @staticmethod
@@ -209,14 +219,15 @@ class BiliBiliCheckIn(object):
         num int 获取视频数量
         """
         url = "https://api.bilibili.com/x/web-interface/dynamic/region?ps=" + str(num) + "&rid=" + str(rid)
-        ret = session.get(url).json()
+        ret = session.get(url=url).json()
         data_list = [
             {
                 "aid": one.get("aid"),
                 "cid": one.get("cid"),
                 "title": one.get("title"),
-                "owner": one.get("owner", {}).get("name")
-            } for one in ret.get("data", {}).get("archives", [])
+                "owner": one.get("owner", {}).get("name"),
+            }
+            for one in ret.get("data", {}).get("archives", [])
         ]
         return data_list
 
@@ -302,12 +313,12 @@ class BiliBiliCheckIn(object):
                 if silver2coin:
                     silver2coin_ret = self.silver2coin(session=session, bili_jct=bili_jct)
                     if silver2coin_ret["code"] == 0:
-                        silver2coin_msg = f'成功将银瓜子兑换为1个硬币'
+                        silver2coin_msg = f"成功将银瓜子兑换为1个硬币"
                     else:
                         silver2coin_msg = silver2coin_ret["msg"]
                     print(silver2coin_msg)
                 else:
-                    silver2coin_msg = f'未开启银瓜子兑换硬币功能'
+                    silver2coin_msg = f"未开启银瓜子兑换硬币功能"
                 live_stats = self.live_status(session=session)
                 uname, uid, is_login, new_coin, vip_type, new_current_exp = self.get_nav(session=session)
                 print(uname, uid, is_login, new_coin, vip_type, new_current_exp)
@@ -318,10 +329,12 @@ class BiliBiliCheckIn(object):
                 share_av = reward_ret.get("data", {}).get("share_av")
                 today_exp = len([one for one in [login, watch_av, share_av] if one]) * 5
                 today_exp += coins_av
-                msg = f"【Bilibili签到】\n帐号信息: {uname}\n漫画签到: {manhua_msg}\n直播签到: {live_msg}\n" \
-                      f"登陆任务: 今日已登陆\n观看视频: {report_msg}\n分享任务: {share_msg}\n投币任务: {coin_msg}\n" \
-                      f"银瓜子兑换硬币: {silver2coin_msg}\n今日获得经验: {today_exp}\n当前经验: {new_current_exp}\n" \
-                      f"按当前速度升级还需: {(28800 - new_current_exp) // today_exp}天\n{live_stats}"
+                msg = (
+                    f"【Bilibili签到】\n帐号信息: {uname}\n漫画签到: {manhua_msg}\n直播签到: {live_msg}\n"
+                    f"登陆任务: 今日已登陆\n观看视频: {report_msg}\n分享任务: {share_msg}\n投币任务: {coin_msg}\n"
+                    f"银瓜子兑换硬币: {silver2coin_msg}\n今日获得经验: {today_exp}\n当前经验: {new_current_exp}\n"
+                    f"按当前速度升级还需: {(28800 - new_current_exp) // today_exp}天\n{live_stats}"
+                )
                 print(msg)
                 msg_list.append(msg)
         return msg_list
