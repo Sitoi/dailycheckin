@@ -28,7 +28,11 @@ jobs:
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
           SCKEY: ${{secrets.SCKEY}}
+          QMSG_KEY: ${{secrets.QMSG_KEY}}
           TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}
           TG_USER_ID: ${{secrets.TG_USER_ID}}
-          QMSG_KEY: ${{secrets.QMSG_KEY}}
+          COOLPUSHSKEY: ${{secrets.COOLPUSHSKEY}}
+          COOLPUSHQQ: ${{secrets.COOLPUSHQQ}}
+          COOLPUSHWX: ${{secrets.COOLPUSHWX}}
+          COOLPUSHEMAIL: ${{secrets.COOLPUSHEMAIL}}
           QQREAD_ACCOUNT_LIST: ${{secrets.QQREAD_ACCOUNT_LIST}}

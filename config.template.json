@@ -5,6 +5,10 @@
   "QMSG_KEY": "xxxxxx",
   "TG_BOT_TOKEN": "xxxxxx",
   "TG_USER_ID": "xxxxxx",
+  "COOLPUSHSKEY": "xxxxxx",
+  "COOLPUSHQQ": true,
+  "COOLPUSHWX": true,
+  "COOLPUSHEMAIL": true,
   "CITY_NAME_LIST": [
     "上海"
   ],

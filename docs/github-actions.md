@@ -2,7 +2,7 @@
 
 ## 一、fork 本项目
 
-## 二、配置项目 Secrets 
+## 二、配置项目 Secrets
 
 > _**斜体加粗大写英文字母**_ 表示 GitHub Actions Secrets 环境变量名称，内容直接复制 _**斜体加粗大写英文字母 key**_  对应的 value
 

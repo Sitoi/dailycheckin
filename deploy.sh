@@ -5,6 +5,10 @@ if [[ $SCKEY ]]; then echo "SCKEY 变量存在，并成功赋值" ;else SCKEY=""
 if [[ $QMSG_KEY ]]; then echo "QMSG_KEY 变量存在，并成功赋值" ;else QMSG_KEY=""; fi;
 if [[ $TG_BOT_TOKEN ]]; then echo "TG_BOT_TOKEN 变量存在，并成功赋值" ;else TG_BOT_TOKEN=""; fi;
 if [[ $TG_USER_ID ]]; then echo "TG_USER_ID 变量存在，并成功赋值" ;else TG_USER_ID=""; fi;
+if [[ $COOLPUSHSKEY ]]; then echo "COOLPUSHSKEY 变量存在，并成功赋值" ;else COOLPUSHSKEY=""; fi;
+if [[ $COOLPUSHQQ ]]; then echo "COOLPUSHQQ 变量存在，并成功赋值" ;else COOLPUSHQQ=true; fi;
+if [[ $COOLPUSHWX ]]; then echo "COOLPUSHWX 变量存在，并成功赋值" ;else COOLPUSHWX=false; fi;
+if [[ $COOLPUSHEMAIL ]]; then echo "COOLPUSHEMAIL 变量存在，并成功赋值" ;else COOLPUSHEMAIL=false; fi;
 if [[ $IQIYI_COOKIE_LIST ]]; then echo "IQIYI_COOKIE_LIST 变量存在，并成功赋值" ;else IQIYI_COOKIE_LIST=[]; fi;
 if [[ $VQQ_COOKIE_LIST ]]; then echo "VQQ_COOKIE_LIST 变量存在，并成功赋值" ;else VQQ_COOKIE_LIST=[]; fi;
 if [[ $POJIE_COOKIE_LIST ]]; then echo "POJIE_COOKIE_LIST 变量存在，并成功赋值" ;else POJIE_COOKIE_LIST=[]; fi;
@@ -29,6 +33,10 @@ JSONSTR="{
   \"QMSG_KEY\": \"${QMSG_KEY}\",
   \"TG_BOT_TOKEN\": \"${TG_BOT_TOKEN}\",
   \"TG_USER_ID\": \"${TG_USER_ID}\",
+  \"COOLPUSHSKEY\": \"${COOLPUSHSKEY}\",
+  \"COOLPUSHQQ\": \"${COOLPUSHQQ}\",
+  \"COOLPUSHWX\": \"${COOLPUSHWX}\",
+  \"COOLPUSHEMAIL\": \"${COOLPUSHEMAIL}\",
   \"CITY_NAME_LIST\": ${CITY_NAME_LIST},
   \"MOTTO\": ${MOTTO},
   \"IQIYI_COOKIE_LIST\": ${IQIYI_COOKIE_LIST},

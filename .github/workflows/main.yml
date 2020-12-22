@@ -30,6 +30,10 @@ jobs:
           QMSG_KEY: ${{secrets.QMSG_KEY}}
           TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}
           TG_USER_ID: ${{secrets.TG_USER_ID}}
+          COOLPUSHSKEY: ${{secrets.COOLPUSHSKEY}}
+          COOLPUSHQQ: ${{secrets.COOLPUSHQQ}}
+          COOLPUSHWX: ${{secrets.COOLPUSHWX}}
+          COOLPUSHEMAIL: ${{secrets.COOLPUSHEMAIL}}
           CITY_NAME_LIST: ${{secrets.CITY_NAME_LIST}}
           MOTTO: ${{secrets.MOTTO}}
           IQIYI_COOKIE_LIST: ${{secrets.IQIYI_COOKIE_LIST}}

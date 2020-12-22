@@ -48,6 +48,7 @@
 - [x] server 酱（微信）
 - [x] qmsg 酱（QQ）
 - [x] telegram（TG）
+- [x] Cool Push（QQ,微信,邮箱）
 
 ## 使用方法
 

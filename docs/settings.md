@@ -12,6 +12,10 @@
   "QMSG_KEY": "xxxxxx",
   "TG_BOT_TOKEN": "xxxxxx",
   "TG_USER_ID": "xxxxxx",
+  "COOLPUSHSKEY": "xxxxxx",
+  "COOLPUSHQQ": true,
+  "COOLPUSHWX": true,
+  "COOLPUSHEMAIL": true,
   "CITY_NAME_LIST": [
     "上海"
   ],
@@ -172,6 +176,10 @@
 |_**QMSG_KEY**_|qmsg 酱推送|非必须|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
 |_**TG_BOT_TOKEN**_|telegram 推送|非必须|telegram 推送 `TG_BOT_TOKEN`|
 |_**TG_USER_ID**_|telegram 推送|非必须|telegram 推送 `TG_USER_ID`|
+|_**COOLPUSHSKEY**_|Cool Push 推送|非必须|[Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`|
+|_**COOLPUSHQQ**_|Cool Push 推送|非必须|[Cool Push](https://cp.xuthus.cc/) 是否开启 QQ 推送，默认开启|
+|_**COOLPUSHWX**_|Cool Push 推送|非必须|[Cool Push](https://cp.xuthus.cc/) 是否开启 微信 推送，默认关闭|
+|_**COOLPUSHEMAIL**_|Cool Push 推送|非必须|[Cool Push](https://cp.xuthus.cc/) 是否开启 邮件 推送，默认关闭|
 |_**CITY_NAME_LIST**_|每日天气|非必须|填写城市名称，点击查看[城市名称列表](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/weather/city.json)|
 |_**MOTTO**_|每日一句|非必须|是否开启默认为 false|
 |_**IQIYI_COOKIE_LIST**_.iqiyi_cookie|爱奇艺|非必须|[爱奇艺](https://www.iqiyi.com/) 帐号的 cookie 信息|
@@ -202,19 +210,24 @@
 
 ### 推送参数
 
-#### 钉钉推送参数获取
+#### 钉钉推送密钥获取
 
 [钉钉推送官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq)
 
-#### Server 酱推送参数获取
+#### Server 酱推送密钥获取
 
 [Server 酱官方文档](https://sc.ftqq.com/3.version)
 
-#### Qmsg 酱推送参数获取
+#### Qmsg 酱推送密钥获取
 
 [Qmsg 酱官方文档](https://qmsg.zendee.cn/index.html)
 
-#### Telegram 推送参数获取
+#### Telegram 推送密钥获取
+
+
+#### Cool Push 推送密钥获取
+
+[Cool Push](https://cp.xuthus.cc/)
 
 ### 其他参数
 

@@ -109,7 +109,7 @@ class BiliBiliCheckIn(object):
 
     @staticmethod
     def get_followings(
-            session, uid: int, pn: int = 1, ps: int = 50, order: str = "desc", order_type: str = "attention"
+        session, uid: int, pn: int = 1, ps: int = 50, order: str = "desc", order_type: str = "attention"
     ) -> dict:
         """
         获取指定用户关注的up主
@@ -125,7 +125,7 @@ class BiliBiliCheckIn(object):
 
     @staticmethod
     def space_arc_search(
-            session, uid: int, pn: int = 1, ps: int = 100, tid: int = 0, order: str = "pubdate", keyword: str = ""
+        session, uid: int, pn: int = 1, ps: int = 100, tid: int = 0, order: str = "pubdate", keyword: str = ""
     ) -> dict:
         """
         获取指定up主空间视频投稿信息
@@ -240,7 +240,6 @@ class BiliBiliCheckIn(object):
                 }
             )
             success_count = 0
-            today_exp = 5
             uname, uid, is_login, coin, vip_type, current_exp = self.get_nav(session=session)
             # print(uname, uid, is_login, coin, vip_type, current_exp)
             if is_login:
@@ -250,6 +249,7 @@ class BiliBiliCheckIn(object):
                 print(live_msg)
                 aid_list = self.get_region(session=session)
                 reward_ret = self.reward(session=session)
+                print(reward_ret)
                 coins_av_count = reward_ret.get("data", {}).get("coins_av") // 10
                 coin_num = coin_num - coins_av_count
                 coin_num = coin_num if coin_num < coin else coin
@@ -279,11 +279,9 @@ class BiliBiliCheckIn(object):
                             break
                         if coin_num <= 0:
                             break
-                    today_exp += (success_count + coins_av_count) * 10
                     coin_msg = f"今日成功投币{success_count + coins_av_count}/{bilibili_info.get('coin_num', 5)}个"
                     print(coin_msg)
                 else:
-                    today_exp += coins_av_count * 10
                     coin_msg = f"今日成功投币{coins_av_count}/{bilibili_info.get('coin_num', 5)}个"
                     print(coin_msg)
                 aid = aid_list[0].get("aid")
@@ -291,14 +289,12 @@ class BiliBiliCheckIn(object):
                 title = aid_list[0].get("title")
                 report_ret = self.report_task(session=session, bili_jct=bili_jct, aid=aid, cid=cid)
                 if report_ret.get("code") == 0:
-                    today_exp += 5
                     report_msg = f"观看《{title}》300秒"
                 else:
                     report_msg = f"任务失败"
                 print(report_msg)
                 share_ret = self.share_task(session=session, bili_jct=bili_jct, aid=aid)
                 if share_ret.get("code") == 0:
-                    today_exp += 5
                     share_msg = f"分享《{title}》成功"
                 else:
                     share_msg = f"分享失败"
@@ -315,6 +311,13 @@ class BiliBiliCheckIn(object):
                 live_stats = self.live_status(session=session)
                 uname, uid, is_login, new_coin, vip_type, new_current_exp = self.get_nav(session=session)
                 print(uname, uid, is_login, new_coin, vip_type, new_current_exp)
+                reward_ret = self.reward(session=session)
+                login = reward_ret.get("data", {}).get("login")
+                watch_av = reward_ret.get("data", {}).get("watch_av")
+                coins_av = reward_ret.get("data", {}).get("coins_av", 0)
+                share_av = reward_ret.get("data", {}).get("share_av")
+                today_exp = len([one for one in [login, watch_av, share_av] if one]) * 5
+                today_exp += coins_av
                 msg = f"【Bilibili签到】\n帐号信息: {uname}\n漫画签到: {manhua_msg}\n直播签到: {live_msg}\n" \
                       f"登陆任务: 今日已登陆\n观看视频: {report_msg}\n分享任务: {share_msg}\n投币任务: {coin_msg}\n" \
                       f"银瓜子兑换硬币: {silver2coin_msg}\n今日获得经验: {today_exp}\n当前经验: {new_current_exp}\n" \

@@ -31,7 +31,21 @@ from youdao import YouDaoCheckIn
 def message_to_server(sckey, content):
     print("server 酱推送开始")
     data = {"text": "每日签到", "desp": content.replace("\n", "\n\n")}
-    response = requests.post(f"https://sc.ftqq.com/{sckey}.send", data=data)
+    response = requests.post(url=f"https://sc.ftqq.com/{sckey}.send", data=data)
+    return response.text
+
+
+def message_to_coolpush(
+    coolpushskey, content, coolpushqq: bool = True, coolpushwx: bool = False, coolpushemail: bool = False
+):
+    print("Cool Push 推送开始")
+    params = {"c": content, "t": "每日签到"}
+    if coolpushqq:
+        response = requests.post(url=f"https://push.xuthus.cc/send/{coolpushskey}", params=params)
+    if coolpushwx:
+        response = requests.post(url=f"https://push.xuthus.cc/wx/{coolpushskey}", params=params)
+    if coolpushemail:
+        response = requests.post(url=f"https://push.xuthus.cc/email/{coolpushskey}", params=params)
     return response.text
 
 
@@ -72,51 +86,43 @@ def main_handler(event, context):
     start_time = time.time()
     utc_time = datetime.utcnow() + timedelta(hours=8)
     if "IS_GITHUB_ACTION" in os.environ:
-        message = os.environ.get("ONLY_MESSAGE")
-        dingtalk_secret = os.environ.get("DINGTALK_SECRET")
-        dingtalk_access_token = os.environ.get("DINGTALK_ACCESS_TOKEN")
-        sckey = os.environ.get("SCKEY")
-        tg_bot_token = os.environ.get("TG_BOT_TOKEN")
-        tg_user_id = os.environ.get("TG_USER_ID")
-        qmsg_key = os.environ.get("QMSG_KEY")
-        motto = os.environ.get("MOTTO")
-        iqiyi_cookie_list = (
-            json.loads(os.environ.get("IQIYI_COOKIE_LIST", [])) if os.environ.get("IQIYI_COOKIE_LIST") else []
-        )
+        message = os.getenv("ONLY_MESSAGE")
+        dingtalk_secret = os.getenv("DINGTALK_SECRET")
+        dingtalk_access_token = os.getenv("DINGTALK_ACCESS_TOKEN")
+        sckey = os.getenv("SCKEY")
+        tg_bot_token = os.getenv("TG_BOT_TOKEN")
+        tg_user_id = os.getenv("TG_USER_ID")
+        qmsg_key = os.getenv("QMSG_KEY")
+        coolpushskey = os.getenv("COOLPUSHSKEY")
+        coolpushqq = os.getenv("COOLPUSHQQ")
+        coolpushwx = os.getenv("COOLPUSHWX")
+        coolpushemail = os.getenv("COOLPUSHEMAIL")
+        motto = os.getenv("MOTTO")
+        iqiyi_cookie_list = json.loads(os.getenv("IQIYI_COOKIE_LIST", [])) if os.getenv("IQIYI_COOKIE_LIST") else []
         baidu_url_submit_list = (
-            json.loads(os.environ.get("BAIDU_URL_SUBMIT_LIST", [])) if os.environ.get("BAIDU_URL_SUBMIT_LIST") else []
+            json.loads(os.getenv("BAIDU_URL_SUBMIT_LIST", [])) if os.getenv("BAIDU_URL_SUBMIT_LIST") else []
         )
-        vqq_cookie_list = json.loads(os.environ.get("VQQ_COOKIE_LIST", [])) if os.environ.get("VQQ_COOKIE_LIST") else []
-        youdao_cookie_list = (
-            json.loads(os.environ.get("YOUDAO_COOKIE_LIST", [])) if os.environ.get("YOUDAO_COOKIE_LIST") else []
-        )
-        pojie_cookie_list = (
-            json.loads(os.environ.get("POJIE_COOKIE_LIST", [])) if os.environ.get("POJIE_COOKIE_LIST") else []
-        )
-        kgqq_cookie_list = (
-            json.loads(os.environ.get("KGQQ_COOKIE_LIST", [])) if os.environ.get("KGQQ_COOKIE_LIST") else []
-        )
+        vqq_cookie_list = json.loads(os.getenv("VQQ_COOKIE_LIST", [])) if os.getenv("VQQ_COOKIE_LIST") else []
+        youdao_cookie_list = json.loads(os.getenv("YOUDAO_COOKIE_LIST", [])) if os.getenv("YOUDAO_COOKIE_LIST") else []
+        pojie_cookie_list = json.loads(os.getenv("POJIE_COOKIE_LIST", [])) if os.getenv("POJIE_COOKIE_LIST") else []
+        kgqq_cookie_list = json.loads(os.getenv("KGQQ_COOKIE_LIST", [])) if os.getenv("KGQQ_COOKIE_LIST") else []
         music163_account_list = (
-            json.loads(os.environ.get("MUSIC163_ACCOUNT_LIST", [])) if os.environ.get("MUSIC163_ACCOUNT_LIST") else []
+            json.loads(os.getenv("MUSIC163_ACCOUNT_LIST", [])) if os.getenv("MUSIC163_ACCOUNT_LIST") else []
         )
-        city_name_list = json.loads(os.environ.get("CITY_NAME_LIST", [])) if os.environ.get("CITY_NAME_LIST") else []
-        xmly_cookie_list = (
-            json.loads(os.environ.get("XMLY_COOKIE_LIST", [])) if os.environ.get("XMLY_COOKIE_LIST") else []
-        )
+        city_name_list = json.loads(os.getenv("CITY_NAME_LIST", [])) if os.getenv("CITY_NAME_LIST") else []
+        xmly_cookie_list = json.loads(os.getenv("XMLY_COOKIE_LIST", [])) if os.getenv("XMLY_COOKIE_LIST") else []
         oneplusbbs_cookie_list = (
-            json.loads(os.environ.get("ONEPLUSBBS_COOKIE_LIST", [])) if os.environ.get("ONEPLUSBBS_COOKIE_LIST") else []
+            json.loads(os.getenv("ONEPLUSBBS_COOKIE_LIST", [])) if os.getenv("ONEPLUSBBS_COOKIE_LIST") else []
         )
+
         qqread_account_list = (
-            json.loads(os.environ.get("QQREAD_ACCOUNT_LIST", [])) if os.environ.get("QQREAD_ACCOUNT_LIST") else []
+            json.loads(os.getenv("QQREAD_ACCOUNT_LIST", [])) if os.getenv("QQREAD_ACCOUNT_LIST") else []
         )
-        fmapp_account_list = (
-            json.loads(os.environ.get("FMAPP_ACCOUNT_LIST", [])) if os.environ.get("FMAPP_ACCOUNT_LIST") else []
-        )
-        tieba_cookie_list = (
-            json.loads(os.environ.get("TIEBA_COOKIE_LIST", [])) if os.environ.get("TIEBA_COOKIE_LIST") else []
-        )
+
+        fmapp_account_list = json.loads(os.getenv("FMAPP_ACCOUNT_LIST", [])) if os.getenv("FMAPP_ACCOUNT_LIST") else []
+        tieba_cookie_list = json.loads(os.getenv("TIEBA_COOKIE_LIST", [])) if os.getenv("TIEBA_COOKIE_LIST") else []
         bilibili_cookie_list = (
-            json.loads(os.environ.get("BILIBILI_COOKIE_LIST", [])) if os.environ.get("BILIBILI_COOKIE_LIST") else []
+            json.loads(os.getenv("BILIBILI_COOKIE_LIST", [])) if os.getenv("BILIBILI_COOKIE_LIST") else []
         )
 
     else:
@@ -132,6 +138,10 @@ def main_handler(event, context):
         qmsg_key = data.get("QMSG_KEY")
         tg_bot_token = data.get("TG_BOT_TOKEN")
         tg_user_id = data.get("TG_USER_ID")
+        coolpushskey = data.get("COOLPUSHSKEY")
+        coolpushqq = data.get("COOLPUSHQQ")
+        coolpushwx = data.get("COOLPUSHWX")
+        coolpushemail = data.get("COOLPUSHEMAIL")
         city_name_list = data.get("CITY_NAME_LIST", [])
         motto = data.get("MOTTO")
         iqiyi_cookie_list = data.get("IQIYI_COOKIE_LIST", [])
@@ -237,15 +247,22 @@ def main_handler(event, context):
                 message_to_qmsg(qmsg_key=qmsg_key, content=content)
         if tg_user_id and tg_bot_token:
             message_to_telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=content)
+        if coolpushskey:
+            for content in content_list:
+                message_to_coolpush(
+                    coolpushskey=coolpushskey,
+                    content=content,
+                    coolpushqq=coolpushqq,
+                    coolpushwx=coolpushwx,
+                    coolpushemail=coolpushemail,
+                )
     return
 
 
 if __name__ == "__main__":
     args = sys.argv
     if len(args) > 1:
-        event = {
-            "Message": args[1]
-        }
+        event = {"Message": args[1]}
     else:
         event = None
     main_handler(event=event, context=None)
