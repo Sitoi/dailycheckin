@@ -22,46 +22,138 @@
   "MOTTO": true,
   "IQIYI_COOKIE_LIST": [
     {
-      "iqiyi_cookie": "xxxxxx"
+      "iqiyi_cookie": "帐号1 cookie"
+    },
+    {
+      "iqiyi_cookie": "帐号2 cookie"
     }
   ],
   "VQQ_COOKIE_LIST": [
     {
-      "vqq_cookie": "xxxxxx"
+      "vqq_cookie": "帐号1 cookie"
+    },
+    {
+      "vqq_cookie": "帐号2 cookie"
     }
   ],
   "POJIE_COOKIE_LIST": [
     {
-      "pojie_cookie": "xxxxxx"
+      "pojie_cookie": "帐号1 cookie"
+    },
+    {
+      "pojie_cookie": "帐号2 cookie"
     }
   ],
   "YOUDAO_COOKIE_LIST": [
     {
-      "youdao_cookie": "xxxxxx"
+      "youdao_cookie": "帐号1 cookie"
+    },
+    {
+      "youdao_cookie": "帐号2 cookie"
     }
   ],
   "KGQQ_COOKIE_LIST": [
     {
-      "kgqq_cookie": "xxxxxx"
+      "kgqq_cookie": "帐号1 cookie"
+    },
+    {
+      "kgqq_cookie": "帐号2 cookie"
     }
   ],
   "MUSIC163_ACCOUNT_LIST": [
     {
-      "music163_phone": "xxxxxx",
-      "music163_password": "xxxxxx"
+      "music163_phone": "帐号1 手机号",
+      "music163_password": "帐号1 密码"
+    },
+    {
+      "music163_phone": "帐号2 手机号",
+      "music163_password": "帐号2 密码"
     }
   ],
   "XMLY_COOKIE_LIST": [
     {
-      "xmly_cookie": "xxxxxx"
+      "xmly_cookie": "帐号1 cookie"
+    },
+    {
+      "xmly_cookie": "帐号2 cookie"
     }
   ],
   "ONEPLUSBBS_COOKIE_LIST": [
     {
-      "oneplusbbs_cookie": "xxxxxx"
+      "oneplusbbs_cookie": "帐号1 cookie"
+    },
+    {
+      "oneplusbbs_cookie": "帐号2 cookie"
     }
   ],
   "QQREAD_ACCOUNT_LIST": [
+    {
+      "qqread_bodys": {
+        "common": {
+          "appid": 1111111111,
+          "areaid": 5,
+          "qq_ver": "8.4.17",
+          "os_ver": "iOS 14.2",
+          "mp_ver": "0.32.5",
+          "mpos_ver": "1.21.0",
+          "brand": "iPhone",
+          "model": "iPhone 11<iPhone12,1>",
+          "screenWidth": 414,
+          "screenHeight": 896,
+          "windowWidth": 414,
+          "windowHeight": 813,
+          "openid": "xxxxxx",
+          "guid": 111111111111,
+          "session": "xxxxxx",
+          "scene": 2016,
+          "source": "xxxxxx",
+          "hasRedDot": "false",
+          "missions": -1,
+          "caseID": -1
+        },
+        "dataList": [
+          {
+            "click1": "bookDetail_bottomBar_read_C",
+            "click2": "bookLib2_bookList_bookClick_C",
+            "route": "pages/book-read/index",
+            "refer": "pages/book-detail/index",
+            "options": {
+              "bid": "888888",
+              "cid": "1"
+            },
+            "dis": 1666666666666,
+            "ext6": 26,
+            "eventID": "bookRead_show_I",
+            "type": "shown",
+            "ccid": 1,
+            "bid": "888888",
+            "bookStatus": 1,
+            "bookPay": 0,
+            "chapterStatus": 0,
+            "ext1": {
+              "font": 18,
+              "bg": 0,
+              "pageMode": 1
+            },
+            "from": "bookLib2_bookList_bookClick_C_2_888888"
+          }
+        ]
+      },
+      "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=888888&readTime=8888&read_type=0&conttype=1&read_status=0&chapter_info=xxxxxx&sp=-1",
+      "qqread_headers": {
+        "Accept": "*/*",
+        "ywsession": "xxxxxx",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Cookie": "xxxxxx",
+        "Host": "mqqapi.reader.qq.com",
+        "User-Agent": "QQ/8.4.17.638 CFNetwork/1206 Darwin/20.1.0",
+        "Referer": "https://appservice.qq.com/xxxxxx/0.32.5/page-frame.html",
+        "Accept-Language": "zh-cn",
+        "Accept-Encoding": "gzip, deflate, br",
+        "mpversion": "0.32.5"
+      }
+    },
     {
       "qqread_bodys": {
         "common": {
@@ -135,23 +227,42 @@
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
       "submit_url": "http://data.zz.baidu.com/urls?site=https://sitoi.cn&token=xxxxxx",
       "times": 10
+    },
+    {
+      "data_url": "帐号2 data_url",
+      "submit_url": "帐号2 submit_url",
+      "times": 10
     }
   ],
   "FMAPP_ACCOUNT_LIST": [
     {
-      "fmapp_token": "xxxxxx",
-      "fmapp_cookie": "xxxxxx",
-      "fmapp_device_id": "xxxxxx"
+      "fmapp_token": "帐号1 token",
+      "fmapp_cookie": "帐号1 cookie",
+      "fmapp_device_id": "帐号1 device_id"
+    },
+    {
+      "fmapp_token": "帐号2 token",
+      "fmapp_cookie": "帐号2 cookie",
+      "fmapp_device_id": "帐号2 device_id"
     }
   ],
   "TIEBA_COOKIE_LIST": [
     {
-      "tieba_cookie": "xxxxxx"
+      "tieba_cookie": "帐号1 cookie"
+    },
+    {
+      "tieba_cookie": "帐号2 cookie"
     }
   ],
   "BILIBILI_COOKIE_LIST": [
     {
-      "bilibili_cookie": "xxxxxx",
+      "bilibili_cookie": "帐号1 cookie",
+      "coin_num": 0,
+      "coin_type": 1,
+      "silver2coin": true
+    },
+    {
+      "bilibili_cookie": "帐号2 cookie",
       "coin_num": 0,
       "coin_type": 1,
       "silver2coin": true
