@@ -19,10 +19,10 @@ class TiebaCheckIn:
         try:
             content = session.get(url="http://tieba.baidu.com/dc/common/tbs")
         except Exception as e:
-            raise Exception(f"登录验证异常,错误信息: {e}")
+            return False, f"登录验证异常,错误信息: {e}"
         data = json.loads(content.text)
         if data["is_login"] == 0:
-            raise Exception("登录失败,cookie 异常")
+            return False, "登录失败,cookie 异常"
         tbs = data["tbs"]
         user_name = self.login_info(session=session)["userName"]
         return tbs, user_name
@@ -88,10 +88,13 @@ class TiebaCheckIn:
             requests.utils.add_dict_to_cookiejar(session.cookies, tieba_cookie)
             session.headers.update({"Referer": "https://www.baidu.com/"})
             tbs, user_name = self.valid(session=session)
-            tb_name_list = self.get_tieba_list(session=session)
-            msg = self.sign(session=session, tb_name_list=tb_name_list, tbs=tbs)
-            msg = f"【百度贴吧签到】\n帐号信息: {user_name}\n{msg}"
-            print(msg)
+            if tbs:
+                tb_name_list = self.get_tieba_list(session=session)
+                msg = self.sign(session=session, tb_name_list=tb_name_list, tbs=tbs)
+                msg = f"【百度贴吧签到】\n帐号信息: {user_name}\n{msg}"
+                print(msg)
+            else:
+                msg = f"【百度贴吧签到】\n帐号信息: {user_name}"
             msg_list.append(msg)
         return msg_list
 
