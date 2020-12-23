@@ -102,7 +102,11 @@ class KGQQCheckIn:
         for kgqq_cookie in self.kgqq_cookie_list:
             kgqq_cookie = kgqq_cookie.get("kgqq_cookie")
             msg = self.sign(kgqq_cookie=kgqq_cookie)
-            o_cookie = re.findall(r"o_cookie=(.*?);", kgqq_cookie)[0]
+            o_cookie = (
+                re.findall(r"o_cookie=(.*?);", kgqq_cookie)[0]
+                if re.findall(r"o_cookie=(.*?);", kgqq_cookie)
+                else "未获取到用户信息"
+            )
             msg = f"【全民K歌签到】\n帐号信息: {o_cookie}\n获取鲜花: {msg}"
             print(msg)
             msg_list.append(msg)

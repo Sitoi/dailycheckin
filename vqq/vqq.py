@@ -12,9 +12,9 @@ class VQQCheckIn:
         self.vqq_cookie_list = vqq_cookie_list
 
     @staticmethod
-    def sign_once(session, headers):
+    def sign_once(session):
         url = "http://v.qq.com/x/bu/mobile_checkin?isDarkMode=0&uiType=REGULAR"
-        res = session.get(url=url, headers=headers)
+        res = session.get(url=url)
         match = re.search(r'isMultiple" />\s+(.*?)\s+<', res.text)
         if match:
             value = match.group(1)
@@ -24,10 +24,10 @@ class VQQCheckIn:
         return msg
 
     @staticmethod
-    def sign_twice(session, headers):
+    def sign_twice(session):
         this_time = int(round(time.time() * 1000))
         url = "https://vip.video.qq.com/fcgi-bin/comm_cgi?name=hierarchical_task_system&cmd=2&_=" + str(this_time)
-        res = session.get(url=url, headers=headers)
+        res = session.get(url=url)
         ret = re.search('ret": (.*?),|}', res.text).group(1)
         if ret == "0":
             value = re.search('checkin_score": (.*?),', res.text).group(1)
@@ -39,12 +39,15 @@ class VQQCheckIn:
     def main(self):
         msg_list = []
         for vqq_cookie in self.vqq_cookie_list:
-            vqq_cookie = vqq_cookie.get("vqq_cookie")
+            vqq_cookie = {item.split("=")[0]: item.split("=")[1] for item in vqq_cookie.get("vqq_cookie").split("; ")}
+            _tmp = vqq_cookie.pop("ptag", None)
             session = requests.session()
-            headers = {"Cookie": vqq_cookie}
-            o_cookie = re.findall(r"o_cookie=(.*?);", vqq_cookie)[0]
-            sign_once_msg = self.sign_once(session=session, headers=headers)
-            sign_twice_msg = self.sign_twice(session=session, headers=headers)
+            requests.utils.add_dict_to_cookiejar(session.cookies, vqq_cookie)
+            o_cookie = (
+                vqq_cookie.get("o_cookie") if vqq_cookie.get("o_cookie") else vqq_cookie.get("qq_nick", "未获取到用户信息")
+            )
+            sign_once_msg = self.sign_once(session=session)
+            sign_twice_msg = self.sign_twice(session=session)
             msg = f"【腾讯视频签到】\n用户信息: {o_cookie}\n签到奖励1: {sign_once_msg}\n签到奖励2: {sign_twice_msg}"
             print(msg)
             msg_list.append(msg)
