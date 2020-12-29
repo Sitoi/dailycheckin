@@ -1,0 +1,14 @@
+version: '3'
+services:
+  dailycheckin:
+    image: sitoi/dailycheckin:latest
+    container_name: dailycheckin
+    restart: always
+    tty: true
+    volumes:
+      - ./my_crontab_list.sh:/dailycheckin/docker/my_crontab_list.sh
+      - ./config.json:/dailycheckin/config.json
+      - ./logs:/dailycheckin/logs
+    environment:
+      - CUSTOM_LIST_FILE=my_crontab_list.sh
+      - CUSTOM_LIST_MERGE_TYPE=append

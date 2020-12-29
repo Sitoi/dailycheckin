@@ -1,0 +1,1 @@
+0 18 * * * python /dailycheckin/index.py >> /dailycheckin/logs/dailycheckin.log 2>&1
