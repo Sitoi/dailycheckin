@@ -65,13 +65,13 @@ class Music163CheckIn:
             "Cookie": "os=pc; osver=Microsoft-Windows-10-Professional-build-10586-64bit; appver=2.0.3.131777; channel=netease; __remember_me=true;",
         }
 
-        res = session.post(url=url, data=self.protect(json.dumps(logindata)), headers=headers2)
+        res = session.post(url=url, data=self.protect(json.dumps(logindata)), headers=headers2, verify=False)
         temp_cookie = res.cookies
         res_data = res.json()
         if res_data["code"] != 200:
             sign_msg = "登录失败！请检查密码是否正确！"
             return sign_msg, music_count_msg
-        res = session.post(url=daily_task_url, data=self.protect('{"type":0}'), headers=headers)
+        res = session.post(url=daily_task_url, data=self.protect('{"type":0}'), headers=headers, verify=False)
         res_data = json.loads(res.text)
         if res_data["code"] != 200 and res_data["code"] != -2:
             sign_msg = res_data["msg"]
@@ -85,6 +85,7 @@ class Music163CheckIn:
             url=resource_url,
             data=self.protect('{"csrf_token":"' + requests.utils.dict_from_cookiejar(temp_cookie)["__csrf"] + '"}'),
             headers=headers,
+            verify=False
         )
         res_data = json.loads(res.text, strict=False)
         for x in res_data["recommend"]:
@@ -97,7 +98,7 @@ class Music163CheckIn:
                 "n": 1000,
                 "csrf_token": requests.utils.dict_from_cookiejar(temp_cookie)["__csrf"],
             }
-            res = session.post(url=url, data=self.protect(json.dumps(protect_data)), headers=headers)
+            res = session.post(url=url, data=self.protect(json.dumps(protect_data)), headers=headers, verify=False)
             res_data = json.loads(res.text, strict=False)
             buffer = []
             count = 0
@@ -121,7 +122,7 @@ class Music163CheckIn:
             if count >= 310:
                 break
         postdata = {"logs": json.dumps(buffer)}
-        res = session.post(url="http://music.163.com/weapi/feedback/weblog", data=self.protect(json.dumps(postdata)))
+        res = session.post(url="http://music.163.com/weapi/feedback/weblog", data=self.protect(json.dumps(postdata)), verify=False)
         res_data = json.loads(res.text, strict=False)
         if res_data["code"] == 200:
             music_count_msg = f"{count} 首"
