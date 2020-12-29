@@ -5,6 +5,8 @@ on:
     - cron: '*/11 * * * * '
   watch:
     types: [ started ]
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest

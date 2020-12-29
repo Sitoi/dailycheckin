@@ -5,6 +5,7 @@ import random
 import re
 import time
 from datetime import datetime, timedelta
+from multiprocessing import Pool
 
 import requests
 
@@ -189,129 +190,130 @@ class QQReadCheckIn:
                     totalamount += i["amount"]
         return str(totalamount)
 
+    def start(self, secrets):
+        start_time = time.time()
+        msg_list = []
+        qqread_headers = secrets.get("qqread_headers")
+        qqread_bodys = secrets.get("qqread_bodys")
+        qqread_timeurl = secrets.get("qqread_timeurl")
+        msg_list.append(f"=== {self.gettime().strftime('%Y-%m-%d %H:%M:%S')} ===")
+        msg_list.append(f"=== 📣系统通知📣 ===")
+        valid_flag, valid_msg = self.valid(headers=qqread_headers, timeurl=qqread_timeurl, bodys=qqread_bodys)
+        if valid_flag:
+            todaytime_data = self.qqreadtodaytime(qqread_headers, qqread_timeurl)
+            wktime_data = self.qqreadwktime(qqread_headers)
+            print(f"Track update {self.qqreadtrack(qqread_headers, qqread_bodys)['msg']}")
+            task_data = self.qqreadtask(qqread_headers)
+            mytask_data = self.qqreadmytask(qqread_headers)
+            task_list = task_data["taskList"]
+            msg_list.append(f"【用户信息】: {qqread_bodys['common']['guid']}")
+            msg_list.append(f"【账户余额】: {task_data['user']['amount']}金币")
+            msg_list.append(f"【今日阅读】: {todaytime_data}分钟")
+            msg_list.append(f"【本周阅读】: {wktime_data}分钟")
+            for one_task in task_list:
+                msg_list.append(f"【{one_task['title']}】: {one_task['amount']}金币,{one_task['actionText']}")
+            msg_list.append(
+                f"【第{task_data['invite']['issue']}期|{task_data['invite']['dayRange']}】:"
+                f"已邀请 {task_data['invite']['inviteCount']} 人，"
+                f"再邀请 {task_data['invite']['nextInviteConfig']['count']} 人"
+                f"获得 {task_data['invite']['nextInviteConfig']['amount']} 金币"
+            )
+            msg_list.append(
+                f"【{task_data['fans']['title']}】: {task_data['fans']['fansCount']}个好友,"
+                f"{task_data['fans']['todayAmount']}金币"
+            )
+            msg_list.append(f"【宝箱任务{task_data['treasureBox']['count'] + 1}】: {task_data['treasureBox']['tipText']}")
+
+            if task_data["treasureBox"]["doneFlag"] == 0:
+                box_data = self.qqreadbox(qqread_headers)
+                if box_data["code"] == 0:
+                    msg_list.append(f"【宝箱奖励{box_data['data']['count']}】: 获得{box_data['data']['amount']}金币")
+
+            for one_task in task_list:
+                if one_task["title"].find("立即阅读") != -1 and one_task["doneFlag"] == 0:
+                    todayread_data = self.qqreadtodayread(qqread_headers)
+                    if todayread_data["code"] == 0:
+                        msg_list.append(f"【每日阅读】: 获得{todayread_data['data']['amount']}金币")
+
+                if one_task["title"].find("打卡") != -1:
+                    sign_data = self.qqreadsign(qqread_headers)
+                    if one_task["doneFlag"] == 0:
+                        msg_list.append(f"【今日打卡】: 获得{sign_data['todayAmount']}金币，已连续签到{sign_data['clockInDays']}天")
+                    if sign_data["videoDoneFlag"] == 0:
+                        sign2_data = self.qqreadsign2(qqread_headers)
+                        if sign2_data["code"] == 0:
+                            msg_list.append(f"【打卡翻倍】: 获得{sign2_data['data']['amount']}金币")
+
+                if one_task["title"].find("视频") != -1 and one_task["doneFlag"] == 0:
+                    video_data = self.qqreadvideo(qqread_headers)
+                    if video_data["code"] == 0:
+                        msg_list.append(f"【视频奖励】: 获得{video_data['data']['amount']}金币")
+
+                if one_task["title"].find("阅读任务") != -1 and one_task["doneFlag"] == 0:
+                    if 1 <= todaytime_data < 15:
+                        todaygift_data = self.qqreadtodaygift(qqread_headers, 30)
+                        if todaygift_data["amount"] > 0:
+                            msg_list.append(f"【阅读金币1】: 获得{todaygift_data['amount']}金币")
+                    if 5 <= todaytime_data < 30:
+                        time.sleep(2)
+                        todaygift_data = self.qqreadtodaygift(qqread_headers, 300)
+                        if todaygift_data["amount"] > 0:
+                            msg_list.append(f"【阅读金币2】: 获得{todaygift_data['amount']}金币")
+                    if todaytime_data >= 30:
+                        time.sleep(2)
+                        todaygift_data = self.qqreadtodaygift(qqread_headers, 1800)
+                        if todaygift_data["amount"] > 0:
+                            msg_list.append(f"【阅读金币3】: 获得{todaygift_data['amount']}金币")
+
+            for my_task in mytask_data:
+                if my_task["title"].find("每日签到") != -1 and my_task["doneFlag"] == 0:
+                    ticket_data = self.qqreadticket(qqread_headers)
+                    if ticket_data["takeTicket"] > 0:
+                        msg_list.append(f"【书券签到】: 获得{ticket_data['takeTicket']}书券")
+
+            if wktime_data >= 1200:
+                wkpickinfo_data = self.qqreadwkpickinfo(qqread_headers)
+                package = ["10", "10", "20", "30", "50", "80", "100", "120"]
+                if not wkpickinfo_data[-1]["isPick"]:
+                    for m, i in enumerate(wkpickinfo_data):
+                        info = self.get_template(qqread_headers, f"pickPackage?readTime={i['readTime']}")
+                        if info["code"] == 0:
+                            msg_list.append(f"【周时长奖励{m + 1}】: 领取{package[m]}书券")
+                else:
+                    msg_list.append("【周时长奖励】: 已全部领取")
+
+            if task_data["treasureBox"]["videoDoneFlag"] == 0:
+                time.sleep(6)
+                box2_data = self.qqreadbox2(qqread_headers)
+                if box2_data["code"] == 0:
+                    msg_list.append(f"【宝箱翻倍】: 获得{box2_data['data']['amount']}金币")
+
+            if todaytime_data // 60 <= self.limit_time:
+                addtime_data = self.qqreadaddtime(qqread_headers, qqread_timeurl)
+                if addtime_data["code"] == 0:
+                    msg_list.append(f"【阅读时长】: 成功上传{self.once_time}分钟")
+
+            if (
+                self.drawamount != 0
+                and task_data["user"]["amount"] >= self.drawamount * 10000
+                and self.gettime().hour == 21
+            ):
+                withdrawinfo_data = self.qqreadwithdrawinfo(qqread_headers)["createTime"]
+                if withdrawinfo_data < self.get_timestamp():
+                    withdrawal_data = self.qqreadwithdrawal(qqread_headers, self.drawamount * 10000)
+                    msg_list.append(f"【自动提现】: 提现{self.drawamount}元（{withdrawal_data}）")
+            msg_list.append(f"【今日收益】: {self.totalamount(secrets.get('qqread_headers'))}金币")
+
+        else:
+            msg_list.append(valid_msg)
+        msg_list.append(f"\n🕛耗时：{time.time() - start_time}秒")
+        msg = "\n".join(msg_list)
+        print(msg)
+        return msg
+
     def main(self):
-        msg_result_list = []
-        for index, secrets in enumerate(self.qqread_account_list):
-            print(f"============开始运行第 {index + 1} 个账号===========")
-            start_time = time.time()
-            msg_list = []
-            qqread_headers = secrets.get("qqread_headers")
-            qqread_bodys = secrets.get("qqread_bodys")
-            qqread_timeurl = secrets.get("qqread_timeurl")
-            msg_list.append(f"=== {self.gettime().strftime('%Y-%m-%d %H:%M:%S')} ===")
-            msg_list.append(f"=== 📣系统通知📣 ===")
-            valid_flag, valid_msg = self.valid(headers=qqread_headers, timeurl=qqread_timeurl, bodys=qqread_bodys)
-            if valid_flag:
-                todaytime_data = self.qqreadtodaytime(qqread_headers, qqread_timeurl)
-                wktime_data = self.qqreadwktime(qqread_headers)
-                print(f"Track update {self.qqreadtrack(qqread_headers, qqread_bodys)['msg']}")
-                task_data = self.qqreadtask(qqread_headers)
-                mytask_data = self.qqreadmytask(qqread_headers)
-                task_list = task_data["taskList"]
-                msg_list.append(f"【用户信息】: {qqread_bodys['common']['guid']}")
-                msg_list.append(f"【账户余额】: {task_data['user']['amount']}金币")
-                msg_list.append(f"【今日阅读】: {todaytime_data}分钟")
-                msg_list.append(f"【本周阅读】: {wktime_data}分钟")
-                for one_task in task_list:
-                    msg_list.append(f"【{one_task['title']}】: {one_task['amount']}金币,{one_task['actionText']}")
-                msg_list.append(
-                    f"【第{task_data['invite']['issue']}期|{task_data['invite']['dayRange']}】:"
-                    f"已邀请 {task_data['invite']['inviteCount']} 人，"
-                    f"再邀请 {task_data['invite']['nextInviteConfig']['count']} 人"
-                    f"获得 {task_data['invite']['nextInviteConfig']['amount']} 金币"
-                )
-                msg_list.append(
-                    f"【{task_data['fans']['title']}】: {task_data['fans']['fansCount']}个好友,"
-                    f"{task_data['fans']['todayAmount']}金币"
-                )
-                msg_list.append(f"【宝箱任务{task_data['treasureBox']['count'] + 1}】: {task_data['treasureBox']['tipText']}")
-
-                if task_data["treasureBox"]["doneFlag"] == 0:
-                    box_data = self.qqreadbox(qqread_headers)
-                    if box_data["code"] == 0:
-                        msg_list.append(f"【宝箱奖励{box_data['data']['count']}】: 获得{box_data['data']['amount']}金币")
-
-                for one_task in task_list:
-                    if one_task["title"].find("立即阅读") != -1 and one_task["doneFlag"] == 0:
-                        todayread_data = self.qqreadtodayread(qqread_headers)
-                        if todayread_data["code"] == 0:
-                            msg_list.append(f"【每日阅读】: 获得{todayread_data['data']['amount']}金币")
-
-                    if one_task["title"].find("打卡") != -1:
-                        sign_data = self.qqreadsign(qqread_headers)
-                        if one_task["doneFlag"] == 0:
-                            msg_list.append(f"【今日打卡】: 获得{sign_data['todayAmount']}金币，已连续签到{sign_data['clockInDays']}天")
-                        if sign_data["videoDoneFlag"] == 0:
-                            sign2_data = self.qqreadsign2(qqread_headers)
-                            if sign2_data["code"] == 0:
-                                msg_list.append(f"【打卡翻倍】: 获得{sign2_data['data']['amount']}金币")
-
-                    if one_task["title"].find("视频") != -1 and one_task["doneFlag"] == 0:
-                        video_data = self.qqreadvideo(qqread_headers)
-                        if video_data["code"] == 0:
-                            msg_list.append(f"【视频奖励】: 获得{video_data['data']['amount']}金币")
-
-                    if one_task["title"].find("阅读任务") != -1 and one_task["doneFlag"] == 0:
-                        if 1 <= todaytime_data < 15:
-                            todaygift_data = self.qqreadtodaygift(qqread_headers, 30)
-                            if todaygift_data["amount"] > 0:
-                                msg_list.append(f"【阅读金币1】: 获得{todaygift_data['amount']}金币")
-                        if 5 <= todaytime_data < 30:
-                            time.sleep(2)
-                            todaygift_data = self.qqreadtodaygift(qqread_headers, 300)
-                            if todaygift_data["amount"] > 0:
-                                msg_list.append(f"【阅读金币2】: 获得{todaygift_data['amount']}金币")
-                        if todaytime_data >= 30:
-                            time.sleep(2)
-                            todaygift_data = self.qqreadtodaygift(qqread_headers, 1800)
-                            if todaygift_data["amount"] > 0:
-                                msg_list.append(f"【阅读金币3】: 获得{todaygift_data['amount']}金币")
-
-                for my_task in mytask_data:
-                    if my_task["title"].find("每日签到") != -1 and my_task["doneFlag"] == 0:
-                        ticket_data = self.qqreadticket(qqread_headers)
-                        if ticket_data["takeTicket"] > 0:
-                            msg_list.append(f"【书券签到】: 获得{ticket_data['takeTicket']}书券")
-
-                if wktime_data >= 1200:
-                    wkpickinfo_data = self.qqreadwkpickinfo(qqread_headers)
-                    package = ["10", "10", "20", "30", "50", "80", "100", "120"]
-                    if not wkpickinfo_data[-1]["isPick"]:
-                        for m, i in enumerate(wkpickinfo_data):
-                            info = self.get_template(qqread_headers, f"pickPackage?readTime={i['readTime']}")
-                            if info["code"] == 0:
-                                msg_list.append(f"【周时长奖励{m + 1}】: 领取{package[m]}书券")
-                    else:
-                        msg_list.append("【周时长奖励】: 已全部领取")
-
-                if task_data["treasureBox"]["videoDoneFlag"] == 0:
-                    time.sleep(6)
-                    box2_data = self.qqreadbox2(qqread_headers)
-                    if box2_data["code"] == 0:
-                        msg_list.append(f"【宝箱翻倍】: 获得{box2_data['data']['amount']}金币")
-
-                if todaytime_data // 60 <= self.limit_time:
-                    addtime_data = self.qqreadaddtime(qqread_headers, qqread_timeurl)
-                    if addtime_data["code"] == 0:
-                        msg_list.append(f"【阅读时长】: 成功上传{self.once_time}分钟")
-
-                if (
-                    self.drawamount != 0
-                    and task_data["user"]["amount"] >= self.drawamount * 10000
-                    and self.gettime().hour == 21
-                ):
-                    withdrawinfo_data = self.qqreadwithdrawinfo(qqread_headers)["createTime"]
-                    if withdrawinfo_data < self.get_timestamp():
-                        withdrawal_data = self.qqreadwithdrawal(qqread_headers, self.drawamount * 10000)
-                        msg_list.append(f"【自动提现】: 提现{self.drawamount}元（{withdrawal_data}）")
-                msg_list.append(f"【今日收益】: {self.totalamount(secrets.get('qqread_headers'))}金币")
-
-            else:
-                msg_list.append(valid_msg)
-            msg_list.append(f"\n🕛耗时：{time.time() - start_time}秒")
-            msg = "\n".join(msg_list)
-            print(msg)
-            msg_result_list.append(msg)
+        with Pool(20) as p:
+            msg_result_list = (p.map(self.start, self.qqread_account_list))
         return msg_result_list
 
 

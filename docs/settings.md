@@ -36,14 +36,6 @@
       "vqq_cookie": "帐号2 cookie"
     }
   ],
-  "POJIE_COOKIE_LIST": [
-    {
-      "pojie_cookie": "帐号1 cookie"
-    },
-    {
-      "pojie_cookie": "帐号2 cookie"
-    }
-  ],
   "YOUDAO_COOKIE_LIST": [
     {
       "youdao_cookie": "帐号1 cookie"
@@ -295,7 +287,6 @@
 |_**MOTTO**_|每日一句|非必须|是否开启默认为 false|
 |_**IQIYI_COOKIE_LIST**_.iqiyi_cookie|爱奇艺|非必须|[爱奇艺](https://www.iqiyi.com/) 帐号的 cookie 信息|
 |_**VQQ_COOKIE_LIST**_.vqq_cookie|腾讯视频|非必须|[腾讯视频](https://v.qq.com/) 帐号的 cookie 信息|
-|_**POJIE_COOKIE_LIST**_.pojie_cookie|吾爱破解|非必须|[吾爱破解](https://www.52pojie.cn/index.php) 帐号的 cookie 信息|
 |_**YOUDAO_COOKIE_LIST**_.youdao_cookie|有道云笔记|非必须|[有道云笔记](https://note.youdao.com/web/) 帐号的 cookie 信息|
 |_**KGQQ_COOKIE_LIST**_.kgqq_cookie|全民K歌|非必须|[全民K歌](https://kg.qq.com/index-pc.html) 帐号的 cookie 信息|
 |_**MUSIC163_ACCOUNT_LIST**_.music163_phone|网易云音乐|非必须|[网易云音乐](https://music.163.com/) 帐号的手机号|
@@ -391,10 +382,6 @@
 #### 腾讯视频 Cookie 参数获取
 
 [腾讯视频官网](https://v.qq.com/)
-
-#### 吾爱破解 Cookie 参数获取
-
-[吾爱破解](https://www.52pojie.cn/index.php)
 
 #### 有道云笔记 Cookie 参数获取
 

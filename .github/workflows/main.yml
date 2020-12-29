@@ -39,7 +39,6 @@ jobs:
           MOTTO: ${{secrets.MOTTO}}
           IQIYI_COOKIE_LIST: ${{secrets.IQIYI_COOKIE_LIST}}
           VQQ_COOKIE_LIST: ${{secrets.VQQ_COOKIE_LIST}}
-          POJIE_COOKIE_LIST: ${{secrets.POJIE_COOKIE_LIST}}
           YOUDAO_COOKIE_LIST: ${{secrets.YOUDAO_COOKIE_LIST}}
           KGQQ_COOKIE_LIST: ${{secrets.KGQQ_COOKIE_LIST}}
           MUSIC163_ACCOUNT_LIST: ${{secrets.MUSIC163_ACCOUNT_LIST}}

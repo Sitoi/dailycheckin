@@ -19,7 +19,6 @@ from kgqq import KGQQCheckIn
 from motto import Motto
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
-from pojie import PojieCheckIn
 from qqread import QQReadCheckIn
 from tieba import TiebaCheckIn
 from vqq import VQQCheckIn
@@ -104,7 +103,6 @@ def main_handler(event, context):
         )
         vqq_cookie_list = json.loads(os.getenv("VQQ_COOKIE_LIST", [])) if os.getenv("VQQ_COOKIE_LIST") else []
         youdao_cookie_list = json.loads(os.getenv("YOUDAO_COOKIE_LIST", [])) if os.getenv("YOUDAO_COOKIE_LIST") else []
-        pojie_cookie_list = json.loads(os.getenv("POJIE_COOKIE_LIST", [])) if os.getenv("POJIE_COOKIE_LIST") else []
         kgqq_cookie_list = json.loads(os.getenv("KGQQ_COOKIE_LIST", [])) if os.getenv("KGQQ_COOKIE_LIST") else []
         music163_account_list = (
             json.loads(os.getenv("MUSIC163_ACCOUNT_LIST", [])) if os.getenv("MUSIC163_ACCOUNT_LIST") else []
@@ -146,7 +144,6 @@ def main_handler(event, context):
         motto = data.get("MOTTO")
         iqiyi_cookie_list = data.get("IQIYI_COOKIE_LIST", [])
         vqq_cookie_list = data.get("VQQ_COOKIE_LIST", [])
-        pojie_cookie_list = data.get("POJIE_COOKIE_LIST", [])
         youdao_cookie_list = data.get("YOUDAO_COOKIE_LIST", [])
         kgqq_cookie_list = data.get("KGQQ_COOKIE_LIST", [])
         music163_account_list = data.get("MUSIC163_ACCOUNT_LIST", [])
@@ -182,10 +179,6 @@ def main_handler(event, context):
 
         if youdao_cookie_list:
             msg_list = YouDaoCheckIn(youdao_cookie_list=youdao_cookie_list).main()
-            content_list += msg_list
-
-        if pojie_cookie_list:
-            msg_list = PojieCheckIn(pojie_cookie_list=pojie_cookie_list).main()
             content_list += msg_list
 
         if kgqq_cookie_list:

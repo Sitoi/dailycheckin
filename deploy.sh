@@ -11,7 +11,6 @@ if [[ $COOLPUSHWX ]]; then echo "COOLPUSHWX 变量存在，并成功赋值" ;els
 if [[ $COOLPUSHEMAIL ]]; then echo "COOLPUSHEMAIL 变量存在，并成功赋值" ;else COOLPUSHEMAIL=false; fi;
 if [[ $IQIYI_COOKIE_LIST ]]; then echo "IQIYI_COOKIE_LIST 变量存在，并成功赋值" ;else IQIYI_COOKIE_LIST=[]; fi;
 if [[ $VQQ_COOKIE_LIST ]]; then echo "VQQ_COOKIE_LIST 变量存在，并成功赋值" ;else VQQ_COOKIE_LIST=[]; fi;
-if [[ $POJIE_COOKIE_LIST ]]; then echo "POJIE_COOKIE_LIST 变量存在，并成功赋值" ;else POJIE_COOKIE_LIST=[]; fi;
 if [[ $YOUDAO_COOKIE_LIST ]]; then echo "YOUDAO_COOKIE_LIST 变量存在，并成功赋值" ;else YOUDAO_COOKIE_LIST=[]; fi;
 if [[ $KGQQ_COOKIE_LIST ]]; then echo "KGQQ_COOKIE_LIST 变量存在，并成功赋值" ;else KGQQ_COOKIE_LIST=[]; fi;
 if [[ $MUSIC163_ACCOUNT_LIST ]]; then echo "MUSIC163_ACCOUNT_LIST 变量存在，并成功赋值" ;else MUSIC163_ACCOUNT_LIST=[]; fi;
@@ -34,14 +33,13 @@ JSONSTR="{
   \"TG_BOT_TOKEN\": \"${TG_BOT_TOKEN}\",
   \"TG_USER_ID\": \"${TG_USER_ID}\",
   \"COOLPUSHSKEY\": \"${COOLPUSHSKEY}\",
-  \"COOLPUSHQQ\": \"${COOLPUSHQQ}\",
-  \"COOLPUSHWX\": \"${COOLPUSHWX}\",
-  \"COOLPUSHEMAIL\": \"${COOLPUSHEMAIL}\",
+  \"COOLPUSHQQ\": ${COOLPUSHQQ},
+  \"COOLPUSHWX\": ${COOLPUSHWX},
+  \"COOLPUSHEMAIL\": ${COOLPUSHEMAIL},
   \"CITY_NAME_LIST\": ${CITY_NAME_LIST},
   \"MOTTO\": ${MOTTO},
   \"IQIYI_COOKIE_LIST\": ${IQIYI_COOKIE_LIST},
   \"VQQ_COOKIE_LIST\": ${VQQ_COOKIE_LIST},
-  \"POJIE_COOKIE_LIST\": ${POJIE_COOKIE_LIST},
   \"YOUDAO_COOKIE_LIST\": ${YOUDAO_COOKIE_LIST},
   \"KGQQ_COOKIE_LIST\": ${KGQQ_COOKIE_LIST},
   \"MUSIC163_ACCOUNT_LIST\": ${MUSIC163_ACCOUNT_LIST},
