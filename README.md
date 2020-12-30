@@ -1,8 +1,16 @@
-![description](https://socialify.git.ci/Sitoi/dailycheckin/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark)
+<p align="center">
+    <img src="https://socialify.git.ci/Sitoi/dailycheckin/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"/>
+    <br><strong><font size=10>每日签到集合</font></strong>
+    <br>基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本
+    <br>支持多账号使用
+</p>
 
-# 每日签到集合
-
-可基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本（支持多账号使用）
+<p align="center">
+    <a href="https://t.me/dailycheckin"><img src="https://img.shields.io/badge/Talk-Telegrame-brightgreen.svg?style=popout-square" alt="Telegram"></a>
+    <a href="https://github.com/Sitoi/dailycheckin/stargazers"><img src="https://img.shields.io/github/stars/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub stars"></a>
+    <a href="https://github.com/Sitoi/dailycheckin/network/members"><img src="https://img.shields.io/github/forks/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub forks"></a>
+    <a href="https://github.com/Sitoi/dailycheckin/issues"><img src="https://img.shields.io/github/issues/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub issues"></a>
+</p>
 
 ## 特别声明:
 
@@ -79,4 +87,6 @@
 
 ## 历史star数
 
-[![Stargazers over time](https://starchart.cc/Sitoi/dailycheckin.svg)](https://starchart.cc/Sitoi/dailycheckin)
+<p align="center">
+    <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
+</p>
