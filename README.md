@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-    <a href="https://t.me/dailycheckin"><img src="https://img.shields.io/badge/Talk-Telegrame-brightgreen.svg?style=popout-square" alt="Telegram"></a>
+    <a href="https://t.me/dailycheckin"><img src="https://img.shields.io/badge/Talk-Telegram-brightgreen.svg?style=popout-square" alt="Telegram"></a>
     <a href="https://github.com/Sitoi/dailycheckin/stargazers"><img src="https://img.shields.io/github/stars/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub stars"></a>
     <a href="https://github.com/Sitoi/dailycheckin/network/members"><img src="https://img.shields.io/github/forks/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub forks"></a>
     <a href="https://github.com/Sitoi/dailycheckin/issues"><img src="https://img.shields.io/github/issues/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub issues"></a>
