@@ -971,6 +971,7 @@ class XMLYCheckIn:
         for xmly_cookie in self.xmly_cookie_list:
             xmly_cookie = xmly_cookie.get("xmly_cookie")
             cookies = self.parse_cookie(xmly_cookie)
+            device_model = cookies.get("device_model", "未获取到设备信息")
             listen_msg = self.save_listen_time(cookies, date_stamp)
             self.listen_data(cookies, date_stamp)
             print("*" * 10, "阅读", "*" * 10)
@@ -990,7 +991,7 @@ class XMLYCheckIn:
             print("*" * 10, "首页、宝箱奖励及翻倍", "*" * 10)
             index_baoxiang_award_msg = self.index_baoxiang_award(cookies)  # 首页、宝箱奖励及翻倍
             total, today_total, history_total = self.account(cookies)
-            msg = f"【喜马拉雅极速版签到】\n北京时间: {utc_time}\n连续签到: {continuous_days}天\n收听时长: {listen_msg}分钟\n" \
+            msg = f"【喜马拉雅极速版签到】\n北京时间: {utc_time}\n设备信息: {device_model}\n连续签到: {continuous_days}天\n收听时长: {listen_msg}分钟\n" \
                   f"金币气泡: {bubble_msg}\n答题奖励: {answer_msg}\n卡牌奖励: {card_report_time_msg}\n" \
                   f"{card_msg}\n{index_baoxiang_award_msg}\n" \
                   f"当前剩余: {total}元\n今日获得: {today_total}元\n累计获得: {history_total}元"
