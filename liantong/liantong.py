@@ -7,7 +7,6 @@ import requests
 
 
 class LianTongCheckIn:
-
     def __init__(self, liantong_account_list):
         self.liantong_account_list = liantong_account_list
 
@@ -15,24 +14,31 @@ class LianTongCheckIn:
     def sign(liantong_data):
         session = requests.session()
         headers = {
-            'Host': 'm.client.10010.com',
-            'Accept': '*/*',
-            'User-Agent': 'ChinaUnicom4.x/810 CFNetwork/1209 Darwin/20.2.0',
-            'Accept-Language': 'zh-cn',
+            "Host": "m.client.10010.com",
+            "Accept": "*/*",
+            "User-Agent": "ChinaUnicom4.x/810 CFNetwork/1209 Darwin/20.2.0",
+            "Accept-Language": "zh-cn",
         }
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         data = f"reqtime={timestamp}&{liantong_data}"
-        req1 = session.post(url="http://m.client.10010.com/mobileService/login.htm", headers=headers, data=data)
-        a_token = req1.cookies.get("a_token")
-        if a_token and req1.status_code == 200:
-            phone = req1.json().get("default")
-            req3 = session.post("https://act.10010.com/SigninApp/signin/querySigninActivity.htm?token=" + a_token)
-            if req3.status_code == 200:
-                req4 = session.post("https://act.10010.com/SigninApp/signin/daySign", "btnPouplePost".encode("utf-8"))
-                if req4.status_code == 200:
-                    req5 = session.post("https://act.10010.com/SigninApp/signin/getIntegral")
-                    return f"帐号信息: {phone}\n签到信息: {json.dumps(req5.json())}"
-        return f"帐号信息: 获取失败\n签到信息: 请检查参数是否过期"
+        try:
+            req1 = session.post(url="http://m.client.10010.com/mobileService/login.htm", headers=headers, data=data)
+            a_token = req1.cookies.get("a_token")
+            if a_token and req1.status_code == 200:
+                phone = req1.json().get("default")
+                req2 = session.post(
+                    url="https://act.10010.com/SigninApp/signin/querySigninActivity.htm?token=" + a_token
+                )
+                if req2.status_code == 200:
+                    req3 = session.post(
+                        url="https://act.10010.com/SigninApp/signin/daySign", data="btnPouplePost".encode("utf-8")
+                    )
+                    if req3.status_code == 200:
+                        req4 = session.post(url="https://act.10010.com/SigninApp/signin/getIntegral")
+                        return f"帐号信息: {phone}\n签到信息: 当前积分 {req4.json().get('data', {}).get('integralTotal')}"
+            return f"帐号信息: 获取失败\n签到信息: 请检查参数是否过期"
+        except Exception as e:
+            return f"帐号信息: 获取失败\n签到信息: {e}"
 
     def main(self):
         msg_list = []
