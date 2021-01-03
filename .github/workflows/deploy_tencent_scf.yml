@@ -51,6 +51,7 @@ jobs:
           BAIDU_URL_SUBMIT_LIST: ${{secrets.BAIDU_URL_SUBMIT_LIST}}
           TIEBA_COOKIE_LIST: ${{secrets.TIEBA_COOKIE_LIST}}
           BILIBILI_COOKIE_LIST: ${{secrets.BILIBILI_COOKIE_LIST}}
+          LIANTONG_ACCOUNT_LIST: ${{secrets.LIANTONG_ACCOUNT_LIST}}
 
       - name: "部署到腾讯云函数"
         run: sls deploy --debug

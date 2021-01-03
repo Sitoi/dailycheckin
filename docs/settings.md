@@ -307,6 +307,7 @@
 |_**BILIBILI_COOKIE_LIST**_.coin_num|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 每日投币数量|
 |_**BILIBILI_COOKIE_LIST**_.coin_type|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币|
 |_**BILIBILI_COOKIE_LIST**_.silver2coin|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 是否开启银瓜子换硬币，默认为 True 开启|
+|_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|非必须|联通营业厅 每日签到|
 
 ## 参数获取方法
 
@@ -508,4 +509,22 @@
 
 ```text
 https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=888888&readTime=8888&read_type=0&conttype=1&read_status=0&chapter_info=xxxxxx&sp=-1
+```
+
+#### 联通营业厅参数获取
+
+1. 退出手机营业厅登录，然后开启抓包软件，登录手机营业厅
+
+查找网址为 `https://m.client.10010.com/mobileService/login.htm` 的记录，找到请求内容，将 `simCount` 开始到最后的内容按要求填入 `config.json` 文件。
+
+**样例**
+
+```json
+{
+  "LIANTONG_ACCOUNT_LIST": [
+    {
+      "data": "simCount=1&version=iphone_c@8.0100&mobile=xxxxxx&netWay=wifi&isRemberPwd=false&appId=xxxxxx&deviceId=xxxxxx&pip=192.168.1.1&password=xxxxxx&deviceOS=14.3&deviceBrand=iphone&deviceModel=iPhone&remark4=&keyVersion=2&deviceCode=xxxxxx"
+    }
+  ]
+}
 ```

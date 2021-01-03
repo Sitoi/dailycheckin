@@ -16,6 +16,7 @@ from bilibili import BiliBiliCheckIn
 from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
+from liantong import LianTongCheckIn
 from motto import Motto
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
@@ -30,8 +31,8 @@ from youdao import YouDaoCheckIn
 def message_to_server(sckey, content):
     print("server 酱推送开始")
     data = {"text": "每日签到", "desp": content.replace("\n", "\n\n")}
-    response = requests.post(url=f"https://sc.ftqq.com/{sckey}.send", data=data)
-    return response.text
+    requests.post(url=f"https://sc.ftqq.com/{sckey}.send", data=data)
+    return
 
 
 def message_to_coolpush(
@@ -40,26 +41,26 @@ def message_to_coolpush(
     print("Cool Push 推送开始")
     params = {"c": content, "t": "每日签到"}
     if coolpushqq:
-        response = requests.post(url=f"https://push.xuthus.cc/send/{coolpushskey}", params=params)
+        requests.post(url=f"https://push.xuthus.cc/send/{coolpushskey}", params=params)
     if coolpushwx:
-        response = requests.post(url=f"https://push.xuthus.cc/wx/{coolpushskey}", params=params)
+        requests.post(url=f"https://push.xuthus.cc/wx/{coolpushskey}", params=params)
     if coolpushemail:
-        response = requests.post(url=f"https://push.xuthus.cc/email/{coolpushskey}", params=params)
-    return response.text
+        requests.post(url=f"https://push.xuthus.cc/email/{coolpushskey}", params=params)
+    return
 
 
 def message_to_qmsg(qmsg_key, content):
     print("qmsg 酱推送开始")
     params = {"msg": content}
-    response = requests.get(url=f"https://qmsg.zendee.cn/send/{qmsg_key}", params=params)
-    return response.text
+    requests.get(url=f"https://qmsg.zendee.cn/send/{qmsg_key}", params=params)
+    return
 
 
 def message_to_telegram(tg_bot_token, tg_user_id, content):
     print("Telegram 推送开始")
     send_data = {"chat_id": tg_user_id, "text": content, "disable_web_page_preview": "true"}
-    response = requests.post(url=f"https://api.telegram.org/bot{tg_bot_token}/sendMessage", data=send_data)
-    return response.text
+    requests.post(url=f"https://api.telegram.org/bot{tg_bot_token}/sendMessage", data=send_data)
+    return
 
 
 def message_to_dingtalk(dingtalk_secret, dingtalk_access_token, content):
@@ -71,14 +72,14 @@ def message_to_dingtalk(dingtalk_secret, dingtalk_access_token, content):
     hmac_code = hmac.new(secret_enc, string_to_sign_enc, digestmod=hashlib.sha256).digest()
     sign = urllib.parse.quote_plus(base64.b64encode(hmac_code))
     send_data = {"msgtype": "text", "text": {"content": content}}
-    response = requests.post(
+    requests.post(
         url="https://oapi.dingtalk.com/robot/send?access_token={0}&timestamp={1}&sign={2}".format(
             dingtalk_access_token, timestamp, sign
         ),
         headers={"Content-Type": "application/json", "Charset": "UTF-8"},
         data=json.dumps(send_data),
     )
-    return response.text
+    return
 
 
 def main_handler(event, context):
@@ -122,6 +123,9 @@ def main_handler(event, context):
         bilibili_cookie_list = (
             json.loads(os.getenv("BILIBILI_COOKIE_LIST", [])) if os.getenv("BILIBILI_COOKIE_LIST") else []
         )
+        liantong_account_list = (
+            json.loads(os.getenv("LIANTONG_ACCOUNT_LIST", [])) if os.getenv("LIANTONG_ACCOUNT_LIST") else []
+        )
 
     else:
         if isinstance(event, dict):
@@ -154,6 +158,7 @@ def main_handler(event, context):
         fmapp_account_list = data.get("FMAPP_ACCOUNT_LIST", [])
         tieba_cookie_list = data.get("TIEBA_COOKIE_LIST", [])
         bilibili_cookie_list = data.get("BILIBILI_COOKIE_LIST", [])
+        liantong_account_list = data.get("LIANTONG_ACCOUNT_LIST", [])
 
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
@@ -203,6 +208,10 @@ def main_handler(event, context):
 
         if bilibili_cookie_list:
             msg_list = BiliBiliCheckIn(bilibili_cookie_list=bilibili_cookie_list).main()
+            content_list += msg_list
+
+        if liantong_account_list:
+            msg_list = LianTongCheckIn(liantong_account_list=liantong_account_list).main()
             content_list += msg_list
 
         if city_name_list:

@@ -252,5 +252,13 @@
       "coin_type": 1,
       "silver2coin": true
     }
+  ],
+  "LIANTONG_ACCOUNT_LIST": [
+    {
+      "data": "simCount=1&version=iphone_c@8.0100&mobile=xxxxxx&netWay=wifi&isRemberPwd=false&appId=xxxxxx&deviceId=xxxxxx&pip=192.168.1.1&password=xxxxxx&deviceOS=14.3&deviceBrand=iphone&deviceModel=iPhone&remark4=&keyVersion=2&deviceCode=xxxxxx"
+    },
+    {
+      "data": "账号2 参数"
+    }
   ]
 }
