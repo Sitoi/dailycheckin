@@ -66,4 +66,11 @@ crontab $mergedListFile
 
 echo "Start crontab task main process..."
 echo "启动 crondtab 定时任务主进程..."
+
+if [ $CUSTOM_LIST_FILE ]; then
+  chmod -R 777 $customListFile
+fi
+
+chmod -R 777 /dailycheckin/config.json
+
 crond -f
