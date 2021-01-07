@@ -22,6 +22,7 @@ from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
 from qqread import QQReadCheckIn
 from tieba import TiebaCheckIn
+from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
 from xmly import XMLYCheckIn
@@ -126,6 +127,7 @@ def main_handler(event, context):
         liantong_account_list = (
             json.loads(os.getenv("LIANTONG_ACCOUNT_LIST", [])) if os.getenv("LIANTONG_ACCOUNT_LIST") else []
         )
+        v2ex_cookie_list = json.loads(os.getenv("V2EX_COOKIE_LIST", [])) if os.getenv("V2EX_COOKIE_LIST") else []
 
     else:
         if isinstance(event, dict):
@@ -159,6 +161,7 @@ def main_handler(event, context):
         tieba_cookie_list = data.get("TIEBA_COOKIE_LIST", [])
         bilibili_cookie_list = data.get("BILIBILI_COOKIE_LIST", [])
         liantong_account_list = data.get("LIANTONG_ACCOUNT_LIST", [])
+        v2ex_cookie_list = data.get("V2EX_COOKIE_LIST", [])
 
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
@@ -212,6 +215,10 @@ def main_handler(event, context):
 
         if liantong_account_list:
             msg_list = LianTongCheckIn(liantong_account_list=liantong_account_list).main()
+            content_list += msg_list
+
+        if v2ex_cookie_list:
+            msg_list = V2exCheckIn(v2ex_cookie_list=v2ex_cookie_list).main()
             content_list += msg_list
 
         if city_name_list:

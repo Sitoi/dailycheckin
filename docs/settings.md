@@ -259,6 +259,22 @@
       "coin_type": 1,
       "silver2coin": true
     }
+  ],
+  "LIANTONG_ACCOUNT_LIST": [
+    {
+      "data": "simCount=1&version=iphone_c@8.0100&mobile=xxxxxx&netWay=wifi&isRemberPwd=false&appId=xxxxxx&deviceId=xxxxxx&pip=192.168.1.1&password=xxxxxx&deviceOS=14.3&deviceBrand=iphone&deviceModel=iPhone&remark4=&keyVersion=2&deviceCode=xxxxxx"
+    },
+    {
+      "data": "帐号2 信息"
+    }
+  ],
+  "V2EX_COOKIE_LIST": [
+    {
+      "v2ex_cookie": "帐号1 cookie"
+    },
+    {
+      "v2ex_cookie": "帐号2 cookie"
+    }
   ]
 }
 ```
@@ -308,6 +324,7 @@
 |_**BILIBILI_COOKIE_LIST**_.coin_type|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币|
 |_**BILIBILI_COOKIE_LIST**_.silver2coin|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 是否开启银瓜子换硬币，默认为 True 开启|
 |_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|非必须|联通营业厅 每日签到|
+|_**V2EX_COOKIE_LIST**_.v2ex_cookie|V2EX|非必须|[V2EX](https://www.v2ex.com/) 每日签到|
 
 ## 参数获取方法
 
@@ -403,6 +420,10 @@
 #### Bilibili Cookie 参数获取
 
 [Bilibili](https://www.bilibili.com)
+
+#### V2EX Cookie 参数获取
+
+[V2EX](https://www.v2ex.com/)
 
 ### APP抓包
 

@@ -1,3 +1,4 @@
-requests~=2.24.0
+requests~=2.25.1
 cryptography~=3.2.1
 rsa~=4.0
+urllib3~=1.26.2

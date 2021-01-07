@@ -5,8 +5,11 @@ import json
 import os
 
 import requests
+import urllib3
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
+urllib3.disable_warnings()
 
 
 class Music163CheckIn:
@@ -122,7 +125,11 @@ class Music163CheckIn:
             if count >= 310:
                 break
         postdata = {"logs": json.dumps(buffer)}
-        res = session.post(url="http://music.163.com/weapi/feedback/weblog", data=self.protect(json.dumps(postdata)), verify=False)
+        res = session.post(
+            url="http://music.163.com/weapi/feedback/weblog",
+            data=self.protect(json.dumps(postdata)),
+            verify=False
+        )
         res_data = json.loads(res.text, strict=False)
         if res_data["code"] == 200:
             music_count_msg = f"{count} 首"
