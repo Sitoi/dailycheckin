@@ -1,4 +1,4 @@
-name: Publish docs via GitHub Pages
+name: 发布文档
 on:
   push:
     branches:
