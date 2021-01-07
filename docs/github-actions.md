@@ -10,7 +10,7 @@
 
 > _**斜体加粗大写英文字母**_ 表示 GitHub Actions Secrets 环境变量名称，内容直接复制 _**斜体加粗大写英文字母 key**_  对应的 value
 
-参考[配置说明文档](https://github.com/Sitoi/dailycheckin/blob/main/docs/settings.md) ，并修改 `config.json`
+参考[配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config.json`
 
 ## 三、Star 一下，立即执行，观察运行情况
 

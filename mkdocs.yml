@@ -1,0 +1,21 @@
+site_name: Daily Check In
+site_url: https://github.com/Sitoi/dailycheckin
+repo_url: https://github.com/Sitoi/dailycheckin
+site_description: 可基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本（支持多账号使用）
+repo_name: Sitoi/dailycheckin
+site_author: Sitoi
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+nav:
+  - 主页: index.md
+  - settings.md
+  - local.md
+  - docker.md
+  - github-actions.md
+  - tencent-scf.md

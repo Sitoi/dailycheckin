@@ -12,7 +12,7 @@ Clone 地址: [https://github.com/Sitoi/dailycheckin.git](https://github.com/Sit
 
 ## 二、拷贝 `config.template.json` 到 `config.json` 并修改
 
-参考[配置说明文档](https://github.com/Sitoi/dailycheckin/blob/main/docs/settings.md) ，并修改 `config.json`
+参考[配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config.json`
 
 ## 三、上传至【腾讯云函数】
 
