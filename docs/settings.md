@@ -275,6 +275,14 @@
     {
       "v2ex_cookie": "帐号2 cookie"
     }
+  ],
+  "WWW2NZZ_COOKIE_LIST": [
+    {
+      "www2nzz_cookie": "帐号1 cookie"
+    },
+    {
+      "www2nzz_cookie": "帐号2 cookie"
+    }
   ]
 }
 ```
@@ -325,6 +333,7 @@
 |_**BILIBILI_COOKIE_LIST**_.silver2coin|Bilibili|非必须|[Bilibili](https://www.bilibili.com) 是否开启银瓜子换硬币，默认为 True 开启|
 |_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|非必须|联通营业厅 每日签到|
 |_**V2EX_COOKIE_LIST**_.v2ex_cookie|V2EX|非必须|[V2EX](https://www.v2ex.com/) 每日签到|
+|_**WWW2NZZ_COOKIE_LIST**_.www2nzz_cookie|咔叽网单|非必须|[咔叽网单](https://www.2nzz.com/) 每日签到|
 
 ## 参数获取方法
 
@@ -424,6 +433,10 @@
 #### V2EX Cookie 参数获取
 
 [V2EX](https://www.v2ex.com/)
+
+#### 咔叽网单 Cookie 参数获取
+
+[咔叽网单](https://www.2nzz.com/)
 
 ### APP抓包
 

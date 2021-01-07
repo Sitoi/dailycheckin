@@ -51,3 +51,4 @@ jobs:
           BILIBILI_COOKIE_LIST: ${{secrets.BILIBILI_COOKIE_LIST}}
           LIANTONG_ACCOUNT_LIST: ${{secrets.LIANTONG_ACCOUNT_LIST}}
           V2EX_COOKIE_LIST: ${{secrets.V2EX_COOKIE_LIST}}
+          WWW2NZZ_COOKIE_LIST: ${{secrets.WWW2NZZ_COOKIE_LIST}}

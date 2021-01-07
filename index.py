@@ -25,6 +25,7 @@ from tieba import TiebaCheckIn
 from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
+from www2nzz.www2nzz import WWW2nzzCheckIn
 from xmly import XMLYCheckIn
 from youdao import YouDaoCheckIn
 
@@ -128,6 +129,9 @@ def main_handler(event, context):
             json.loads(os.getenv("LIANTONG_ACCOUNT_LIST", [])) if os.getenv("LIANTONG_ACCOUNT_LIST") else []
         )
         v2ex_cookie_list = json.loads(os.getenv("V2EX_COOKIE_LIST", [])) if os.getenv("V2EX_COOKIE_LIST") else []
+        www2nzz_cookie_list = (
+            json.loads(os.getenv("WWW2NZZ_COOKIE_LIST", [])) if os.getenv("WWW2NZZ_COOKIE_LIST") else []
+        )
 
     else:
         if isinstance(event, dict):
@@ -162,6 +166,7 @@ def main_handler(event, context):
         bilibili_cookie_list = data.get("BILIBILI_COOKIE_LIST", [])
         liantong_account_list = data.get("LIANTONG_ACCOUNT_LIST", [])
         v2ex_cookie_list = data.get("V2EX_COOKIE_LIST", [])
+        www2nzz_cookie_list = data.get("WWW2NZZ_COOKIE_LIST", [])
 
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
@@ -219,6 +224,10 @@ def main_handler(event, context):
 
         if v2ex_cookie_list:
             msg_list = V2exCheckIn(v2ex_cookie_list=v2ex_cookie_list).main()
+            content_list += msg_list
+
+        if www2nzz_cookie_list:
+            msg_list = WWW2nzzCheckIn(www2nzz_cookie_list=www2nzz_cookie_list).main()
             content_list += msg_list
 
         if city_name_list:
