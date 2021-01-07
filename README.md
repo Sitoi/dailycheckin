@@ -65,7 +65,6 @@
 ## 特别鸣谢（排名不分先后）
 
 - [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
-- [@Water008](https://github.com/Water008/qqread) - 企鹅读书
 - [@lxk0301](https://github.com/lxk0301/jd_scripts) - 京东签到
 
 ## 历史 Star 数

@@ -31,9 +31,3 @@ python3 index.py
 ```bash
 python3 index.py xmly
 ```
-
-> 运行【企鹅读书】
-
-```bash
-python3 index.py qqread
-```

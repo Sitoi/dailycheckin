@@ -245,11 +245,6 @@ def main_handler(event, context):
             flag = True
         else:
             flag = False
-    elif message == "qqread":
-        if utc_time.hour in [9, 18] and utc_time.minute == 0:
-            flag = True
-        else:
-            flag = False
     else:
         flag = True
     if flag:
