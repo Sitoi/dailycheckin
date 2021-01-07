@@ -166,6 +166,8 @@ def main_handler(event, context):
         if xmly_cookie_list:
             msg_list = XMLYCheckIn(xmly_cookie_list=xmly_cookie_list).main()
             content_list += msg_list
+    elif message == "qqread":
+        return
 
     else:
         if iqiyi_cookie_list:
