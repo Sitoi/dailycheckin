@@ -109,7 +109,7 @@ class BiliBiliCheckIn(object):
 
     @staticmethod
     def get_followings(
-        session, uid: int, pn: int = 1, ps: int = 50, order: str = "desc", order_type: str = "attention"
+            session, uid: int, pn: int = 1, ps: int = 50, order: str = "desc", order_type: str = "attention"
     ) -> dict:
         """
         获取指定用户关注的up主
@@ -132,7 +132,7 @@ class BiliBiliCheckIn(object):
 
     @staticmethod
     def space_arc_search(
-        session, uid: int, pn: int = 1, ps: int = 100, tid: int = 0, order: str = "pubdate", keyword: str = ""
+            session, uid: int, pn: int = 1, ps: int = 100, tid: int = 0, order: str = "pubdate", keyword: str = ""
     ) -> dict:
         """
         获取指定up主空间视频投稿信息
@@ -329,11 +329,12 @@ class BiliBiliCheckIn(object):
                 share_av = reward_ret.get("data", {}).get("share_av")
                 today_exp = len([one for one in [login, watch_av, share_av] if one]) * 5
                 today_exp += coins_av
+                update_data = (28800 - new_current_exp) // (today_exp if today_exp else 1)
                 msg = (
                     f"【Bilibili签到】\n帐号信息: {uname}\n漫画签到: {manhua_msg}\n直播签到: {live_msg}\n"
                     f"登陆任务: 今日已登陆\n观看视频: {report_msg}\n分享任务: {share_msg}\n投币任务: {coin_msg}\n"
                     f"银瓜子兑换硬币: {silver2coin_msg}\n今日获得经验: {today_exp}\n当前经验: {new_current_exp}\n"
-                    f"按当前速度升级还需: {(28800 - new_current_exp) // today_exp}天\n{live_stats}"
+                    f"按当前速度升级还需: {update_data}天\n{live_stats}"
                 )
                 print(msg)
                 msg_list.append(msg)
