@@ -20,6 +20,7 @@ from liantong import LianTongCheckIn
 from motto import Motto
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
+from smzdm import SmzdmCheckIn
 from tieba import TiebaCheckIn
 from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
@@ -126,6 +127,7 @@ def main_handler(event, context):
         www2nzz_cookie_list = (
             json.loads(os.getenv("WWW2NZZ_COOKIE_LIST", [])) if os.getenv("WWW2NZZ_COOKIE_LIST") else []
         )
+        smzdm_cookie_list = json.loads(os.getenv("SMZDM_COOKIE_LIST", [])) if os.getenv("SMZDM_COOKIE_LIST") else []
 
     else:
         if isinstance(event, dict):
@@ -160,6 +162,7 @@ def main_handler(event, context):
         liantong_account_list = data.get("LIANTONG_ACCOUNT_LIST", [])
         v2ex_cookie_list = data.get("V2EX_COOKIE_LIST", [])
         www2nzz_cookie_list = data.get("WWW2NZZ_COOKIE_LIST", [])
+        smzdm_cookie_list = data.get("SMZDM_COOKIE_LIST", [])
 
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
@@ -220,6 +223,10 @@ def main_handler(event, context):
 
         if www2nzz_cookie_list:
             msg_list = WWW2nzzCheckIn(www2nzz_cookie_list=www2nzz_cookie_list).main()
+            content_list += msg_list
+
+        if smzdm_cookie_list:
+            msg_list = SmzdmCheckIn(smzdm_cookie_list=smzdm_cookie_list).main()
             content_list += msg_list
 
         if city_name_list:

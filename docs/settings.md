@@ -147,6 +147,14 @@
     {
       "www2nzz_cookie": "帐号2 cookie"
     }
+  ],
+  "SMZDM_COOKIE_LIST": [
+    {
+      "smzdm_cookie": "账号1 cookie"
+    },
+    {
+      "smzdm_cookie": "账号2 cookie"
+    }
   ]
 }
 ```
@@ -195,6 +203,7 @@
 |_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|非必须|联通营业厅 每日签到|
 |_**V2EX_COOKIE_LIST**_.v2ex_cookie|V2EX|非必须|[V2EX](https://www.v2ex.com/) 每日签到|
 |_**WWW2NZZ_COOKIE_LIST**_.www2nzz_cookie|咔叽网单|非必须|[咔叽网单](https://www.2nzz.com/) 每日签到|
+|_**SMZDM_COOKIE_LIST**_.smzdm_cookie|咔叽网单|非必须|[什么值得买](https://www.smzdm.com) 每日签到|
 
 ## 参数获取方法
 
@@ -298,6 +307,10 @@
 #### 咔叽网单 Cookie 参数获取
 
 [咔叽网单](https://www.2nzz.com/)
+
+#### 什么值得买 Cookie 参数获取
+
+[什么值得买](https://www.smzdm.com)
 
 ### APP抓包
 

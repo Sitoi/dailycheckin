@@ -51,3 +51,4 @@ jobs:
           LIANTONG_ACCOUNT_LIST: ${{secrets.LIANTONG_ACCOUNT_LIST}}
           V2EX_COOKIE_LIST: ${{secrets.V2EX_COOKIE_LIST}}
           WWW2NZZ_COOKIE_LIST: ${{secrets.WWW2NZZ_COOKIE_LIST}}
+          SMZDM_COOKIE_LIST: ${{secrets.SMZDM_COOKIE_LIST}}

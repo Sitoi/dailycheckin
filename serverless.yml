@@ -26,9 +26,3 @@ inputs:
           cronExpression: "0 */30 * * * * *"
           enable: true
           argument: xmly
-    - timer: # 企鹅读书
-        parameters:
-          name: qqread
-          cronExpression: "0 */11 * * * * *"
-          enable: true
-          argument: qqread

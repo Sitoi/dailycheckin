@@ -140,5 +140,13 @@
     {
       "www2nzz_cookie": "帐号2 cookie"
     }
+  ],
+  "SMZDM_COOKIE_LIST": [
+    {
+      "smzdm_cookie": "账号1 cookie"
+    },
+    {
+      "smzdm_cookie": "账号2 cookie"
+    }
   ]
 }
