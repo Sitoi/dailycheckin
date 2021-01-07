@@ -14,8 +14,9 @@ markdown_extensions:
   - pymdownx.superfences
 nav:
   - 主页: index.md
-  - settings.md
-  - local.md
-  - docker.md
-  - github-actions.md
-  - tencent-scf.md
+  - 配置: settings.md
+  - 教程:
+    - local.md
+    - docker.md
+    - github-actions.md
+    - tencent-scf.md
