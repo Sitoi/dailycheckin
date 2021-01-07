@@ -20,7 +20,6 @@ from liantong import LianTongCheckIn
 from motto import Motto
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
-from qqread import QQReadCheckIn
 from tieba import TiebaCheckIn
 from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
@@ -115,11 +114,6 @@ def main_handler(event, context):
         oneplusbbs_cookie_list = (
             json.loads(os.getenv("ONEPLUSBBS_COOKIE_LIST", [])) if os.getenv("ONEPLUSBBS_COOKIE_LIST") else []
         )
-
-        qqread_account_list = (
-            json.loads(os.getenv("QQREAD_ACCOUNT_LIST", [])) if os.getenv("QQREAD_ACCOUNT_LIST") else []
-        )
-
         fmapp_account_list = json.loads(os.getenv("FMAPP_ACCOUNT_LIST", [])) if os.getenv("FMAPP_ACCOUNT_LIST") else []
         tieba_cookie_list = json.loads(os.getenv("TIEBA_COOKIE_LIST", [])) if os.getenv("TIEBA_COOKIE_LIST") else []
         bilibili_cookie_list = (
@@ -159,7 +153,6 @@ def main_handler(event, context):
         music163_account_list = data.get("MUSIC163_ACCOUNT_LIST", [])
         xmly_cookie_list = data.get("XMLY_COOKIE_LIST", [])
         oneplusbbs_cookie_list = data.get("ONEPLUSBBS_COOKIE_LIST", [])
-        qqread_account_list = data.get("QQREAD_ACCOUNT_LIST", [])
         baidu_url_submit_list = data.get("BAIDU_URL_SUBMIT_LIST", [])
         fmapp_account_list = data.get("FMAPP_ACCOUNT_LIST", [])
         tieba_cookie_list = data.get("TIEBA_COOKIE_LIST", [])
@@ -173,10 +166,7 @@ def main_handler(event, context):
         if xmly_cookie_list:
             msg_list = XMLYCheckIn(xmly_cookie_list=xmly_cookie_list).main()
             content_list += msg_list
-    elif message == "qqread":
-        if qqread_account_list:
-            msg_list = QQReadCheckIn(qqread_account_list=qqread_account_list).main()
-            content_list += msg_list
+
     else:
         if iqiyi_cookie_list:
             msg_list = IQIYICheckIn(iqiyi_cookie_list=iqiyi_cookie_list).main()

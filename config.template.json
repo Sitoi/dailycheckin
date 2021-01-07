@@ -71,142 +71,6 @@
       "oneplusbbs_cookie": "帐号2 cookie"
     }
   ],
-  "QQREAD_ACCOUNT_LIST": [
-    {
-      "qqread_bodys": {
-        "common": {
-          "appid": 1111111111,
-          "areaid": 5,
-          "qq_ver": "8.4.17",
-          "os_ver": "iOS 14.2",
-          "mp_ver": "0.32.5",
-          "mpos_ver": "1.21.0",
-          "brand": "iPhone",
-          "model": "iPhone 11<iPhone12,1>",
-          "screenWidth": 414,
-          "screenHeight": 896,
-          "windowWidth": 414,
-          "windowHeight": 813,
-          "openid": "xxxxxx",
-          "guid": 111111111111,
-          "session": "xxxxxx",
-          "scene": 2016,
-          "source": "xxxxxx",
-          "hasRedDot": "false",
-          "missions": -1,
-          "caseID": -1
-        },
-        "dataList": [
-          {
-            "click1": "bookDetail_bottomBar_read_C",
-            "click2": "bookLib2_bookList_bookClick_C",
-            "route": "pages/book-read/index",
-            "refer": "pages/book-detail/index",
-            "options": {
-              "bid": "888888",
-              "cid": "1"
-            },
-            "dis": 1666666666666,
-            "ext6": 26,
-            "eventID": "bookRead_show_I",
-            "type": "shown",
-            "ccid": 1,
-            "bid": "888888",
-            "bookStatus": 1,
-            "bookPay": 0,
-            "chapterStatus": 0,
-            "ext1": {
-              "font": 18,
-              "bg": 0,
-              "pageMode": 1
-            },
-            "from": "bookLib2_bookList_bookClick_C_2_888888"
-          }
-        ]
-      },
-      "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=888888&readTime=8888&read_type=0&conttype=1&read_status=0&chapter_info=xxxxxx&sp=-1",
-      "qqread_headers": {
-        "Accept": "*/*",
-        "ywsession": "xxxxxx",
-        "Connection": "keep-alive",
-        "Content-Type": "application/json",
-        "Cookie": "xxxxxx",
-        "Host": "mqqapi.reader.qq.com",
-        "User-Agent": "QQ/8.4.17.638 CFNetwork/1206 Darwin/20.1.0",
-        "Referer": "https://appservice.qq.com/xxxxxx/0.32.5/page-frame.html",
-        "Accept-Language": "zh-cn",
-        "Accept-Encoding": "gzip, deflate, br",
-        "mpversion": "0.32.5"
-      }
-    },
-    {
-      "qqread_bodys": {
-        "common": {
-          "appid": 1111111111,
-          "areaid": 5,
-          "qq_ver": "8.4.17",
-          "os_ver": "iOS 14.2",
-          "mp_ver": "0.32.5",
-          "mpos_ver": "1.21.0",
-          "brand": "iPhone",
-          "model": "iPhone 11<iPhone12,1>",
-          "screenWidth": 414,
-          "screenHeight": 896,
-          "windowWidth": 414,
-          "windowHeight": 813,
-          "openid": "xxxxxx",
-          "guid": 111111111111,
-          "session": "xxxxxx",
-          "scene": 2016,
-          "source": "xxxxxx",
-          "hasRedDot": "false",
-          "missions": -1,
-          "caseID": -1
-        },
-        "dataList": [
-          {
-            "click1": "bookDetail_bottomBar_read_C",
-            "click2": "bookLib2_bookList_bookClick_C",
-            "route": "pages/book-read/index",
-            "refer": "pages/book-detail/index",
-            "options": {
-              "bid": "888888",
-              "cid": "1"
-            },
-            "dis": 1666666666666,
-            "ext6": 26,
-            "eventID": "bookRead_show_I",
-            "type": "shown",
-            "ccid": 1,
-            "bid": "888888",
-            "bookStatus": 1,
-            "bookPay": 0,
-            "chapterStatus": 0,
-            "ext1": {
-              "font": 18,
-              "bg": 0,
-              "pageMode": 1
-            },
-            "from": "bookLib2_bookList_bookClick_C_2_888888"
-          }
-        ]
-      },
-      "qqread_timeurl": "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=888888&readTime=8888&read_type=0&conttype=1&read_status=0&chapter_info=xxxxxx&sp=-1",
-      "qqread_headers": {
-        "Accept": "*/*",
-        "ywsession": "xxxxxx",
-        "Connection": "keep-alive",
-        "Content-Type": "application/json",
-        "Cookie": "xxxxxx",
-        "Host": "mqqapi.reader.qq.com",
-        "User-Agent": "QQ/8.4.17.638 CFNetwork/1206 Darwin/20.1.0",
-        "Referer": "https://appservice.qq.com/xxxxxx/0.32.5/page-frame.html",
-        "Accept-Language": "zh-cn",
-        "Accept-Encoding": "gzip, deflate, br",
-        "mpversion": "0.32.5"
-      }
-    }
-  ],
   "BAIDU_URL_SUBMIT_LIST": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
@@ -258,7 +122,23 @@
       "data": "simCount=1&version=iphone_c@8.0100&mobile=xxxxxx&netWay=wifi&isRemberPwd=false&appId=xxxxxx&deviceId=xxxxxx&pip=192.168.1.1&password=xxxxxx&deviceOS=14.3&deviceBrand=iphone&deviceModel=iPhone&remark4=&keyVersion=2&deviceCode=xxxxxx"
     },
     {
-      "data": "账号2 参数"
+      "data": "帐号2 信息"
+    }
+  ],
+  "V2EX_COOKIE_LIST": [
+    {
+      "v2ex_cookie": "帐号1 cookie"
+    },
+    {
+      "v2ex_cookie": "帐号2 cookie"
+    }
+  ],
+  "WWW2NZZ_COOKIE_LIST": [
+    {
+      "www2nzz_cookie": "帐号1 cookie"
+    },
+    {
+      "www2nzz_cookie": "帐号2 cookie"
     }
   ]
 }
