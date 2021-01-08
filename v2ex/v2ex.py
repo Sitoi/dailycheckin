@@ -17,15 +17,17 @@ class V2exCheckIn:
     def sign(session):
         msg = ""
         response = session.get(url="https://www.v2ex.com/mission/daily", verify=False)
-        pattern = r"<input type=\"button\" class=\"super normal button\"" \
-                  r" value=\".*?\" onclick=\"location\.href = \'(.*?)\';\" />"
+        pattern = (
+            r"<input type=\"button\" class=\"super normal button\""
+            r" value=\".*?\" onclick=\"location\.href = \'(.*?)\';\" />"
+        )
         urls = re.findall(pattern=pattern, string=response.text)
         url = urls[0] if urls else None
         print(url)
         if url != "/balance":
             headers = {"Referer": "https://www.v2ex.com/mission/daily"}
             data = {"once": url.split("=")[-1]}
-            session.get(url="https://www.v2ex.com" + url, verify=False, headers=headers, params=data)
+            _ = session.get(url="https://www.v2ex.com" + url, verify=False, headers=headers, params=data)
         response = session.get(url="https://www.v2ex.com/balance", verify=False)
         total = re.findall(
             pattern=r"<td class=\"d\" style=\"text-align: right;\">(\d+\.\d+)</td>", string=response.text
@@ -51,7 +53,13 @@ class V2exCheckIn:
             }
             session = requests.session()
             requests.utils.add_dict_to_cookiejar(session.cookies, v2ex_cookie)
-            session.headers.update({"Referer": "https://www.baidu.com/"})
+            session.headers.update(
+                {
+                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66",
+                    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+                }
+            )
             sign_msg = self.sign(session=session)
             msg = f"【V2EX 论坛】\n{sign_msg}"
             print(msg)
