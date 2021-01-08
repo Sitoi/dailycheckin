@@ -26,7 +26,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 python3 index.py
 ```
 
-> 运行【喜马拉雅极速版
+> 运行【喜马拉雅极速版】
 
 ```bash
 python3 index.py xmly
