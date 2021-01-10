@@ -11,19 +11,23 @@ class SmzdmCheckIn:
 
     @staticmethod
     def sign(session):
-        current = session.get(url='https://zhiyou.smzdm.com/user/info/jsonp_get_current').json()
-        if current['checkin']['has_checkin']:
-            msg = f"用户信息: {current['nickname']}\n目前积分: {current['point']}\n" \
-                  f"经验值: {current['exp']}\n金币: {current['gold']}\n" \
-                  f"碎银子: {current['silver']}\n威望: {current['prestige']}\n等级: {current['level']}\n" \
-                  f"已经签到: {current['checkin']['daily_checkin_num']} 天"
-        else:
-            response = session.get(url="https://zhiyou.smzdm.com/user/checkin/jsonp_checkin").json()
-            msg = f"用户信息: {current['nickname']}\n目前积分: {response['point']}\n" \
-                  f"增加积分: {response['add_point']}\n经验值: {response['exp']}\n" \
-                  f"金币: {response['gold']}\n威望: {response['prestige']}\n等级: {response['rank']}"
-
-        print(msg)
+        try:
+            current = session.get(url='https://zhiyou.smzdm.com/user/info/jsonp_get_current').json()
+            if current['checkin']['has_checkin']:
+                print(current)
+                msg = f"用户信息: {current['nickname']}\n目前积分: {current['point']}\n" \
+                      f"经验值: {current['exp']}\n金币: {current['gold']}\n" \
+                      f"碎银子: {current['silver']}\n威望: {current['prestige']}\n等级: {current['level']}\n" \
+                      f"已经签到: {current['checkin']['daily_checkin_num']} 天"
+            else:
+                response = session.get(url="https://zhiyou.smzdm.com/user/checkin/jsonp_checkin").json()
+                print(response)
+                msg = f"用户信息: {current['nickname']}\n目前积分: {response['point']}\n" \
+                      f"增加积分: {response['add_point']}\n经验值: {response['exp']}\n" \
+                      f"金币: {response['gold']}\n威望: {response['prestige']}\n等级: {response['rank']}"
+            print(msg)
+        except Exception as e:
+            msg = f"签到状态: 签到失败\n错误信息: {e}"
         return msg
 
     def main(self):
