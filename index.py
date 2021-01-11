@@ -6,9 +6,8 @@ import time
 from datetime import datetime, timedelta
 
 from motto import Motto
-from utils.config import get_checkin_info, checkin_map
-from utils.message import message2dingtalk, message2server, message2qmsg, message2telegram, message2coolpush
-from xmly import XMLYCheckIn
+from utils.config import checkin_map, get_checkin_info
+from utils.message import message2coolpush, message2dingtalk, message2qmsg, message2server, message2telegram
 
 
 def main_handler(event, context):
@@ -51,19 +50,20 @@ def main_handler(event, context):
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
         if check_info.get("xmly_cookie_list"):
-            msg_list = XMLYCheckIn(xmly_cookie_list=check_info.get("xmly_cookie_list")).main()
+            msg_list = checkin_map.get("XMLY_COOKIE_LIST")(xmly_cookie_list=check_info.get("xmly_cookie_list")).main()
             content_list += msg_list
     elif message == "qqread":
         return
 
     else:
         for one_check, check_func in checkin_map.items():
-            try:
-                msg_list = check_func(check_info.get(one_check.lower())).main()
-            except Exception as e:
-                print(e)
-                msg_list = []
-            content_list += msg_list
+            if one_check not in ["XMLY_COOKIE_LIST"]:
+                try:
+                    msg_list = check_func(check_info.get(one_check.lower())).main()
+                except Exception as e:
+                    print(e)
+                    msg_list = []
+                content_list += msg_list
 
         if motto:
             try:

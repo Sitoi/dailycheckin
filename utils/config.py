@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import os
+
 from baidu_url_submit import BaiduUrlSubmit
 from bilibili import BiliBiliCheckIn
 from fmapp import FMAPPCheckIn
@@ -15,6 +16,7 @@ from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
 from www2nzz import WWW2nzzCheckIn
+from xmly import XMLYCheckIn
 from youdao import YouDaoCheckIn
 
 checkin_map = {
@@ -33,6 +35,7 @@ checkin_map = {
     "V2EX_COOKIE_LIST": V2exCheckIn,
     "WWW2NZZ_COOKIE_LIST": WWW2nzzCheckIn,
     "CITY_NAME_LIST": Weather,
+    "XMLY_COOKIE_LIST": XMLYCheckIn
 }
 
 
