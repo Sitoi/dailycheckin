@@ -40,7 +40,14 @@ checkin_map = {
 
 
 def env2json(key):
-    value = json.loads(os.getenv(key, [])) if os.getenv(key) else []
+    try:
+        value = json.loads(os.getenv(key, [])) if os.getenv(key) else []
+        if isinstance(value, list):
+            value = value
+        else:
+            value = []
+    except Exception as e:
+        value = []
     return value
 
 

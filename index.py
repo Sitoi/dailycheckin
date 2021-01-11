@@ -32,21 +32,23 @@ def main_handler(event, context):
             message = event.get("Message")
         else:
             message = None
-        with open(os.path.join(os.path.dirname(__file__), "config.json"), "r", encoding="utf-8") as f:
-            data = json.loads(f.read())
-        dingtalk_secret = data.get("DINGTALK_SECRET")
-        dingtalk_access_token = data.get("DINGTALK_ACCESS_TOKEN")
-        sckey = data.get("SCKEY")
-        qmsg_key = data.get("QMSG_KEY")
-        tg_bot_token = data.get("TG_BOT_TOKEN")
-        tg_user_id = data.get("TG_USER_ID")
-        coolpushskey = data.get("COOLPUSHSKEY")
-        coolpushqq = data.get("COOLPUSHQQ")
-        coolpushwx = data.get("COOLPUSHWX")
-        coolpushemail = data.get("COOLPUSHEMAIL")
-        motto = data.get("MOTTO")
-        check_info = get_checkin_info(data=data)
-
+        try:
+            with open(os.path.join(os.path.dirname(__file__), "config.json"), "r", encoding="utf-8") as f:
+                data = json.loads(f.read())
+            dingtalk_secret = data.get("DINGTALK_SECRET")
+            dingtalk_access_token = data.get("DINGTALK_ACCESS_TOKEN")
+            sckey = data.get("SCKEY")
+            qmsg_key = data.get("QMSG_KEY")
+            tg_bot_token = data.get("TG_BOT_TOKEN")
+            tg_user_id = data.get("TG_USER_ID")
+            coolpushskey = data.get("COOLPUSHSKEY")
+            coolpushqq = data.get("COOLPUSHQQ")
+            coolpushwx = data.get("COOLPUSHWX")
+            coolpushemail = data.get("COOLPUSHEMAIL")
+            motto = data.get("MOTTO")
+            check_info = get_checkin_info(data=data)
+        except Exception as e:
+            raise e
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
         if check_info.get("xmly_cookie_list"):
