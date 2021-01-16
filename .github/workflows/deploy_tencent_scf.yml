@@ -54,6 +54,7 @@ jobs:
           V2EX_COOKIE_LIST: ${{secrets.V2EX_COOKIE_LIST}}
           WWW2NZZ_COOKIE_LIST: ${{secrets.WWW2NZZ_COOKIE_LIST}}
           SMZDM_COOKIE_LIST: ${{secrets.SMZDM_COOKIE_LIST}}
+          MIMOTION_ACCOUNT_LIST: ${{secrets.MIMOTION_ACCOUNT_LIST}}
 
       - name: "部署到腾讯云函数"
         run: sls deploy --debug

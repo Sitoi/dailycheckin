@@ -26,6 +26,7 @@ if [[ $LIANTONG_ACCOUNT_LIST ]]; then echo "LIANTONG_ACCOUNT_LIST 变量存在�
 if [[ $V2EX_COOKIE_LIST ]]; then echo "V2EX_COOKIE_LIST 变量存在，并成功赋值" ;else V2EX_COOKIE_LIST=[]; fi;
 if [[ $WWW2NZZ_COOKIE_LIST ]]; then echo "WWW2NZZ_COOKIE_LIST 变量存在，并成功赋值" ;else WWW2NZZ_COOKIE_LIST=[]; fi;
 if [[ $SMZDM_COOKIE_LIST ]]; then echo "SMZDM_COOKIE_LIST 变量存在，并成功赋值" ;else SMZDM_COOKIE_LIST=[]; fi;
+if [[ $MIMOTION_ACCOUNT_LIST ]]; then echo "MIMOTION_ACCOUNT_LIST 变量存在，并成功赋值" ;else MIMOTION_ACCOUNT_LIST=[]; fi;
 
 
 JSONSTR="{
@@ -55,6 +56,7 @@ JSONSTR="{
   \"V2EX_COOKIE_LIST\": ${V2EX_COOKIE_LIST},
   \"WWW2NZZ_COOKIE_LIST\": ${WWW2NZZ_COOKIE_LIST},
   \"SMZDM_COOKIE_LIST\": ${SMZDM_COOKIE_LIST},
+  \"MIMOTION_ACCOUNT_LIST\": ${MIMOTION_ACCOUNT_LIST},
   \"TIEBA_COOKIE_LIST\": ${TIEBA_COOKIE_LIST}
 }"
 echo $JSONSTR > config.json

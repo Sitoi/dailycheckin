@@ -148,5 +148,19 @@
     {
       "smzdm_cookie": "账号2 cookie"
     }
+  ],
+  "MIMOTION_ACCOUNT_LIST": [
+    {
+      "mimotion_phone": "账号1",
+      "mimotion_password": "账号1 密码",
+      "mimotion_min_step": "账号1 最小步数",
+      "mimotion_max_step": "账号1 最大步数"
+    },
+    {
+      "mimotion_phone": "账号2",
+      "mimotion_password": "账号2 密码",
+      "mimotion_min_step": "账号2 最小步数",
+      "mimotion_max_step": "账号2 最大步数"
+    }
   ]
 }

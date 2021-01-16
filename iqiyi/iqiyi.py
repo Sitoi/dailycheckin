@@ -41,10 +41,9 @@ class IQIYICheckIn:
                     f"升级需成长值: {distance}\n今日成长值: +{today_growth_value}\nVIP 到期时间: {deadline}"
                 )
             except Exception as e:
-                print(e)
-                msg = res.json()
+                msg = str(e)
         else:
-            msg = res.json()
+            msg = res.json().get("msg")
         return msg
 
     @staticmethod

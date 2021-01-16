@@ -37,7 +37,7 @@ class OnePlusBBSCheckIn:
             data=data
         ).text
         msg = re.findall(r'<div class="c">(.*?)</div>', response, re.S)
-        msg = msg[0].strip() if msg else ""
+        msg = msg[0].strip() if msg else "Cookie 可能过期"
         print(msg)
         return msg
 

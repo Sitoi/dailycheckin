@@ -8,6 +8,7 @@ from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
 from liantong import LianTongCheckIn
+from mimotion import MiMotion
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
 from smzdm import SmzdmCheckIn
@@ -34,6 +35,7 @@ checkin_map = {
     "TIEBA_COOKIE_LIST": TiebaCheckIn,
     "V2EX_COOKIE_LIST": V2exCheckIn,
     "WWW2NZZ_COOKIE_LIST": WWW2nzzCheckIn,
+    "MIMOTION_ACCOUNT_LIST": MiMotion,
     "CITY_NAME_LIST": Weather,
     "XMLY_COOKIE_LIST": XMLYCheckIn
 }
