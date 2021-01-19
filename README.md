@@ -59,7 +59,7 @@
 ## 详细文档
 
 文档地址：[https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
-
+.
 ## 新增签到脚本需求
 
 如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/dailycheckin/issues/new/choose) 中提交
