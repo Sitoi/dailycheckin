@@ -15,6 +15,7 @@
 |_**DINGTALK_SECRET**_|钉钉推送|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选|
 |_**DINGTALK_ACCESS_TOKEN**_|钉钉推送|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`|
 |_**SCKEY**_|server 酱推送|推送|server 酱推送[官方文档](https://sc.ftqq.com/3.version) ,填写 `SCKEY` 代码即可|
+|_**BARK_URL**_|BARK 推送|推送|BARK 推送[使用](https://github.com/Sitoi/dailycheckin/issues/29) ,填写 `BARK_URL` 即可，例如: `https://api.day.app/DxHcxxxxxRxxxxxxcm/` |
 |_**QMSG_KEY**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
 |_**TG_BOT_TOKEN**_|telegram 推送|推送|telegram 推送 `TG_BOT_TOKEN`|
 |_**TG_USER_ID**_|telegram 推送|推送|telegram 推送 `TG_USER_ID`|
@@ -150,6 +151,7 @@
   "DINGTALK_SECRET": "xxxxxx",
   "DINGTALK_ACCESS_TOKEN": "xxxxxx",
   "SCKEY": "xxxxxx",
+  "BARK_URL": "xxxxxx",
   "QMSG_KEY": "xxxxxx",
   "TG_BOT_TOKEN": "xxxxxx",
   "TG_USER_ID": "xxxxxx",

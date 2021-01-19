@@ -42,3 +42,4 @@
 - qmsg 酱（QQ）
 - telegram（TG）
 - Cool Push（QQ,微信,邮箱）
+- Bark（全平台）

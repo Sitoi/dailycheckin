@@ -17,7 +17,7 @@ def message2server(sckey, content):
 
 
 def message2coolpush(
-        coolpushskey, content, coolpushqq: bool = True, coolpushwx: bool = False, coolpushemail: bool = False
+    coolpushskey, content, coolpushqq: bool = True, coolpushwx: bool = False, coolpushemail: bool = False
 ):
     print("Cool Push 推送开始")
     params = {"c": content, "t": "每日签到"}
@@ -60,4 +60,14 @@ def message2dingtalk(dingtalk_secret, dingtalk_access_token, content):
         headers={"Content-Type": "application/json", "Charset": "UTF-8"},
         data=json.dumps(send_data),
     )
+    return
+
+
+def message2bark(bark_url: str, content):
+    print("Bark 推送开始")
+    if not bark_url.endswith("/"):
+        bark_url += "/"
+    url = f"{bark_url}{content}"
+    headers = {'Content-type': "application/x-www-form-urlencoded"}
+    requests.get(url=url, headers=headers)
     return

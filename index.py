@@ -7,7 +7,14 @@ from datetime import datetime, timedelta
 
 from motto import Motto
 from utils.config import checkin_map, get_checkin_info
-from utils.message import message2coolpush, message2dingtalk, message2qmsg, message2server, message2telegram
+from utils.message import (
+    message2bark,
+    message2coolpush,
+    message2dingtalk,
+    message2qmsg,
+    message2server,
+    message2telegram,
+)
 
 
 def main_handler(event, context):
@@ -17,6 +24,7 @@ def main_handler(event, context):
         message = os.getenv("ONLY_MESSAGE")
         dingtalk_secret = os.getenv("DINGTALK_SECRET")
         dingtalk_access_token = os.getenv("DINGTALK_ACCESS_TOKEN")
+        bark_url = os.getenv("BARK_URL")
         sckey = os.getenv("SCKEY")
         tg_bot_token = os.getenv("TG_BOT_TOKEN")
         tg_user_id = os.getenv("TG_USER_ID")
@@ -37,6 +45,7 @@ def main_handler(event, context):
                 data = json.loads(f.read())
             dingtalk_secret = data.get("DINGTALK_SECRET")
             dingtalk_access_token = data.get("DINGTALK_ACCESS_TOKEN")
+            bark_url = data.get("BARK_URL")
             sckey = data.get("SCKEY")
             qmsg_key = data.get("QMSG_KEY")
             tg_bot_token = data.get("TG_BOT_TOKEN")
@@ -106,6 +115,8 @@ def main_handler(event, context):
                     coolpushwx=coolpushwx,
                     coolpushemail=coolpushemail,
                 )
+        if bark_url:
+            message2bark(bark_url=bark_url, content=content)
     return
 
 
