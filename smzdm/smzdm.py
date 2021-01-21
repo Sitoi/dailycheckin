@@ -15,16 +15,18 @@ class SmzdmCheckIn:
             current = session.get(url='https://zhiyou.smzdm.com/user/info/jsonp_get_current').json()
             if current['checkin']['has_checkin']:
                 print(current)
-                msg = f"用户信息: {current['nickname']}\n目前积分: {current['point']}\n" \
-                      f"经验值: {current['exp']}\n金币: {current['gold']}\n" \
-                      f"碎银子: {current['silver']}\n威望: {current['prestige']}\n等级: {current['level']}\n" \
-                      f"已经签到: {current['checkin']['daily_checkin_num']} 天"
+                msg = f"用户信息: {current.get('nickname', '')}\n目前积分: {current.get('point', '')}\n" \
+                      f"经验值: {current.get('exp', '')}\n金币: {current.get('gold', '')}\n" \
+                      f"碎银子: {current.get('silver', '')}\n威望: {current.get('prestige', '')}\n" \
+                      f"等级: {current.get('level', '')}\n" \
+                      f"已经签到: {current.get('checkin', {}).get('daily_checkin_num', '')} 天"
             else:
                 response = session.get(url="https://zhiyou.smzdm.com/user/checkin/jsonp_checkin").json()
                 print(response)
-                msg = f"用户信息: {current['nickname']}\n目前积分: {response['point']}\n" \
-                      f"增加积分: {response['add_point']}\n经验值: {response['exp']}\n" \
-                      f"金币: {response['gold']}\n威望: {response['prestige']}\n等级: {response['rank']}"
+                msg = f"用户信息: {current.get('nickname', '')}\n目前积分: {response.get('point', '')}\n" \
+                      f"增加积分: {response.get('add_point', '')}\n经验值: {response.get('exp', '')}\n" \
+                      f"金币: {response.get('gold', '')}\n威望: {response.get('prestige', '')}\n" \
+                      f"等级: {response.get('rank', '')}"
             print(msg)
         except Exception as e:
             msg = f"签到状态: 签到失败\n错误信息: {e}"
