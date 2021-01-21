@@ -9,7 +9,7 @@ inputs:
   src: ./
   handler: index.main_handler # 入口
   runtime: Python3.6 # 运行环境
-  region: ap-hongkong # 函数所在区域
+  region: ap-guangzhou # 函数所在区域
   description: 每日签到集合 - ${app}
   memorySize: 128 # 内存大小，单位 MB
   timeout: 900 # 超时时间，单位秒
