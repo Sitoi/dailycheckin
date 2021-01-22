@@ -26,6 +26,7 @@ class BaiduUrlSubmit:
                 else:
                     error_count += 1
             except Exception as e:
+                print(e)
                 error_count += 1
         msg = (
             f"【百度站点提交】\n站点地址: {site}\n当天剩余的可推送 url 条数: {remian}\n成功推送的 url 条数: {success_count}\n"

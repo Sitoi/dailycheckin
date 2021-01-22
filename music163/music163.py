@@ -8,6 +8,7 @@ import requests
 import urllib3
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from requests import utils
 
 urllib3.disable_warnings()
 
@@ -91,6 +92,8 @@ class Music163CheckIn:
             verify=False
         )
         res_data = json.loads(res.text, strict=False)
+        count = 0
+        buffer = []
         for x in res_data["recommend"]:
             url = (
                 "https://music.163.com/weapi/v3/playlist/detail?csrf_token="

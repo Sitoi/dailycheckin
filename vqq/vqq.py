@@ -5,6 +5,7 @@ import re
 import time
 
 import requests
+from requests import utils
 
 
 class VQQCheckIn:

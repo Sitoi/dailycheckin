@@ -2,6 +2,7 @@
 import json
 import os
 
+from acfun import AcFunCheckIn
 from baidu_url_submit import BaiduUrlSubmit
 from bilibili import BiliBiliCheckIn
 from fmapp import FMAPPCheckIn
@@ -35,6 +36,7 @@ checkin_map = {
     "TIEBA_COOKIE_LIST": TiebaCheckIn,
     "V2EX_COOKIE_LIST": V2exCheckIn,
     "WWW2NZZ_COOKIE_LIST": WWW2nzzCheckIn,
+    "ACFUN_ACCOUNT_LIST": AcFunCheckIn,
     "MIMOTION_ACCOUNT_LIST": MiMotion,
     "CITY_NAME_LIST": Weather,
     "XMLY_COOKIE_LIST": XMLYCheckIn
@@ -49,6 +51,7 @@ def env2json(key):
         else:
             value = []
     except Exception as e:
+        print(e)
         value = []
     return value
 

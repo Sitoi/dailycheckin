@@ -3,6 +3,7 @@ import json
 import os
 
 import requests
+from requests import utils
 
 
 class BiliBiliCheckIn(object):
@@ -109,7 +110,7 @@ class BiliBiliCheckIn(object):
 
     @staticmethod
     def get_followings(
-            session, uid: int, pn: int = 1, ps: int = 50, order: str = "desc", order_type: str = "attention"
+        session, uid: int, pn: int = 1, ps: int = 50, order: str = "desc", order_type: str = "attention"
     ) -> dict:
         """
         获取指定用户关注的up主
@@ -132,7 +133,7 @@ class BiliBiliCheckIn(object):
 
     @staticmethod
     def space_arc_search(
-            session, uid: int, pn: int = 1, ps: int = 100, tid: int = 0, order: str = "pubdate", keyword: str = ""
+        session, uid: int, pn: int = 1, ps: int = 100, tid: int = 0, order: str = "pubdate", keyword: str = ""
     ) -> dict:
         """
         获取指定up主空间视频投稿信息

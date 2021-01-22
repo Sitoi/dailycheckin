@@ -3,6 +3,7 @@ import json
 import os
 
 import requests
+from requests import utils
 
 
 class SmzdmCheckIn:

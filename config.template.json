@@ -163,5 +163,15 @@
       "mimotion_min_step": "账号2 最小步数",
       "mimotion_max_step": "账号2 最大步数"
     }
+  ],
+  "ACFUN_ACCOUNT_LIST": [
+    {
+      "acfun_phone": "帐号1 手机号",
+      "acfun_password": "帐号1 密码"
+    },
+    {
+      "acfun_phone": "帐号2 手机号",
+      "acfun_password": "帐号2 密码"
+    }
   ]
 }

@@ -5,6 +5,7 @@ import re
 
 import requests
 import urllib3
+from requests import utils
 
 urllib3.disable_warnings()
 

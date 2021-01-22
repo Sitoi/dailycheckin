@@ -53,6 +53,8 @@
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|APP|Fa米家 APP headers 中的 deviceId|
 |_**XMLY_COOKIE_LIST**_.xmly_cookie|喜马拉雅极速版|APP|喜马拉雅极速版 cookie|
+|_**ACFUN_ACCOUNT_LIST**_.acfun_phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 每日签到|
+|_**ACFUN_ACCOUNT_LIST**_.acfun_password|[AcFun](https://www.acfun.cn/)|APP|AcFun 每日签到|
 
 ### 其他任务配置
 
@@ -91,6 +93,13 @@
 
 - _**MUSIC163_ACCOUNT_LIST**_.music163_phone: 网易云音乐手机号
 - _**MUSIC163_ACCOUNT_LIST**_.music163_password: 网易云音乐手机号对应的密码
+
+#### AcFun 帐号信息
+
+
+- _**ACFUN_ACCOUNT_LIST**_.acfun_phone: AcFun 手机号
+- _**ACFUN_ACCOUNT_LIST**_.acfun_password: AcFun 手机号对应的密码
+
 
 ### APP 抓包
 
@@ -311,6 +320,16 @@
       "mimotion_password": "账号2 密码",
       "mimotion_min_step": "账号2 最小步数",
       "mimotion_max_step": "账号2 最大步数"
+    }
+  ],
+  "ACFUN_ACCOUNT_LIST": [
+    {
+      "acfun_phone": "帐号1 手机号",
+      "acfun_password": "帐号1 密码"
+    },
+    {
+      "acfun_phone": "帐号2 手机号",
+      "acfun_password": "帐号2 密码"
     }
   ]
 }
