@@ -4,8 +4,8 @@
   "SCKEY": "xxxxxx",
   "BARK_URL": "xxxxxx",
   "QMSG_KEY": "xxxxxx",
-  "TG_BOT_TOKEN": "xxxxxx",
-  "TG_USER_ID": "xxxxxx",
+  "TG_BOT_TOKEN": "AAEOPuBq-28lbGFkpNYe25CxAk5A25_08Ok",
+  "TG_USER_ID": "1542853366",
   "COOLPUSHSKEY": "xxxxxx",
   "COOLPUSHQQ": true,
   "COOLPUSHWX": true,
@@ -16,7 +16,7 @@
   "MOTTO": true,
   "IQIYI_COOKIE_LIST": [
     {
-      "iqiyi_cookie": "帐号1 cookie"
+      "iqiyi_cookie": "11jinYZgNnXFTCm2l3MqkMiaF5ytQPAFEppACBxfk3LSUyIgPOm3caz8OxrlprYU1C7c8f"
     },
     {
       "iqiyi_cookie": "帐号2 cookie"
