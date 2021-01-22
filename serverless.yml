@@ -17,7 +17,7 @@ inputs:
     - timer: # 日常签到签到
         parameters:
           name: dailycheckin
-          cronExpression: "0 45 8 * * * *"
+          cronExpression: "0 0 1 * * * *"
           enable: true
           argument: None
     - timer: # 喜马拉雅极速版
