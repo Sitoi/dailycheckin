@@ -108,7 +108,6 @@ class KGQQCheckIn:
                 else "未获取到用户信息"
             )
             msg = f"【全民K歌签到】\n帐号信息: {o_cookie}\n获取鲜花: {msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

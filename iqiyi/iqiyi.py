@@ -42,6 +42,7 @@ class IQIYICheckIn:
                 )
             except Exception as e:
                 msg = str(e)
+                print(msg)
         else:
             msg = res.json().get("msg")
         return msg
@@ -177,7 +178,6 @@ class IQIYICheckIn:
                 f"【爱奇艺签到】\n{user_msg}\n"
                 f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
             )
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

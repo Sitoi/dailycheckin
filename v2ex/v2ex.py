@@ -24,7 +24,6 @@ class V2exCheckIn:
         )
         urls = re.findall(pattern=pattern, string=response.text)
         url = urls[0] if urls else None
-        print(url)
         if url != "/balance":
             headers = {"Referer": "https://www.v2ex.com/mission/daily"}
             data = {"once": url.split("=")[-1]}
@@ -63,7 +62,6 @@ class V2exCheckIn:
             )
             sign_msg = self.sign(session=session)
             msg = f"【V2EX 论坛】\n{sign_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

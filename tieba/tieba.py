@@ -67,7 +67,6 @@ class TiebaCheckIn:
             data = {"kw": tb_name, "tbs": tbs, "sign": md5}
             try:
                 response = session.post(url="http://c.tieba.baidu.com/c/c/forum/sign", data=data).json()
-                print(tb_name, response)
                 if response["error_code"] == "0":
                     success_count += 1
                 elif response["error_code"] == "160002":
@@ -93,9 +92,8 @@ class TiebaCheckIn:
                 tb_name_list = self.get_tieba_list(session=session)
                 msg = self.sign(session=session, tb_name_list=tb_name_list, tbs=tbs)
                 msg = f"【百度贴吧签到】\n帐号信息: {user_name}\n{msg}"
-                print(msg)
             else:
-                msg = f"【百度贴吧签到】\n帐号信息: {user_name}"
+                msg = f"【百度贴吧签到】\n帐号信息: {user_name}\n签到状态: Cookie 可能过期"
             msg_list.append(msg)
         return msg_list
 

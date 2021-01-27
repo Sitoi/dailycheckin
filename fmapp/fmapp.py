@@ -80,7 +80,6 @@ class FMAPPCheckIn:
             name_msg = self.user_info(headers=headers)
             mili_msg = self.mili_count(headers=headers)
             msg = f"【Fa米家 APP】\n帐号信息: {name_msg}\n签到状态: {sign_msg}\n米粒数量: {mili_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

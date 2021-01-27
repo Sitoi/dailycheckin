@@ -36,8 +36,6 @@ class XMLYCheckIn:
             regex = r"&\d\.\d\.\d+"
             appid = "&1.1.9"
             dict_cookie["1&_device"] = re.sub(regex, appid, dict_cookie["1&_device"], 0, re.MULTILINE)
-            print(dict_cookie["1&_device"])
-
         except (IndexError, KeyError):
             print("cookie填写出错 ❌,仔细查看说明")
             raise
@@ -110,8 +108,8 @@ class XMLYCheckIn:
             print(f"网络请求异常: {e}")
             return 0
         result = response.json()
-        print(f"""连续签到{result["continuousDays"]}/{result["historyDays"]}天""")
-        print(result["isTickedToday"])
+        # print(f"""连续签到{result["continuousDays"]}/{result["historyDays"]}天""")
+        # print(result["isTickedToday"])
         if not result["isTickedToday"]:
             print("!!!开始签到")
             headers = {
@@ -130,7 +128,7 @@ class XMLYCheckIn:
                 cookies=cookies,
                 data=json.dumps(params),
             )
-            print(response.text)
+            # print(response.text)
         return result["continuousDays"]
 
     def save_listen_time(self, cookies, date_stamp):
@@ -203,7 +201,7 @@ class XMLYCheckIn:
         except Exception as e:
             print(f"网络请求异常: {e}")
             return
-        print(response.text)
+        # print(response.text)
 
     def read(self, cookies):
         """
@@ -303,7 +301,7 @@ class XMLYCheckIn:
         except Exception as e:
             print(f"网络请求异常: {e}")
             return
-        print("receive: ", response.text)
+        # print("receive: ", response.text)
         return response.json()
 
     def ad_score(self, cookies, business_type, task_id):
@@ -348,7 +346,7 @@ class XMLYCheckIn:
         except Exception as e:
             print(f"网络请求异常: {e}")
             return
-        print(response.text)
+        # print(response.text)
         return response.json()
 
     def bubble(self, cookies):
@@ -388,7 +386,7 @@ class XMLYCheckIn:
         if not result["data"]["effectiveBubbles"]:
             return "暂无有效气泡"
         for i in result["data"]["effectiveBubbles"]:
-            print(i["id"])
+            # print(i["id"])
             tmp = self.receive(cookies, i["id"])
             if "errorCode" in tmp:
                 print("❌ 每天手动收听一段时间，暂无其他方法")
@@ -423,7 +421,7 @@ class XMLYCheckIn:
         except Exception as e:
             print(f"网络请求异常: {e}")
             return {"stamina": 0, "remainingTimes": 0}
-        print(response.text)
+        # print(response.text)
         result = response.json()
         stamina = result["data"]["stamina"]
         remaining_times = result["data"]["remainingTimes"]
@@ -457,7 +455,7 @@ class XMLYCheckIn:
             paper_id = result["data"]["paperId"]
             date_str = result["data"]["dateStr"]
             last_topic_id = result["data"]["topics"][2]["topicId"]
-            print(paper_id, date_str, last_topic_id)
+            # print(paper_id, date_str, last_topic_id)
             return paper_id, date_str, last_topic_id
         except Exception as e:
             print(f"❌1 重新抓包 2 手动答题，错误信息: {e}")
@@ -551,13 +549,13 @@ class XMLYCheckIn:
             if paper_id == 0:
                 return
             tmp = self.ans_receive(cookies, paper_id, last_topic_id, 1)
-            print(tmp)
+            # print(tmp)
             if "errorCode" in tmp:
                 print("❌ 每天手动收听一段时间，暂无其他方法")
                 return
             time.sleep(1)
             tmp = self.ans_receive(cookies, paper_id, last_topic_id, 2)
-            print(tmp)
+            # print(tmp)
             if tmp == 0:
                 return
             time.sleep(1)
@@ -571,13 +569,13 @@ class XMLYCheckIn:
                 if paper_id == 0:
                     return
                 tmp = self.ans_receive(cookies, paper_id, last_topic_id, 1)
-                print(tmp)
+                # print(tmp)
                 if "errorCode" in tmp:
                     print("❌ 每天手动收听一段时间，暂无其他方法")
                     return
                 time.sleep(1)
                 tmp = self.ans_receive(cookies, paper_id, last_topic_id, 2)
-                print(tmp)
+                # print(tmp)
                 if tmp == 0:
                     return
                 time.sleep(1)
@@ -613,7 +611,7 @@ class XMLYCheckIn:
                 data=json.dumps(data),
             ).json()
             if response["data"]["upperLimit"]:
-                print(response["data"]["upperLimit"])
+                # print(response["data"]["upperLimit"])
                 print("今日已达上限")
                 card_report_time_msg = "今日已达上限"
             else:
@@ -669,7 +667,7 @@ class XMLYCheckIn:
         except Exception as e:
             print(f"网络请求异常: {e}")
             return
-        print(response.text)
+        # print(response.text)
 
     def index_baoxiang_award(self, cookies):
         """
@@ -809,7 +807,7 @@ class XMLYCheckIn:
         except Exception as e:
             print(f"网络请求异常: {e}")
             return
-        print(response.text)
+        # print(response.text)
 
     def draw_5card(self, cookies, draw_record_id_list):
         """
@@ -840,7 +838,7 @@ class XMLYCheckIn:
         except Exception as e:
             print(f"网络请求异常: {e}")
             return
-        print("五连抽: ", response.text)
+        # print("五连抽: ", response.text)
 
     def card(self, cookies, _datatime):
         """
@@ -933,7 +931,7 @@ class XMLYCheckIn:
             if need:
                 print("万能卡兑换稀有卡:")
                 self.card_exchange_card(cookies, need.pop(), from_record_id_list)
-        print(card_mag)
+        # print(card_mag)
         return card_mag
 
     def account(self, cookies):
@@ -995,7 +993,6 @@ class XMLYCheckIn:
                   f"金币气泡: {bubble_msg}\n答题奖励: {answer_msg}\n卡牌奖励: {card_report_time_msg}\n" \
                   f"{card_msg}\n{index_baoxiang_award_msg}\n" \
                   f"当前剩余: {total}元\n今日获得: {today_total}元\n累计获得: {history_total}元"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

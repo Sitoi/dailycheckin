@@ -68,6 +68,7 @@ def main_handler(event, context):
 
     else:
         for one_check, check_func in checkin_map.items():
+            print(f"---------- 开始执行 {one_check} 签到----------")
             if one_check not in ["XMLY_COOKIE_LIST"]:
                 try:
                     msg_list = check_func(check_info.get(one_check.lower())).main()
@@ -86,7 +87,6 @@ def main_handler(event, context):
     use_time_info = f"本次任务使用时间: {time.time() - start_time} 秒"
     content_list.append(use_time_info)
     content = "\n-----------------------------\n\n".join(content_list)
-    print(content)
     if message == "xmly":
         if utc_time.hour in [9, 18] and utc_time.minute == 0:
             flag = True

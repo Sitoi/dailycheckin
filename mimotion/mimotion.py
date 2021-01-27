@@ -73,7 +73,6 @@ class MiMotion:
             login_token, userid = self.login(phone, password)
             if login_token == 0:
                 msg = f"【小米运动】\n帐号信息: {phone}\n修改状态: 登陆失败"
-                print(msg)
                 msg_list.append(msg)
             else:
                 t = self.get_time()
@@ -89,7 +88,6 @@ class MiMotion:
                 data = f"userid={userid}&last_sync_data_time=1597306380&device_type=0&last_deviceid=DA932FFFFE8816E7&data_json={data_json}"
                 response = requests.post(url=url, data=data, headers=headers).json()
                 msg = f"【小米运动】\n帐号信息: {phone}\n修改状态: {response['message']}\n修改步数: {step}"
-                print(msg)
                 msg_list.append(msg)
         return msg_list
 

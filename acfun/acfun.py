@@ -45,7 +45,6 @@ class AcFunCheckIn:
             session = requests.session()
             sign_msg = self.sign(session=session, phone=phone, password=password)
             msg = f"【AcFun 签到】\n帐号信息: {phone}\n签到状态: {sign_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

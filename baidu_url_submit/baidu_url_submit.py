@@ -42,7 +42,6 @@ class BaiduUrlSubmit:
             times = int(baidu_url_submit.get("times", 100))
             if data_url and submit_url:
                 msg = self.url_submit(data_url=data_url, submit_url=submit_url, times=times)
-                print(msg)
                 msg_list.append(msg)
         return msg_list
 

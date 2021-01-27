@@ -50,7 +50,6 @@ class VQQCheckIn:
             sign_once_msg = self.sign_once(session=session)
             sign_twice_msg = self.sign_twice(session=session)
             msg = f"【腾讯视频签到】\n用户信息: {o_cookie}\n签到奖励1: {sign_once_msg}\n签到奖励2: {sign_twice_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

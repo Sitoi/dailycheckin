@@ -20,7 +20,6 @@ class Motto:
             msg = [f"{content}\n{note}\n"]
         else:
             msg = []
-        print(msg)
         return msg
 
 

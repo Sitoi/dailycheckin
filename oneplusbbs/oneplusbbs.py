@@ -38,7 +38,6 @@ class OnePlusBBSCheckIn:
         ).text
         msg = re.findall(r'<div class="c">(.*?)</div>', response, re.S)
         msg = msg[0].strip() if msg else "Cookie 可能过期"
-        print(msg)
         return msg
 
     @staticmethod
@@ -99,7 +98,6 @@ class OnePlusBBSCheckIn:
             sign_msg = self.sign(cookie=oneplusbbs_cookie)
             draw_msg = self.draw(cookie=oneplusbbs_cookie)
             msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n签到信息: {sign_msg}\n{draw_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

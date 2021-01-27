@@ -46,7 +46,6 @@ class LianTongCheckIn:
             liantong_data = liantong_account.get("data")
             sign_msg = self.sign(liantong_data=liantong_data)
             msg = f"【联通营业厅】\n{sign_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

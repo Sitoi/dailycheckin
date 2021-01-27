@@ -33,7 +33,6 @@ class Weather:
                 wind = f"{today_weather.get('fx')}: {today_weather.get('fl')}"
                 aqi = f"空气: {today_weather.get('aqi')}"
                 msg = f"【{city_name}天气--{today_time}】\n{notice}。\n{temperature}\n{wind}\n{aqi}\n"
-                print(msg)
                 msg_list.append(msg)
         return msg_list
 

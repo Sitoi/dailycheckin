@@ -44,7 +44,6 @@ class YouDaoCheckIn:
             headers = {"Cookie": youdao_cookie}
             msg = self.sign(headers=headers)
             msg = f"【有道云笔记签到】\n帐号信息: {uid}\n获取空间: {msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

@@ -32,7 +32,6 @@ class WWW2nzzCheckIn:
         )
         response = session.post(url="https://www.2nzz.com/plugin.php", verify=False, data=data, params=params)
         check_msg = re.findall(r"<div class=\"c\">(.*?)</div>", response.text, re.S)
-        print(response.text)
         check_msg = check_msg[0].strip() if check_msg else "签到失败"
         user_rep = session.get(url="https://www.2nzz.com/home.php")
         uid = re.findall(r"uid=(\d+)\"", user_rep.text)
@@ -60,7 +59,6 @@ class WWW2nzzCheckIn:
             )
             sign_msg = self.sign(session=session)
             msg = f"【咔叽网单】\n{sign_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 
