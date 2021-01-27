@@ -43,6 +43,8 @@
 |_**V2EX_COOKIE_LIST**_.v2ex_cookie|[V2EX](https://www.v2ex.com/)|Web|V2EX 每日签到|
 |_**WWW2NZZ_COOKIE_LIST**_.www2nzz_cookie|[咔叽网单](https://www.2nzz.com/)|Web|咔叽网单 每日签到|
 |_**SMZDM_COOKIE_LIST**_.smzdm_cookie|[什么值得买](https://www.smzdm.com)|Web|什么值得买 每日签到|
+|_**CLOUD189_ACCOUNT_LIST**_.cloud189_phone|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号|
+|_**CLOUD189_ACCOUNT_LIST**_.cloud189_password|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号对应的密码|
 
 ### APP 签到配置
 
@@ -96,9 +98,18 @@
 
 #### AcFun 帐号信息
 
+[AcFun](https://www.acfun.cn/)
 
 - _**ACFUN_ACCOUNT_LIST**_.acfun_phone: AcFun 手机号
 - _**ACFUN_ACCOUNT_LIST**_.acfun_password: AcFun 手机号对应的密码
+
+
+#### 天翼云盘 帐号信息
+
+[天翼云盘](https://cloud.189.cn/)
+
+- _**CLOUD189_ACCOUNT_LIST**_.cloud189_phone: 天翼云盘 手机号
+- _**CLOUD189_ACCOUNT_LIST**_.cloud189_password: 天翼云盘 手机号对应的密码
 
 
 ### APP 抓包
@@ -330,6 +341,16 @@
     {
       "acfun_phone": "帐号2 手机号",
       "acfun_password": "帐号2 密码"
+    }
+  ],
+  "CLOUD189_ACCOUNT_LIST": [
+    {
+      "cloud189_phone": "帐号1 手机号",
+      "cloud189_password": "帐号1 密码"
+    },
+    {
+      "cloud189_phone": "帐号2 手机号",
+      "cloud189_password": "帐号2 密码"
     }
   ]
 }

@@ -57,6 +57,7 @@ jobs:
           SMZDM_COOKIE_LIST: ${{secrets.SMZDM_COOKIE_LIST}}
           MIMOTION_ACCOUNT_LIST: ${{secrets.MIMOTION_ACCOUNT_LIST}}
           ACFUN_ACCOUNT_LIST: ${{secrets.ACFUN_ACCOUNT_LIST}}
+          CLOUD189_ACCOUNT_LIST: ${{secrets.CLOUD189_ACCOUNT_LIST}}
 
       - name: "部署到腾讯云函数"
         run: sls deploy --debug

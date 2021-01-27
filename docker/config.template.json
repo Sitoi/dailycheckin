@@ -173,5 +173,15 @@
       "acfun_phone": "帐号2 手机号",
       "acfun_password": "帐号2 密码"
     }
+  ],
+  "CLOUD189_ACCOUNT_LIST": [
+    {
+      "cloud189_phone": "帐号1 手机号",
+      "cloud189_password": "帐号1 密码"
+    },
+    {
+      "cloud189_phone": "帐号2 手机号",
+      "cloud189_password": "帐号2 密码"
+    }
   ]
 }

@@ -5,6 +5,7 @@ import os
 from acfun import AcFunCheckIn
 from baidu_url_submit import BaiduUrlSubmit
 from bilibili import BiliBiliCheckIn
+from cloud189 import Cloud189CheckIn
 from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
@@ -38,6 +39,7 @@ checkin_map = {
     "WWW2NZZ_COOKIE_LIST": WWW2nzzCheckIn,
     "ACFUN_ACCOUNT_LIST": AcFunCheckIn,
     "MIMOTION_ACCOUNT_LIST": MiMotion,
+    "CLOUD189_ACCOUNT_LIST": Cloud189CheckIn,
     "CITY_NAME_LIST": Weather,
     "XMLY_COOKIE_LIST": XMLYCheckIn
 }
