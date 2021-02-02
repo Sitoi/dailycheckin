@@ -4,21 +4,14 @@
 
 ```text
 dailycheckin
-├── logs
-│   └── xxxxxx.log
 ├── config.json
 └── docker-compose.yml
 ```
 
-- dailycheckin/logs: 建一个空文件夹就行
 - dailycheckin/config.json: 配置文件
 - dailycheckin/docker-compose.yml: docker启动文件
 
 ## 二、修改配置文件等
-
-### dailycheckin/logs
-
-建一个空文件夹就行
 
 ### dailycheckin/config.json
 
@@ -48,6 +41,27 @@ docker-compose up -d
 ```
 
 > 修改 `docker-compose.yml` 后需要使用上述命令使更改生效
+
+
+## 立即执行签到(单次)
+
+> 运行【日常签到类】（除喜马拉雅极速版）
+
+```bash
+docker exec dailycheckin python3 index.py
+```
+
+> 运行【喜马拉雅极速版】
+
+```bash
+docker exec dailycheckin python3 index.py xmly
+```
+
+## 常见问题
+
+1. 对于修改 `config.json` 文件发现为更改的情况
+
+先执行 `docker-compose down` 停止并删除容器，再执行 `docker-compose up -d` 启动容器
 
 ## 附录
 

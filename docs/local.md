@@ -20,7 +20,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## 四、单次运行
 
-> 运行【日常签到类】（除喜马拉雅极速版&企鹅读书）
+> 运行【日常签到类】（除喜马拉雅极速版）
 
 ```bash
 python3 index.py
