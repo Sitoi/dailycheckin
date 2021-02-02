@@ -103,14 +103,12 @@
 - _**ACFUN_ACCOUNT_LIST**_.acfun_phone: AcFun 手机号
 - _**ACFUN_ACCOUNT_LIST**_.acfun_password: AcFun 手机号对应的密码
 
-
 #### 天翼云盘 帐号信息
 
 [天翼云盘](https://cloud.189.cn/)
 
 - _**CLOUD189_ACCOUNT_LIST**_.cloud189_phone: 天翼云盘 手机号
 - _**CLOUD189_ACCOUNT_LIST**_.cloud189_password: 天翼云盘 手机号对应的密码
-
 
 ### APP 抓包
 
@@ -163,6 +161,13 @@
 默认为 false。false: 表示关闭；true: 表示开启
 
 ## 示例
+
+> 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
+
+> 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
+
+> 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
+
 
 配置文件：`config.json`
 
