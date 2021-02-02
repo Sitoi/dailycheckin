@@ -1,5 +1,31 @@
 # Docker 使用教程
 
+## 环境
+
+- docker
+- docker-compose
+
+### Docker 安装
+
+安装教程请自行百度
+
+### docker-compose 安装
+
+> 方式一（Python 环境）
+
+```bash
+pip3 install docker-compose
+```
+
+> 方式二
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+通过 `docker-compose version` 查看 `docker-compose` 版本，确认是否安装成功。
+
 ## 一、新建目录结构
 
 ```text
@@ -41,7 +67,6 @@ docker-compose up -d
 ```
 
 > 修改 `docker-compose.yml` 后需要使用上述命令使更改生效
-
 
 ## 立即执行签到(单次)
 
