@@ -66,7 +66,7 @@
 
 如有签到脚本需求，请到 [ISSUE](https://github.com/Sitoi/dailycheckin/issues/new/choose) 中提交
 
-## 特别鸣谢（排名不分先后）
+## 特别鸣谢
 
 - [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
 
