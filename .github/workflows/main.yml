@@ -2,7 +2,7 @@ name: 每日签到合集
 
 on:
   schedule:
-    - cron: '45 8 * * * '
+    - cron: '45 0 * * *' #这里用的是utc时间，北京时间应该是utc+8
   watch:
     types: [ started ]
   workflow_dispatch:
