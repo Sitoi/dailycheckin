@@ -74,7 +74,7 @@ docker-compose up -d
 
 > 修改 `docker-compose.yml` 后需要使用上述命令使更改生效
 
-## 立即执行签到(单次)
+## 立即执行单次签到(确保容器已启动)
 
 > 运行【日常签到类】（除喜马拉雅极速版）
 
@@ -92,7 +92,7 @@ docker exec dailycheckin python3 index.py xmly
 
 1. 对于修改 `config.json` 文件发现为更改的情况
 
-先执行 `docker-compose down` 停止并删除容器，再执行 `docker-compose up -d` 启动容器
+    先执行 `docker-compose down` 停止并删除容器，再执行 `docker-compose up -d` 启动容器
 
 ## 附录
 
