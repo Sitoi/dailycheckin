@@ -70,6 +70,8 @@ class KGQQCheckIn:
                     proto_music_station_resp = requests.get(
                         url=proto_music_station_url + str(g_tk_openkey), headers=headers
                     )
+                    if proto_music_station_resp.json().get("code") in [1000]:
+                        return proto_music_station_resp.json().get("msg")
                     vct_music_cards = proto_music_station_resp.json()["data"]["message.batch_get_music_cards"][
                         "vctMusicCards"
                     ]

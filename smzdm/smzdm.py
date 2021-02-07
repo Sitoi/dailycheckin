@@ -28,7 +28,8 @@ class SmzdmCheckIn:
                     f"用户信息: {current.get('nickname', '')}\n目前积分: {response.get('point', '')}\n"
                     f"增加积分: {response.get('add_point', '')}\n经验值: {response.get('exp', '')}\n"
                     f"金币: {response.get('gold', '')}\n威望: {response.get('prestige', '')}\n"
-                    f"等级: {response.get('rank', '')}"
+                    f"等级: {response.get('rank', '')}\n"
+                    f"已经签到: {response.get('checkin_num', {})} 天"
                 )
         except Exception as e:
             msg = f"签到状态: 签到失败\n错误信息: {e}"

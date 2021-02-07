@@ -68,10 +68,14 @@ def main_handler(event, context):
 
     else:
         for one_check, check_func in checkin_map.items():
-            print(f"---------- 开始执行 {one_check} 签到----------")
             if one_check not in ["XMLY_COOKIE_LIST"]:
                 try:
-                    msg_list = check_func(check_info.get(one_check.lower())).main()
+                    if check_info.get(one_check.lower()):
+                        print(f"----------已检测到正确的配置，并开始执行 {one_check} 签到----------")
+                        msg_list = check_func(check_info.get(one_check.lower())).main()
+                    else:
+                        print(f"----------未检测到正确的配置，并跳过执行 {one_check} 签到----------")
+                        msg_list = []
                 except Exception as e:
                     print(e)
                     msg_list = []
