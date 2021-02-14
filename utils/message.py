@@ -18,7 +18,8 @@ def message2server(sckey, content):
 def message2server_turbo(sendkey, content):
     print("server 酱 Turbo 推送开始")
     data = {"text": "每日签到", "desp": content.replace("\n", "\n\n")}
-    requests.post(url=f"https://sctapi.ftqq.com/{sendkey}.send", data=data)
+    r = requests.post(url=f"https://sctapi.ftqq.com/{sendkey}.send", data=data)
+    print (r.json())
     return
 
 
