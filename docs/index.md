@@ -45,3 +45,4 @@
 - telegram（TG）
 - Cool Push（QQ,微信,邮箱）
 - Bark（iOS）
+- server 酱 TURBO（微信）
