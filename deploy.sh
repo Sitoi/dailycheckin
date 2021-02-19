@@ -2,7 +2,7 @@
 if [[ $DINGTALK_SECRET ]]; then echo "DINGTALK_SECRET 变量存在，并成功赋值" ;else DINGTALK_SECRET="";fi;
 if [[ $DINGTALK_ACCESS_TOKEN ]]; then echo "DINGTALK_ACCESS_TOKEN 变量存在，并成功赋值" ;else DINGTALK_ACCESS_TOKEN=""; fi;
 if [[ $SCKEY ]]; then echo "SCKEY 变量存在，并成功赋值" ;else SCKEY=""; fi;
-  if [[ $SENDKEY ]]; then echo "SENDKEY 变量存在，并成功赋值" ;else SENDKEY=""; fi;
+if [[ $SENDKEY ]]; then echo "SENDKEY 变量存在，并成功赋值" ;else SENDKEY=""; fi;
 if [[ $BARK_URL ]]; then echo "BARK_URL 变量存在，并成功赋值" ;else BARK_URL=""; fi;
 if [[ $QMSG_KEY ]]; then echo "QMSG_KEY 变量存在，并成功赋值" ;else QMSG_KEY=""; fi;
 if [[ $TG_BOT_TOKEN ]]; then echo "TG_BOT_TOKEN 变量存在，并成功赋值" ;else TG_BOT_TOKEN=""; fi;

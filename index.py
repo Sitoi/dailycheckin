@@ -110,7 +110,6 @@ def main_handler(event, context):
             message2server(sckey=sckey, content=content)
         if sendkey:
             message2server_turbo(sendkey=sendkey, content=content)
-
         if qmsg_key:
             for content in content_list:
                 message2qmsg(qmsg_key=qmsg_key, content=content)
