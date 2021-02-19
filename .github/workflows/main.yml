@@ -28,6 +28,7 @@ jobs:
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
           SCKEY: ${{secrets.SCKEY}}
+          SENDKEY: ${{secrets.SENDKEY}}
           BARK_URL: ${{secrets.BARK_URL}}
           QMSG_KEY: ${{secrets.QMSG_KEY}}
           TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}

@@ -13,6 +13,7 @@ from utils.message import (
     message2dingtalk,
     message2qmsg,
     message2server,
+    message2server_turbo,
     message2telegram,
 )
 
@@ -26,6 +27,7 @@ def main_handler(event, context):
         dingtalk_access_token = os.getenv("DINGTALK_ACCESS_TOKEN")
         bark_url = os.getenv("BARK_URL")
         sckey = os.getenv("SCKEY")
+        sendkey = os.getenv("SENDKEY")
         tg_bot_token = os.getenv("TG_BOT_TOKEN")
         tg_user_id = os.getenv("TG_USER_ID")
         qmsg_key = os.getenv("QMSG_KEY")
@@ -47,6 +49,7 @@ def main_handler(event, context):
             dingtalk_access_token = data.get("DINGTALK_ACCESS_TOKEN")
             bark_url = data.get("BARK_URL")
             sckey = data.get("SCKEY")
+            sendkey = data.get("SENDKEY")
             qmsg_key = data.get("QMSG_KEY")
             tg_bot_token = data.get("TG_BOT_TOKEN")
             tg_user_id = data.get("TG_USER_ID")
@@ -105,6 +108,9 @@ def main_handler(event, context):
             )
         if sckey:
             message2server(sckey=sckey, content=content)
+        if sendkey:
+            message2server_turbo(sendkey=sendkey, content=content)
+
         if qmsg_key:
             for content in content_list:
                 message2qmsg(qmsg_key=qmsg_key, content=content)

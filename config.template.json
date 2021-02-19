@@ -2,6 +2,7 @@
   "DINGTALK_SECRET": "xxxxxx",
   "DINGTALK_ACCESS_TOKEN": "xxxxxx",
   "SCKEY": "xxxxxx",
+  "SENDKEY": "xxxxxx",
   "BARK_URL": "xxxxxx",
   "QMSG_KEY": "xxxxxx",
   "TG_BOT_TOKEN": "xxxxxx",
