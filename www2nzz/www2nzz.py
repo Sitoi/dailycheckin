@@ -16,27 +16,24 @@ class WWW2nzzCheckIn:
 
     @staticmethod
     def sign(session):
-        data = {
-            "formhash": "6b581351",
-            "qdxq": "kx",
-            "qdmode": "2",
-            "todaysay": "",
-            "fastreply": "0"
-        }
         params = (
             ("id", "dsu_paulsign:sign"),
-            ("operation", "qiandao"),
-            ("infloat", "1"),
-            ("sign_as", "1"),
+            ("908446a2", ""),
+            ("infloat", "yes"),
+            ("handlekey", "dsu_paulsign"),
             ("inajax", "1"),
+            ("ajaxtarget", "fwin_content_dsu_paulsign"),
         )
-        response = session.post(url="https://www.2nzz.com/plugin.php", verify=False, data=data, params=params)
-        check_msg = re.findall(r"<div class=\"c\">(.*?)</div>", response.text, re.S)
-        check_msg = check_msg[0].strip() if check_msg else "签到失败"
+        response = session.post(url="https://www.2nzz.com/plugin.php", verify=False, params=params)
         user_rep = session.get(url="https://www.2nzz.com/home.php")
         uid = re.findall(r"uid=(\d+)\"", user_rep.text)
         uid = uid[0] if uid else "未获取到 UID"
-        msg = f"用户信息: {uid}\n签到信息: {check_msg}"
+        if "您今天已经签到过了或者签到时间还未开始" in response.text:
+            msg = f"用户信息: {uid}\n签到信息: 您今天已经签到过了或者签到时间还未开始"
+        else:
+            check_msg = re.findall(r"<div class=\"c\">(.*?)</div>", response.text, re.S)
+            check_msg = check_msg[0].strip() if check_msg else "签到失败"
+            msg = f"用户信息: {uid}\n签到信息: {check_msg}"
         return msg
 
     def main(self):
