@@ -268,7 +268,6 @@ class LianTongCheckIn:
                 f"{gamecentersign_msg}\n{day100integral_msg}\n{dongaopoints_msg}\n{wotree_msg}\n"
                 f"{openbox_msg}\n{collectflow_msg}"
             )
-            print(msg)
             msg_list.append(msg)
         return msg_list
 
