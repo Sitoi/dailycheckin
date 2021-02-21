@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
 import os
-import re
 
 import requests
 
@@ -59,7 +58,7 @@ class KGQQCheckIn:
         try:
             old_proto_profile_response = requests.get(url=proto_profile_url, headers=headers)
             old_num = old_proto_profile_response.json()["data"]["profile.getProfile"]["uFlowerNum"]
-
+            nickname = old_proto_profile_response.json()["data"]["profile.getProfile"]["stPersonInfo"]["sKgNick"]
             for url in url_list:
                 try:
                     requests.get(url=url, headers=headers)
@@ -88,13 +87,26 @@ class KGQQCheckIn:
                         requests.get(url=url_15 + url, headers=headers)
                 except Exception as e:
                     print(e)
-            new_proto_profile_response = requests.get(proto_profile_url, headers=headers)
+            # VIP 签到
+            try:
+                getinfourl = "https://node.kg.qq.com/webapp/proxy?ns=proto_vip_webapp&cmd=vip.get_vip_info&t_uUid=" + t_uuid + "&t_uWebReq=1&t_uGetDataFromC4B=1"
+                inforequest = requests.get(url=getinfourl, headers=headers)
+                vip_status = inforequest.json()["data"]["vip.get_vip_info"]["stVipCoreInfo"]["uStatus"]
+                if vip_status == 1:
+                    vipurl = "https://node.kg.qq.com/webapp/proxy?t_uUid=" + t_uuid + "&ns=proto_vip_webapp&cmd=vip.get_vip_day_reward&ns_inbuf=&nocache=1613719349184&mapExt=JTdCJTIyY21kTmFtZSUyMiUzQSUyMkdldFZpcERheVJld2FyZCUyMiU3RA%3D%3D&g_tk_openkey=642424811"
+                    viprequest = requests.get(url=vipurl, headers=headers)
+                    str_tips = viprequest.json()["data"]["vip.get_vip_day_reward"]["strTips"]
+                    u_cur_reward_num = viprequest.json()["data"]["vip.get_vip_day_reward"]["uCurRewardNum"]
+                    vip_message = f"{str_tips} 获取VIP福利道具：{u_cur_reward_num}个"
+                else:
+                    vip_message = "非 VIP 用户"
+            except Exception as e:
+                print(e)
+                vip_message = "VIP 签到失败"
+            new_proto_profile_response = requests.get(url=proto_profile_url, headers=headers)
             new_num = new_proto_profile_response.json()["data"]["profile.getProfile"]["uFlowerNum"]
             get_num = int(new_num) - int(old_num)
-            if get_num == 0:
-                kg_message = f"今日鲜花已领取\n当前鲜花: {new_num}朵"
-            else:
-                kg_message = f"+{get_num}朵\n当前鲜花: {new_num}朵"
+            kg_message = f"【全民K歌签到】\n帐号信息: {nickname}\n获取鲜花: {get_num}朵\n当前鲜花: {new_num}朵\nVIP签到: {vip_message}"
         except Exception as e:
             kg_message = str(e)
         return kg_message
@@ -104,12 +116,6 @@ class KGQQCheckIn:
         for kgqq_cookie in self.kgqq_cookie_list:
             kgqq_cookie = kgqq_cookie.get("kgqq_cookie")
             msg = self.sign(kgqq_cookie=kgqq_cookie)
-            o_cookie = (
-                re.findall(r"o_cookie=(.*?);", kgqq_cookie)[0]
-                if re.findall(r"o_cookie=(.*?);", kgqq_cookie)
-                else "未获取到用户信息"
-            )
-            msg = f"【全民K歌签到】\n帐号信息: {o_cookie}\n获取鲜花: {msg}"
             msg_list.append(msg)
         return msg_list
 
