@@ -46,6 +46,9 @@
 |_**SMZDM_COOKIE_LIST**_.smzdm_cookie|[什么值得买](https://www.smzdm.com)|Web|什么值得买 每日签到|
 |_**CLOUD189_ACCOUNT_LIST**_.cloud189_phone|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号|
 |_**CLOUD189_ACCOUNT_LIST**_.cloud189_password|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号对应的密码|
+|_**SAMSUNG_COOKIE_LIST**_.samsung_cookie|[盖乐世社区](http://www.samsungmembers.cn/)|Web|盖乐世社区 cookie|
+|_**WPS_COOKIE_LIST**_.wps_cookie|[WPS](https://www.wps.cn/)|Web| WPS cookie|
+|_**POJIE_COOKIE_LIST**_.pojie_cookie|[吾爱破解](https://www.52pojie.cn/index.php)|Web| 吾爱破解 cookie|
 
 ### APP 签到配置
 
@@ -358,6 +361,30 @@
     {
       "cloud189_phone": "帐号2 手机号",
       "cloud189_password": "帐号2 密码"
+    }
+  ],
+  "SAMSUNG_COOKIE_LIST": [
+    {
+      "samsung_cookie": "帐号1 cookie"
+    },
+    {
+      "samsung_cookie": "帐号2 cookie"
+    }
+  ],
+  "WPS_COOKIE_LIST": [
+    {
+      "wps_cookie": "帐号1 cookie"
+    },
+    {
+      "wps_cookie": "帐号2 cookie"
+    }
+  ],
+  "POJIE_COOKIE_LIST": [
+    {
+      "pojie_cookie": "帐号1 cookie"
+    },
+    {
+      "pojie_cookie": "帐号2 cookie"
     }
   ]
 }

@@ -13,11 +13,14 @@ from liantong import LianTongCheckIn
 from mimotion import MiMotion
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
+from pojie import PojieCheckIn
+from samsung import SamsungCheckIn
 from smzdm import SmzdmCheckIn
 from tieba import TiebaCheckIn
 from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
+from wps import WPSCheckIn
 from www2nzz import WWW2nzzCheckIn
 from xmly import XMLYCheckIn
 from youdao import YouDaoCheckIn
@@ -40,6 +43,9 @@ checkin_map = {
     "ACFUN_ACCOUNT_LIST": AcFunCheckIn,
     "MIMOTION_ACCOUNT_LIST": MiMotion,
     "CLOUD189_ACCOUNT_LIST": Cloud189CheckIn,
+    "SAMSUNG_COOKIE_LIST": SamsungCheckIn,
+    "WPS_COOKIE_LIST": WPSCheckIn,
+    "POJIE_COOKIE_LIST": PojieCheckIn,
     "CITY_NAME_LIST": Weather,
     "XMLY_COOKIE_LIST": XMLYCheckIn
 }
