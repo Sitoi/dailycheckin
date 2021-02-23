@@ -89,11 +89,19 @@ class KGQQCheckIn:
                     print(e)
             # VIP 签到
             try:
-                getinfourl = "https://node.kg.qq.com/webapp/proxy?ns=proto_vip_webapp&cmd=vip.get_vip_info&t_uUid=" + t_uuid + "&t_uWebReq=1&t_uGetDataFromC4B=1"
+                getinfourl = (
+                    "https://node.kg.qq.com/webapp/proxy?ns=proto_vip_webapp&cmd=vip.get_vip_info&t_uUid="
+                    + t_uuid
+                    + "&t_uWebReq=1&t_uGetDataFromC4B=1"
+                )
                 inforequest = requests.get(url=getinfourl, headers=headers)
                 vip_status = inforequest.json()["data"]["vip.get_vip_info"]["stVipCoreInfo"]["uStatus"]
                 if vip_status == 1:
-                    vipurl = "https://node.kg.qq.com/webapp/proxy?t_uUid=" + t_uuid + "&ns=proto_vip_webapp&cmd=vip.get_vip_day_reward&ns_inbuf=&nocache=1613719349184&mapExt=JTdCJTIyY21kTmFtZSUyMiUzQSUyMkdldFZpcERheVJld2FyZCUyMiU3RA%3D%3D&g_tk_openkey=642424811"
+                    vipurl = (
+                        "https://node.kg.qq.com/webapp/proxy?t_uUid="
+                        + t_uuid
+                        + "&ns=proto_vip_webapp&cmd=vip.get_vip_day_reward&ns_inbuf=&nocache=1613719349184&mapExt=JTdCJTIyY21kTmFtZSUyMiUzQSUyMkdldFZpcERheVJld2FyZCUyMiU3RA%3D%3D&g_tk_openkey=642424811"
+                    )
                     viprequest = requests.get(url=vipurl, headers=headers)
                     str_tips = viprequest.json()["data"]["vip.get_vip_day_reward"]["strTips"]
                     u_cur_reward_num = viprequest.json()["data"]["vip.get_vip_day_reward"]["uCurRewardNum"]
@@ -121,7 +129,9 @@ class KGQQCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _kgqq_cookie_list = datas.get("KGQQ_COOKIE_LIST", [])
     KGQQCheckIn(kgqq_cookie_list=_kgqq_cookie_list).main()

@@ -73,6 +73,6 @@ JSONSTR="{
   \"POJIE_COOKIE_LIST\": ${POJIE_COOKIE_LIST},
   \"TIEBA_COOKIE_LIST\": ${TIEBA_COOKIE_LIST}
 }"
-echo $JSONSTR > config.json
+echo $JSONSTR > config/config.json
 
-cat config.json
+cat config/config.json

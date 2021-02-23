@@ -15,8 +15,8 @@ class PojieCheckIn:
         try:
             msg = ""
             session = requests.session()
-            session.get(url='https://www.52pojie.cn/home.php?mod=task&do=apply&id=2', headers=headers)
-            resp = session.get(url='https://www.52pojie.cn/home.php?mod=task&do=draw&id=2', headers=headers)
+            session.get(url="https://www.52pojie.cn/home.php?mod=task&do=apply&id=2", headers=headers)
+            resp = session.get(url="https://www.52pojie.cn/home.php?mod=task&do=draw&id=2", headers=headers)
             content = re.findall(r'<div id="messagetext".*?\n<p>(.*?)</p>', resp.text)[0]
             if "您需要先登录才能继续本操作" in resp.text:
                 msg += "吾爱破解 cookie 失效"
@@ -36,9 +36,9 @@ class PojieCheckIn:
         for pojie_cookie in self.pojie_cookie_list:
             pojie_cookie = pojie_cookie.get("pojie_cookie")
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36',
-                'Cookie': pojie_cookie,
-                'ContentType': 'text/html;charset=gbk'
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+                "Cookie": pojie_cookie,
+                "ContentType": "text/html;charset=gbk",
             }
             uid = re.findall(r"htVD_2132_lastcheckfeed=(.*?);", pojie_cookie)[0].split("%7C")[0]
             sign_msg = self.sign(headers=headers)
@@ -48,7 +48,9 @@ class PojieCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _pojie_cookie_list = datas.get("POJIE_COOKIE_LIST", [])
     PojieCheckIn(pojie_cookie_list=_pojie_cookie_list).main()

@@ -50,7 +50,9 @@ class AcFunCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _acfun_account_list = datas.get("ACFUN_ACCOUNT_LIST", [])
     AcFunCheckIn(acfun_account_list=_acfun_account_list).main()

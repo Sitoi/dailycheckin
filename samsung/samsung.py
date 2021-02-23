@@ -59,7 +59,9 @@ class SamsungCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _samsung_cookie_list = datas.get("SAMSUNG_COOKIE_LIST", [])
     SamsungCheckIn(samsung_cookie_list=_samsung_cookie_list).main()

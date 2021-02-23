@@ -99,7 +99,9 @@ class TiebaCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _tieba_cookie_list = datas.get("TIEBA_COOKIE_LIST", [])
     TiebaCheckIn(tieba_cookie_list=_tieba_cookie_list).main()

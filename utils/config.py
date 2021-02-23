@@ -47,7 +47,7 @@ checkin_map = {
     "WPS_COOKIE_LIST": WPSCheckIn,
     "POJIE_COOKIE_LIST": PojieCheckIn,
     "CITY_NAME_LIST": Weather,
-    "XMLY_COOKIE_LIST": XMLYCheckIn
+    "XMLY_COOKIE_LIST": XMLYCheckIn,
 }
 
 

@@ -75,6 +75,23 @@ def message2bark(bark_url: str, content):
     if not bark_url.endswith("/"):
         bark_url += "/"
     url = f"{bark_url}{content}"
-    headers = {'Content-type': "application/x-www-form-urlencoded"}
+    headers = {"Content-type": "application/x-www-form-urlencoded"}
     requests.get(url=url, headers=headers)
     return
+
+
+def important_notice():
+    datas = requests.get(url="https://api.github.com/repos/Sitoi/dailycheckin/issues?state=open&labels=通知").json()
+    if datas:
+        data = datas[0]
+        title = data.get("title")
+        body = data.get("body")
+        url = data.get("url")
+        notice = f"重要通知: {title}\n通知内容: {body}\n详细地址: {url}"
+    else:
+        notice = None
+    return notice
+
+
+if __name__ == '__main__':
+    print(important_notice())

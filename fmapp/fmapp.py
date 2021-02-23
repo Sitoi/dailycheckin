@@ -17,8 +17,10 @@ class FMAPPCheckIn:
             code = response.get("code")
             if code == "200":
                 data = response.get("data", {})
-                msg = f"在坚持{data.get('nextDay')}天即可获得{data.get('nextNumber')}个发米粒\n" \
-                      f"签到{data.get('lastDay')}天可获得{data.get('lastNumber')}个发米粒"
+                msg = (
+                    f"在坚持{data.get('nextDay')}天即可获得{data.get('nextNumber')}个发米粒\n"
+                    f"签到{data.get('lastDay')}天可获得{data.get('lastNumber')}个发米粒"
+                )
             else:
                 msg = response.get("message")
         except Exception as e:
@@ -65,16 +67,16 @@ class FMAPPCheckIn:
             fmapp_cookie = fmapp_info.get("fmapp_cookie")
             fmapp_device_id = fmapp_info.get("fmapp_device_id")
             headers = {
-                'Host': 'fmapp.chinafamilymart.com.cn',
-                'Content-Type': 'application/json',
-                'Accept': '*/*',
-                'loginChannel': 'app',
-                'Accept-Language': 'zh-Hans-CN;q=1.0, en-CN;q=0.9, ja-CN;q=0.8, zh-Hant-HK;q=0.7, io-Latn-CN;q=0.6',
-                'token': fmapp_token,
-                'fmVersion': '2.0.0',
-                'deviceId': fmapp_device_id,
-                'User-Agent': 'Fa',
-                "cookie": fmapp_cookie
+                "Host": "fmapp.chinafamilymart.com.cn",
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "loginChannel": "app",
+                "Accept-Language": "zh-Hans-CN;q=1.0, en-CN;q=0.9, ja-CN;q=0.8, zh-Hant-HK;q=0.7, io-Latn-CN;q=0.6",
+                "token": fmapp_token,
+                "fmVersion": "2.0.0",
+                "deviceId": fmapp_device_id,
+                "User-Agent": "Fa",
+                "cookie": fmapp_cookie,
             }
             sign_msg = self.sign(headers=headers)
             name_msg = self.user_info(headers=headers)
@@ -85,7 +87,9 @@ class FMAPPCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _fmapp_account_list = datas.get("FMAPP_ACCOUNT_LIST", [])
     FMAPPCheckIn(fmapp_account_list=_fmapp_account_list).main()

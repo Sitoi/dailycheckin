@@ -7,7 +7,7 @@ services:
     tty: true
     volumes:
       - ./my_crontab_list.sh:/dailycheckin/docker/my_crontab_list.sh
-      - ./config.json:/dailycheckin/config.json
+      - ./config:/dailycheckin/config
       - ./logs:/dailycheckin/logs
     environment:
       - CUSTOM_LIST_FILE=my_crontab_list.sh

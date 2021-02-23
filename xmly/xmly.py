@@ -727,7 +727,7 @@ class XMLYCheckIn:
             "ballKey": str(uid),
             "currentTimeMillis": str(currenttimemillis),
             "sawVideoSignature": f"{currenttimemillis}+{uid}",
-            "version": "2"
+            "version": "2",
         }
         try:
             response = requests.get(
@@ -755,10 +755,7 @@ class XMLYCheckIn:
                 "Connection": "keep-alive",
             }
 
-            params = {
-                "activtyId": "indexSegAward",
-                "awardReceiveId": award_receive_id
-            }
+            params = {"activtyId": "indexSegAward", "awardReceiveId": award_receive_id}
             try:
                 response = requests.get(
                     url="http://mobile.ximalaya.com/pizza-category/activity/awardMultiple",
@@ -832,8 +829,10 @@ class XMLYCheckIn:
         }
         try:
             response = requests.post(
-                url="https://m.ximalaya.com/speed/web-earn/card/draw", headers=headers, cookies=cookies,
-                data=json.dumps(data)
+                url="https://m.ximalaya.com/speed/web-earn/card/draw",
+                headers=headers,
+                cookies=cookies,
+                data=json.dumps(data),
             )
         except Exception as e:
             print(f"网络请求异常: {e}")
@@ -912,9 +911,7 @@ class XMLYCheckIn:
                 self.card_exchange_card(cookies, theme_id, tmp_record_id)
         # 万能卡兑换稀有卡
         response = requests.get(
-            url="https://m.ximalaya.com/speed/web-earn/card/userCardInfo",
-            headers=headers,
-            cookies=cookies
+            url="https://m.ximalaya.com/speed/web-earn/card/userCardInfo", headers=headers, cookies=cookies
         )
         data = response.json()["data"]
         user_cards_list = data["userCardsList"]
@@ -989,16 +986,20 @@ class XMLYCheckIn:
             print("*" * 10, "首页、宝箱奖励及翻倍", "*" * 10)
             index_baoxiang_award_msg = self.index_baoxiang_award(cookies)  # 首页、宝箱奖励及翻倍
             total, today_total, history_total = self.account(cookies)
-            msg = f"【喜马拉雅极速版签到】\n北京时间: {utc_time}\n设备信息: {device_model}\n连续签到: {continuous_days}天\n收听时长: {listen_msg}分钟\n" \
-                  f"金币气泡: {bubble_msg}\n答题奖励: {answer_msg}\n卡牌奖励: {card_report_time_msg}\n" \
-                  f"{card_msg}\n{index_baoxiang_award_msg}\n" \
-                  f"当前剩余: {total}元\n今日获得: {today_total}元\n累计获得: {history_total}元"
+            msg = (
+                f"【喜马拉雅极速版签到】\n北京时间: {utc_time}\n设备信息: {device_model}\n连续签到: {continuous_days}天\n收听时长: {listen_msg}分钟\n"
+                f"金币气泡: {bubble_msg}\n答题奖励: {answer_msg}\n卡牌奖励: {card_report_time_msg}\n"
+                f"{card_msg}\n{index_baoxiang_award_msg}\n"
+                f"当前剩余: {total}元\n今日获得: {today_total}元\n累计获得: {history_total}元"
+            )
             msg_list.append(msg)
         return msg_list
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _xmly_cookie_list = datas.get("XMLY_COOKIE_LIST")
     XMLYCheckIn(xmly_cookie_list=_xmly_cookie_list).main()

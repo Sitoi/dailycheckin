@@ -63,7 +63,9 @@ class WWW2nzzCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _www2nzz_cookie_list = datas.get("WWW2NZZ_COOKIE_LIST", [])
     WWW2nzzCheckIn(www2nzz_cookie_list=_www2nzz_cookie_list).main()

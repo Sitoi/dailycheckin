@@ -71,6 +71,4 @@ if [ $CUSTOM_LIST_FILE ]; then
   chmod -R 777 $customListFile
 fi
 
-chmod -R 777 /dailycheckin/config.json
-
 crond -f

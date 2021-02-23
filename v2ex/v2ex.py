@@ -67,7 +67,9 @@ class V2exCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _v2ex_cookie_list = datas.get("V2EX_COOKIE_LIST", [])
     V2exCheckIn(v2ex_cookie_list=_v2ex_cookie_list).main()

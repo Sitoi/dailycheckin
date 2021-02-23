@@ -30,16 +30,17 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ```text
 dailycheckin
-├── config.json
-└── docker-compose.yml
+|-- config
+|   `-- config.json
+`-- docker-compose.yml
 ```
 
-- dailycheckin/config.json: 配置文件
+- dailycheckin/config/config.json: 配置文件
 - dailycheckin/docker-compose.yml: docker启动文件
 
 ## 二、修改配置文件等
 
-### dailycheckin/config.json
+### dailycheckin/config/config.json
 
 > 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
 
@@ -60,7 +61,7 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./config.json:/dailycheckin/config.json
+      - ./config:/dailycheckin/config
       - ./logs:/dailycheckin/logs
 ```
 
@@ -92,7 +93,7 @@ docker exec dailycheckin python3 index.py xmly
 
 1. 对于修改 `config.json` 文件发现为更改的情况
 
-    先执行 `docker-compose down` 停止并删除容器，再执行 `docker-compose up -d` 启动容器
+   先执行 `docker-compose down` 停止并删除容器，再执行 `docker-compose up -d` 启动容器
 
 ## 附录
 

@@ -13,9 +13,7 @@
 
 参考[配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，GitHub Actions Secrets 环境变量
 
-
 ![Secret 教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/secret.png)
-
 
 Secrets 填写教程，以 IQIYI_COOKIE_LIST 为例:
 
@@ -34,7 +32,6 @@ IQIYI_COOKIE_LIST
     }
 ]
 ```
-
 
 ## 三、Star 一下，立即执行，观察运行情况
 

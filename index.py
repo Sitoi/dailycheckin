@@ -15,6 +15,7 @@ from utils.message import (
     message2server,
     message2server_turbo,
     message2telegram,
+    important_notice
 )
 
 
@@ -43,7 +44,7 @@ def main_handler(event, context):
         else:
             message = None
         try:
-            with open(os.path.join(os.path.dirname(__file__), "config.json"), "r", encoding="utf-8") as f:
+            with open(os.path.join(os.path.dirname(__file__), "config/config.json"), "r", encoding="utf-8") as f:
                 data = json.loads(f.read())
             dingtalk_secret = data.get("DINGTALK_SECRET")
             dingtalk_access_token = data.get("DINGTALK_ACCESS_TOKEN")
@@ -91,6 +92,9 @@ def main_handler(event, context):
                 print(e)
                 msg_list = []
             content_list += msg_list
+    notice = important_notice()
+    if notice:
+        content_list.append(notice)
     use_time_info = f"本次任务使用时间: {time.time() - start_time} 秒"
     content_list.append(use_time_info)
     content = "\n-----------------------------\n\n".join(content_list)

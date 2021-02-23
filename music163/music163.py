@@ -89,7 +89,7 @@ class Music163CheckIn:
             url=resource_url,
             data=self.protect('{"csrf_token":"' + requests.utils.dict_from_cookiejar(temp_cookie)["__csrf"] + '"}'),
             headers=headers,
-            verify=False
+            verify=False,
         )
         res_data = json.loads(res.text, strict=False)
         count = 0
@@ -129,9 +129,7 @@ class Music163CheckIn:
                 break
         postdata = {"logs": json.dumps(buffer)}
         res = session.post(
-            url="http://music.163.com/weapi/feedback/weblog",
-            data=self.protect(json.dumps(postdata)),
-            verify=False
+            url="http://music.163.com/weapi/feedback/weblog", data=self.protect(json.dumps(postdata)), verify=False
         )
         res_data = json.loads(res.text, strict=False)
         if res_data["code"] == 200:
@@ -153,7 +151,9 @@ class Music163CheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _music163_account_list = datas.get("MUSIC163_ACCOUNT_LIST", [])
     Music163CheckIn(music163_account_list=_music163_account_list).main()

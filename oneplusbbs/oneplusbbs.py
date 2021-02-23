@@ -31,10 +31,7 @@ class OnePlusBBSCheckIn:
         formhash = re.findall(r"bbs_formhash=(.*?);", cookie)[0]
         data = {"formhash": formhash, "qdxq": "kx", "qdmode": "1", "todaysay": "努力奋斗"}
         response = requests.post(
-            url="https://www.oneplusbbs.com/plugin.php",
-            headers=headers,
-            params=params,
-            data=data
+            url="https://www.oneplusbbs.com/plugin.php", headers=headers, params=params, data=data
         ).text
         msg = re.findall(r'<div class="c">(.*?)</div>', response, re.S)
         msg = msg[0].strip() if msg else "Cookie 可能过期"
@@ -103,7 +100,9 @@ class OnePlusBBSCheckIn:
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _oneplusbbs_cookie_list = datas.get("ONEPLUSBBS_COOKIE_LIST", [])
     OnePlusBBSCheckIn(oneplusbbs_cookie_list=_oneplusbbs_cookie_list).main()

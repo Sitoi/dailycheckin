@@ -174,16 +174,15 @@ class IQIYICheckIn:
             self.query_user_task(p00001=p00001).join_task(p00001=p00001)
             task_msg = self.query_user_task(p00001=p00001).get_task_rewards(p00001=p00001)
             user_msg = self.user_information(p00001=p00001)
-            msg = (
-                f"【爱奇艺签到】\n{user_msg}\n"
-                f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
-            )
+            msg = f"【爱奇艺签到】\n{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
             msg_list.append(msg)
         return msg_list
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _iqiyi_cookie_list = datas.get("IQIYI_COOKIE_LIST", [])
     IQIYICheckIn(iqiyi_cookie_list=_iqiyi_cookie_list).main()

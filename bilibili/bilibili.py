@@ -332,7 +332,9 @@ class BiliBiliCheckIn(object):
 
 
 if __name__ == "__main__":
-    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
+    ) as f:
         datas = json.loads(f.read())
     _bilibili_cookie_list = datas.get("BILIBILI_COOKIE_LIST", [])
     BiliBiliCheckIn(bilibili_cookie_list=_bilibili_cookie_list).main()
