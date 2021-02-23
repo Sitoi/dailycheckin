@@ -86,7 +86,7 @@ def important_notice():
         data = datas[0]
         title = data.get("title")
         body = data.get("body")
-        url = data.get("url")
+        url = data.get("html_url")
         notice = f"重要通知: {title}\n通知内容: {body}\n详细地址: {url}"
     else:
         notice = None
