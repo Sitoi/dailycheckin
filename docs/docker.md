@@ -19,9 +19,9 @@ curl https://raw.githubusercontent.com/Sitoi/dailycheckin/main/docker_start.sh |
 ```
 
 - ./config/config.json: 配置文件
-- ./docker-compose.yml: docker 启动文件
+- ./docker-compose.yml: docker 启动文件（只在有 docker-compose 的情况下创建）
 - ./logs: 日志文件
-- ./Makefile: make 脚本命令
+- ./Makefile: make 脚本命令（只在有 docker-compose 的情况下创建）
 
 ## 二、修改配置文件等
 
@@ -33,7 +33,7 @@ curl https://raw.githubusercontent.com/Sitoi/dailycheckin/main/docker_start.sh |
 
 > 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
 
-参考[配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config.json`
+参考 [配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config.json`
 
 ## 三、立即执行单次签到(确保容器已启动)，检查 config.json 是否配置正确
 
