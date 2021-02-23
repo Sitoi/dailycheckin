@@ -18,14 +18,14 @@ curl https://raw.githubusercontent.com/Sitoi/dailycheckin/main/docker_start.sh |
 `-- Makefile
 ```
 
-- ./config/config.json: 配置文件
-- ./docker-compose.yml: docker 启动文件（只在有 docker-compose 的情况下创建）
-- ./logs: 日志文件
-- ./Makefile: make 脚本命令（只在有 docker-compose 的情况下创建）
+- `./config/config.json`: 配置文件
+- `./docker-compose.yml`: docker 启动文件（只在有 docker-compose 的情况下创建）
+- `./logs`: 日志文件
+- `./Makefile`: make 脚本命令（只在有 docker-compose 的情况下创建）
 
-## 二、修改配置文件等
+## 二、修改配置文件
 
-### ./config/config.json
+文件路径: `./config/config.json`
 
 > 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
 
@@ -37,37 +37,29 @@ curl https://raw.githubusercontent.com/Sitoi/dailycheckin/main/docker_start.sh |
 
 ## 三、立即执行单次签到(确保容器已启动)，检查 config.json 是否配置正确
 
-> 运行【日常签到类】（除喜马拉雅极速版）
+##### 运行【日常签到类】（除喜马拉雅极速版）
 
 ```bash
 docker exec dailycheckin python3 index.py
 ```
 
-> 运行【喜马拉雅极速版】
+##### 运行【喜马拉雅极速版】
 
 ```bash
 docker exec dailycheckin python3 index.py xmly
 ```
 
-## 常见问题
-
-1. 对于修改 `config.json` 文件发现为更改的情况
-
-   先执行 `docker-compose down` 停止并删除容器，再执行 `docker-compose up -d` 启动容器
-
 ## 附录
-
-### Docker 安装 安装教程请自行百度
 
 ### docker-compose 安装
 
-> 方式一（Python 环境）
+##### 方式一（Python 环境）
 
 ```bash
 pip3 install docker-compose
 ```
 
-> 方式二
+##### 方式二
 
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
