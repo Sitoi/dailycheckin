@@ -16,15 +16,17 @@ class WWW2nzzCheckIn:
 
     @staticmethod
     def sign(session):
+        response = session.get("http://www.2nzz.com/index.php", verify=False)
+        formhash = re.findall(r'<input type="hidden" name="formhash" value="(.*?)"', response.text)[0]
         params = (
             ("id", "dsu_paulsign:sign"),
-            ("908446a2", ""),
-            ("infloat", "yes"),
-            ("handlekey", "dsu_paulsign"),
+            ("operation", "qiandao"),
+            ("infloat", "1"),
+            ("sign_as", "1"),
             ("inajax", "1"),
-            ("ajaxtarget", "fwin_content_dsu_paulsign"),
         )
-        response = session.post(url="https://www.2nzz.com/plugin.php", verify=False, params=params)
+        data = {"formhash": formhash, "qdxq": "kx", "qdmode": "2", "todaysay": "", "fastreply": "0"}
+        response = session.post(url="https://www.2nzz.com/plugin.php", params=params, data=data, verify=False)
         user_rep = session.get(url="https://www.2nzz.com/home.php")
         uid = re.findall(r"uid=(\d+)\"", user_rep.text)
         uid = uid[0] if uid else "未获取到 UID"
