@@ -10,6 +10,7 @@
     <a href="https://github.com/Sitoi/dailycheckin/stargazers"><img src="https://img.shields.io/github/stars/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub stars"></a>
     <a href="https://github.com/Sitoi/dailycheckin/network/members"><img src="https://img.shields.io/github/forks/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub forks"></a>
     <a href="https://github.com/Sitoi/dailycheckin/issues"><img src="https://img.shields.io/github/issues/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub issues"></a>
+    <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/pulls/sitoi/dailycheckin?style=popout-square" alt="Docker Pulls"></a>
     <a href="https://sitoi.github.io/dailycheckin"><img src="https://visitor-badge.glitch.me/badge?page_id=Sitoi-dailycheckin" alt="visitor"></a>
 </p>
 
