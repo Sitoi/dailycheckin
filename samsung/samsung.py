@@ -16,7 +16,7 @@ class SamsungCheckIn:
         try:
             params = {"ramdon": str(int(round(time.time() * 1000)))}
             user_info = session.get(
-                url=f"http://www.samsungmembers.cn/Shared/CheckUserLogin?ramdon=1613969035891", params=params
+                url=f"http://www.samsungmembers.cn/Shared/CheckUserLogin", params=params
             ).json()
             username = user_info.get("Data", {}).get("UserName")
         except Exception as e:
