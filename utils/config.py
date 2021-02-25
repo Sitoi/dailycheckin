@@ -81,9 +81,9 @@ def env2list(key):
 
 def env2str(key):
     try:
-        value = json.loads(os.getenv(key, "")) if os.getenv(key) else ""
+        value = os.getenv(key, "") if os.getenv(key) else ""
         if isinstance(value, str):
-            value = value
+            value = value.strip()
         else:
             value = None
     except Exception as e:
