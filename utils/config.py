@@ -50,8 +50,23 @@ checkin_map = {
     "XMLY_COOKIE_LIST": XMLYCheckIn,
 }
 
+notice_map = {
+    "DINGTALK_SECRET": "",
+    "DINGTALK_ACCESS_TOKEN": "",
+    "BARK_URL": "",
+    "SCKEY": "",
+    "SENDKEY": "",
+    "TG_BOT_TOKEN": "",
+    "TG_USER_ID": "",
+    "QMSG_KEY": "",
+    "COOLPUSHSKEY": "",
+    "COOLPUSHQQ": "",
+    "COOLPUSHWX": "",
+    "COOLPUSHEMAIL": "",
+}
 
-def env2json(key):
+
+def env2list(key):
     try:
         value = json.loads(os.getenv(key, [])) if os.getenv(key) else []
         if isinstance(value, list):
@@ -64,6 +79,19 @@ def env2json(key):
     return value
 
 
+def env2str(key):
+    try:
+        value = json.loads(os.getenv(key, "")) if os.getenv(key) else ""
+        if isinstance(value, list):
+            value = value
+        else:
+            value = None
+    except Exception as e:
+        print(e)
+        value = None
+    return value
+
+
 def get_checkin_info(data):
     result = {}
     if isinstance(data, dict):
@@ -71,5 +99,16 @@ def get_checkin_info(data):
             result[one.lower()] = data.get(one, [])
     else:
         for one in checkin_map.keys():
-            result[one.lower()] = env2json(one)
+            result[one.lower()] = env2list(one)
+    return result
+
+
+def get_notice_info(data):
+    result = {}
+    if isinstance(data, dict):
+        for one in notice_map.keys():
+            result[one.lower()] = data.get(one, None)
+    else:
+        for one in notice_map.keys():
+            result[one.lower()] = env2list(one)
     return result

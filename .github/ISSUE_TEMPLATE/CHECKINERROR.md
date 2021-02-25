@@ -1,8 +1,8 @@
 ---
-name: Bug 反馈 
+name: Bug 反馈
 about: 运行 Python 脚本时出现 Bug 
-title: ''
-labels: ''
+title: '【脚本名称】具体 BUG'
+labels: bug
 assignees: ''
 ---
 

@@ -93,5 +93,53 @@ def important_notice():
     return notice
 
 
+def push_message(content_list: list, notice_info: dict):
+    dingtalk_secret = notice_info.get("dingtalk_secret")
+    dingtalk_access_token = notice_info.get("dingtalk_access_token")
+    bark_url = notice_info.get("bark_url")
+    sckey = notice_info.get("sckey")
+    sendkey = notice_info.get("sendkey")
+    qmsg_key = notice_info.get("qmsg_key")
+    tg_bot_token = notice_info.get("tg_bot_token")
+    tg_user_id = notice_info.get("tg_user_id")
+    coolpushskey = notice_info.get("coolpushskey")
+    coolpushqq = notice_info.get("coolpushqq")
+    coolpushwx = notice_info.get("coolpushwx")
+    coolpushemail = notice_info.get("coolpushemail")
+    content_str = "\n-----------------------------\n\n".join(content_list)
+    message_list = [content_str]
+    try:
+        notice = important_notice()
+        if notice:
+            message_list.append(notice)
+            content_list.append(notice)
+    except Exception as e:
+        print("获取重要通知失败:", e)
+    for message in message_list:
+        if dingtalk_access_token and dingtalk_secret:
+            message2dingtalk(
+                dingtalk_secret=dingtalk_secret, dingtalk_access_token=dingtalk_access_token, content=message
+            )
+        if sckey:
+            message2server(sckey=sckey, content=message)
+        if sendkey:
+            message2server_turbo(sendkey=sendkey, content=message)
+        if tg_user_id and tg_bot_token:
+            message2telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=message)
+        if bark_url:
+            message2bark(bark_url=bark_url, content=message)
+    for content in content_list:
+        if qmsg_key:
+            message2qmsg(qmsg_key=qmsg_key, content=content)
+        if coolpushskey:
+            message2coolpush(
+                coolpushskey=coolpushskey,
+                content=content,
+                coolpushqq=coolpushqq,
+                coolpushwx=coolpushwx,
+                coolpushemail=coolpushemail,
+            )
+
+
 if __name__ == '__main__':
     print(important_notice())
