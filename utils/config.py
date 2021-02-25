@@ -82,7 +82,7 @@ def env2list(key):
 def env2str(key):
     try:
         value = json.loads(os.getenv(key, "")) if os.getenv(key) else ""
-        if isinstance(value, list):
+        if isinstance(value, str):
             value = value
         else:
             value = None
