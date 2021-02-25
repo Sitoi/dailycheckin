@@ -110,5 +110,5 @@ def get_notice_info(data):
             result[one.lower()] = data.get(one, None)
     else:
         for one in notice_map.keys():
-            result[one.lower()] = env2list(one)
+            result[one.lower()] = env2str(one)
     return result
