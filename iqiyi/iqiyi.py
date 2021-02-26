@@ -30,12 +30,12 @@ class IQIYICheckIn:
         res = requests.get(url=url, params=params)
         if res.json()["code"] == "A00000":
             try:
-                res_data = res.json()["data"]
-                level = res_data["level"]  # VIP 等级
-                growthvalue = res_data["growthvalue"]  # 当前 VIP 成长值
-                distance = res_data["distance"]  # 升级需要成长值
-                deadline = res_data["deadline"]  # VIP 到期时间
-                today_growth_value = res_data["todayGrowthValue"]  # 今日成长值
+                res_data = res.json().get("data", {})
+                level = res_data.get("level", 0)  # VIP 等级
+                growthvalue = res_data.get("growthvalue", 0)  # 当前 VIP 成长值
+                distance = res_data.get("distance", 0)  # 升级需要成长值
+                deadline = res_data.get("deadline", "非 VIP 用户")  # VIP 到期时间
+                today_growth_value = res_data.get("todayGrowthValue", 0)  # 今日成长值
                 msg = (
                     f"VIP 等级: {level}\n当前成长值: {growthvalue}\n"
                     f"升级需成长值: {distance}\n今日成长值: +{today_growth_value}\nVIP 到期时间: {deadline}"

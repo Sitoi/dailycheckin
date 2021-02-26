@@ -185,14 +185,6 @@
       "cloud189_password": "帐号2 密码"
     }
   ],
-  "SAMSUNG_COOKIE_LIST": [
-    {
-      "samsung_cookie": "帐号1 cookie"
-    },
-    {
-      "samsung_cookie": "帐号2 cookie"
-    }
-  ],
   "WPS_COOKIE_LIST": [
     {
       "wps_cookie": "帐号1 cookie"

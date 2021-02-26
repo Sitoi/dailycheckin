@@ -112,12 +112,16 @@ class Cloud189CheckIn:
             msg += f"\n第一次抽奖: {response.text}"
         else:
             description = response.json().get("description", "")
+            if description in ["1", 1]:
+                description = "50M空间"
             msg += f"\n第一次抽奖: 获得{description}"
         response = session.get(url=url2, headers=headers)
         if "errorCode" in response.text:
             msg += f"\n第二次抽奖: {response.text}"
         else:
             description = response.json().get("description", "")
+            if description in ["1", 1]:
+                description = "50M空间"
             msg += f"\n第二次抽奖: 获得{description}"
         return msg
 
@@ -133,6 +137,7 @@ class Cloud189CheckIn:
             else:
                 sign_msg = flag
             msg = f"【天翼云盘】\n帐号信息: {cloud189_phone}\n{sign_msg}"
+            print(msg)
             msg_list.append(msg)
         return msg_list
 

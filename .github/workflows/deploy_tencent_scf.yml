@@ -59,7 +59,6 @@ jobs:
           MIMOTION_ACCOUNT_LIST: ${{secrets.MIMOTION_ACCOUNT_LIST}}
           ACFUN_ACCOUNT_LIST: ${{secrets.ACFUN_ACCOUNT_LIST}}
           CLOUD189_ACCOUNT_LIST: ${{secrets.CLOUD189_ACCOUNT_LIST}}
-          SAMSUNG_COOKIE_LIST: ${{secrets.SAMSUNG_COOKIE_LIST}}
           WPS_COOKIE_LIST: ${{secrets.WPS_COOKIE_LIST}}
           POJIE_COOKIE_LIST: ${{secrets.POJIE_COOKIE_LIST}}
 
