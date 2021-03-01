@@ -14,6 +14,7 @@ from mgtv import MgtvCheckIn
 from mimotion import MiMotion
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
+from picacomic import PicacomicCheckIn
 from pojie import PojieCheckIn
 from smzdm import SmzdmCheckIn
 from tieba import TiebaCheckIn
@@ -46,6 +47,7 @@ checkin_map = {
     "CLOUD189_ACCOUNT_LIST": Cloud189CheckIn,
     "WPS_COOKIE_LIST": WPSCheckIn,
     "POJIE_COOKIE_LIST": PojieCheckIn,
+    "PICACOMIC_ACCOUNT_LIST": PicacomicCheckIn,
     "CITY_NAME_LIST": Weather,
     "XMLY_COOKIE_LIST": XMLYCheckIn,
 }

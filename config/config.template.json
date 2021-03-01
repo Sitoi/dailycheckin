@@ -208,5 +208,15 @@
     {
       "mgtv_params": "账号2 params"
     }
+  ],
+  "PICACOMIC_ACCOUNT_LIST": [
+    {
+      "picacomic_email": "账号1 账号",
+      "picacomic_password": "账号1 密码"
+    },
+    {
+      "picacomic_email": "账号2 账号",
+      "picacomic_password": "账号2 密码"
+    }
   ]
 }

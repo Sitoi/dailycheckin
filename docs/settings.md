@@ -61,6 +61,8 @@
 |_**ACFUN_ACCOUNT_LIST**_.acfun_phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 手机账号|
 |_**ACFUN_ACCOUNT_LIST**_.acfun_password|[AcFun](https://www.acfun.cn/)|APP|AcFun 账号密码|
 |_**MGTV_PARAMS_LIST**_.mgtv_params|芒果 TV|APP|芒果 TV 请求参数|
+|_**PICACOMIC_ACCOUNT_LIST**_.picacomic_email|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 账号|
+|_**PICACOMIC_ACCOUNT_LIST**_.picacomic_password|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 密码|
 
 ### 其他任务配置
 
@@ -113,6 +115,13 @@
 
 - _**CLOUD189_ACCOUNT_LIST**_.cloud189_phone: 天翼云盘 手机号
 - _**CLOUD189_ACCOUNT_LIST**_.cloud189_password: 天翼云盘 手机号对应的密码
+
+#### 哔咔漫画 帐号信息
+
+[哔咔漫画](https://www.picacomic.com)
+
+- _**PICACOMIC_ACCOUNT_LIST**_.picacomic_email: 哔咔漫画 账号
+- _**PICACOMIC_ACCOUNT_LIST**_.picacomic_password: 哔咔漫画 密码
 
 ### APP 抓包
 
@@ -399,6 +408,16 @@
     },
     {
       "mgtv_params": "账号2 params"
+    }
+  ],
+  "PICACOMIC_ACCOUNT_LIST": [
+    {
+      "picacomic_email": "账号1 账号",
+      "picacomic_password": "账号1 密码"
+    },
+    {
+      "picacomic_email": "账号2 账号",
+      "picacomic_password": "账号2 密码"
     }
   ]
 }
