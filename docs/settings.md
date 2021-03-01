@@ -142,7 +142,7 @@
 
 1. 退出手机营业厅登录，然后开启抓包软件，登录手机营业厅
 
-查找网址为 `https://m.client.10010.com/mobileService/login.htm` 的记录，找到请求内容，将 `simCount` 开始到最后的内容按要求填入 `config.json` 文件。
+查找网址为 `https://m.client.10010.com/mobileService/login.htm` 的记录，找到请求内容，将 `simCount` 开始到最后的内容按要求填入 `config/config.json` 文件。
 
 **样例**
 
@@ -187,7 +187,7 @@
 > 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
 
 
-配置文件：`config.json`
+配置文件：`config/config.json`
 
 ```json
 {
