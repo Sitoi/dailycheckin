@@ -10,6 +10,7 @@ from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
 from liantong import LianTongCheckIn
+from mgtv import MgtvCheckIn
 from mimotion import MiMotion
 from music163 import Music163CheckIn
 from oneplusbbs import OnePlusBBSCheckIn
@@ -27,6 +28,7 @@ from youdao import YouDaoCheckIn
 checkin_map = {
     "IQIYI_COOKIE_LIST": IQIYICheckIn,
     "VQQ_COOKIE_LIST": VQQCheckIn,
+    "MGTV_PARAMS_LIST": MgtvCheckIn,
     "KGQQ_COOKIE_LIST": KGQQCheckIn,
     "MUSIC163_ACCOUNT_LIST": Music163CheckIn,
     "BILIBILI_COOKIE_LIST": BiliBiliCheckIn,

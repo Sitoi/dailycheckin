@@ -200,5 +200,13 @@
     {
       "pojie_cookie": "帐号2 cookie"
     }
+  ],
+  "MGTV_PARAMS_LIST": [
+    {
+      "mgtv_params": "账号1 params"
+    },
+    {
+      "mgtv_params": "账号2 params"
+    }
   ]
 }

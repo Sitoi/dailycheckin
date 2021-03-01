@@ -58,8 +58,9 @@
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|APP|Fa米家 APP headers 中的 deviceId|
 |_**XMLY_COOKIE_LIST**_.xmly_cookie|喜马拉雅极速版|APP|喜马拉雅极速版 cookie|
-|_**ACFUN_ACCOUNT_LIST**_.acfun_phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 每日签到|
-|_**ACFUN_ACCOUNT_LIST**_.acfun_password|[AcFun](https://www.acfun.cn/)|APP|AcFun 每日签到|
+|_**ACFUN_ACCOUNT_LIST**_.acfun_phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 手机账号|
+|_**ACFUN_ACCOUNT_LIST**_.acfun_password|[AcFun](https://www.acfun.cn/)|APP|AcFun 账号密码|
+|_**MGTV_PARAMS_LIST**_.mgtv_params|芒果 TV|APP|芒果 TV 请求参数|
 
 ### 其他任务配置
 
@@ -114,6 +115,20 @@
 - _**CLOUD189_ACCOUNT_LIST**_.cloud189_password: 天翼云盘 手机号对应的密码
 
 ### APP 抓包
+
+#### 芒果 TV 请求参数
+
+抓包 APP 中获取 url 关键词 `credits.bz.mgtv.com/user/creditsTake`，提取 `?` 后所有参数
+
+**示例**
+
+```json
+[
+  {
+    "mgtv_params": "uuid=xxx&uid=xxx&ticket=xxx&token=xxx&device=iPhone&did=xxx&deviceId=xxx&appVersion=6.8.2&osType=ios&platform=iphone&abroad=0&aid=xxx&nonce=xxx&timestamp=1614595550&appid=xxx&type=1&sign=xxx&callback=__jp18"
+  }
+]
+```
 
 #### 喜马拉雅极速版 Cookie 参数获取
 
@@ -376,6 +391,14 @@
     },
     {
       "pojie_cookie": "帐号2 cookie"
+    }
+  ],
+  "MGTV_PARAMS_LIST": [
+    {
+      "mgtv_params": "账号1 params"
+    },
+    {
+      "mgtv_params": "账号2 params"
     }
   ]
 }

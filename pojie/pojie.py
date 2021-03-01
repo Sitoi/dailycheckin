@@ -12,22 +12,21 @@ class PojieCheckIn:
 
     @staticmethod
     def sign(headers):
+        msg = ""
         try:
-            msg = ""
             session = requests.session()
             session.get(url="https://www.52pojie.cn/home.php?mod=task&do=apply&id=2", headers=headers)
             resp = session.get(url="https://www.52pojie.cn/home.php?mod=task&do=draw&id=2", headers=headers)
             content = re.findall(r'<div id="messagetext".*?\n<p>(.*?)</p>', resp.text)[0]
             if "您需要先登录才能继续本操作" in resp.text:
                 msg += "吾爱破解 cookie 失效"
+            elif "安域防护节点" in resp.text:
+                msg += "触发吾爱破解安全防护，访问出错。自行修改脚本运行时间和次数，总有能访问到的时间"
             elif "恭喜" in resp.text:
                 msg += "吾爱破解签到成功"
             else:
                 msg += content
         except Exception as e:
-            if "安域防护节点" in resp.text:
-                print("触发吾爱破解安全防护，访问出错。自行修改脚本运行时间和次数，总有能访问到的时间")
-            print("吾爱破解出错")
             msg += "吾爱破解出错"
         return msg
 
