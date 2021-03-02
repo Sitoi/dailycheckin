@@ -11,6 +11,11 @@
   "COOLPUSHQQ": true,
   "COOLPUSHWX": true,
   "COOLPUSHEMAIL": true,
+  "QYWX_KEY": "",
+  "QYWX_CORPID": "",
+  "QYWX_AGENTID": "",
+  "QYWX_CORPSECRET": "",
+  "QYWX_TOUSER": "",
   "CITY_NAME_LIST": [
     "上海"
   ],

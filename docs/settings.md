@@ -20,6 +20,11 @@
 |_**COOLPUSHQQ**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 QQ 推送，默认开启|
 |_**COOLPUSHWX**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 微信 推送，默认关闭|
 |_**COOLPUSHEMAIL**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 邮件 推送，默认关闭|
+|_**QYWX_KEY**_|企业微信群机器人推送|推送|密钥，企业微信推送 `webhook` 后面的 `key` 详见[官方说明文档](https://work.weixin.qq.com/api/doc/90000/90136/91770) |
+|_**QYWX_CORPID**_|企业微信应用消息推送|推送|corpid [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
+|_**QYWX_AGENTID**_|企业微信应用消息推送|推送|agentid [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
+|_**QYWX_CORPSECRET**_|企业微信应用消息推送|推送|corpsecret [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
+|_**QYWX_TOUSER**_|企业微信应用消息推送|推送|touser [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
 
 ### Web 签到配置
 
@@ -203,6 +208,11 @@
   "COOLPUSHQQ": true,
   "COOLPUSHWX": true,
   "COOLPUSHEMAIL": true,
+  "QYWX_KEY": "",
+  "QYWX_CORPID": "",
+  "QYWX_AGENTID": "",
+  "QYWX_CORPSECRET": "",
+  "QYWX_TOUSER": "",
   "CITY_NAME_LIST": [
     "上海"
   ],

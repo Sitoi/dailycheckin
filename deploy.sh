@@ -11,6 +11,11 @@ if [[ $COOLPUSHSKEY ]]; then echo "COOLPUSHSKEY 变量存在，并成功赋值" 
 if [[ $COOLPUSHQQ ]]; then echo "COOLPUSHQQ 变量存在，并成功赋值" ;else COOLPUSHQQ=true; fi;
 if [[ $COOLPUSHWX ]]; then echo "COOLPUSHWX 变量存在，并成功赋值" ;else COOLPUSHWX=false; fi;
 if [[ $COOLPUSHEMAIL ]]; then echo "COOLPUSHEMAIL 变量存在，并成功赋值" ;else COOLPUSHEMAIL=false; fi;
+if [[ $QYWX_KEY ]]; then echo "QYWX_KEY 变量存在，并成功赋值" ;else QYWX_KEY=""; fi;
+if [[ $QYWX_CORPID ]]; then echo "QYWX_CORPID 变量存在，并成功赋值" ;else QYWX_CORPID=""; fi;
+if [[ $QYWX_AGENTID ]]; then echo "QYWX_AGENTID 变量存在，并成功赋值" ;else QYWX_AGENTID=""; fi;
+if [[ $QYWX_CORPSECRET ]]; then echo "QYWX_CORPSECRET 变量存在，并成功赋值" ;else QYWX_CORPSECRET=""; fi;
+if [[ $QYWX_TOUSER ]]; then echo "QYWX_TOUSER 变量存在，并成功赋值" ;else QYWX_TOUSER=""; fi;
 if [[ $IQIYI_COOKIE_LIST ]]; then echo "IQIYI_COOKIE_LIST 变量存在，并成功赋值" ;else IQIYI_COOKIE_LIST=[]; fi;
 if [[ $VQQ_COOKIE_LIST ]]; then echo "VQQ_COOKIE_LIST 变量存在，并成功赋值" ;else VQQ_COOKIE_LIST=[]; fi;
 if [[ $YOUDAO_COOKIE_LIST ]]; then echo "YOUDAO_COOKIE_LIST 变量存在，并成功赋值" ;else YOUDAO_COOKIE_LIST=[]; fi;
@@ -50,6 +55,11 @@ JSONSTR="{
   \"COOLPUSHQQ\": ${COOLPUSHQQ},
   \"COOLPUSHWX\": ${COOLPUSHWX},
   \"COOLPUSHEMAIL\": ${COOLPUSHEMAIL},
+  \"QYWX_KEY\": ${QYWX_KEY},
+  \"QYWX_CORPID\": ${QYWX_CORPID},
+  \"QYWX_AGENTID\": ${QYWX_AGENTID},
+  \"QYWX_CORPSECRET\": ${QYWX_CORPSECRET},
+  \"QYWX_TOUSER\": ${QYWX_TOUSER},
   \"CITY_NAME_LIST\": ${CITY_NAME_LIST},
   \"MOTTO\": ${MOTTO},
   \"IQIYI_COOKIE_LIST\": ${IQIYI_COOKIE_LIST},

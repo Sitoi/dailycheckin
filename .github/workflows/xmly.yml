@@ -38,4 +38,9 @@ jobs:
           COOLPUSHQQ: ${{secrets.COOLPUSHQQ}}
           COOLPUSHWX: ${{secrets.COOLPUSHWX}}
           COOLPUSHEMAIL: ${{secrets.COOLPUSHEMAIL}}
+          QYWX_KEY: ${{secrets.QYWX_KEY}}
+          QYWX_CORPID: ${{secrets.QYWX_CORPID}}
+          QYWX_AGENTID: ${{secrets.QYWX_AGENTID}}
+          QYWX_CORPSECRET: ${{secrets.QYWX_CORPSECRET}}
+          QYWX_TOUSER: ${{secrets.QYWX_TOUSER}}
           XMLY_COOKIE_LIST: ${{secrets.XMLY_COOKIE_LIST}}

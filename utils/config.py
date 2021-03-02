@@ -65,6 +65,11 @@ notice_map = {
     "COOLPUSHQQ": "",
     "COOLPUSHWX": "",
     "COOLPUSHEMAIL": "",
+    "QYWX_KEY": "",
+    "QYWX_CORPID": "",
+    "QYWX_AGENTID": "",
+    "QYWX_CORPSECRET": "",
+    "QYWX_TOUSER": "",
 }
 
 

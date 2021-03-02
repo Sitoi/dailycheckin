@@ -50,3 +50,5 @@
 - Cool Push（QQ,微信,邮箱）
 - Bark（iOS）
 - server 酱 TURBO（微信）
+- 企业微信群机器人（企业微信）
+- 企业微信应用消息（企业微信）

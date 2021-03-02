@@ -80,6 +80,26 @@ def message2bark(bark_url: str, content):
     return
 
 
+def message2qywxrobot(qywx_key, content):
+    print("企业微信群机器人推送开始")
+    requests.post(
+        url=f"https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key={qywx_key}",
+        data=json.dumps({"msgtype": "text", "text": {"content": content}}),
+    )
+    return
+
+
+def message2qywxapp(qywx_corpid, qywx_agentid, qywx_corpsecret, qywx_touser, content):
+    print("企业微信应用消息推送开始")
+    res = requests.get(
+        f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
+    )
+    token = res.json().get("access_token", False)
+    data = {"touser": qywx_touser, "msgtype": "text", "agentid": qywx_agentid, "text": {"content": content}}
+    requests.post(url=f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={token}", data=json.dumps(data))
+    return
+
+
 def important_notice():
     datas = requests.get(url="https://api.github.com/repos/Sitoi/dailycheckin/issues?state=open&labels=通知").json()
     if datas:
@@ -106,6 +126,11 @@ def push_message(content_list: list, notice_info: dict):
     coolpushqq = notice_info.get("coolpushqq")
     coolpushwx = notice_info.get("coolpushwx")
     coolpushemail = notice_info.get("coolpushemail")
+    qywx_key = notice_info.get("qywx_key")
+    qywx_corpid = notice_info.get("qywx_corpid")
+    qywx_agentid = notice_info.get("qywx_agentid")
+    qywx_corpsecret = notice_info.get("qywx_corpsecret")
+    qywx_touser = notice_info.get("qywx_touser")
     content_str = "\n-----------------------------\n\n".join(content_list)
     message_list = [content_str]
     try:
@@ -128,6 +153,16 @@ def push_message(content_list: list, notice_info: dict):
             message2telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=message)
         if bark_url:
             message2bark(bark_url=bark_url, content=message)
+        if qywx_key:
+            message2qywxrobot(qywx_key=qywx_key, content=message)
+        if qywx_touser and qywx_corpid and qywx_corpsecret and qywx_agentid:
+            message2qywxapp(
+                qywx_corpid=qywx_corpid,
+                qywx_agentid=qywx_agentid,
+                qywx_corpsecret=qywx_corpsecret,
+                qywx_touser=qywx_touser,
+                content=message,
+            )
     for content in content_list:
         if qmsg_key:
             message2qmsg(qmsg_key=qmsg_key, content=content)
@@ -141,5 +176,5 @@ def push_message(content_list: list, notice_info: dict):
             )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(important_notice())
