@@ -10,6 +10,7 @@ from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
 from liantong import LianTongCheckIn
+from meizu import MeizuCheckIn
 from mgtv import MgtvCheckIn
 from mimotion import MiMotion
 from music163 import Music163CheckIn
@@ -47,6 +48,7 @@ checkin_map = {
     "CLOUD189_ACCOUNT_LIST": Cloud189CheckIn,
     "WPS_COOKIE_LIST": WPSCheckIn,
     "POJIE_COOKIE_LIST": PojieCheckIn,
+    "MEIZU_COOKIE_LIST": MeizuCheckIn,
     "PICACOMIC_ACCOUNT_LIST": PicacomicCheckIn,
     "CITY_NAME_LIST": Weather,
     "XMLY_COOKIE_LIST": XMLYCheckIn,

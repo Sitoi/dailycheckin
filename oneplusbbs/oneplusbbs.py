@@ -95,7 +95,7 @@ class OnePlusBBSCheckIn:
             bbs_uname = bbs_uname[0].split("%7C")[0] if bbs_uname else "未获取到用户信息"
             try:
                 bbs_uname = parse.unquote(bbs_uname)
-            except Exception as  e:
+            except Exception as e:
                 print(f"bbs_uname 转换失败: {e}")
                 bbs_uname = bbs_uname
             sign_msg = self.sign(cookie=oneplusbbs_cookie)

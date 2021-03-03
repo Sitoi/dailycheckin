@@ -223,5 +223,15 @@
       "picacomic_email": "账号2 账号",
       "picacomic_password": "账号2 密码"
     }
+  ],
+  "MEIZU_COOKIE_LIST": [
+    {
+      "meizu_cookie": "账号1 cookie",
+      "draw_count": "账号1 抽奖次数"
+    },
+    {
+      "meizu_cookie": "账号2 cookie",
+      "draw_count": "账号2 抽奖次数"
+    }
   ]
 }

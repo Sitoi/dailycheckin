@@ -49,6 +49,8 @@
 |_**CLOUD189_ACCOUNT_LIST**_.cloud189_password|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号对应的密码|
 |_**WPS_COOKIE_LIST**_.wps_cookie|[WPS](https://www.wps.cn/)|Web| WPS cookie|
 |_**POJIE_COOKIE_LIST**_.pojie_cookie|[吾爱破解](https://www.52pojie.cn/index.php)|Web| 吾爱破解 cookie|
+|_**MEIZU_COOKIE_LIST**_.meizu_cookie|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 cookie|
+|_**MEIZU_COOKIE_LIST**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 抽奖次数|
 
 ### APP 签到配置
 
@@ -419,6 +421,16 @@
     {
       "picacomic_email": "账号2 账号",
       "picacomic_password": "账号2 密码"
+    }
+  ],
+  "MEIZU_COOKIE_LIST": [
+    {
+      "meizu_cookie": "账号1 cookie",
+      "draw_count": "账号1 抽奖次数"
+    },
+    {
+      "meizu_cookie": "账号2 cookie",
+      "draw_count": "账号2 抽奖次数"
     }
   ]
 }

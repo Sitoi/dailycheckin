@@ -39,6 +39,7 @@ if [[ $WPS_COOKIE_LIST ]]; then echo "WPS_COOKIE_LIST 变量存在，并成功�
 if [[ $POJIE_COOKIE_LIST ]]; then echo "POJIE_COOKIE_LIST 变量存在，并成功赋值" ;else POJIE_COOKIE_LIST=[]; fi;
 if [[ $MGTV_PARAMS_LIST ]]; then echo "MGTV_PARAMS_LIST 变量存在，并成功赋值" ;else MGTV_PARAMS_LIST=[]; fi;
 if [[ $PICACOMIC_ACCOUNT_LIST ]]; then echo "PICACOMIC_ACCOUNT_LIST 变量存在，并成功赋值" ;else PICACOMIC_ACCOUNT_LIST=[]; fi;
+if [[ $MEIZU_COOKIE_LIST ]]; then echo "MEIZU_COOKIE_LIST 变量存在，并成功赋值" ;else MEIZU_COOKIE_LIST=[]; fi;
 if [[ $CLOUD189_ACCOUNT_LIST ]]; then echo "CLOUD189_ACCOUNT_LIST 变量存在，并成功赋值" ;else CLOUD189_ACCOUNT_LIST=[]; fi;
 
 
@@ -83,6 +84,7 @@ JSONSTR="{
   \"POJIE_COOKIE_LIST\": ${POJIE_COOKIE_LIST},
   \"MGTV_PARAMS_LIST\": ${MGTV_PARAMS_LIST},
   \"PICACOMIC_ACCOUNT_LIST\": ${PICACOMIC_ACCOUNT_LIST},
+  \"MEIZU_COOKIE_LIST\": ${MEIZU_COOKIE_LIST},
   \"TIEBA_COOKIE_LIST\": ${TIEBA_COOKIE_LIST}
 }"
 echo $JSONSTR > config/config.json

@@ -68,6 +68,7 @@ jobs:
           POJIE_COOKIE_LIST: ${{secrets.POJIE_COOKIE_LIST}}
           MGTV_PARAMS_LIST: ${{secrets.MGTV_PARAMS_LIST}}
           PICACOMIC_ACCOUNT_LIST: ${{secrets.PICACOMIC_ACCOUNT_LIST}}
+          MEIZU_COOKIE_LIST: ${{secrets.MEIZU_COOKIE_LIST}}
 
       - name: "部署到腾讯云函数"
         run: sls deploy --debug
