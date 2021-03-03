@@ -75,6 +75,12 @@
 
 - [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
 
+## 交流群
+
+<p align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" alt="微信交流群"/>
+</p>
+
 ## 历史 Star 数
 
 <p align="center">

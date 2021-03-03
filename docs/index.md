@@ -52,3 +52,9 @@
 - server 酱 TURBO（微信）
 - 企业微信群机器人（企业微信）
 - 企业微信应用消息（企业微信）
+
+## 交流群
+
+<p align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" alt="微信交流群"/>
+</p>
