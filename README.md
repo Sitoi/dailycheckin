@@ -78,7 +78,7 @@
 ## 交流群
 
 <p align="center">
-    <img src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" alt="微信交流群"/>
+    <img width="282" height="365.25" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" alt="微信交流群"/>
 </p>
 
 ## 历史 Star 数
