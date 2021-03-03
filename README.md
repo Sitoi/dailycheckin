@@ -65,7 +65,8 @@
 
 ## 详细文档
 
-文档地址：[https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
+- 文档地址: [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
+- 国内地址: [https://sitoi.gitee.io/dailycheckin/](https://sitoi.gitee.io/dailycheckin/)
 
 ## 新增签到脚本需求
 
