@@ -137,7 +137,6 @@ class Cloud189CheckIn:
             else:
                 sign_msg = flag
             msg = f"【天翼云盘】\n帐号信息: {cloud189_phone}\n{sign_msg}"
-            print(msg)
             msg_list.append(msg)
         return msg_list
 

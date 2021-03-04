@@ -57,7 +57,7 @@ def main_handler(event, context):
                 print(e)
                 msg_list = []
             content_list += msg_list
-    content_list.append(f"本次任务使用时间: {time.time() - start_time} 秒")
+    content_list.append(f"任务使用时间: {int(time.time() - start_time)} 秒")
     if message == "xmly":
         if utc_time.hour in [9, 18] and utc_time.minute == 0:
             flag = True

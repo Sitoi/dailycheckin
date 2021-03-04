@@ -95,7 +95,17 @@ def message2qywxapp(qywx_corpid, qywx_agentid, qywx_corpsecret, qywx_touser, con
         f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
     )
     token = res.json().get("access_token", False)
-    data = {"touser": qywx_touser, "msgtype": "text", "agentid": qywx_agentid, "text": {"content": content}}
+    data = {
+        "touser": qywx_touser,
+        "agentid": qywx_agentid,
+        "msgtype": "textcard",
+        "textcard": {
+            "title": "签到通知",
+            "description": content,
+            "url": "https://github.com/Sitoi/dailycheckin",
+            "btntxt": "开源项目"
+        }
+    }
     requests.post(url=f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={token}", data=json.dumps(data))
     return
 
@@ -150,13 +160,24 @@ def push_message(content_list: list, notice_info: dict):
             try:
                 message2coolpush(
                     coolpushskey=coolpushskey,
-                    content=content,
                     coolpushqq=coolpushqq,
                     coolpushwx=coolpushwx,
                     coolpushemail=coolpushemail,
+                    content=content,
                 )
             except Exception as e:
                 print("coolpush 推送失败", e)
+        if qywx_touser and qywx_corpid and qywx_corpsecret and qywx_agentid:
+            try:
+                message2qywxapp(
+                    qywx_corpid=qywx_corpid,
+                    qywx_agentid=qywx_agentid,
+                    qywx_corpsecret=qywx_corpsecret,
+                    qywx_touser=qywx_touser,
+                    content=content,
+                )
+            except Exception as e:
+                print("企业微信应用消息推送失败", e)
     for message in message_list:
         if dingtalk_access_token and dingtalk_secret:
             try:
@@ -185,17 +206,6 @@ def push_message(content_list: list, notice_info: dict):
                 message2qywxrobot(qywx_key=qywx_key, content=message)
             except Exception as e:
                 print("企业微信群机器人推送失败", e)
-        if qywx_touser and qywx_corpid and qywx_corpsecret and qywx_agentid:
-            try:
-                message2qywxapp(
-                    qywx_corpid=qywx_corpid,
-                    qywx_agentid=qywx_agentid,
-                    qywx_corpsecret=qywx_corpsecret,
-                    qywx_touser=qywx_touser,
-                    content=message,
-                )
-            except Exception as e:
-                print("企业微信应用消息推送失败", e)
         if tg_user_id and tg_bot_token:
             try:
                 message2telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=message)
