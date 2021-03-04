@@ -8,8 +8,8 @@ import requests
 
 
 class MgtvCheckIn:
-    def __init__(self, mgtv_params_list):
-        self.mgtv_params_list = mgtv_params_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(params):
@@ -48,16 +48,12 @@ class MgtvCheckIn:
         return msg
 
     def main(self):
-        msg_list = []
-        for mgtv_cookie in self.mgtv_params_list:
-            mgtv_params = mgtv_cookie.get("mgtv_params")
-            params = parse.parse_qs(mgtv_params)
-            params["timestamp"] = [round(time.time())]
-            params = {key: value[0] for key, value in params.items()}
-            sign_msg = self.sign(params=params)
-            msg = f"【芒果TV】\n{sign_msg}"
-            msg_list.append(msg)
-        return msg_list
+        mgtv_params = self.check_item.get("mgtv_params")
+        params = parse.parse_qs(mgtv_params)
+        params["timestamp"] = [round(time.time())]
+        params = {key: value[0] for key, value in params.items()}
+        msg = self.sign(params=params)
+        return msg
 
 
 if __name__ == '__main__':
@@ -65,5 +61,5 @@ if __name__ == '__main__':
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _mgtv_params_list = datas.get("MGTV_PARAMS_LIST", [])
-    MgtvCheckIn(mgtv_params_list=_mgtv_params_list).main()
+    _check_item = datas.get("MGTV_PARAMS_LIST", [])[0]
+    print(MgtvCheckIn(check_item=_check_item).main())

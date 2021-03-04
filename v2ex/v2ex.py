@@ -11,8 +11,8 @@ urllib3.disable_warnings()
 
 
 class V2exCheckIn:
-    def __init__(self, v2ex_cookie_list):
-        self.v2ex_cookie_list = v2ex_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(session):
@@ -46,24 +46,20 @@ class V2exCheckIn:
         return msg
 
     def main(self):
-        msg_list = []
-        for v2ex_cookie in self.v2ex_cookie_list:
-            v2ex_cookie = {
-                item.split("=")[0]: item.split("=")[1] for item in v2ex_cookie.get("v2ex_cookie").split("; ")
+        v2ex_cookie = {
+            item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("v2ex_cookie").split("; ")
+        }
+        session = requests.session()
+        requests.utils.add_dict_to_cookiejar(session.cookies, v2ex_cookie)
+        session.headers.update(
+            {
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66",
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
             }
-            session = requests.session()
-            requests.utils.add_dict_to_cookiejar(session.cookies, v2ex_cookie)
-            session.headers.update(
-                {
-                    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66",
-                    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-                    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
-                }
-            )
-            sign_msg = self.sign(session=session)
-            msg = f"【V2EX 论坛】\n{sign_msg}"
-            msg_list.append(msg)
-        return msg_list
+        )
+        msg = self.sign(session=session)
+        return msg
 
 
 if __name__ == "__main__":
@@ -71,5 +67,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _v2ex_cookie_list = datas.get("V2EX_COOKIE_LIST", [])
-    V2exCheckIn(v2ex_cookie_list=_v2ex_cookie_list).main()
+    _check_item = datas.get("V2EX_COOKIE_LIST", [])[0]
+    print(V2exCheckIn(check_item=_check_item).main())

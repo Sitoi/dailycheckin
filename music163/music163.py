@@ -14,8 +14,8 @@ urllib3.disable_warnings()
 
 
 class Music163CheckIn:
-    def __init__(self, music163_account_list):
-        self.music163_account_list = music163_account_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def md5(text):
@@ -139,15 +139,12 @@ class Music163CheckIn:
         return sign_msg, music_count_msg
 
     def main(self):
-        msg_list = []
-        for music163_account in self.music163_account_list:
-            phone = music163_account.get("music163_phone")
-            password = music163_account.get("music163_password")
-            session = requests.session()
-            sign_msg, music_count_msg = self.sign(session=session, phone=phone, password=password)
-            msg = f"【网易云音乐签到】\n帐号信息: {phone}\n签到状态: {sign_msg}\n刷歌数量: {music_count_msg}"
-            msg_list.append(msg)
-        return msg_list
+        phone = self.check_item.get("music163_phone")
+        password = self.check_item.get("music163_password")
+        session = requests.session()
+        sign_msg, music_count_msg = self.sign(session=session, phone=phone, password=password)
+        msg = f"帐号信息: {phone}\n签到状态: {sign_msg}\n刷歌数量: {music_count_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -155,5 +152,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _music163_account_list = datas.get("MUSIC163_ACCOUNT_LIST", [])
-    Music163CheckIn(music163_account_list=_music163_account_list).main()
+    _check_item = datas.get("MUSIC163_ACCOUNT_LIST", [])[0]
+    print(Music163CheckIn(check_item=_check_item).main())

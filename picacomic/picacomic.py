@@ -11,8 +11,8 @@ import requests
 
 
 class PicacomicCheckIn:
-    def __init__(self, picacomic_account_list):
-        self.picacomic_account_list = picacomic_account_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def generate_headers(path: str, data: dict = None, token: str = None):
@@ -66,14 +66,11 @@ class PicacomicCheckIn:
         return msg
 
     def main(self):
-        msg_list = []
-        for picacomic_account in self.picacomic_account_list:
-            picacomic_email = picacomic_account.get("picacomic_email")
-            picacomic_password = picacomic_account.get("picacomic_password")
-            sign_msg = self.sign(email=picacomic_email, password=picacomic_password)
-            msg = f"【哔咔漫画】\n帐号信息: {picacomic_email}\n签到状态: {sign_msg}"
-            msg_list.append(msg)
-        return msg_list
+        picacomic_email = self.check_item.get("picacomic_email")
+        picacomic_password = self.check_item.get("picacomic_password")
+        sign_msg = self.sign(email=picacomic_email, password=picacomic_password)
+        msg = f"帐号信息: {picacomic_email}\n签到状态: {sign_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -81,5 +78,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _picacomic_account_list = datas.get("PICACOMIC_ACCOUNT_LIST", [])
-    PicacomicCheckIn(picacomic_account_list=_picacomic_account_list).main()
+    _check_item = datas.get("PICACOMIC_ACCOUNT_LIST", [])[0]
+    print(PicacomicCheckIn(check_item=_check_item).main())

@@ -14,8 +14,8 @@ import rsa
 
 
 class XMLYCheckIn:
-    def __init__(self, xmly_cookie_list):
-        self.xmly_cookie_list = xmly_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
         self.useragent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iting/1.0.12 kdtunion_iting/1.0 iting(main)/1.0.12/ios_1"
         self.pubkey_str = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVhaR3Or7suUlwHUl2Ly36uVmboZ3+HhovogDjLgRE9CbaUokS2eqGaVFfbxAUxFThNDuXq/fBD+SdUgppmcZrIw4HMMP4AtE2qJJQH/KxPWmbXH7Lv+9CisNtPYOlvWJ/GHRqf9x3TBKjjeJ2CjuVxlPBDX63+Ecil2JR9klVawIDAQAB"
 
@@ -961,39 +961,36 @@ class XMLYCheckIn:
         return total, today_total, history_total
 
     def main(self):
-        msg_list = []
         mins, date_stamp, _datatime, utc_time = self.get_time()
-        for xmly_cookie in self.xmly_cookie_list:
-            xmly_cookie = xmly_cookie.get("xmly_cookie")
-            cookies = self.parse_cookie(xmly_cookie)
-            device_model = cookies.get("device_model", "未获取到设备信息")
-            listen_msg = self.save_listen_time(cookies, date_stamp)
-            self.listen_data(cookies, date_stamp)
-            print("*" * 10, "阅读", "*" * 10)
-            self.read(cookies)  # 阅读
-            print("*" * 10, "收金币气泡", "*" * 10)
-            bubble_msg = self.bubble(cookies)  # 收金币气泡
-            print("*" * 10, "自动签到", "*" * 10)
-            continuous_days = self.checkin(cookies, _datatime)  # 自动签到
-            print("*" * 10, "答题赚金币", "*" * 10)
-            answer_msg = self.answer(cookies)  # 答题赚金币
-            print("*" * 10, "卡牌", "*" * 10)
-            card_report_time_msg = self.card_report_time(cookies, mins, date_stamp, _datatime)  # 卡牌
-            print("*" * 10, "领取万能卡", "*" * 10)
-            self.get_omnipotent_card(cookies, mins, date_stamp, _datatime)  # 领取万能卡
-            print("*" * 10, "抽卡", "*" * 10)
-            card_msg = self.card(cookies, _datatime)  # 抽卡
-            print("*" * 10, "首页、宝箱奖励及翻倍", "*" * 10)
-            index_baoxiang_award_msg = self.index_baoxiang_award(cookies)  # 首页、宝箱奖励及翻倍
-            total, today_total, history_total = self.account(cookies)
-            msg = (
-                f"【喜马拉雅极速版签到】\n北京时间: {utc_time}\n设备信息: {device_model}\n连续签到: {continuous_days}天\n收听时长: {listen_msg}分钟\n"
-                f"金币气泡: {bubble_msg}\n答题奖励: {answer_msg}\n卡牌奖励: {card_report_time_msg}\n"
-                f"{card_msg}\n{index_baoxiang_award_msg}\n"
-                f"当前剩余: {total}元\n今日获得: {today_total}元\n累计获得: {history_total}元"
-            )
-            msg_list.append(msg)
-        return msg_list
+        xmly_cookie = self.check_item.get("xmly_cookie")
+        cookies = self.parse_cookie(xmly_cookie)
+        device_model = cookies.get("device_model", "未获取到设备信息")
+        listen_msg = self.save_listen_time(cookies, date_stamp)
+        self.listen_data(cookies, date_stamp)
+        print("*" * 10, "阅读", "*" * 10)
+        self.read(cookies)  # 阅读
+        print("*" * 10, "收金币气泡", "*" * 10)
+        bubble_msg = self.bubble(cookies)  # 收金币气泡
+        print("*" * 10, "自动签到", "*" * 10)
+        continuous_days = self.checkin(cookies, _datatime)  # 自动签到
+        print("*" * 10, "答题赚金币", "*" * 10)
+        answer_msg = self.answer(cookies)  # 答题赚金币
+        print("*" * 10, "卡牌", "*" * 10)
+        card_report_time_msg = self.card_report_time(cookies, mins, date_stamp, _datatime)  # 卡牌
+        print("*" * 10, "领取万能卡", "*" * 10)
+        self.get_omnipotent_card(cookies, mins, date_stamp, _datatime)  # 领取万能卡
+        print("*" * 10, "抽卡", "*" * 10)
+        card_msg = self.card(cookies, _datatime)  # 抽卡
+        print("*" * 10, "首页、宝箱奖励及翻倍", "*" * 10)
+        index_baoxiang_award_msg = self.index_baoxiang_award(cookies)  # 首页、宝箱奖励及翻倍
+        total, today_total, history_total = self.account(cookies)
+        msg = (
+            f"北京时间: {utc_time}\n设备信息: {device_model}\n连续签到: {continuous_days}天\n收听时长: {listen_msg}分钟\n"
+            f"金币气泡: {bubble_msg}\n答题奖励: {answer_msg}\n卡牌奖励: {card_report_time_msg}\n"
+            f"{card_msg}\n{index_baoxiang_award_msg}\n"
+            f"当前剩余: {total}元\n今日获得: {today_total}元\n累计获得: {history_total}元"
+        )
+        return msg
 
 
 if __name__ == "__main__":
@@ -1001,5 +998,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _xmly_cookie_list = datas.get("XMLY_COOKIE_LIST")
-    XMLYCheckIn(xmly_cookie_list=_xmly_cookie_list).main()
+    _check_item = datas.get("XMLY_COOKIE_LIST")[0]
+    print(XMLYCheckIn(check_item=_check_item).main())

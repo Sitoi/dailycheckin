@@ -30,9 +30,11 @@
   ],
   "VQQ_COOKIE_LIST": [
     {
+      "auth_refresh": "帐号1 refresh url",
       "vqq_cookie": "帐号1 cookie"
     },
     {
+      "auth_refresh": "帐号2 refresh url",
       "vqq_cookie": "帐号2 cookie"
     }
   ],

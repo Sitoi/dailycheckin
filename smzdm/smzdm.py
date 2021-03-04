@@ -7,8 +7,8 @@ from requests import utils
 
 
 class SmzdmCheckIn:
-    def __init__(self, smzdm_cookie_list):
-        self.smzdm_cookie_list = smzdm_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(session):
@@ -36,31 +36,28 @@ class SmzdmCheckIn:
         return msg
 
     def main(self):
-        msg_list = []
-        for smzdm_cookie in self.smzdm_cookie_list:
-            smzdm_cookie = {
-                item.split("=")[0]: item.split("=")[1] for item in smzdm_cookie.get("smzdm_cookie").split("; ")
+        smzdm_cookie = {
+            item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("smzdm_cookie").split("; ")
+        }
+        session = requests.session()
+        requests.utils.add_dict_to_cookiejar(session.cookies, smzdm_cookie)
+        session.headers.update(
+            {
+                "Accept": "*/*",
+                "Accept-Encoding": "gzip, deflate, br",
+                "Accept-Language": "zh-CN,zh;q=0.9",
+                "Connection": "keep-alive",
+                "Host": "zhiyou.smzdm.com",
+                "Referer": "https://www.smzdm.com/",
+                "Sec-Fetch-Dest": "script",
+                "Sec-Fetch-Mode": "no-cors",
+                "Sec-Fetch-Site": "same-site",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
             }
-            session = requests.session()
-            requests.utils.add_dict_to_cookiejar(session.cookies, smzdm_cookie)
-            session.headers.update(
-                {
-                    "Accept": "*/*",
-                    "Accept-Encoding": "gzip, deflate, br",
-                    "Accept-Language": "zh-CN,zh;q=0.9",
-                    "Connection": "keep-alive",
-                    "Host": "zhiyou.smzdm.com",
-                    "Referer": "https://www.smzdm.com/",
-                    "Sec-Fetch-Dest": "script",
-                    "Sec-Fetch-Mode": "no-cors",
-                    "Sec-Fetch-Site": "same-site",
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
-                }
-            )
-            sign_msg = self.sign(session=session)
-            msg = f"【什么值得买】\n{sign_msg}"
-            msg_list.append(msg)
-        return msg_list
+        )
+        sign_msg = self.sign(session=session)
+        msg = f"{sign_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -68,5 +65,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _smzdm_cookie_list = datas.get("SMZDM_COOKIE_LIST", [])
-    SmzdmCheckIn(smzdm_cookie_list=_smzdm_cookie_list).main()
+    _check_item = datas.get("SMZDM_COOKIE_LIST", [])[0]
+    print(SmzdmCheckIn(check_item=_check_item).main())

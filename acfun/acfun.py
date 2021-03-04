@@ -9,8 +9,8 @@ urllib3.disable_warnings()
 
 
 class AcFunCheckIn:
-    def __init__(self, acfun_account_list):
-        self.acfun_account_list = acfun_account_list
+    def __init__(self, check_item: dict):
+        self.check_item = check_item
 
     @staticmethod
     def sign(session, phone, password):
@@ -38,15 +38,12 @@ class AcFunCheckIn:
             return "登录失败！请检查密码是否正确！"
 
     def main(self):
-        msg_list = []
-        for acfun_account in self.acfun_account_list:
-            phone = acfun_account.get("acfun_phone")
-            password = acfun_account.get("acfun_password")
-            session = requests.session()
-            sign_msg = self.sign(session=session, phone=phone, password=password)
-            msg = f"【AcFun 签到】\n帐号信息: {phone}\n签到状态: {sign_msg}"
-            msg_list.append(msg)
-        return msg_list
+        phone = self.check_item.get("acfun_phone")
+        password = self.check_item.get("acfun_password")
+        session = requests.session()
+        sign_msg = self.sign(session=session, phone=phone, password=password)
+        msg = f"帐号信息: {phone}\n签到状态: {sign_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -54,5 +51,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _acfun_account_list = datas.get("ACFUN_ACCOUNT_LIST", [])
-    AcFunCheckIn(acfun_account_list=_acfun_account_list).main()
+    _check_item = datas.get("ACFUN_ACCOUNT_LIST", [])[0]
+    print(AcFunCheckIn(check_item=_check_item).main())

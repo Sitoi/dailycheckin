@@ -6,8 +6,8 @@ import requests
 
 
 class KGQQCheckIn:
-    def __init__(self, kgqq_cookie_list):
-        self.kgqq_cookie_list = kgqq_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(kgqq_cookie):
@@ -114,18 +114,15 @@ class KGQQCheckIn:
             new_proto_profile_response = requests.get(url=proto_profile_url, headers=headers)
             new_num = new_proto_profile_response.json()["data"]["profile.getProfile"]["uFlowerNum"]
             get_num = int(new_num) - int(old_num)
-            kg_message = f"【全民K歌签到】\n帐号信息: {nickname}\n获取鲜花: {get_num}朵\n当前鲜花: {new_num}朵\nVIP签到: {vip_message}"
+            kg_message = f"帐号信息: {nickname}\n获取鲜花: {get_num}朵\n当前鲜花: {new_num}朵\nVIP签到: {vip_message}"
         except Exception as e:
             kg_message = str(e)
         return kg_message
 
     def main(self):
-        msg_list = []
-        for kgqq_cookie in self.kgqq_cookie_list:
-            kgqq_cookie = kgqq_cookie.get("kgqq_cookie")
-            msg = self.sign(kgqq_cookie=kgqq_cookie)
-            msg_list.append(msg)
-        return msg_list
+        kgqq_cookie = self.check_item.get("kgqq_cookie")
+        msg = self.sign(kgqq_cookie=kgqq_cookie)
+        return msg
 
 
 if __name__ == "__main__":
@@ -133,5 +130,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _kgqq_cookie_list = datas.get("KGQQ_COOKIE_LIST", [])
-    KGQQCheckIn(kgqq_cookie_list=_kgqq_cookie_list).main()
+    _check_item = datas.get("KGQQ_COOKIE_LIST", [])[0]
+    print(KGQQCheckIn(check_item=_check_item).main())

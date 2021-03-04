@@ -7,9 +7,9 @@ from requests import utils
 
 
 class BiliBiliCheckIn(object):
-    # 待测试，需要大会员账号测试领取福利
-    def __init__(self, bilibili_cookie_list):
-        self.bilibili_cookie_list = bilibili_cookie_list
+    # TODO 待测试，需要大会员账号测试领取福利
+    def __init__(self, check_item: dict):
+        self.check_item = check_item
 
     @staticmethod
     def get_nav(session):
@@ -235,100 +235,97 @@ class BiliBiliCheckIn(object):
         return data_list
 
     def main(self):
-        msg_list = []
-        for bilibili_info in self.bilibili_cookie_list:
-            bilibili_cookie = {
-                item.split("=")[0]: item.split("=")[1] for item in bilibili_info.get("bilibili_cookie").split("; ")
+        bilibili_cookie = {
+            item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("bilibili_cookie").split("; ")
+        }
+        bili_jct = bilibili_cookie.get("bili_jct")
+        coin_num = self.check_item.get("coin_num", 0)
+        coin_type = self.check_item.get("coin_type", 1)
+        silver2coin = self.check_item.get("silver2coin", True)
+        session = requests.session()
+        requests.utils.add_dict_to_cookiejar(session.cookies, bilibili_cookie)
+        session.headers.update(
+            {
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/63.0.3239.108",
+                "Referer": "https://www.bilibili.com/",
+                "Connection": "keep-alive",
             }
-            bili_jct = bilibili_cookie.get("bili_jct")
-            coin_num = bilibili_info.get("coin_num", 0)
-            coin_type = bilibili_info.get("coin_type", 1)
-            silver2coin = bilibili_info.get("silver2coin", True)
-            session = requests.session()
-            requests.utils.add_dict_to_cookiejar(session.cookies, bilibili_cookie)
-            session.headers.update(
-                {
-                    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/63.0.3239.108",
-                    "Referer": "https://www.bilibili.com/",
-                    "Connection": "keep-alive",
-                }
-            )
-            success_count = 0
-            uname, uid, is_login, coin, vip_type, current_exp = self.get_nav(session=session)
-            if is_login:
-                manhua_msg = self.manga_sign(session=session)
-                live_msg = self.live_sign(session=session)
-                aid_list = self.get_region(session=session)
-                reward_ret = self.reward(session=session)
-                coins_av_count = reward_ret.get("data", {}).get("coins_av") // 10
-                coin_num = coin_num - coins_av_count
-                coin_num = coin_num if coin_num < coin else coin
-                if coin_type == 1 and coin_num:
-                    following_list = self.get_followings(session=session, uid=uid)
-                    for following in following_list.get("data", {}).get("list"):
-                        mid = following.get("mid")
-                        if mid:
-                            aid_list += self.space_arc_search(session=session, uid=mid)
-                if coin_num > 0:
-                    for aid in aid_list[::-1]:
-                        ret = self.coin_add(session=session, aid=aid.get("aid"), bili_jct=bili_jct)
-                        if ret["code"] == 0:
-                            coin_num -= 1
-                            print(f'成功给{aid.get("title")}投一个币')
-                            success_count += 1
-                        elif ret["code"] == 34005:
-                            print(f'投币{aid.get("title")}失败，原因为{ret["message"]}')
-                            continue
-                            # -104 硬币不够了 -111 csrf 失败 34005 投币达到上限
-                        else:
-                            print(f'投币{aid.get("title")}失败，原因为{ret["message"]}，跳过投币')
-                            break
-                        if coin_num <= 0:
-                            break
-                    coin_msg = f"今日成功投币{success_count + coins_av_count}/{bilibili_info.get('coin_num', 5)}个"
-                else:
-                    coin_msg = f"今日成功投币{coins_av_count}/{bilibili_info.get('coin_num', 5)}个"
-                aid = aid_list[0].get("aid")
-                cid = aid_list[0].get("cid")
-                title = aid_list[0].get("title")
-                report_ret = self.report_task(session=session, bili_jct=bili_jct, aid=aid, cid=cid)
-                if report_ret.get("code") == 0:
-                    report_msg = f"观看《{title}》300秒"
-                else:
-                    report_msg = f"任务失败"
-                    print(report_msg)
-                share_ret = self.share_task(session=session, bili_jct=bili_jct, aid=aid)
-                if share_ret.get("code") == 0:
-                    share_msg = f"分享《{title}》成功"
-                else:
-                    share_msg = f"分享失败"
-                    print(share_msg)
-                if silver2coin:
-                    silver2coin_ret = self.silver2coin(session=session, bili_jct=bili_jct)
-                    if silver2coin_ret["code"] == 0:
-                        silver2coin_msg = f"成功将银瓜子兑换为1个硬币"
+        )
+        success_count = 0
+        uname, uid, is_login, coin, vip_type, current_exp = self.get_nav(session=session)
+        if is_login:
+            manhua_msg = self.manga_sign(session=session)
+            live_msg = self.live_sign(session=session)
+            aid_list = self.get_region(session=session)
+            reward_ret = self.reward(session=session)
+            coins_av_count = reward_ret.get("data", {}).get("coins_av") // 10
+            coin_num = coin_num - coins_av_count
+            coin_num = coin_num if coin_num < coin else coin
+            if coin_type == 1 and coin_num:
+                following_list = self.get_followings(session=session, uid=uid)
+                for following in following_list.get("data", {}).get("list"):
+                    mid = following.get("mid")
+                    if mid:
+                        aid_list += self.space_arc_search(session=session, uid=mid)
+            if coin_num > 0:
+                for aid in aid_list[::-1]:
+                    ret = self.coin_add(session=session, aid=aid.get("aid"), bili_jct=bili_jct)
+                    if ret["code"] == 0:
+                        coin_num -= 1
+                        print(f'成功给{aid.get("title")}投一个币')
+                        success_count += 1
+                    elif ret["code"] == 34005:
+                        print(f'投币{aid.get("title")}失败，原因为{ret["message"]}')
+                        continue
+                        # -104 硬币不够了 -111 csrf 失败 34005 投币达到上限
                     else:
-                        silver2coin_msg = silver2coin_ret["msg"]
+                        print(f'投币{aid.get("title")}失败，原因为{ret["message"]}，跳过投币')
+                        break
+                    if coin_num <= 0:
+                        break
+                coin_msg = f"今日成功投币{success_count + coins_av_count}/{self.check_item.get('coin_num', 5)}个"
+            else:
+                coin_msg = f"今日成功投币{coins_av_count}/{self.check_item.get('coin_num', 5)}个"
+            aid = aid_list[0].get("aid")
+            cid = aid_list[0].get("cid")
+            title = aid_list[0].get("title")
+            report_ret = self.report_task(session=session, bili_jct=bili_jct, aid=aid, cid=cid)
+            if report_ret.get("code") == 0:
+                report_msg = f"观看《{title}》300秒"
+            else:
+                report_msg = f"任务失败"
+                print(report_msg)
+            share_ret = self.share_task(session=session, bili_jct=bili_jct, aid=aid)
+            if share_ret.get("code") == 0:
+                share_msg = f"分享《{title}》成功"
+            else:
+                share_msg = f"分享失败"
+                print(share_msg)
+            if silver2coin:
+                silver2coin_ret = self.silver2coin(session=session, bili_jct=bili_jct)
+                if silver2coin_ret["code"] == 0:
+                    silver2coin_msg = f"成功将银瓜子兑换为1个硬币"
                 else:
-                    silver2coin_msg = f"未开启银瓜子兑换硬币功能"
-                live_stats = self.live_status(session=session)
-                uname, uid, is_login, new_coin, vip_type, new_current_exp = self.get_nav(session=session)
-                reward_ret = self.reward(session=session)
-                login = reward_ret.get("data", {}).get("login")
-                watch_av = reward_ret.get("data", {}).get("watch_av")
-                coins_av = reward_ret.get("data", {}).get("coins_av", 0)
-                share_av = reward_ret.get("data", {}).get("share_av")
-                today_exp = len([one for one in [login, watch_av, share_av] if one]) * 5
-                today_exp += coins_av
-                update_data = (28800 - new_current_exp) // (today_exp if today_exp else 1)
-                msg = (
-                    f"【Bilibili签到】\n帐号信息: {uname}\n漫画签到: {manhua_msg}\n直播签到: {live_msg}\n"
-                    f"登陆任务: 今日已登陆\n观看视频: {report_msg}\n分享任务: {share_msg}\n投币任务: {coin_msg}\n"
-                    f"银瓜子兑换硬币: {silver2coin_msg}\n今日获得经验: {today_exp}\n当前经验: {new_current_exp}\n"
-                    f"按当前速度升级还需: {update_data}天\n{live_stats}"
-                )
-                msg_list.append(msg)
-        return msg_list
+                    silver2coin_msg = silver2coin_ret["msg"]
+            else:
+                silver2coin_msg = f"未开启银瓜子兑换硬币功能"
+            live_stats = self.live_status(session=session)
+            uname, uid, is_login, new_coin, vip_type, new_current_exp = self.get_nav(session=session)
+            reward_ret = self.reward(session=session)
+            login = reward_ret.get("data", {}).get("login")
+            watch_av = reward_ret.get("data", {}).get("watch_av")
+            coins_av = reward_ret.get("data", {}).get("coins_av", 0)
+            share_av = reward_ret.get("data", {}).get("share_av")
+            today_exp = len([one for one in [login, watch_av, share_av] if one]) * 5
+            today_exp += coins_av
+            update_data = (28800 - new_current_exp) // (today_exp if today_exp else 1)
+            msg = (
+                f"帐号信息: {uname}\n漫画签到: {manhua_msg}\n直播签到: {live_msg}\n"
+                f"登陆任务: 今日已登陆\n观看视频: {report_msg}\n分享任务: {share_msg}\n投币任务: {coin_msg}\n"
+                f"银瓜子兑换硬币: {silver2coin_msg}\n今日获得经验: {today_exp}\n当前经验: {new_current_exp}\n"
+                f"按当前速度升级还需: {update_data}天\n{live_stats}"
+            )
+            return msg
 
 
 if __name__ == "__main__":
@@ -336,5 +333,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _bilibili_cookie_list = datas.get("BILIBILI_COOKIE_LIST", [])
-    BiliBiliCheckIn(bilibili_cookie_list=_bilibili_cookie_list).main()
+    _check_item = datas.get("BILIBILI_COOKIE_LIST", [])[0]
+    BiliBiliCheckIn(check_item=_check_item).main()
