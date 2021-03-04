@@ -77,10 +77,10 @@ class MeizuCheckIn:
 
     def main(self):
         msg_list = []
-        for meizu_cookie in self.meizu_cookie_list:
-            meizu_cookie = meizu_cookie.get("meizu_cookie")
+        for meizu_info in self.meizu_cookie_list:
+            meizu_cookie = meizu_info.get("meizu_cookie")
             try:
-                draw_count = int(meizu_cookie.get("draw_count", 0))
+                draw_count = int(meizu_info.get("draw_count", 0))
             except Exception as e:
                 print("初始化抽奖次数失败: 重置为 0 ", str(e))
                 draw_count = 0
