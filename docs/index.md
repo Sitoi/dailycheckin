@@ -21,20 +21,20 @@
 |签到|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|每天一次|
 |签到|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|每天一次|
 |签到|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|每天一次|
-|签到|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖|每天一次|
+|签到|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务|每天一次|
 |签到|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|每天一次|
 |签到|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|每天一次|
-|签到|[V2EX](https://www.v2ex.com/)|每日签到|每天一次|
+|签到|[V2EX](https://www.v2ex.com/)|铜币奖励|每天一次|
 |签到|[咔叽网单](https://www.2nzz.com/)|每日签到|每天一次|
 |签到|[什么值得买](https://www.smzdm.com)|每日签到|每天一次|
-|签到|[AcFun](https://www.acfun.cn/)|每日签到|每天一次|
-|签到|[天翼云盘](https://cloud.189.cn/)|每日签到|每天一次|
+|签到|[AcFun](https://www.acfun.cn/)|每日签到香蕉|每天一次|
+|签到|[天翼云盘](https://cloud.189.cn/)|每日签到+2次抽奖获得空间奖励|每天一次|
 |签到|[WPS](https://www.wps.cn/)|每日签到|每天一次|
-|签到|[吾爱破解](https://www.52pojie.cn/index.php)|每日签到|每天一次|
-|签到|[哔咔漫画](https://www.picacomic.com)|每日签到|每天一次|
+|签到|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|每天一次|
+|签到|[哔咔漫画](https://www.picacomic.com)|成长值奖励|每天一次|
 |签到|[MEIZU 社区](https://bbs.meizu.cn)|每日签到,可配置抽奖|每天一次|
 |签到|芒果 TV|签到获取体验会员|每天一次|
-|签到|联通营业厅|每日签到|每天一次|
+|签到|联通营业厅|积分+流量奖励|每天一次|
 |签到|Fa米家 APP|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|每天一次|
 |羊毛|喜马拉雅极速版|金币获取|30分钟一次|
 |其他|小米运动|每日小米运动刷步数|每天一次|
