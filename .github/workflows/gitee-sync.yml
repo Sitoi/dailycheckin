@@ -1,0 +1,21 @@
+name: "Gitee 同步"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run:
+    name: Gitee 同步
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror the Github organization repos to Gitee.
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/sitoi
+          dst: gitee/sitoi
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          white_list: "dailycheckin"
+          account_type: user

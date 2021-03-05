@@ -11,8 +11,8 @@ urllib3.disable_warnings()
 
 
 class WWW2nzzCheckIn:
-    def __init__(self, www2nzz_cookie_list):
-        self.www2nzz_cookie_list = www2nzz_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(session):
@@ -39,26 +39,22 @@ class WWW2nzzCheckIn:
         return msg
 
     def main(self):
-        msg_list = []
-        for www2nzz_cookie in self.www2nzz_cookie_list:
-            www2nzz_cookie = {
-                item.split("=")[0]: item.split("=")[1] for item in www2nzz_cookie.get("www2nzz_cookie").split("; ")
+        www2nzz_cookie = {
+            item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("www2nzz_cookie").split("; ")
+        }
+        session = requests.session()
+        requests.utils.add_dict_to_cookiejar(session.cookies, www2nzz_cookie)
+        session.headers.update(
+            {
+                "Origin": "http://www.2nzz.com",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                "Referer": "http://www.2nzz.com/index.php",
+                "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
             }
-            session = requests.session()
-            requests.utils.add_dict_to_cookiejar(session.cookies, www2nzz_cookie)
-            session.headers.update(
-                {
-                    "Origin": "http://www.2nzz.com",
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74",
-                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-                    "Referer": "http://www.2nzz.com/index.php",
-                    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-                }
-            )
-            sign_msg = self.sign(session=session)
-            msg = f"【咔叽网单】\n{sign_msg}"
-            msg_list.append(msg)
-        return msg_list
+        )
+        msg = self.sign(session=session)
+        return msg
 
 
 if __name__ == "__main__":
@@ -66,5 +62,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _www2nzz_cookie_list = datas.get("WWW2NZZ_COOKIE_LIST", [])
-    WWW2nzzCheckIn(www2nzz_cookie_list=_www2nzz_cookie_list).main()
+    _check_item = datas.get("WWW2NZZ_COOKIE_LIST", [])[0]
+    print(WWW2nzzCheckIn(check_item=_check_item).main())

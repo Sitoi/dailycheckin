@@ -34,22 +34,27 @@ def main_handler(event, context):
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
         if check_info.get("xmly_cookie_list"):
-            msg_list = checkin_map.get("XMLY_COOKIE_LIST")(xmly_cookie_list=check_info.get("xmly_cookie_list")).main()
-            content_list += msg_list
-    else:
-        for one_check, check_func in checkin_map.items():
-            if one_check not in ["XMLY_COOKIE_LIST"]:
+            check_name, check_func = checkin_map.get("XMLY_COOKIE_LIST")
+            for check_item in check_info.get("xmly_cookie_list", []):
                 try:
-                    if check_info.get(one_check.lower()):
-                        print(f"----------已检测到正确的配置，并开始执行 {one_check} 签到----------")
-                        msg_list = check_func(check_info.get(one_check.lower())).main()
-                    else:
-                        print(f"----------未检测到正确的配置，并跳过执行 {one_check} 签到----------")
-                        msg_list = []
+                    msg = check_func(check_item).main()
+                    content_list.append(f"【{check_name}】\n{msg}")
                 except Exception as e:
-                    print(e)
-                    msg_list = []
-                content_list += msg_list
+                    print(check_name, e)
+    else:
+        for one_check, check_tuple in checkin_map.items():
+            check_name, check_func = check_tuple
+            if one_check not in ["XMLY_COOKIE_LIST"]:
+                if check_info.get(one_check.lower()):
+                    print(f"----------已检测到正确的配置，并开始执行 {one_check} 签到----------")
+                    for check_item in check_info.get(one_check.lower(), []):
+                        try:
+                            msg = check_func(check_item).main()
+                            content_list.append(f"【{check_name}】\n{msg}")
+                        except Exception as e:
+                            print(check_name, e)
+                else:
+                    print(f"----------未检测到正确的配置，并跳过执行 {one_check} 签到----------")
         if motto:
             try:
                 msg_list = Motto().main()

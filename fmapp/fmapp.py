@@ -6,8 +6,8 @@ import requests
 
 
 class FMAPPCheckIn:
-    def __init__(self, fmapp_account_list):
-        self.fmapp_account_list = fmapp_account_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(headers):
@@ -61,29 +61,26 @@ class FMAPPCheckIn:
         return msg
 
     def main(self):
-        msg_list = []
-        for fmapp_info in self.fmapp_account_list:
-            fmapp_token = fmapp_info.get("fmapp_token")
-            fmapp_cookie = fmapp_info.get("fmapp_cookie")
-            fmapp_device_id = fmapp_info.get("fmapp_device_id")
-            headers = {
-                "Host": "fmapp.chinafamilymart.com.cn",
-                "Content-Type": "application/json",
-                "Accept": "*/*",
-                "loginChannel": "app",
-                "Accept-Language": "zh-Hans-CN;q=1.0, en-CN;q=0.9, ja-CN;q=0.8, zh-Hant-HK;q=0.7, io-Latn-CN;q=0.6",
-                "token": fmapp_token,
-                "fmVersion": "2.0.0",
-                "deviceId": fmapp_device_id,
-                "User-Agent": "Fa",
-                "cookie": fmapp_cookie,
-            }
-            sign_msg = self.sign(headers=headers)
-            name_msg = self.user_info(headers=headers)
-            mili_msg = self.mili_count(headers=headers)
-            msg = f"【Fa米家 APP】\n帐号信息: {name_msg}\n签到状态: {sign_msg}\n米粒数量: {mili_msg}"
-            msg_list.append(msg)
-        return msg_list
+        fmapp_token = self.check_item.get("fmapp_token")
+        fmapp_cookie = self.check_item.get("fmapp_cookie")
+        fmapp_device_id = self.check_item.get("fmapp_device_id")
+        headers = {
+            "Host": "fmapp.chinafamilymart.com.cn",
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "loginChannel": "app",
+            "Accept-Language": "zh-Hans-CN;q=1.0, en-CN;q=0.9, ja-CN;q=0.8, zh-Hant-HK;q=0.7, io-Latn-CN;q=0.6",
+            "token": fmapp_token,
+            "fmVersion": "2.0.0",
+            "deviceId": fmapp_device_id,
+            "User-Agent": "Fa",
+            "cookie": fmapp_cookie,
+        }
+        sign_msg = self.sign(headers=headers)
+        name_msg = self.user_info(headers=headers)
+        mili_msg = self.mili_count(headers=headers)
+        msg = f"帐号信息: {name_msg}\n签到状态: {sign_msg}\n米粒数量: {mili_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -91,5 +88,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _fmapp_account_list = datas.get("FMAPP_ACCOUNT_LIST", [])
-    FMAPPCheckIn(fmapp_account_list=_fmapp_account_list).main()
+    _check_item = datas.get("FMAPP_ACCOUNT_LIST", [])[0]
+    print(FMAPPCheckIn(check_item=_check_item).main())

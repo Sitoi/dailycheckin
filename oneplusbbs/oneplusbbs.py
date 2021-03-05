@@ -9,8 +9,8 @@ import requests
 
 
 class OnePlusBBSCheckIn:
-    def __init__(self, oneplusbbs_cookie_list):
-        self.oneplusbbs_cookie_list = oneplusbbs_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(cookie):
@@ -88,21 +88,18 @@ class OnePlusBBSCheckIn:
         return draw_msg
 
     def main(self):
-        msg_list = []
-        for oneplusbbs_cookie in self.oneplusbbs_cookie_list:
-            oneplusbbs_cookie = oneplusbbs_cookie.get("oneplusbbs_cookie")
-            bbs_uname = re.findall(r"bbs_uname=(.*?);", oneplusbbs_cookie)
-            bbs_uname = bbs_uname[0].split("%7C")[0] if bbs_uname else "未获取到用户信息"
-            try:
-                bbs_uname = parse.unquote(bbs_uname)
-            except Exception as e:
-                print(f"bbs_uname 转换失败: {e}")
-                bbs_uname = bbs_uname
-            sign_msg = self.sign(cookie=oneplusbbs_cookie)
-            draw_msg = self.draw(cookie=oneplusbbs_cookie)
-            msg = f"【一加手机社区官方论坛】\n帐号信息: {bbs_uname}\n签到信息: {sign_msg}\n{draw_msg}"
-            msg_list.append(msg)
-        return msg_list
+        oneplusbbs_cookie = self.check_item.get("oneplusbbs_cookie")
+        bbs_uname = re.findall(r"bbs_uname=(.*?);", oneplusbbs_cookie)
+        bbs_uname = bbs_uname[0].split("%7C")[0] if bbs_uname else "未获取到用户信息"
+        try:
+            bbs_uname = parse.unquote(bbs_uname)
+        except Exception as e:
+            print(f"bbs_uname 转换失败: {e}")
+            bbs_uname = bbs_uname
+        sign_msg = self.sign(cookie=oneplusbbs_cookie)
+        draw_msg = self.draw(cookie=oneplusbbs_cookie)
+        msg = f"帐号信息: {bbs_uname}\n签到信息: {sign_msg}\n{draw_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -110,5 +107,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _oneplusbbs_cookie_list = datas.get("ONEPLUSBBS_COOKIE_LIST", [])
-    OnePlusBBSCheckIn(oneplusbbs_cookie_list=_oneplusbbs_cookie_list).main()
+    _check_item = datas.get("ONEPLUSBBS_COOKIE_LIST", [])[0]
+    print(OnePlusBBSCheckIn(check_item=_check_item).main())

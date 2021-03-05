@@ -9,12 +9,12 @@ from requests import utils
 
 
 class TiebaCheckIn:
-    def __init__(self, tieba_cookie_list):
-        self.tieba_cookie_list = tieba_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def login_info(session):
-        return session.get(url="https://zhidao.baidu.com/api/loginInfo", ).json()
+        return session.get(url="https://zhidao.baidu.com/api/loginInfo").json()
 
     def valid(self, session):
         try:
@@ -79,23 +79,20 @@ class TiebaCheckIn:
         return msg
 
     def main(self):
-        msg_list = []
-        for tieba_cookie in self.tieba_cookie_list:
-            tieba_cookie = {
-                item.split("=")[0]: item.split("=")[1] for item in tieba_cookie.get("tieba_cookie").split("; ")
-            }
-            session = requests.session()
-            requests.utils.add_dict_to_cookiejar(session.cookies, tieba_cookie)
-            session.headers.update({"Referer": "https://www.baidu.com/"})
-            tbs, user_name = self.valid(session=session)
-            if tbs:
-                tb_name_list = self.get_tieba_list(session=session)
-                msg = self.sign(session=session, tb_name_list=tb_name_list, tbs=tbs)
-                msg = f"【百度贴吧签到】\n帐号信息: {user_name}\n{msg}"
-            else:
-                msg = f"【百度贴吧签到】\n帐号信息: {user_name}\n签到状态: Cookie 可能过期"
-            msg_list.append(msg)
-        return msg_list
+        tieba_cookie = {
+            item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("tieba_cookie").split("; ")
+        }
+        session = requests.session()
+        requests.utils.add_dict_to_cookiejar(session.cookies, tieba_cookie)
+        session.headers.update({"Referer": "https://www.baidu.com/"})
+        tbs, user_name = self.valid(session=session)
+        if tbs:
+            tb_name_list = self.get_tieba_list(session=session)
+            msg = self.sign(session=session, tb_name_list=tb_name_list, tbs=tbs)
+            msg = f"帐号信息: {user_name}\n{msg}"
+        else:
+            msg = f"帐号信息: {user_name}\n签到状态: Cookie 可能过期"
+        return msg
 
 
 if __name__ == "__main__":
@@ -103,5 +100,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _tieba_cookie_list = datas.get("TIEBA_COOKIE_LIST", [])
-    TiebaCheckIn(tieba_cookie_list=_tieba_cookie_list).main()
+    _check_item = datas.get("TIEBA_COOKIE_LIST", [])[0]
+    print(TiebaCheckIn(check_item=_check_item).main())

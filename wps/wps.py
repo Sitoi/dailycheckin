@@ -9,8 +9,8 @@ from requests import utils
 
 
 class WPSCheckIn:
-    def __init__(self, wps_cookie_list):
-        self.wps_cookie_list = wps_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
         self.invite_sid = [
             "V02S2UBSfNlvEprMOn70qP3jHPDqiZU00a7ef4a800341c7c3b",
             "V02S2oI49T-Jp0_zJKZ5U38dIUSIl8Q00aa679530026780e96",
@@ -303,33 +303,30 @@ class WPSCheckIn:
         return f"邀请用户: 成功邀请 {k} 人"
 
     def main(self):
-        msg_list = []
-        for wps_cookie in self.wps_cookie_list:
-            wps_cookie = {item.split("=")[0]: item.split("=")[1] for item in wps_cookie.get("wps_cookie").split("; ")}
-            session = requests.session()
-            requests.utils.add_dict_to_cookiejar(session.cookies, wps_cookie)
-            session.headers.update(
-                {
-                    "Accept": "*/*",
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74",
-                    "X-Requested-With": "XMLHttpRequest",
-                    "Origin": "http://www.wpsmembers.cn",
-                    "Referer": "http://www.wpsmembers.cn/",
-                    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-                }
-            )
-            sid = wps_cookie.get("wps_sid")
-            web_sign_msg = self.web_sign(session=session, sid=sid)
-            docer_sign_msg = self.docer_sign(session=session, sid=sid)
-            miniprogram_sign_msg = self.miniprogram_sign(session=session, sid=sid)
-            user_info_msg, userid = self.user_info(session=session, sid=sid)
-            miniprogram_invite_msg = self.miniprogram_invite(session=session, invite_userid=userid)
-            msg = (
-                f"【WPS】\n{user_info_msg}\n{web_sign_msg}\n{docer_sign_msg}\n{miniprogram_sign_msg}"
-                f"\n{miniprogram_invite_msg}"
-            )
-            msg_list.append(msg)
-        return msg_list
+        wps_cookie = {item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("wps_cookie").split("; ")}
+        session = requests.session()
+        requests.utils.add_dict_to_cookiejar(session.cookies, wps_cookie)
+        session.headers.update(
+            {
+                "Accept": "*/*",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74",
+                "X-Requested-With": "XMLHttpRequest",
+                "Origin": "http://www.wpsmembers.cn",
+                "Referer": "http://www.wpsmembers.cn/",
+                "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+            }
+        )
+        sid = wps_cookie.get("wps_sid")
+        web_sign_msg = self.web_sign(session=session, sid=sid)
+        docer_sign_msg = self.docer_sign(session=session, sid=sid)
+        miniprogram_sign_msg = self.miniprogram_sign(session=session, sid=sid)
+        user_info_msg, userid = self.user_info(session=session, sid=sid)
+        miniprogram_invite_msg = self.miniprogram_invite(session=session, invite_userid=userid)
+        msg = (
+            f"{user_info_msg}\n{web_sign_msg}\n{docer_sign_msg}\n{miniprogram_sign_msg}"
+            f"\n{miniprogram_invite_msg}"
+        )
+        return msg
 
 
 if __name__ == "__main__":
@@ -337,5 +334,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _wps_cookie_list = datas.get("WPS_COOKIE_LIST", [])
-    WPSCheckIn(wps_cookie_list=_wps_cookie_list).main()
+    _check_item = datas.get("WPS_COOKIE_LIST", [])[0]
+    print(WPSCheckIn(check_item=_check_item).main())

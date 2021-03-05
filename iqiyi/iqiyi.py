@@ -8,8 +8,8 @@ import requests
 
 
 class IQIYICheckIn:
-    def __init__(self, iqiyi_cookie_list):
-        self.iqiyi_cookie_list = iqiyi_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
         self.task_list = []
         self.growth_task = 0
 
@@ -159,24 +159,21 @@ class IQIYICheckIn:
         return {"status": False, "msg": msg, "chance": 0}
 
     def main(self):
-        msg_list = []
-        for iqiyi_cookie in self.iqiyi_cookie_list:
-            p00001, p00003 = self.parse_cookie(iqiyi_cookie.get("iqiyi_cookie"))
-            sign_msg = self.sign(p00001=p00001)
-            chance = self.draw(0, p00001=p00001, p00003=p00003)["chance"]
-            if chance:
-                draw_msg = ""
-                for i in range(chance):
-                    ret = self.draw(1, p00001=p00001, p00003=p00003)
-                    draw_msg += ret["msg"] + ";" if ret["status"] else ""
-            else:
-                draw_msg = "抽奖机会不足"
-            self.query_user_task(p00001=p00001).join_task(p00001=p00001)
-            task_msg = self.query_user_task(p00001=p00001).get_task_rewards(p00001=p00001)
-            user_msg = self.user_information(p00001=p00001)
-            msg = f"【爱奇艺签到】\n{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
-            msg_list.append(msg)
-        return msg_list
+        p00001, p00003 = self.parse_cookie(self.check_item.get("iqiyi_cookie"))
+        sign_msg = self.sign(p00001=p00001)
+        chance = self.draw(0, p00001=p00001, p00003=p00003)["chance"]
+        if chance:
+            draw_msg = ""
+            for i in range(chance):
+                ret = self.draw(1, p00001=p00001, p00003=p00003)
+                draw_msg += ret["msg"] + ";" if ret["status"] else ""
+        else:
+            draw_msg = "抽奖机会不足"
+        self.query_user_task(p00001=p00001).join_task(p00001=p00001)
+        task_msg = self.query_user_task(p00001=p00001).get_task_rewards(p00001=p00001)
+        user_msg = self.user_information(p00001=p00001)
+        msg = f"{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -184,5 +181,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _iqiyi_cookie_list = datas.get("IQIYI_COOKIE_LIST", [])
-    IQIYICheckIn(iqiyi_cookie_list=_iqiyi_cookie_list).main()
+    _check_item = datas.get("IQIYI_COOKIE_LIST", [])[0]
+    print(IQIYICheckIn(check_item=_check_item).main())

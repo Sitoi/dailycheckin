@@ -10,8 +10,8 @@ import requests
 
 
 class LianTongCheckIn:
-    def __init__(self, liantong_account_list):
-        self.liantong_account_list = liantong_account_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     # 每日签到
     @staticmethod
@@ -249,27 +249,24 @@ class LianTongCheckIn:
         return "\n".join(user_info_msg)
 
     def main(self):
-        msg_list = []
-        for liantong_account in self.liantong_account_list:
-            session = requests.session()
-            liantong_data = liantong_account.get("data")
-            sign_msg = self.daysign(session=session, liantong_data=liantong_data)
-            choujiang_msg = self.choujiang(session=session)
-            pointslottery_msg = self.pointslottery_task(session=session)
-            gamecentersign_msg = self.gamecentersign_task(session=session)
-            day100integral_msg = self.day100integral_task(session=session)
-            dongaopoints_msg = self.dongaopoints_task(session=session)
-            wotree_msg = self.wotree_task(session=session)
-            openbox_msg = self.openbox_task(session=session)
-            collectflow_msg = self.collectflow_task(session=session)
-            user_info_msg = self.user_info(session=session)
-            msg = (
-                f"【联通营业厅】\n{sign_msg}\n{user_info_msg}\n{choujiang_msg}\n{pointslottery_msg}\n"
-                f"{gamecentersign_msg}\n{day100integral_msg}\n{dongaopoints_msg}\n{wotree_msg}\n"
-                f"{openbox_msg}\n{collectflow_msg}"
-            )
-            msg_list.append(msg)
-        return msg_list
+        session = requests.session()
+        liantong_data = self.check_item.get("data")
+        sign_msg = self.daysign(session=session, liantong_data=liantong_data)
+        choujiang_msg = self.choujiang(session=session)
+        pointslottery_msg = self.pointslottery_task(session=session)
+        gamecentersign_msg = self.gamecentersign_task(session=session)
+        day100integral_msg = self.day100integral_task(session=session)
+        dongaopoints_msg = self.dongaopoints_task(session=session)
+        wotree_msg = self.wotree_task(session=session)
+        openbox_msg = self.openbox_task(session=session)
+        collectflow_msg = self.collectflow_task(session=session)
+        user_info_msg = self.user_info(session=session)
+        msg = (
+            f"{sign_msg}\n{user_info_msg}\n{choujiang_msg}\n{pointslottery_msg}\n"
+            f"{gamecentersign_msg}\n{day100integral_msg}\n{dongaopoints_msg}\n{wotree_msg}\n"
+            f"{openbox_msg}\n{collectflow_msg}"
+        )
+        return msg
 
 
 if __name__ == "__main__":
@@ -277,5 +274,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _liantong_account_list = datas.get("LIANTONG_ACCOUNT_LIST", [])
-    LianTongCheckIn(liantong_account_list=_liantong_account_list).main()
+    _check_item = datas.get("LIANTONG_ACCOUNT_LIST", [])[0]
+    print(LianTongCheckIn(check_item=_check_item).main())

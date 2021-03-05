@@ -7,8 +7,8 @@ import requests
 
 
 class PojieCheckIn:
-    def __init__(self, pojie_cookie_list):
-        self.pojie_cookie_list = pojie_cookie_list
+    def __init__(self, check_item):
+        self.check_item = check_item
 
     @staticmethod
     def sign(headers):
@@ -27,23 +27,21 @@ class PojieCheckIn:
             else:
                 msg += content
         except Exception as e:
+            print("签到错误", e)
             msg += "吾爱破解出错"
         return msg
 
     def main(self):
-        msg_list = []
-        for pojie_cookie in self.pojie_cookie_list:
-            pojie_cookie = pojie_cookie.get("pojie_cookie")
-            headers = {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
-                "Cookie": pojie_cookie,
-                "ContentType": "text/html;charset=gbk",
-            }
-            uid = re.findall(r"htVD_2132_lastcheckfeed=(.*?);", pojie_cookie)[0].split("%7C")[0]
-            sign_msg = self.sign(headers=headers)
-            msg = f"【吾爱破解】\n帐号信息: {uid}\n签到状态: {sign_msg}"
-            msg_list.append(msg)
-        return msg_list
+        pojie_cookie = self.check_item.get("pojie_cookie")
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+            "Cookie": pojie_cookie,
+            "ContentType": "text/html;charset=gbk",
+        }
+        uid = re.findall(r"htVD_2132_lastcheckfeed=(.*?);", pojie_cookie)[0].split("%7C")[0]
+        sign_msg = self.sign(headers=headers)
+        msg = f"帐号信息: {uid}\n签到状态: {sign_msg}"
+        return msg
 
 
 if __name__ == "__main__":
@@ -51,5 +49,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _pojie_cookie_list = datas.get("POJIE_COOKIE_LIST", [])
-    PojieCheckIn(pojie_cookie_list=_pojie_cookie_list).main()
+    _check_item = datas.get("POJIE_COOKIE_LIST", [])[0]
+    print(PojieCheckIn(check_item=_check_item).main())

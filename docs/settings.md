@@ -32,7 +32,8 @@
 |:---:|:---:|:---:|:---|
 |_**IQIYI_COOKIE_LIST**_.iqiyi_cookie|[爱奇艺](https://www.iqiyi.com/)|Web|爱奇艺 帐号的 cookie 信息|
 |_**KGQQ_COOKIE_LIST**_.kgqq_cookie|[全民K歌](https://kg.qq.com/index-pc.html)|Web|全民K歌 帐号的 cookie 信息|
-|_**VQQ_COOKIE_LIST**_.vqq_cookie|[腾讯视频](https://v.qq.com/)|Web|腾讯视频 帐号的 cookie 信息|
+|_**VQQ_COOKIE_LIST**_.auth_refresh|[腾讯视频](https://v.qq.com/)|Web|腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其完整的 URL|
+|_**VQQ_COOKIE_LIST**_.vqq_cookie|[腾讯视频](https://v.qq.com/)|Web|腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其对应的 cookie|
 |_**YOUDAO_COOKIE_LIST**_.youdao_cookie|[有道云笔记](https://note.youdao.com/web/)|Web|有道云笔记 帐号的 cookie 信息|
 |_**MUSIC163_ACCOUNT_LIST**_.music163_phone|[网易云音乐](https://music.163.com/)|账号|网易云音乐 帐号的手机号|
 |_**MUSIC163_ACCOUNT_LIST**_.music163_password|[网易云音乐](https://music.163.com/)|账号|网易云音乐 帐号的密码|
@@ -229,9 +230,11 @@
   ],
   "VQQ_COOKIE_LIST": [
     {
+      "auth_refresh": "帐号1 refresh url",
       "vqq_cookie": "帐号1 cookie"
     },
     {
+      "auth_refresh": "帐号2 refresh url",
       "vqq_cookie": "帐号2 cookie"
     }
   ],

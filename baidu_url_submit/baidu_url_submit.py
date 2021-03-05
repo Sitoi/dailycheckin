@@ -7,8 +7,8 @@ import requests
 
 
 class BaiduUrlSubmit:
-    def __init__(self, baidu_url_submit_list: list):
-        self.baidu_url_submit_list = baidu_url_submit_list
+    def __init__(self, check_item: dict):
+        self.check_item = check_item
 
     @staticmethod
     def url_submit(data_url: str, submit_url: str, times: int = 100) -> str:
@@ -29,21 +29,20 @@ class BaiduUrlSubmit:
                 print(e)
                 error_count += 1
         msg = (
-            f"【百度站点提交】\n站点地址: {site}\n当天剩余的可推送 url 条数: {remian}\n成功推送的 url 条数: {success_count}\n"
+            f"站点地址: {site}\n当天剩余的可推送 url 条数: {remian}\n成功推送的 url 条数: {success_count}\n"
             f"成功推送的 url 次数: {times - error_count}\n失败推送的 url 次数: {error_count}"
         )
         return msg
 
     def main(self):
-        msg_list = []
-        for baidu_url_submit in self.baidu_url_submit_list:
-            data_url = baidu_url_submit.get("data_url")
-            submit_url = baidu_url_submit.get("submit_url")
-            times = int(baidu_url_submit.get("times", 100))
-            if data_url and submit_url:
-                msg = self.url_submit(data_url=data_url, submit_url=submit_url, times=times)
-                msg_list.append(msg)
-        return msg_list
+        data_url = self.check_item.get("data_url")
+        submit_url = self.check_item.get("submit_url")
+        times = int(self.check_item.get("times", 100))
+        if data_url and submit_url:
+            msg = self.url_submit(data_url=data_url, submit_url=submit_url, times=times)
+        else:
+            msg = "配置错误"
+        return msg
 
 
 if __name__ == "__main__":
@@ -51,5 +50,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _baidu_url_submit_list = datas.get("BAIDU_URL_SUBMIT_LIST", [])
-    BaiduUrlSubmit(baidu_url_submit_list=_baidu_url_submit_list).main()
+    _check_item = datas.get("BAIDU_URL_SUBMIT_LIST", [])[0]
+    print(BaiduUrlSubmit(check_item=_check_item).main())
