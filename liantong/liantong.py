@@ -200,7 +200,7 @@ class LianTongCheckIn:
             box.encoding = "utf-8"
             watch_ad = session.post(url="https://m.client.10010.com/game_box", data=data2)
             watch_ad.encoding = "utf-8"
-            draw_reward = session.post(url="https://m.client.10010.com/producGameTaskCenter", data=data3)
+            draw_reward = session.post(url="https://m.client.10010.com/producGameTaskCenter", params=data3)
             draw_reward.encoding = "utf-8"
             res = draw_reward.json()
             if res["code"] == "0000":
@@ -241,6 +241,28 @@ class LianTongCheckIn:
         return "4G流量包: 获得 " + str(liuliang) + "M"
 
     @staticmethod
+    def dayoneg(session):
+        try:
+            # 观看视频任务
+            session.post(url='https://act.10010.com/SigninApp/doTask/finishVideo')
+            # 请求任务列表
+            get_task_info = session.post(url='https://act.10010.com/SigninApp/doTask/getTaskInfo')
+            get_task_info.encoding = 'utf-8'
+            get_prize = session.post(url='https://act.10010.com/SigninApp/doTask/getPrize')
+            get_prize.encoding = 'utf-8'
+            session.post(url='https://act.10010.com/SigninApp/doTask/getTaskInfo')
+            res1 = get_task_info.json()
+            res2 = get_prize.json()
+            if res1['data']['taskInfo']['status'] == '1':
+                msg = '1G流量日包: ' + res2['data']['statusDesc']
+            else:
+                msg = '1G流量日包: ' + res1['data']['taskInfo']['btn']
+            time.sleep(1)
+        except Exception as e:
+            msg = '1G流量日包: 错误，' + str(e)
+        return msg
+
+    @staticmethod
     def user_info(session):
         resp = session.get(url="https://m.client.10010.com/mobileService/home/queryUserInfoSeven.htm?showType=3")
         user_info_msg = []
@@ -252,6 +274,7 @@ class LianTongCheckIn:
         session = requests.session()
         liantong_data = self.check_item.get("data")
         sign_msg = self.daysign(session=session, liantong_data=liantong_data)
+        dayoneg_msg = self.dayoneg(session=session)
         choujiang_msg = self.choujiang(session=session)
         pointslottery_msg = self.pointslottery_task(session=session)
         gamecentersign_msg = self.gamecentersign_task(session=session)
@@ -264,7 +287,7 @@ class LianTongCheckIn:
         msg = (
             f"{sign_msg}\n{user_info_msg}\n{choujiang_msg}\n{pointslottery_msg}\n"
             f"{gamecentersign_msg}\n{day100integral_msg}\n{dongaopoints_msg}\n{wotree_msg}\n"
-            f"{openbox_msg}\n{collectflow_msg}"
+            f"{openbox_msg}\n{collectflow_msg}\n{dayoneg_msg}"
         )
         return msg
 
