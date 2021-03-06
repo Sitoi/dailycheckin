@@ -11,7 +11,7 @@ from requests import utils
 class CaiYunCheckIn:
     def __init__(self, check_item):
         self.check_item = check_item
-        self.user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15"
+        self.user_agent = "Mozilla/5.0 (Linux; Android 10; M2007J3SC Build/QKQ1.191222.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/83.0.4103.106 Mobile Safari/537.36 MCloudApp/7.6.0"
 
     @staticmethod
     def get_encrypt_time(session):
