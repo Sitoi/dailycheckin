@@ -52,6 +52,9 @@
 |_**POJIE_COOKIE_LIST**_.pojie_cookie|[吾爱破解](https://www.52pojie.cn/index.php)|Web| 吾爱破解 cookie|
 |_**MEIZU_COOKIE_LIST**_.meizu_cookie|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 cookie|
 |_**MEIZU_COOKIE_LIST**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 抽奖次数|
+|_**CAIYUN_COOKIE_LIST**_.caiyun_cookie|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 cookie|
+|_**CAIYUN_COOKIE_LIST**_.caiyun_referer|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 referer|
+|_**CAIYUN_COOKIE_LIST**_.caiyun_draw|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 是否开启抽奖|
 
 ### APP 签到配置
 
@@ -405,6 +408,18 @@
     {
       "meizu_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
       "draw_count": "多账号 抽奖次数设置"
+    }
+  ],
+  "CAIYUN_COOKIE_LIST": [
+    {
+      "caiyun_cookie": "WAPJSESSIONID=xxxxxx; bc_mo=xxxxxx; bc_ps=xxxxxx; bc_to=xxxxxx; JSESSIONID=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; sajssdk_2015_cross_new_user=1",
+      "caiyun_referer": "https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp",
+      "caiyun_draw": false
+    },
+    {
+      "caiyun_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "caiyun_referer": "多账号 请求重定向地址，填写，请参考上面，以实际获取为准",
+      "caiyun_draw": "多账号 是否开启抽奖，填写 true or false 去掉双引号"
     }
   ]
 }

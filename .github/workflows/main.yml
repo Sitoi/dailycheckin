@@ -66,3 +66,4 @@ jobs:
           MGTV_PARAMS_LIST: ${{secrets.MGTV_PARAMS_LIST}}
           PICACOMIC_ACCOUNT_LIST: ${{secrets.PICACOMIC_ACCOUNT_LIST}}
           MEIZU_COOKIE_LIST: ${{secrets.MEIZU_COOKIE_LIST}}
+          CAIYUN_COOKIE_LIST: ${{secrets.CAIYUN_COOKIE_LIST}}
