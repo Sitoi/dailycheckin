@@ -38,7 +38,11 @@ class PojieCheckIn:
             "Cookie": pojie_cookie,
             "ContentType": "text/html;charset=gbk",
         }
-        uid = re.findall(r"htVD_2132_lastcheckfeed=(.*?);", pojie_cookie)[0].split("%7C")[0]
+        try:
+            uid = re.findall(r"htVD_2132_lastcheckfeed=(.*?);", pojie_cookie)[0].split("%7C")[0]
+        except Exception as e:
+            print(e)
+            uid = "未获取到用户 uid"
         sign_msg = self.sign(headers=headers)
         msg = f"帐号信息: {uid}\n签到状态: {sign_msg}"
         return msg

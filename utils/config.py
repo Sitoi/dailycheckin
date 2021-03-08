@@ -5,6 +5,7 @@ import os
 from acfun import AcFunCheckIn
 from baidu_url_submit import BaiduUrlSubmit
 from bilibili import BiliBiliCheckIn
+from caiyun import CaiYunCheckIn
 from cloud189 import Cloud189CheckIn
 from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
@@ -50,6 +51,7 @@ checkin_map = {
     "POJIE_COOKIE_LIST": ("吾爱破解", PojieCheckIn),
     "MEIZU_COOKIE_LIST": ("MEIZU社区", MeizuCheckIn),
     "PICACOMIC_ACCOUNT_LIST": ("哔咔漫画", PicacomicCheckIn),
+    "CAIYUN_COOKIE_LIST": ("和彩云", CaiYunCheckIn),
     "CITY_NAME_LIST": ("天气预报", Weather),
     "XMLY_COOKIE_LIST": ("喜马拉雅极速版", XMLYCheckIn),
 }

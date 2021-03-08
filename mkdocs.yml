@@ -15,8 +15,7 @@ markdown_extensions:
 nav:
   - 主页: index.md
   - 配置: settings.md
-  - 教程:
-      - local.md
-      - docker.md
-      - github-actions.md
-      - tencent-scf.md
+  - 本地使用教程: local.md
+  - Docker 使用教程: docker.md
+  - 腾讯云函数使用教程: tencent-scf.md
+  - GitHub Actions 使用教程: github-actions.md
