@@ -17,5 +17,6 @@ nav:
   - 配置: settings.md
   - 本地使用教程: local.md
   - Docker 使用教程: docker.md
+  - 群辉 Docker 使用教程: synology.md
   - 腾讯云函数使用教程: tencent-scf.md
   - GitHub Actions 使用教程: github-actions.md
