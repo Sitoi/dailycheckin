@@ -53,10 +53,13 @@ class PicacomicCheckIn:
                 url="https://picaapi.picacomic.com/auth/sign-in",
                 data=json.dumps({"email": "sitoi", "password": "123456st"}),
                 headers=sign_headers,
+                timeout=60,
             ).json()
             token = sign_response.get("data", {}).get("token")
             punch_headers = self.generate_headers(path="users/punch-in", token=token)
-            response = requests.post(url="https://picaapi.picacomic.com/users/punch-in", headers=punch_headers).json()
+            response = requests.post(
+                url="https://picaapi.picacomic.com/users/punch-in", headers=punch_headers, timeout=60
+            ).json()
             if response.get("data", {}).get("res", {}).get("status", {}) == "ok":
                 msg = "打卡成功"
             else:
