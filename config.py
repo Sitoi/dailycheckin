@@ -149,4 +149,4 @@ def get_notice_info(data):
 
 
 if __name__ == '__main__':
-    print(env2config(save_file=True))
+    env2config(save_file=True)
