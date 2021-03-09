@@ -13,6 +13,14 @@ jobs:
         with:
           repository: ${{ github.repository }}
 
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: 'Install requirements'
+        run: pip install -r ./requirements.txt
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -25,8 +33,9 @@ jobs:
 
       - name: "将 Secrets 里面配置的变量渲染成 config.json 文件"
         run: |
-          bash deploy.sh
+          python3.7 config.py
         env: #因为直接读取secrets里面的值很多字符不会自动转译，导致写入serverless.yml异常，所以设置到环境变量，在读取环境变量转译过的值
+          CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
           SCKEY: ${{secrets.SCKEY}}

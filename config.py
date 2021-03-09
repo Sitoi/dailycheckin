@@ -92,11 +92,32 @@ def env2list(key):
     return value
 
 
+def env2config(save_file=False):
+    result = json.loads(os.getenv("CONFIG_JSON", {}).strip()) if os.getenv("CONFIG_JSON") else {}
+    for one in checkin_map.keys():
+        if one.lower() not in result.keys():
+            result[one.lower()] = []
+        check_items = env2list(one)
+        result[one.lower()].append(check_items)
+    for one in notice_map.keys():
+        if not result.get(one.lower()):
+            if env2str(one):
+                result[one.lower()] = env2str(one)
+    if not result["MOTTO"]:
+        result["MOTTO"] = os.getenv("MOTTO")
+    if save_file:
+        with open(os.path.join(os.path.dirname(__file__), "config/config.json"), "w+") as f:
+            f.write(json.dumps(result))
+    return result
+
+
 def env2str(key):
     try:
         value = os.getenv(key, "") if os.getenv(key) else ""
         if isinstance(value, str):
             value = value.strip()
+        elif isinstance(value, bool):
+            value = value
         else:
             value = None
     except Exception as e:
@@ -125,3 +146,7 @@ def get_notice_info(data):
         for one in notice_map.keys():
             result[one.lower()] = env2str(one)
     return result
+
+
+if __name__ == '__main__':
+    print(env2config(save_file=True))

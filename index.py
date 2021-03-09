@@ -5,8 +5,8 @@ import sys
 import time
 from datetime import datetime, timedelta
 
+from config import checkin_map, get_checkin_info, get_notice_info, env2config
 from motto import Motto
-from utils.config import checkin_map, get_checkin_info, get_notice_info
 from utils.message import push_message
 
 
@@ -15,22 +15,20 @@ def main_handler(event, context):
     utc_time = datetime.utcnow() + timedelta(hours=8)
     if "IS_GITHUB_ACTION" in os.environ:
         message = os.getenv("ONLY_MESSAGE")
-        motto = os.getenv("MOTTO")
-        notice_info = get_notice_info(data=None)
-        check_info = get_checkin_info(data=None)
+        data = env2config()
     else:
         if isinstance(event, dict):
             message = event.get("Message")
         else:
             message = None
-        try:
-            with open(os.path.join(os.path.dirname(__file__), "config/config.json"), "r", encoding="utf-8") as f:
-                data = json.loads(f.read())
-            motto = data.get("MOTTO")
-            notice_info = get_notice_info(data=data)
-            check_info = get_checkin_info(data=data)
-        except Exception as e:
-            raise e
+        with open(os.path.join(os.path.dirname(__file__), "config/config.json"), "r", encoding="utf-8") as f:
+            data = json.loads(f.read())
+    try:
+        motto = data.get("MOTTO")
+        notice_info = get_notice_info(data=data)
+        check_info = get_checkin_info(data=data)
+    except Exception as e:
+        raise e
     content_list = [f"当前时间: {utc_time}"]
     if message == "xmly":
         if check_info.get("xmly_cookie_list"):

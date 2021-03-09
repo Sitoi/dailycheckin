@@ -26,6 +26,7 @@ jobs:
         env:
           IS_GITHUB_ACTION: true
           ONLY_MESSAGE: xmly
+          CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           DINGTALK_ACCESS_TOKEN: ${{secrets.DINGTALK_ACCESS_TOKEN}}
           SCKEY: ${{secrets.SCKEY}}
