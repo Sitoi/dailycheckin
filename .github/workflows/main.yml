@@ -42,6 +42,8 @@ jobs:
           QYWX_AGENTID: ${{secrets.QYWX_AGENTID}}
           QYWX_CORPSECRET: ${{secrets.QYWX_CORPSECRET}}
           QYWX_TOUSER: ${{secrets.QYWX_TOUSER}}
+          PUSHPLUS_TOKEN: ${{secrets.PUSHPLUS_TOKEN}}
+          PUSHPLUS_TOPIC: ${{secrets.PUSHPLUS_TOPIC}}
           CITY_NAME_LIST: ${{secrets.CITY_NAME_LIST}}
           MOTTO: ${{secrets.MOTTO}}
           IQIYI_COOKIE_LIST: ${{secrets.IQIYI_COOKIE_LIST}}

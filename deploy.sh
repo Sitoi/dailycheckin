@@ -16,6 +16,8 @@ if [[ $QYWX_CORPID ]]; then echo "QYWX_CORPID 变量存在，并成功赋值" ;e
 if [[ $QYWX_AGENTID ]]; then echo "QYWX_AGENTID 变量存在，并成功赋值" ;else QYWX_AGENTID=""; fi;
 if [[ $QYWX_CORPSECRET ]]; then echo "QYWX_CORPSECRET 变量存在，并成功赋值" ;else QYWX_CORPSECRET=""; fi;
 if [[ $QYWX_TOUSER ]]; then echo "QYWX_TOUSER 变量存在，并成功赋值" ;else QYWX_TOUSER=""; fi;
+if [[ $PUSHPLUS_TOKEN ]]; then echo "PUSHPLUS_TOKEN 变量存在，并成功赋值" ;else PUSHPLUS_TOKEN=""; fi;
+if [[ $PUSHPLUS_TOPIC ]]; then echo "PUSHPLUS_TOPIC 变量存在，并成功赋值" ;else PUSHPLUS_TOPIC=""; fi;
 if [[ $IQIYI_COOKIE_LIST ]]; then echo "IQIYI_COOKIE_LIST 变量存在，并成功赋值" ;else IQIYI_COOKIE_LIST=[]; fi;
 if [[ $VQQ_COOKIE_LIST ]]; then echo "VQQ_COOKIE_LIST 变量存在，并成功赋值" ;else VQQ_COOKIE_LIST=[]; fi;
 if [[ $YOUDAO_COOKIE_LIST ]]; then echo "YOUDAO_COOKIE_LIST 变量存在，并成功赋值" ;else YOUDAO_COOKIE_LIST=[]; fi;
@@ -62,6 +64,8 @@ JSONSTR="{
   \"QYWX_AGENTID\": \"${QYWX_AGENTID}\",
   \"QYWX_CORPSECRET\": \"${QYWX_CORPSECRET}\",
   \"QYWX_TOUSER\": \"${QYWX_TOUSER}\",
+  \"PUSHPLUS_TOKEN\": \"${PUSHPLUS_TOKEN}\",
+  \"PUSHPLUS_TOPIC\": \"${PUSHPLUS_TOPIC}\",
   \"CITY_NAME_LIST\": ${CITY_NAME_LIST},
   \"MOTTO\": ${MOTTO},
   \"IQIYI_COOKIE_LIST\": ${IQIYI_COOKIE_LIST},

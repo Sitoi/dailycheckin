@@ -25,6 +25,8 @@
 |_**QYWX_AGENTID**_|企业微信应用消息推送|推送|agentid [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
 |_**QYWX_CORPSECRET**_|企业微信应用消息推送|推送|corpsecret [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
 |_**QYWX_TOUSER**_|企业微信应用消息推送|推送|touser [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
+|_**PUSHPLUS_TOKEN**_|pushplus 推送|推送|用户令牌，可直接加到请求地址后，如：http://pushplus.hxtrip.com/send/{token} [官方文档](https://pushplus.hxtrip.com/doc/)|
+|_**PUSHPLUS_TOPIC**_|pushplus 推送|推送|群组编码，不填仅发送给自己 [官方文档](https://pushplus.hxtrip.com/doc/)|
 
 ### Web 签到配置
 
@@ -190,6 +192,8 @@
   "QYWX_AGENTID": "",
   "QYWX_CORPSECRET": "",
   "QYWX_TOUSER": "",
+  "PUSHPLUS_TOKEN": "",
+  "PUSHPLUS_TOPIC": "",
   "CITY_NAME_LIST": [
     "上海"
   ],

@@ -16,6 +16,8 @@
   "QYWX_AGENTID": "",
   "QYWX_CORPSECRET": "",
   "QYWX_TOUSER": "",
+  "PUSHPLUS_TOKEN": "",
+  "PUSHPLUS_TOPIC": "",
   "CITY_NAME_LIST": [
     "上海"
   ],

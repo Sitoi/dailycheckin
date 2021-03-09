@@ -74,6 +74,8 @@ notice_map = {
     "QYWX_AGENTID": "",
     "QYWX_CORPSECRET": "",
     "QYWX_TOUSER": "",
+    "PUSHPLUS_TOKEN": "",
+    "PUSHPLUS_TOPIC": "",
 }
 
 
