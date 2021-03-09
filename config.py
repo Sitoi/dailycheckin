@@ -103,7 +103,7 @@ def env2config(save_file=False):
         if not result.get(one.lower()):
             if env2str(one):
                 result[one.lower()] = env2str(one)
-    if not result["MOTTO"]:
+    if not result.get("MOTTO"):
         result["MOTTO"] = os.getenv("MOTTO")
     if save_file:
         with open(os.path.join(os.path.dirname(__file__), "config/config.json"), "w+") as f:
