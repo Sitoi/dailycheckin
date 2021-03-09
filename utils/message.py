@@ -115,7 +115,7 @@ def message2pushplus(pushplus_token, content, pushplus_topic=None):
     data = {
         "token": pushplus_token,
         "title": "签到通知",
-        "content": content,
+        "content": content.replace("\n", "<br>"),
         "template": "json"
     }
     if pushplus_topic:
