@@ -95,14 +95,14 @@ def env2list(key):
 def env2config(save_file=False):
     result = json.loads(os.getenv("CONFIG_JSON", {}).strip()) if os.getenv("CONFIG_JSON") else {}
     for one in checkin_map.keys():
-        if one.lower() not in result.keys():
-            result[one.lower()] = []
+        if one not in result.keys():
+            result[one] = []
         check_items = env2list(one)
-        result[one.lower()].append(check_items)
+        result[one] += check_items
     for one in notice_map.keys():
-        if not result.get(one.lower()):
+        if not result.get(one):
             if env2str(one):
-                result[one.lower()] = env2str(one)
+                result[one] = env2str(one)
     if not result.get("MOTTO"):
         result["MOTTO"] = os.getenv("MOTTO")
     if save_file:
