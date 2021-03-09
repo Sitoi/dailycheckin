@@ -82,13 +82,18 @@
 
 ## 交流群
 
-<p align="center">
-    <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.jpg" alt="进群加微信，备注签到"/>
-    <br>进群加微信，备注: 签到
-</p>
+<table> 
+<tr> 
+ <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.jpg" /> <p align="center">进群加微信，备注：签到</p> </td> 
+ <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.jpg" /> <p align="center">扫码进QQ群</p> </td> 
+</tr> 
+</table> 
 
 ## 历史 Star 数
 
 <p align="center">
     <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
 </p>
+
+
+
