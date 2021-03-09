@@ -89,10 +89,10 @@
 </tr> 
 </table>
 
-## 更新日志
+## 其他
 
 <details>
-<summary>新增功能</summary>
+<summary>更新日志</summary>
 
 - 2021-03-09 添加【pushplus】推送功能
 - 2021-03-06 添加【和彩云】签到和抽奖功能
@@ -135,6 +135,18 @@
     * 添加【百度站点】每日提交脚本
 
 </details> 
+
+<details>
+<summary>TODO</summary>
+
+- 【爱奇艺】10s任务
+- 【爱奇艺】观看时长任务
+- 【和彩云】签到脚本修复
+- 【配置文件】GitHub Actions 使用整个 config.json 配置文件
+- 【教程文档】完善使用文档
+
+</details> 
+
 
 ## 历史 Star 数
 
