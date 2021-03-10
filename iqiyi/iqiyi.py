@@ -114,6 +114,15 @@ class IQIYICheckIn:
                 res = requests.get(url=url, params=params)
                 if res.json()["code"] == "A00000":
                     self.growth_task += item["taskReward"]
+            elif item["status"] == 4:
+                requests.get(
+                    url='https://tc.vip.iqiyi.com/taskCenter/task/notify',
+                    params=params
+                )
+                params["taskCode"] = item["taskCode"]
+                res = requests.get(url=url, params=params)
+                if res.json()["code"] == "A00000":
+                    self.growth_task += item["taskReward"]
         msg = f"+{self.growth_task}成长值"
         return msg
 
