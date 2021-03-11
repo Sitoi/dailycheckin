@@ -1,8 +1,5 @@
 name: 发布文档
 on:
-#  push:
-#    branches:
-#      - main
   workflow_dispatch:
 jobs:
   deploy:

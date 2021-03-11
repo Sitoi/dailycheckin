@@ -88,7 +88,7 @@ class IQIYICheckIn:
                         "taskReward": item["taskReward"]["task_reward_growth"],
                     }
                 )
-        return self
+        return self.task_list
 
     def join_task(self, p00001):
         """
@@ -108,21 +108,23 @@ class IQIYICheckIn:
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/getTaskRewards"
         params = {"P00001": p00001, "taskCode": "", "platform": "bb136ff4276771f3", "lang": "zh_CN"}
-        for item in self.task_list:
-            if item["status"] == 0:
-                params["taskCode"] = item["taskCode"]
-                res = requests.get(url=url, params=params)
-                if res.json()["code"] == "A00000":
-                    self.growth_task += item["taskReward"]
-            elif item["status"] == 4:
-                requests.get(
-                    url='https://tc.vip.iqiyi.com/taskCenter/task/notify',
-                    params=params
-                )
-                params["taskCode"] = item["taskCode"]
-                res = requests.get(url=url, params=params)
-                if res.json()["code"] == "A00000":
-                    self.growth_task += item["taskReward"]
+        for one in range(3):
+            for item in self.task_list:
+                time.sleep(2)
+                if item["status"] == 0:
+                    params["taskCode"] = item["taskCode"]
+                    res = requests.get(url=url, params=params)
+                    if res.json()["code"] == "A00000":
+                        self.growth_task += item["taskReward"]
+                elif item["status"] == 4:
+                    requests.get(
+                        url='https://tc.vip.iqiyi.com/taskCenter/task/notify',
+                        params=params
+                    )
+                    params["taskCode"] = item["taskCode"]
+                    res = requests.get(url=url, params=params)
+                    if res.json()["code"] == "A00000":
+                        self.growth_task += item["taskReward"]
         msg = f"+{self.growth_task}成长值"
         return msg
 
@@ -178,8 +180,9 @@ class IQIYICheckIn:
                 draw_msg += ret["msg"] + ";" if ret["status"] else ""
         else:
             draw_msg = "抽奖机会不足"
-        self.query_user_task(p00001=p00001).join_task(p00001=p00001)
-        task_msg = self.query_user_task(p00001=p00001).get_task_rewards(p00001=p00001)
+        self.query_user_task(p00001=p00001)
+        self.join_task(p00001=p00001)
+        task_msg = self.get_task_rewards(p00001=p00001)
         user_msg = self.user_information(p00001=p00001)
         msg = f"{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
         return msg
