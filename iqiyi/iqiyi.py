@@ -179,7 +179,7 @@ class IQIYICheckIn:
         else:
             draw_msg = "抽奖机会不足"
         task_msg = ""
-        for one in range(3):
+        for one in range(4):
             self.query_user_task(p00001=p00001)
             self.join_task(p00001=p00001)
             task_msg = self.get_task_rewards(p00001=p00001)
