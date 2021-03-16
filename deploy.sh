@@ -5,6 +5,7 @@ if [[ $SCKEY ]]; then echo "SCKEY 变量存在，并成功赋值" ;else SCKEY=""
 if [[ $SENDKEY ]]; then echo "SENDKEY 变量存在，并成功赋值" ;else SENDKEY=""; fi;
 if [[ $BARK_URL ]]; then echo "BARK_URL 变量存在，并成功赋值" ;else BARK_URL=""; fi;
 if [[ $QMSG_KEY ]]; then echo "QMSG_KEY 变量存在，并成功赋值" ;else QMSG_KEY=""; fi;
+if [[ $QMSG_TYPE ]]; then echo "QMSG_TYPE 变量存在，并成功赋值" ;else QMSG_TYPE=""; fi;
 if [[ $TG_BOT_TOKEN ]]; then echo "TG_BOT_TOKEN 变量存在，并成功赋值" ;else TG_BOT_TOKEN=""; fi;
 if [[ $TG_USER_ID ]]; then echo "TG_USER_ID 变量存在，并成功赋值" ;else TG_USER_ID=""; fi;
 if [[ $COOLPUSHSKEY ]]; then echo "COOLPUSHSKEY 变量存在，并成功赋值" ;else COOLPUSHSKEY=""; fi;
@@ -53,6 +54,7 @@ JSONSTR="{
   \"SENDKEY\": \"${SENDKEY}\",
   \"BARK_URL\": \"${BARK_URL}\",
   \"QMSG_KEY\": \"${QMSG_KEY}\",
+  \"QMSG_TYPE\": \"${QMSG_TYPE}\",
   \"TG_BOT_TOKEN\": \"${TG_BOT_TOKEN}\",
   \"TG_USER_ID\": \"${TG_USER_ID}\",
   \"COOLPUSHSKEY\": \"${COOLPUSHSKEY}\",

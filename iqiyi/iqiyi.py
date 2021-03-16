@@ -26,10 +26,10 @@ class IQIYICheckIn:
         time.sleep(3)
         url = "http://serv.vip.iqiyi.com/vipgrowth/query.action"
         params = {"P00001": p00001}
-        res = requests.get(url=url, params=params)
-        if res.json()["code"] == "A00000":
+        res = requests.get(url=url, params=params).json()
+        if res["code"] == "A00000":
             try:
-                res_data = res.json().get("data", {})
+                res_data = res.get("data", {})
                 level = res_data.get("level", 0)  # VIP 等级
                 growthvalue = res_data.get("growthvalue", 0)  # 当前 VIP 成长值
                 distance = res_data.get("distance", 0)  # 升级需要成长值
@@ -43,7 +43,7 @@ class IQIYICheckIn:
                 msg = str(e)
                 print(msg)
         else:
-            msg = res.json().get("msg")
+            msg = res.get("msg")
         return msg
 
     @staticmethod
@@ -53,11 +53,11 @@ class IQIYICheckIn:
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/queryUserTask"
         params = {"P00001": p00001, "autoSign": "yes"}
-        res = requests.get(url=url, params=params)
-        if res.json()["code"] == "A00000":
+        res = requests.get(url=url, params=params).json()
+        if res["code"] == "A00000":
             try:
-                growth = res.json()["data"]["signInfo"]["data"]["rewardMap"]["growth"]
-                continue_sign_days_sum = res.json()["data"]["signInfo"]["data"]["continueSignDaysSum"]
+                growth = res["data"]["signInfo"]["data"]["rewardMap"]["growth"]
+                continue_sign_days_sum = res["data"]["signInfo"]["data"]["continueSignDaysSum"]
                 reward_day = (
                     7 if continue_sign_days_sum % 28 <= 7 else (14 if continue_sign_days_sum % 28 <= 14 else 28)
                 )
@@ -65,9 +65,9 @@ class IQIYICheckIn:
                 msg = f"+{growth}成长值\n连续签到: {continue_sign_days_sum}天\n签到周期: {rouund_day}天/{reward_day}天"
             except Exception as e:
                 print(e)
-                msg = res.json()["data"]["signInfo"]["msg"]
+                msg = res["data"]["signInfo"].get("msg")
         else:
-            msg = res.json()["msg"]
+            msg = res.get("msg")
         return msg
 
     def query_user_task(self, p00001):
@@ -76,9 +76,9 @@ class IQIYICheckIn:
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/queryUserTask"
         params = {"P00001": p00001}
-        res = requests.get(url=url, params=params)
-        if res.json()["code"] == "A00000":
-            for item in res.json()["data"]["tasks"]["daily"]:
+        res = requests.get(url=url, params=params).json()
+        if res["code"] == "A00000":
+            for item in res["data"]["tasks"]["daily"]:
                 self.task_list.append(
                     {
                         "name": item["name"],
@@ -110,19 +110,17 @@ class IQIYICheckIn:
         growth_task = 0
         for item in self.task_list:
             if item["status"] == 0:
-                params["taskCode"] = item["taskCode"]
-                res = requests.get(url=url, params=params)
-                if res.json()["code"] == "A00000":
-                    growth_task += item["taskReward"]
+                params["taskCode"] = item.get("taskCode")
+                requests.get(url=url, params=params)
             elif item["status"] == 4:
                 requests.get(
                     url='https://tc.vip.iqiyi.com/taskCenter/task/notify',
                     params=params
                 )
-                params["taskCode"] = item["taskCode"]
-                res = requests.get(url=url, params=params)
-                if res.json()["code"] == "A00000":
-                    growth_task += item["taskReward"]
+                params["taskCode"] = item.get("taskCode")
+                requests.get(url=url, params=params)
+            elif item["status"] == 1:
+                growth_task += item["taskReward"]
         msg = f"+{growth_task}成长值"
         return msg
 
@@ -154,17 +152,17 @@ class IQIYICheckIn:
         }
         if draw_type == 1:
             del params["lottery_chance"]
-        res = requests.get(url=url, params=params)
-        if not res.json().get("code"):
-            chance = int(res.json().get("daysurpluschance"))
-            msg = res.json().get("awardName")
+        res = requests.get(url=url, params=params).json()
+        if not res.get("code"):
+            chance = int(res.get("daysurpluschance"))
+            msg = res.get("awardName")
             return {"status": True, "msg": msg, "chance": chance}
         else:
             try:
-                msg = res.json().get("kv", {}).get("msg")
+                msg = res.get("kv", {}).get("msg")
             except Exception as e:
                 print(e)
-                msg = res.json()["errorReason"]
+                msg = res["errorReason"]
         return {"status": False, "msg": msg, "chance": 0}
 
     def main(self):
@@ -179,9 +177,9 @@ class IQIYICheckIn:
         else:
             draw_msg = "抽奖机会不足"
         task_msg = ""
-        for one in range(4):
-            self.query_user_task(p00001=p00001)
-            self.join_task(p00001=p00001)
+        self.query_user_task(p00001=p00001)
+        self.join_task(p00001=p00001)
+        for one in range(6):
             task_msg = self.get_task_rewards(p00001=p00001)
             time.sleep(10)
         user_msg = self.user_information(p00001=p00001)

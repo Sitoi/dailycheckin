@@ -42,6 +42,7 @@ jobs:
           SENDKEY: ${{secrets.SENDKEY}}
           BARK_URL: ${{secrets.BARK_URL}}
           QMSG_KEY: ${{secrets.QMSG_KEY}}
+          QMSG_TYPE: ${{secrets.QMSG_TYPE}}
           TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}
           TG_USER_ID: ${{secrets.TG_USER_ID}}
           COOLPUSHSKEY: ${{secrets.COOLPUSHSKEY}}

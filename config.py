@@ -65,6 +65,7 @@ notice_map = {
     "TG_BOT_TOKEN": "",
     "TG_USER_ID": "",
     "QMSG_KEY": "",
+    "QMSG_TYPE": "",
     "COOLPUSHSKEY": "",
     "COOLPUSHQQ": "",
     "COOLPUSHWX": "",

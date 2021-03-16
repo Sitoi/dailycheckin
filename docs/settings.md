@@ -14,6 +14,7 @@
 |_**SENDKEY**_|server 酱 TURBO 推送|推送|server 酱 TURBO 推送[官方文档](https://sct.ftqq.com/sendkey) ,填写 `SENDKEY` 代码即可|
 |_**BARK_URL**_|BARK 推送|推送|BARK 推送[使用](https://github.com/Sitoi/dailycheckin/issues/29) ,填写 `BARK_URL` 即可，例如: `https://api.day.app/DxHcxxxxxRxxxxxxcm/` |
 |_**QMSG_KEY**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
+|_**QMSG_TYPE**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,如果需要推送到群填写 `group`,其他的都推送到 QQ |
 |_**TG_BOT_TOKEN**_|telegram 推送|推送|telegram 推送 `TG_BOT_TOKEN`|
 |_**TG_USER_ID**_|telegram 推送|推送|telegram 推送 `TG_USER_ID`|
 |_**COOLPUSHSKEY**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`|
@@ -181,6 +182,7 @@
   "SENDKEY": "",
   "BARK_URL": "",
   "QMSG_KEY": "",
+  "QMSG_TYPE": "",
   "TG_BOT_TOKEN": "",
   "TG_USER_ID": "",
   "COOLPUSHSKEY": "",
