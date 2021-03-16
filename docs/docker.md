@@ -51,6 +51,13 @@ docker exec dailycheckin python3 index.py
 docker exec dailycheckin python3 index.py xmly
 ```
 
+
+##### 更新最新脚本
+
+```bash
+docker exec dailycheckin sh /dailycheckin/docker/default_task.sh
+```
+
 ## 附录
 
 ### docker-compose 安装

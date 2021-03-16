@@ -37,10 +37,13 @@ def message2coolpush(
     return
 
 
-def message2qmsg(qmsg_key, content):
+def message2qmsg(qmsg_key, qmsg_type, content):
     print("qmsg 酱推送开始")
     params = {"msg": content}
-    requests.get(url=f"https://qmsg.zendee.cn/send/{qmsg_key}", params=params)
+    if qmsg_type == "group":
+        requests.get(url=f"https://qmsg.zendee.cn/group/{qmsg_key}", params=params)
+    else:
+        requests.get(url=f"https://qmsg.zendee.cn/send/{qmsg_key}", params=params)
     return
 
 
@@ -110,6 +113,20 @@ def message2qywxapp(qywx_corpid, qywx_agentid, qywx_corpsecret, qywx_touser, con
     return
 
 
+def message2pushplus(pushplus_token, content, pushplus_topic=None):
+    print("Pushplus 推送开始")
+    data = {
+        "token": pushplus_token,
+        "title": "签到通知",
+        "content": content.replace("\n", "<br>"),
+        "template": "json"
+    }
+    if pushplus_topic:
+        data["topic"] = pushplus_topic
+    requests.post(url=f"http://pushplus.hxtrip.com/send", data=json.dumps(data))
+    return
+
+
 def important_notice():
     datas = requests.get(url="https://api.github.com/repos/Sitoi/dailycheckin/issues?state=open&labels=通知").json()
     if datas:
@@ -130,6 +147,7 @@ def push_message(content_list: list, notice_info: dict):
     sckey = notice_info.get("sckey")
     sendkey = notice_info.get("sendkey")
     qmsg_key = notice_info.get("qmsg_key")
+    qmsg_type = notice_info.get("qmsg_type")
     tg_bot_token = notice_info.get("tg_bot_token")
     tg_user_id = notice_info.get("tg_user_id")
     coolpushskey = notice_info.get("coolpushskey")
@@ -141,6 +159,8 @@ def push_message(content_list: list, notice_info: dict):
     qywx_agentid = notice_info.get("qywx_agentid")
     qywx_corpsecret = notice_info.get("qywx_corpsecret")
     qywx_touser = notice_info.get("qywx_touser")
+    pushplus_token = notice_info.get("pushplus_token")
+    pushplus_topic = notice_info.get("pushplus_topic")
     content_str = "\n-----------------------------\n\n".join(content_list)
     message_list = [content_str]
     try:
@@ -153,17 +173,17 @@ def push_message(content_list: list, notice_info: dict):
     for content in content_list:
         if qmsg_key:
             try:
-                message2qmsg(qmsg_key=qmsg_key, content=content)
+                message2qmsg(qmsg_key=qmsg_key, qmsg_type=qmsg_type, content=content)
             except Exception as e:
                 print("qmsg 推送失败", e)
         if coolpushskey:
             try:
                 message2coolpush(
                     coolpushskey=coolpushskey,
-                    content=content,
                     coolpushqq=coolpushqq,
                     coolpushwx=coolpushwx,
                     coolpushemail=coolpushemail,
+                    content=content,
                 )
             except Exception as e:
                 print("coolpush 推送失败", e)
@@ -206,6 +226,11 @@ def push_message(content_list: list, notice_info: dict):
                 message2qywxrobot(qywx_key=qywx_key, content=message)
             except Exception as e:
                 print("企业微信群机器人推送失败", e)
+        if pushplus_token:
+            try:
+                message2pushplus(pushplus_token=pushplus_token, content=message, pushplus_topic=pushplus_topic)
+            except Exception as e:
+                print("Pushplus 推送失败", e)
         if tg_user_id and tg_bot_token:
             try:
                 message2telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=message)

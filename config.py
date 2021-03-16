@@ -5,6 +5,7 @@ import os
 from acfun import AcFunCheckIn
 from baidu_url_submit import BaiduUrlSubmit
 from bilibili import BiliBiliCheckIn
+from caiyun import CaiYunCheckIn
 from cloud189 import Cloud189CheckIn
 from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
@@ -26,6 +27,7 @@ from wps import WPSCheckIn
 from www2nzz import WWW2nzzCheckIn
 from xmly import XMLYCheckIn
 from youdao import YouDaoCheckIn
+from zhiyoo import ZhiyooCheckIn
 
 checkin_map = {
     "IQIYI_COOKIE_LIST": ("爱奇艺", IQIYICheckIn),
@@ -50,6 +52,8 @@ checkin_map = {
     "POJIE_COOKIE_LIST": ("吾爱破解", PojieCheckIn),
     "MEIZU_COOKIE_LIST": ("MEIZU社区", MeizuCheckIn),
     "PICACOMIC_ACCOUNT_LIST": ("哔咔漫画", PicacomicCheckIn),
+    "CAIYUN_COOKIE_LIST": ("和彩云", CaiYunCheckIn),
+    "ZHIYOO_COOKIE_LIST": ("智友邦", ZhiyooCheckIn),
     "CITY_NAME_LIST": ("天气预报", Weather),
     "XMLY_COOKIE_LIST": ("喜马拉雅极速版", XMLYCheckIn),
 }
@@ -63,6 +67,7 @@ notice_map = {
     "TG_BOT_TOKEN": "",
     "TG_USER_ID": "",
     "QMSG_KEY": "",
+    "QMSG_TYPE": "",
     "COOLPUSHSKEY": "",
     "COOLPUSHQQ": "",
     "COOLPUSHWX": "",
@@ -72,6 +77,8 @@ notice_map = {
     "QYWX_AGENTID": "",
     "QYWX_CORPSECRET": "",
     "QYWX_TOUSER": "",
+    "PUSHPLUS_TOKEN": "",
+    "PUSHPLUS_TOPIC": "",
 }
 
 
@@ -88,11 +95,32 @@ def env2list(key):
     return value
 
 
+def env2config(save_file=False):
+    result = json.loads(os.getenv("CONFIG_JSON", {}).strip()) if os.getenv("CONFIG_JSON") else {}
+    for one in checkin_map.keys():
+        if one not in result.keys():
+            result[one] = []
+        check_items = env2list(one)
+        result[one] += check_items
+    for one in notice_map.keys():
+        if not result.get(one):
+            if env2str(one):
+                result[one] = env2str(one)
+    if not result.get("MOTTO"):
+        result["MOTTO"] = os.getenv("MOTTO")
+    if save_file:
+        with open(os.path.join(os.path.dirname(__file__), "config/config.json"), "w+") as f:
+            f.write(json.dumps(result))
+    return result
+
+
 def env2str(key):
     try:
         value = os.getenv(key, "") if os.getenv(key) else ""
         if isinstance(value, str):
             value = value.strip()
+        elif isinstance(value, bool):
+            value = value
         else:
             value = None
     except Exception as e:
@@ -121,3 +149,7 @@ def get_notice_info(data):
         for one in notice_map.keys():
             result[one.lower()] = env2str(one)
     return result
+
+
+if __name__ == '__main__':
+    env2config(save_file=True)
