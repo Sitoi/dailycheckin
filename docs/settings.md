@@ -58,6 +58,7 @@
 |_**CAIYUN_COOKIE_LIST**_.caiyun_cookie|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 cookie|
 |_**CAIYUN_COOKIE_LIST**_.caiyun_referer|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 referer|
 |_**CAIYUN_COOKIE_LIST**_.caiyun_draw|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 是否开启抽奖|
+|_**ZHIYOO_COOKIE_LIST**_.zhiyoo_cookie|[智友邦](http://zhizhiyoo.net/)|Web| 智友邦 WEB Cookie|
 
 ### APP 签到配置
 
@@ -426,6 +427,14 @@
       "caiyun_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
       "caiyun_referer": "多账号 请求重定向地址，填写，请参考上面，以实际获取为准",
       "caiyun_draw": "多账号 是否开启抽奖，填写 true or false 去掉双引号"
+    }
+  ],
+  "ZHIYOO_COOKIE_LIST": [
+    {
+      "zhiyoo_cookie": "ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_onlineusernum=xxxxxx; ikdQ_9242_sendmail=1; ikdQ_9242_seccode=xxxxxx; ikdQ_9242_ulastactivity=xxxxxx; ikdQ_9242_auth=xxxxxx; ikdQ_9242_connect_is_bind=xxxxxx; ikdQ_9242_nofavfid=xxxxxx; ikdQ_9242_checkpm=xxxxxx; ikdQ_9242_noticeTitle=1; ikdQ_9242_sid=xxxxxx; ikdQ_9242_lip=xxxxxx; ikdQ_9242_lastact=xxxxxx"
+    },
+    {
+      "zhiyoo_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }

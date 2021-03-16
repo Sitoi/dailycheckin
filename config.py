@@ -27,6 +27,7 @@ from wps import WPSCheckIn
 from www2nzz import WWW2nzzCheckIn
 from xmly import XMLYCheckIn
 from youdao import YouDaoCheckIn
+from zhiyoo import ZhiyooCheckIn
 
 checkin_map = {
     "IQIYI_COOKIE_LIST": ("爱奇艺", IQIYICheckIn),
@@ -52,6 +53,7 @@ checkin_map = {
     "MEIZU_COOKIE_LIST": ("MEIZU社区", MeizuCheckIn),
     "PICACOMIC_ACCOUNT_LIST": ("哔咔漫画", PicacomicCheckIn),
     "CAIYUN_COOKIE_LIST": ("和彩云", CaiYunCheckIn),
+    "ZHIYOO_COOKIE_LIST": ("智友邦", ZhiyooCheckIn),
     "CITY_NAME_LIST": ("天气预报", Weather),
     "XMLY_COOKIE_LIST": ("喜马拉雅极速版", XMLYCheckIn),
 }

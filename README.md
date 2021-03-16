@@ -58,6 +58,7 @@
 |签到|[哔咔漫画](https://www.picacomic.com)|成长值奖励|每天一次|✔️|
 |签到|[MEIZU 社区](https://bbs.meizu.cn)|每日签到,可配置抽奖|每天一次|✔️|
 |签到|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|每日签到获取积分，积分可兑换物品|每天一次|❌|
+|签到|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|每天一次|❓|
 |签到|芒果 TV|签到获取体验会员|每天一次|✔️|
 |签到|联通营业厅|积分+流量奖励|每天一次|✔️|
 |签到|Fa米家 APP|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|每天一次|✔️|
@@ -92,8 +93,9 @@
 ## 其他
 
 <details>
-<summary>更新日志</summary>
+<summary>更新日志（点击展开）</summary>
 
+- 2021-03-16 添加【智友邦】每日签到脚本
 - 2021-03-10 添加【爱奇艺】10s 任务
 - 2021-03-09
     * 添加【pushplus】推送功能
@@ -140,7 +142,7 @@
 </details> 
 
 <details>
-<summary>TODO</summary>
+<summary>TODO（点击展开）</summary>
 
 - 【爱奇艺】观看时长任务
 - 【和彩云】签到脚本修复
@@ -153,6 +155,3 @@
 <p align="center">
     <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
 </p>
-
-
-
