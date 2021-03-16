@@ -37,10 +37,13 @@ def message2coolpush(
     return
 
 
-def message2qmsg(qmsg_key, content):
+def message2qmsg(qmsg_key, qmsg_type, content):
     print("qmsg 酱推送开始")
     params = {"msg": content}
-    requests.get(url=f"https://qmsg.zendee.cn/send/{qmsg_key}", params=params)
+    if qmsg_type == "group":
+        requests.get(url=f"https://qmsg.zendee.cn/group/{qmsg_key}", params=params)
+    else:
+        requests.get(url=f"https://qmsg.zendee.cn/send/{qmsg_key}", params=params)
     return
 
 
@@ -144,6 +147,7 @@ def push_message(content_list: list, notice_info: dict):
     sckey = notice_info.get("sckey")
     sendkey = notice_info.get("sendkey")
     qmsg_key = notice_info.get("qmsg_key")
+    qmsg_type = notice_info.get("qmsg_type")
     tg_bot_token = notice_info.get("tg_bot_token")
     tg_user_id = notice_info.get("tg_user_id")
     coolpushskey = notice_info.get("coolpushskey")
@@ -169,7 +173,7 @@ def push_message(content_list: list, notice_info: dict):
     for content in content_list:
         if qmsg_key:
             try:
-                message2qmsg(qmsg_key=qmsg_key, content=content)
+                message2qmsg(qmsg_key=qmsg_key, qmsg_type=qmsg_type, content=content)
             except Exception as e:
                 print("qmsg 推送失败", e)
         if coolpushskey:
