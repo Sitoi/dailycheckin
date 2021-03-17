@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import base64
-import binascii
+# import binascii
 import hashlib
 import json
 import os
@@ -8,7 +8,9 @@ import random
 
 import requests
 import urllib3
-from Crypto.Cipher import AES
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+# from Crypto.Cipher import AES
 from requests import utils
 
 urllib3.disable_warnings()
@@ -25,38 +27,61 @@ class Music163CheckIn:
             "Accept-Encoding": "gzip, deflate",
         }
 
-    @staticmethod
-    def create_secret_key(size):
-        return str(binascii.hexlify(os.urandom(size))[:16], encoding="utf-8")
+    # @staticmethod
+    # def create_secret_key(size):
+    #     return str(binascii.hexlify(os.urandom(size))[:16], encoding="utf-8")
+    #
+    # @staticmethod
+    # def aes_encrypt(text, sec_key):
+    #     pad = 16 - len(text) % 16
+    #     text = text + pad * chr(pad)
+    #     encryptor = AES.new(sec_key.encode("utf8"), 2, b"0102030405060708")
+    #     ciphertext = encryptor.encrypt(text.encode("utf8"))
+    #     ciphertext = str(base64.b64encode(ciphertext), encoding="utf-8")
+    #     return ciphertext
+    #
+    # @staticmethod
+    # def rsa_encrypt(text, pub_key, modulus):
+    #     text = text[::-1]
+    #     rs = int(text.encode("utf-8").hex(), 16) ** int(pub_key, 16) % int(modulus, 16)
+    #     return format(rs, "x").zfill(256)
+    #
+    # def encrypt(self, text):
+    #     sec_key = self.create_secret_key(16)
+    #     enc_text = self.aes_encrypt(self.aes_encrypt(text, "0CoJUm6Qyw8W8jud"), sec_key)
+    #     enc_sec_key = self.rsa_encrypt(
+    #         sec_key,
+    #         "010001",
+    #         (
+    #             "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629"
+    #             "ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d"
+    #             "813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7 "
+    #         ),
+    #     )
+    #     return {"params": enc_text, "encSecKey": enc_sec_key}
 
     @staticmethod
-    def aes_encrypt(text, sec_key):
-        pad = 16 - len(text) % 16
-        text = text + pad * chr(pad)
-        encryptor = AES.new(sec_key.encode("utf8"), 2, b"0102030405060708")
-        ciphertext = encryptor.encrypt(text.encode("utf8"))
-        ciphertext = str(base64.b64encode(ciphertext), encoding="utf-8")
-        return ciphertext
-
-    @staticmethod
-    def rsa_encrypt(text, pub_key, modulus):
-        text = text[::-1]
-        rs = int(text.encode("utf-8").hex(), 16) ** int(pub_key, 16) % int(modulus, 16)
-        return format(rs, "x").zfill(256)
+    def _encrypt(key, text):
+        backend = default_backend()
+        cipher = Cipher(algorithms.AES(key.encode("utf8")), modes.CBC(b"0102030405060708"), backend=backend)
+        encryptor = cipher.encryptor()
+        length = 16
+        count = len(text.encode("utf-8"))
+        if count % length != 0:
+            add = length - (count % length)
+        else:
+            add = 16
+        pad = chr(add)
+        text1 = text + (pad * add)
+        ciphertext = encryptor.update(text1.encode("utf-8")) + encryptor.finalize()
+        crypted_str = str(base64.b64encode(ciphertext), encoding="utf-8")
+        return crypted_str
 
     def encrypt(self, text):
-        sec_key = self.create_secret_key(16)
-        enc_text = self.aes_encrypt(self.aes_encrypt(text, "0CoJUm6Qyw8W8jud"), sec_key)
-        enc_sec_key = self.rsa_encrypt(
-            sec_key,
-            "010001",
-            (
-                "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629"
-                "ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d"
-                "813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7 "
-            ),
-        )
-        return {"params": enc_text, "encSecKey": enc_sec_key}
+        return {
+            "params": self._encrypt("TA3YiYCfY2dDJQgg", self._encrypt("0CoJUm6Qyw8W8jud", text)),
+            "encSecKey": "84ca47bca10bad09a6b04c5c927ef077d9b9f1e37098aa3eac6ea70eb59df0aa28b691b7e75e4f1f9831754919ea784c8f74fbfadf2898b0be17849fd656060162857830e241aba44991601f137624094c114ea8d17bce815b0cd4e5b8e2fbaba978c6d1d14dc3d1faf852bdd28818031ccdaaa13a6018e1024e2aae98844210",
+        }
 
     def login(self, session, phone, password):
         login_url = "https://music.163.com/weapi/login/cellphone"
