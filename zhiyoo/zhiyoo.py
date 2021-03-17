@@ -37,7 +37,7 @@ class ZhiyooCheckIn:
         else:
             check_msg = re.findall(r'恭喜你签到成功!获得随机奖励 金币 (\d+) 元.', response.text, re.S)
             check_msg = check_msg[0].strip() if check_msg else "签到失败"
-            msg = f"用户信息: {uid}\n签到信息: {check_msg}"
+            msg = f"用户信息: {uid}\n签到信息: 恭喜你签到成功!获得随机奖励 金币 {check_msg} 元."
         return msg
 
     def main(self):
