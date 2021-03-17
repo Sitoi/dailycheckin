@@ -178,10 +178,10 @@ class IQIYICheckIn:
             draw_msg = "抽奖机会不足"
         task_msg = ""
         self.query_user_task(p00001=p00001)
-        self.join_task(p00001=p00001)
         for one in range(6):
-            task_msg = self.get_task_rewards(p00001=p00001)
+            self.join_task(p00001=p00001)
             time.sleep(10)
+            task_msg = self.get_task_rewards(p00001=p00001)
         user_msg = self.user_information(p00001=p00001)
         msg = f"{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
         return msg
