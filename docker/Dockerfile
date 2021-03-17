@@ -9,7 +9,8 @@ COPY ./docker/start.sh /usr/local/bin
 #COPY ./start.sh /usr/local/bin
 
 RUN set -ex \
-    && apk add --no-cache tzdata moreutils git gcc g++ py-pip \
+    && apk update && apk upgrade\
+    && apk add --no-cache tzdata moreutils git gcc g++ py-pip mysql-dev linux-headers libffi-dev openssl-dev\
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && chmod +x /usr/local/bin/start.sh \
