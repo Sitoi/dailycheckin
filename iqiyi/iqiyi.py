@@ -10,7 +10,6 @@ import requests
 class IQIYICheckIn:
     def __init__(self, check_item):
         self.check_item = check_item
-        self.task_list = []
 
     @staticmethod
     def parse_cookie(cookie):
@@ -70,16 +69,18 @@ class IQIYICheckIn:
             msg = res.get("msg")
         return msg
 
-    def query_user_task(self, p00001):
+    @staticmethod
+    def query_user_task(p00001):
         """
         获取 VIP 日常任务 和 taskCode(任务状态)
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/queryUserTask"
         params = {"P00001": p00001}
+        task_list = []
         res = requests.get(url=url, params=params).json()
         if res["code"] == "A00000":
             for item in res["data"]["tasks"]["daily"]:
-                self.task_list.append(
+                task_list.append(
                     {
                         "name": item["name"],
                         "taskCode": item["taskCode"],
@@ -87,20 +88,22 @@ class IQIYICheckIn:
                         "taskReward": item["taskReward"]["task_reward_growth"],
                     }
                 )
-        return self.task_list
+        return task_list
 
-    def join_task(self, p00001):
+    @staticmethod
+    def join_task(p00001, task_list):
         """
         遍历完成任务
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/joinTask"
         params = {"P00001": p00001, "taskCode": "", "platform": "bb136ff4276771f3", "lang": "zh_CN"}
-        for item in self.task_list:
+        for item in task_list:
             if item["status"] == 2:
                 params["taskCode"] = item["taskCode"]
                 requests.get(url=url, params=params)
 
-    def get_task_rewards(self, p00001):
+    @staticmethod
+    def get_task_rewards(p00001, task_list):
         """
         获取任务奖励
         :return: 返回信息
@@ -108,7 +111,7 @@ class IQIYICheckIn:
         url = "https://tc.vip.iqiyi.com/taskCenter/task/getTaskRewards"
         params = {"P00001": p00001, "taskCode": "", "platform": "bb136ff4276771f3", "lang": "zh_CN"}
         growth_task = 0
-        for item in self.task_list:
+        for item in task_list:
             if item["status"] == 0:
                 params["taskCode"] = item.get("taskCode")
                 requests.get(url=url, params=params)
@@ -177,11 +180,11 @@ class IQIYICheckIn:
         else:
             draw_msg = "抽奖机会不足"
         task_msg = ""
-        self.query_user_task(p00001=p00001)
         for one in range(6):
-            self.join_task(p00001=p00001)
+            task_list = self.query_user_task(p00001=p00001)
+            self.join_task(p00001=p00001, task_list=task_list)
             time.sleep(10)
-            task_msg = self.get_task_rewards(p00001=p00001)
+            task_msg = self.get_task_rewards(p00001=p00001, task_list=task_list)
         user_msg = self.user_information(p00001=p00001)
         msg = f"{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
         return msg
