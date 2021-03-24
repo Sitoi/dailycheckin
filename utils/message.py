@@ -123,7 +123,7 @@ def message2pushplus(pushplus_token, content, pushplus_topic=None):
     }
     if pushplus_topic:
         data["topic"] = pushplus_topic
-    requests.post(url=f"http://pushplus.hxtrip.com/send", data=json.dumps(data))
+    requests.post(url=f"http://www.pushplus.plus/send", data=json.dumps(data))
     return
 
 
