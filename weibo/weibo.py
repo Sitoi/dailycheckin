@@ -4,6 +4,9 @@ import os
 from urllib import parse
 
 import requests
+import urllib3
+
+urllib3.disable_warnings()
 
 
 class WeiBoCheckIn:
@@ -13,7 +16,9 @@ class WeiBoCheckIn:
     @staticmethod
     def sign(token):
         headers = {"User-Agent": "Weibo/52588 (iPhone; iOS 14.5; Scale/3.00)"}
-        response = requests.get(url=f"https://api.weibo.cn/2/checkin/add?c=iphone&{token}", headers=headers)
+        response = requests.get(
+            url=f"https://api.weibo.cn/2/checkin/add?c=iphone&{token}", headers=headers, verify=False
+        )
         result = response.json()
         if result.get("status") == 10000:
             msg = f'连续签到: {result.get("data").get("continuous")}天\n本次收益: {result.get("data").get("desc")}'
@@ -28,7 +33,9 @@ class WeiBoCheckIn:
     @staticmethod
     def card(token):
         headers = {"User-Agent": "Weibo/52588 (iPhone; iOS 14.5; Scale/3.00)"}
-        response = requests.get(url=f"https://api.weibo.cn/2/!/ug/king_act_home?c=iphone&{token}", headers=headers)
+        response = requests.get(
+            url=f"https://api.weibo.cn/2/!/ug/king_act_home?c=iphone&{token}", headers=headers, verify=False
+        )
         result = response.json()
         if result.get("status") == 10000:
             nickname = result.get("data").get("user").get("nickname")
@@ -51,7 +58,7 @@ class WeiBoCheckIn:
         }
         data = token + "&lang=zh_CN&wm=3333_2001"
         response = requests.post(
-            url=f"https://pay.sc.weibo.com/aj/mobile/home/welfare/signin/do", headers=headers, data=data
+            url=f"https://pay.sc.weibo.com/aj/mobile/home/welfare/signin/do", headers=headers, data=data, verify=False
         )
         result = response.json()
         if result.get("status") == 1:

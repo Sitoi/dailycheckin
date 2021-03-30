@@ -365,7 +365,6 @@ class DuoKanCheckIn:
                 headers=self.headers
             )
             result = response.json()
-            print(result)
             if result.get("result") == 0:
                 success_count += 1
         return f"其他任务: 完成 {success_count} 个"
