@@ -7,6 +7,7 @@ from baidu_url_submit import BaiduUrlSubmit
 from bilibili import BiliBiliCheckIn
 from caiyun import CaiYunCheckIn
 from cloud189 import Cloud189CheckIn
+from duokan import DuoKanCheckIn
 from fmapp import FMAPPCheckIn
 from iqiyi import IQIYICheckIn
 from kgqq import KGQQCheckIn
@@ -56,6 +57,7 @@ checkin_map = {
     "CAIYUN_COOKIE_LIST": ("和彩云", CaiYunCheckIn),
     "ZHIYOO_COOKIE_LIST": ("智友邦", ZhiyooCheckIn),
     "WEIBO_COOKIE_LIST": ("微博", WeiBoCheckIn),
+    "DUOKAN_COOKIE_LIST": ("多看阅读", DuoKanCheckIn),
     "CITY_NAME_LIST": ("天气预报", Weather),
     "XMLY_COOKIE_LIST": ("喜马拉雅极速版", XMLYCheckIn),
 }

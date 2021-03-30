@@ -73,3 +73,4 @@ jobs:
           CAIYUN_COOKIE_LIST: ${{secrets.CAIYUN_COOKIE_LIST}}
           ZHIYOO_COOKIE_LIST: ${{secrets.ZHIYOO_COOKIE_LIST}}
           WEIBO_COOKIE_LIST: ${{secrets.WEIBO_COOKIE_LIST}}
+          DUOKAN_COOKIE_LIST: ${{secrets.DUOKAN_COOKIE_LIST}}

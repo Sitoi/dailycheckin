@@ -222,7 +222,7 @@
   "PICACOMIC_ACCOUNT_LIST": [
     {
       "picacomic_email": "Sitoi",
-      "picacomic_password": "Sitoi"
+      "picacomic_password": "xxxxxx"
     },
     {
       "picacomic_email": "多账号 账号填写，请参考上面",
@@ -255,12 +255,20 @@
       "zhiyoo_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
-    "WEIBO_COOKIE_LIST": [
-     {
+  "WEIBO_COOKIE_LIST": [
+    {
       "weibo_show_url": "https://api.weibo.cn/2/users/show?wm=xxxxxx&launchid=xxxxxx&b=xxxxxx&from=xxxxxx&c=xxxxxx&networktype=xxxxxx&v_p=xxxxxx&skin=xxxxxx&v_f=xxxxxx&lang=xxxxxx&sflag=xxxxxx&ua=xxxxxx&ft=xxxxxx&aid=xxxxxx&has_extend=xxxxxx&uid=xxxxxx&gsid=xxxxxx&sourcetype=&get_teenager=xxxxxx&s=xxxxxx&has_profile=xxxxxx"
     },
     {
       "weibo_show_url": "多账号 show_url 填写，请参考上面，show_url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "DUOKAN_COOKIE_LIST": [
+    {
+      "duokan_cookie": "user_id=xxxxxx; token=xxxxxx; user_gender=xxxxxx; device_id=xxxxxx; app_id=xxxxxx; build=xxxxxx; short_version=xxxxxx"
+    },
+    {
+      "duokan_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }
