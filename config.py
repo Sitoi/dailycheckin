@@ -23,6 +23,7 @@ from tieba import TiebaCheckIn
 from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
+from weibo import WeiBoCheckIn
 from wps import WPSCheckIn
 from www2nzz import WWW2nzzCheckIn
 from xmly import XMLYCheckIn
@@ -54,6 +55,7 @@ checkin_map = {
     "PICACOMIC_ACCOUNT_LIST": ("哔咔漫画", PicacomicCheckIn),
     "CAIYUN_COOKIE_LIST": ("和彩云", CaiYunCheckIn),
     "ZHIYOO_COOKIE_LIST": ("智友邦", ZhiyooCheckIn),
+    "WEIBO_COOKIE_LIST": ("微博", WeiBoCheckIn),
     "CITY_NAME_LIST": ("天气预报", Weather),
     "XMLY_COOKIE_LIST": ("喜马拉雅极速版", XMLYCheckIn),
 }

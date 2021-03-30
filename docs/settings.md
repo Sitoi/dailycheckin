@@ -72,6 +72,7 @@
 |_**MGTV_PARAMS_LIST**_.mgtv_params|芒果 TV|APP|芒果 TV 请求参数|
 |_**PICACOMIC_ACCOUNT_LIST**_.picacomic_email|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 账号|
 |_**PICACOMIC_ACCOUNT_LIST**_.picacomic_password|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 密码|
+|_**WEIBO_COOKIE_LIST**_.weibo_show_url|微博|APP| 抓取开头为 `https://api.weibo.cn/2/users/show?` 的整个 url 填入即可|
 
 ### 其他任务配置
 
@@ -429,6 +430,14 @@
     },
     {
       "zhiyoo_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+    "WEIBO_COOKIE_LIST": [
+     {
+      "weibo_show_url": "https://api.weibo.cn/2/users/show?wm=xxxxxx&launchid=xxxxxx&b=xxxxxx&from=xxxxxx&c=xxxxxx&networktype=xxxxxx&v_p=xxxxxx&skin=xxxxxx&v_f=xxxxxx&lang=xxxxxx&sflag=xxxxxx&ua=xxxxxx&ft=xxxxxx&aid=xxxxxx&has_extend=xxxxxx&uid=xxxxxx&gsid=xxxxxx&sourcetype=&get_teenager=xxxxxx&s=xxxxxx&has_profile=xxxxxx"
+    },
+    {
+      "weibo_show_url": "多账号 show_url 填写，请参考上面，show_url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }

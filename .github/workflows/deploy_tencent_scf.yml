@@ -83,6 +83,7 @@ jobs:
           MEIZU_COOKIE_LIST: ${{secrets.MEIZU_COOKIE_LIST}}
           CAIYUN_COOKIE_LIST: ${{secrets.CAIYUN_COOKIE_LIST}}
           ZHIYOO_COOKIE_LIST: ${{secrets.ZHIYOO_COOKIE_LIST}}
+          WEIBO_COOKIE_LIST: ${{secrets.WEIBO_COOKIE_LIST}}
 
       - name: "部署到腾讯云函数"
         run: sls deploy --debug
