@@ -24,10 +24,10 @@ class YouDaoCheckIn:
                 ad_response = requests.post(
                     url="https://note.youdao.com/yws/mapi/user?method=adRandomPrompt", cookies=cookies
                 )
-                ad_space += ad_response.json()["space"] // 1048576
+                ad_space += ad_response.json().get("space", 0) // 1048576
             if "reward" in res.text:
-                sync_space = res.json()["rewardSpace"] // 1048576
-                checkin_space = checkin_response.json()["space"] // 1048576
+                sync_space = res.json().get("rewardSpace", 0) // 1048576
+                checkin_space = checkin_response.json().get("space", 0) // 1048576
                 space = sync_space + checkin_space + ad_space
                 youdao_message = "+{0}M".format(space)
             else:
