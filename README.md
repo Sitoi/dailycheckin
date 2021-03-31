@@ -36,11 +36,11 @@
 
 ## 签到列表
 
-✔️: 正常运行 ❌: 脚本暂不可用 ❓: 可以执行(待更新)
+✔️: 正常运行 ❌: 脚本暂不可用 ❓: 可以执行(待更新) ⭕: 待测试 ❗: 看脸（有人可以有人不可以）
 
 |类别|名称|备注|运行周期|状态|
 |:---:|:---:|:---|:---:|:---:|
-|签到|[爱奇艺](https://www.iqiyi.com/)|签7天奖1天，14天奖2天，28天奖7天；日常任务；随机成长值|每天一次|❓|
+|签到|[爱奇艺](https://www.iqiyi.com/)|签7天奖1天，14天奖2天，28天奖7天；日常任务；随机成长值|每天一次|✔️|
 |签到|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 150 鲜花左右|每天一次|✔️|
 |签到|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|每天一次|✔️|
 |签到|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|每天一次|✔️|
@@ -49,15 +49,18 @@
 |签到|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|每天一次|✔️|
 |签到|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|每天一次|✔️|
 |签到|[V2EX](https://www.v2ex.com/)|铜币奖励|每天一次|✔️|
-|签到|[咔叽网单](https://www.2nzz.com/)| |每天一次|✔️|
+|签到|[咔叽网单](https://www.2nzz.com/)|论坛金币|每天一次|✔️|
 |签到|[什么值得买](https://www.smzdm.com)|每日签到|每天一次|✔️|
 |签到|[AcFun](https://www.acfun.cn/)|每日签到香蕉|每天一次|✔️|
 |签到|[天翼云盘](https://cloud.189.cn/)|每日签到+2次抽奖获得空间奖励|每天一次|✔️|
 |签到|[WPS](https://www.wps.cn/)|每日签到|每天一次|✔️|
-|签到|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|每天一次|✔️|
+|签到|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|每天一次|❗|
 |签到|[哔咔漫画](https://www.picacomic.com)|成长值奖励|每天一次|✔️|
 |签到|[MEIZU 社区](https://bbs.meizu.cn)|每日签到,可配置抽奖|每天一次|✔️|
 |签到|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|每日签到获取积分，积分可兑换物品|每天一次|❌|
+|签到|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|每天一次|✔️|
+|签到|微博|每日钱包签到、打卡|每天一次|⭕|
+|签到|多看阅读|获取书豆，用于购买书籍|每天一次|✔️|
 |签到|芒果 TV|签到获取体验会员|每天一次|✔️|
 |签到|联通营业厅|积分+流量奖励|每天一次|✔️|
 |签到|Fa米家 APP|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|每天一次|✔️|
@@ -79,6 +82,8 @@
 ## 特别鸣谢
 
 - [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
+- [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
+- [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
 
 ## 交流群
 
@@ -92,8 +97,12 @@
 ## 其他
 
 <details>
-<summary>更新日志</summary>
+<summary>更新日志（点击展开）</summary>
 
+- 2021-03-30 
+    * 添加【微博】每日签到脚本
+    * 添加【多看阅读】每日签到脚本
+- 2021-03-16 添加【智友邦】每日签到脚本
 - 2021-03-10 添加【爱奇艺】10s 任务
 - 2021-03-09
     * 添加【pushplus】推送功能
@@ -140,7 +149,7 @@
 </details> 
 
 <details>
-<summary>TODO</summary>
+<summary>TODO（点击展开）</summary>
 
 - 【爱奇艺】观看时长任务
 - 【和彩云】签到脚本修复
@@ -153,6 +162,3 @@
 <p align="center">
     <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
 </p>
-
-
-

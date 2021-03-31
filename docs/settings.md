@@ -14,6 +14,7 @@
 |_**SENDKEY**_|server 酱 TURBO 推送|推送|server 酱 TURBO 推送[官方文档](https://sct.ftqq.com/sendkey) ,填写 `SENDKEY` 代码即可|
 |_**BARK_URL**_|BARK 推送|推送|BARK 推送[使用](https://github.com/Sitoi/dailycheckin/issues/29) ,填写 `BARK_URL` 即可，例如: `https://api.day.app/DxHcxxxxxRxxxxxxcm/` |
 |_**QMSG_KEY**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
+|_**QMSG_TYPE**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,如果需要推送到群填写 `group`,其他的都推送到 QQ |
 |_**TG_BOT_TOKEN**_|telegram 推送|推送|telegram 推送 `TG_BOT_TOKEN`|
 |_**TG_USER_ID**_|telegram 推送|推送|telegram 推送 `TG_USER_ID`|
 |_**COOLPUSHSKEY**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`|
@@ -25,8 +26,8 @@
 |_**QYWX_AGENTID**_|企业微信应用消息推送|推送|agentid [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
 |_**QYWX_CORPSECRET**_|企业微信应用消息推送|推送|corpsecret [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
 |_**QYWX_TOUSER**_|企业微信应用消息推送|推送|touser [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
-|_**PUSHPLUS_TOKEN**_|pushplus 推送|推送|用户令牌，可直接加到请求地址后，如：http://pushplus.hxtrip.com/send/{token} [官方文档](https://pushplus.hxtrip.com/doc/)|
-|_**PUSHPLUS_TOPIC**_|pushplus 推送|推送|群组编码，不填仅发送给自己 [官方文档](https://pushplus.hxtrip.com/doc/)|
+|_**PUSHPLUS_TOKEN**_|pushplus 推送|推送|用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} [官方文档](https://www.pushplus.plus/doc/)|
+|_**PUSHPLUS_TOPIC**_|pushplus 推送|推送|群组编码，不填仅发送给自己 [官方文档](https://www.pushplus.plus/doc/)|
 
 ### Web 签到配置
 
@@ -55,8 +56,7 @@
 |_**MEIZU_COOKIE_LIST**_.meizu_cookie|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 cookie|
 |_**MEIZU_COOKIE_LIST**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 抽奖次数|
 |_**CAIYUN_COOKIE_LIST**_.caiyun_cookie|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 cookie|
-|_**CAIYUN_COOKIE_LIST**_.caiyun_referer|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 referer|
-|_**CAIYUN_COOKIE_LIST**_.caiyun_draw|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 是否开启抽奖|
+|_**ZHIYOO_COOKIE_LIST**_.zhiyoo_cookie|[智友邦](http://zhizhiyoo.net/)|Web| 智友邦 WEB Cookie|
 
 ### APP 签到配置
 
@@ -72,6 +72,8 @@
 |_**MGTV_PARAMS_LIST**_.mgtv_params|芒果 TV|APP|芒果 TV 请求参数|
 |_**PICACOMIC_ACCOUNT_LIST**_.picacomic_email|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 账号|
 |_**PICACOMIC_ACCOUNT_LIST**_.picacomic_password|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 密码|
+|_**WEIBO_COOKIE_LIST**_.weibo_show_url|微博|APP| 抓取开头为 `https://api.weibo.cn/2/users/show?` 的整个 url 填入即可|
+|_**DUOKAN_COOKIE_LIST**_.duokan_cookie|多看阅读|APP|多看阅读 cookie， 抓取开头为 `https://www.duokan.com` 下的 cookie 即可|
 
 ### 其他任务配置
 
@@ -181,6 +183,7 @@
   "SENDKEY": "",
   "BARK_URL": "",
   "QMSG_KEY": "",
+  "QMSG_TYPE": "",
   "TG_BOT_TOKEN": "",
   "TG_USER_ID": "",
   "COOLPUSHSKEY": "",
@@ -397,7 +400,7 @@
   "PICACOMIC_ACCOUNT_LIST": [
     {
       "picacomic_email": "Sitoi",
-      "picacomic_password": "Sitoi"
+      "picacomic_password": "xxxxxx"
     },
     {
       "picacomic_email": "多账号 账号填写，请参考上面",
@@ -416,14 +419,34 @@
   ],
   "CAIYUN_COOKIE_LIST": [
     {
-      "caiyun_cookie": "WAPJSESSIONID=xxxxxx; bc_mo=xxxxxx; bc_ps=xxxxxx; bc_to=xxxxxx; JSESSIONID=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; sajssdk_2015_cross_new_user=1",
-      "caiyun_referer": "https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp",
-      "caiyun_draw": false
+      "caiyun_cookie": "WAPJSESSIONID=xxxxxx; bc_mo=xxxxxx; bc_ps=xxxxxx; bc_to=xxxxxx; JSESSIONID=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; sajssdk_2015_cross_new_user=1"
     },
     {
-      "caiyun_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "caiyun_referer": "多账号 请求重定向地址，填写，请参考上面，以实际获取为准",
-      "caiyun_draw": "多账号 是否开启抽奖，填写 true or false 去掉双引号"
+      "caiyun_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "ZHIYOO_COOKIE_LIST": [
+    {
+      "zhiyoo_cookie": "ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_onlineusernum=xxxxxx; ikdQ_9242_sendmail=1; ikdQ_9242_seccode=xxxxxx; ikdQ_9242_ulastactivity=xxxxxx; ikdQ_9242_auth=xxxxxx; ikdQ_9242_connect_is_bind=xxxxxx; ikdQ_9242_nofavfid=xxxxxx; ikdQ_9242_checkpm=xxxxxx; ikdQ_9242_noticeTitle=1; ikdQ_9242_sid=xxxxxx; ikdQ_9242_lip=xxxxxx; ikdQ_9242_lastact=xxxxxx"
+    },
+    {
+      "zhiyoo_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "WEIBO_COOKIE_LIST": [
+    {
+      "weibo_show_url": "https://api.weibo.cn/2/users/show?wm=xxxxxx&launchid=xxxxxx&b=xxxxxx&from=xxxxxx&c=xxxxxx&networktype=xxxxxx&v_p=xxxxxx&skin=xxxxxx&v_f=xxxxxx&lang=xxxxxx&sflag=xxxxxx&ua=xxxxxx&ft=xxxxxx&aid=xxxxxx&has_extend=xxxxxx&uid=xxxxxx&gsid=xxxxxx&sourcetype=&get_teenager=xxxxxx&s=xxxxxx&has_profile=xxxxxx"
+    },
+    {
+      "weibo_show_url": "多账号 show_url 填写，请参考上面，show_url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "DUOKAN_COOKIE_LIST": [
+    {
+      "duokan_cookie": "user_id=xxxxxx; token=xxxxxx; user_gender=xxxxxx; device_id=xxxxxx; app_id=xxxxxx; build=xxxxxx; short_version=xxxxxx"
+    },
+    {
+      "duokan_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }

@@ -52,6 +52,7 @@ CONFIG_JSON
   "SENDKEY": "",
   "BARK_URL": "",
   "QMSG_KEY": "",
+  "QMSG_TYPE": "",
   "TG_BOT_TOKEN": "",
   "TG_USER_ID": "",
   "COOLPUSHSKEY": "",
@@ -268,7 +269,7 @@ CONFIG_JSON
   "PICACOMIC_ACCOUNT_LIST": [
     {
       "picacomic_email": "Sitoi",
-      "picacomic_password": "Sitoi"
+      "picacomic_password": "xxxxxx"
     },
     {
       "picacomic_email": "多账号 账号填写，请参考上面",
@@ -287,14 +288,34 @@ CONFIG_JSON
   ],
   "CAIYUN_COOKIE_LIST": [
     {
-      "caiyun_cookie": "WAPJSESSIONID=xxxxxx; bc_mo=xxxxxx; bc_ps=xxxxxx; bc_to=xxxxxx; JSESSIONID=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; sajssdk_2015_cross_new_user=1",
-      "caiyun_referer": "https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp",
-      "caiyun_draw": false
+      "caiyun_cookie": "WAPJSESSIONID=xxxxxx; bc_mo=xxxxxx; bc_ps=xxxxxx; bc_to=xxxxxx; JSESSIONID=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; sajssdk_2015_cross_new_user=1"
     },
     {
-      "caiyun_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "caiyun_referer": "多账号 请求重定向地址，填写，请参考上面，以实际获取为准",
-      "caiyun_draw": "多账号 是否开启抽奖，填写 true or false 去掉双引号"
+      "caiyun_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "ZHIYOO_COOKIE_LIST": [
+    {
+      "zhiyoo_cookie": "ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_onlineusernum=xxxxxx; ikdQ_9242_sendmail=1; ikdQ_9242_seccode=xxxxxx; ikdQ_9242_ulastactivity=xxxxxx; ikdQ_9242_auth=xxxxxx; ikdQ_9242_connect_is_bind=xxxxxx; ikdQ_9242_nofavfid=xxxxxx; ikdQ_9242_checkpm=xxxxxx; ikdQ_9242_noticeTitle=1; ikdQ_9242_sid=xxxxxx; ikdQ_9242_lip=xxxxxx; ikdQ_9242_lastact=xxxxxx"
+    },
+    {
+      "zhiyoo_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "WEIBO_COOKIE_LIST": [
+    {
+      "weibo_show_url": "https://api.weibo.cn/2/users/show?wm=xxxxxx&launchid=xxxxxx&b=xxxxxx&from=xxxxxx&c=xxxxxx&networktype=xxxxxx&v_p=xxxxxx&skin=xxxxxx&v_f=xxxxxx&lang=xxxxxx&sflag=xxxxxx&ua=xxxxxx&ft=xxxxxx&aid=xxxxxx&has_extend=xxxxxx&uid=xxxxxx&gsid=xxxxxx&sourcetype=&get_teenager=xxxxxx&s=xxxxxx&has_profile=xxxxxx"
+    },
+    {
+      "weibo_show_url": "多账号 show_url 填写，请参考上面，show_url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "DUOKAN_COOKIE_LIST": [
+    {
+      "duokan_cookie": "user_id=xxxxxx; token=xxxxxx; user_gender=xxxxxx; device_id=xxxxxx; app_id=xxxxxx; build=xxxxxx; short_version=xxxxxx"
+    },
+    {
+      "duokan_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }
