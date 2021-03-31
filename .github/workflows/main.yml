@@ -2,7 +2,9 @@ name: 每日签到合集
 
 on:
   schedule:
-    - cron: 0 20,13 * * *
+    - cron: '0 16,1 * * *'
+    # cron表达式，时区是UTC时间，比我们早8小时，如上所表示的是每天0点0分（24点整）和早上9点
+    # 建议每个人通过设置 GitHub Environments 的方式来设定为自己的目标运行时间（详细设置方法见文档说明）
   watch:
     types: [ started ]
   workflow_dispatch:
