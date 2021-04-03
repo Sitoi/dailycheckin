@@ -20,9 +20,3 @@ inputs:
           cronExpression: "0 45 8 * * * *"
           enable: true
           argument: None
-    - timer: # 喜马拉雅极速版
-        parameters:
-          name: xmly
-          cronExpression: "0 */30 * * * * *"
-          enable: true
-          argument: xmly

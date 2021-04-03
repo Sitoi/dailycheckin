@@ -27,7 +27,6 @@ from weather import Weather
 from weibo import WeiBoCheckIn
 from wps import WPSCheckIn
 from www2nzz import WWW2nzzCheckIn
-from xmly import XMLYCheckIn
 from youdao import YouDaoCheckIn
 from zhiyoo import ZhiyooCheckIn
 
@@ -59,7 +58,6 @@ checkin_map = {
     "WEIBO_COOKIE_LIST": ("微博", WeiBoCheckIn),
     "DUOKAN_COOKIE_LIST": ("多看阅读", DuoKanCheckIn),
     "CITY_NAME_LIST": ("天气预报", Weather),
-    "XMLY_COOKIE_LIST": ("喜马拉雅极速版", XMLYCheckIn),
 }
 
 notice_map = {

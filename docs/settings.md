@@ -66,7 +66,6 @@
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_token|Fa米家|APP|Fa米家 APP headers 中的 token|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|APP|Fa米家 APP headers 中的 deviceId|
-|_**XMLY_COOKIE_LIST**_.xmly_cookie|喜马拉雅极速版|APP|喜马拉雅极速版 cookie|
 |_**ACFUN_ACCOUNT_LIST**_.acfun_phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 手机账号|
 |_**ACFUN_ACCOUNT_LIST**_.acfun_password|[AcFun](https://www.acfun.cn/)|APP|AcFun 账号密码|
 |_**MGTV_PARAMS_LIST**_.mgtv_params|芒果 TV|APP|芒果 TV 请求参数|
@@ -243,14 +242,6 @@
     {
       "music163_phone": "多账号 手机号",
       "music163_password": "多账号 密码"
-    }
-  ],
-  "XMLY_COOKIE_LIST": [
-    {
-      "xmly_cookie": "1&_device=xxxxxx; 1&_token=xxxxxx; NSUP=xxxxxx; XUM=xxxxxx; ainr=xxxxxx; c-oper=xxxxxx; channel=xxxxxx; device_model=xxxxxx; idfa=xxxxxx; impl=xxxxxx; ip=xxxxxx; net-mode=xxxxxx; res=xxxxxx; _xmLog=xxxxxx;"
-    },
-    {
-      "xmly_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
   "ONEPLUSBBS_COOKIE_LIST": [

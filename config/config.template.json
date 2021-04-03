@@ -67,14 +67,6 @@
       "music163_password": "多账号 密码"
     }
   ],
-  "XMLY_COOKIE_LIST": [
-    {
-      "xmly_cookie": "1&_device=xxxxxx; 1&_token=xxxxxx; NSUP=xxxxxx; XUM=xxxxxx; ainr=xxxxxx; c-oper=xxxxxx; channel=xxxxxx; device_model=xxxxxx; idfa=xxxxxx; impl=xxxxxx; ip=xxxxxx; net-mode=xxxxxx; res=xxxxxx; _xmLog=xxxxxx;"
-    },
-    {
-      "xmly_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
   "ONEPLUSBBS_COOKIE_LIST": [
     {
       "oneplusbbs_cookie": "acw_tc=xxxxxx; qKc3_0e8d_saltkey=xxxxxx; qKc3_0e8d_lastvisit=xxxxxx; bbs_avatar=xxxxxx; qKc3_0e8d_sendmail=xxxxxx; opcid=xxxxxx; opcct=xxxxxx; oppt=xxxxxx; opsid=xxxxxx; opsct=xxxxxx; opbct=xxxxxx; UM_distinctid=xxxxxx; CNZZDATA1277373783=xxxxxx; www_clear=xxxxxx; ONEPLUSID=xxxxxx; qKc3_0e8d_sid=xxxxxx; bbs_uid=xxxxxx; bbs_uname=xxxxxx; bbs_grouptitle=xxxxxx; opuserid=xxxxxx; bbs_sign=xxxxxx; bbs_formhash=xxxxxx; qKc3_0e8d_ulastactivity=xxxxxx; opsertime=xxxxxx; qKc3_0e8d_lastact=xxxxxx; qKc3_0e8d_checkpm=xxxxxx; qKc3_0e8d_noticeTitle=xxxxxx; optime_browser=xxxxxx; opnt=xxxxxx; opstep=xxxxxx; opstep_event=xxxxxx; fp=xxxxxx;"
