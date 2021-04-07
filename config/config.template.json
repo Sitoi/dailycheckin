@@ -262,5 +262,21 @@
     {
       "duokan_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
+  ],
+  "CSDN_COOKIE_LIST": [
+    {
+      "csdn_cookie": "uuid_tt_dd=xxxxxx; _ga=xxxxxx; UserName=xxxxxx; UserInfo=xxxxxx; UserToken=xxxxxx; UserNick=xxxxxx; AU=768; UN=xxxxxx; BT=xxxxxx; p_uid=xxxxxx; Hm_up_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_ct_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_lvt_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx dc_sid=xxxxxx; c_segment=xxxxxx; dc_session_id=xxxxxx; csrfToken=xxxxxx; c_first_ref=xxxxxx; c_first_page=xxxxxx; c_page_id=xxxxxx; announcement-new=xxxxxx; log_Id_click=xxxxxx; c_pref=xxxxxx; c_ref=xxxxxx; dc_tos=xxxxxx; log_Id_pv=xxxxxx; log_Id_view=xxxxxx"
+    },
+    {
+      "csdn_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "WZYD_DATA_LIST": [
+    {
+      "wzyd_data": "areaId=xxxxxx&roleId=xxxxxx&gameId=xxxxxx&serverId=xxxxxx&gameOpenid=xxxxxx&userId=xxxxxx&appVersion=xxxxxx&cClientVersionName=xxxxxx&platid=xxxxxx&source=xxxxxx&algorithm=xxxxxx&version=xxxxxx&timestamp=xxxxxx&appid=xxxxxx&openid=xxxxxx&sig=xxxxxx&encode=2&msdkEncodeParam=xxxxxx&cSystem=xxxxxx&h5Get=xxxxxx&msdkToken=&appOpenid=xxxxxx"
+    },
+    {
+      "wzyd_data": "多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
   ]
 }

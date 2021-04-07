@@ -40,13 +40,16 @@ class AcFunCheckIn:
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
         }
-        response = session.post(url=url, cookies=cookies, data="sid=acfun.midground.api", headers=headers)
+        response = session.post(url=url, cookies=cookies, data="sid=acfun.midground.api", headers=headers, verify=False)
         return response.json().get("acfun.midground.api_st")
 
     def get_video(self, session):
         url = "https://api-ipv6.acfunchina.com/rest/app/rank/channel"
         data = "channelId=0&rankPeriod=DAY"
-        response = session.post(url=url, data=data)
+        headers = {
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
+        response = session.post(url=url, data=data, headers=headers, verify=False)
         self.contentid = response.json().get("rankList")[0].get("contentId")
         return self.contentid
 
@@ -54,7 +57,7 @@ class AcFunCheckIn:
     def sign(session, cookies):
         headers = {"acPlatform": "IPHONE"}
         response = session.post(
-            url="https://api-ipv6.acfunchina.com/rest/app/user/signIn", headers=headers, cookies=cookies
+            url="https://api-ipv6.acfunchina.com/rest/app/user/signIn", headers=headers, cookies=cookies, verify=False
         )
         return response.json().get("msg")
 
@@ -65,7 +68,7 @@ class AcFunCheckIn:
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
         }
-        response = session.post(url=url, headers=headers, cookies=cookies, data=body)
+        response = session.post(url=url, headers=headers, cookies=cookies, data=body, verify=False)
         if response.json().get("result") == 0:
             msg = "弹幕成功"
         else:
@@ -78,7 +81,7 @@ class AcFunCheckIn:
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
         }
-        response = session.post(url=url, headers=headers, cookies=cookies, data=body)
+        response = session.post(url=url, headers=headers, cookies=cookies, data=body, verify=False)
         if response.json().get("result") == 0:
             msg = "香蕉成功"
         else:
@@ -93,12 +96,24 @@ class AcFunCheckIn:
         }
         cookies = {"acfun.midground.api_st": token, "kpn": "ACFUN_APP"}
         body = f"interactType=1&objectId={self.contentid}&objectType=2&subBiz=mainApp"
-        response = session.post(url=like_url, headers=headers, cookies=cookies, data=body)
-        session.post(url=unlike_url, headers=headers, cookies=cookies, data=body)
+        response = session.post(url=like_url, headers=headers, cookies=cookies, data=body, verify=False)
+        session.post(url=unlike_url, headers=headers, cookies=cookies, data=body, verify=False)
         if response.json().get("result") == 1:
             msg = "点赞成功"
         else:
             msg = "点赞失败"
+        return msg
+
+    def share(self, session, cookies):
+        url = "https://api-ipv6.acfunchina.com/rest/app/task/reportTaskAction?taskType=1&market=tencent&product=ACFUN_APP&appMode=0"
+        headers = {
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
+        response = session.get(url=url, headers=headers, cookies=cookies, verify=False)
+        if response.json().get("result") == 0:
+            msg = "分享成功"
+        else:
+            msg = "分享失败"
         return msg
 
     def main(self):
@@ -110,9 +125,13 @@ class AcFunCheckIn:
         token = self.get_token(session=session, cookies=cookies)
         sign_msg = self.sign(session=session, cookies=cookies)
         like_msg = self.like(session=session, token=token)
+        share_msg = self.share(session=session, cookies=cookies)
         danmu_msg = self.danmu(session=session, cookies=cookies)
         throwbanana_msg = self.throwbanana(session=session, cookies=cookies)
-        msg = f"帐号信息: {phone}\n签到状态: {sign_msg}\n点赞任务: {like_msg}\n" f"弹幕任务: {danmu_msg}\n香蕉任务: {throwbanana_msg}"
+        msg = (
+            f"帐号信息: {phone}\n签到状态: {sign_msg}\n点赞任务: {like_msg}\n"
+            f"弹幕任务: {danmu_msg}\n香蕉任务: {throwbanana_msg}\n分享任务: {share_msg}"
+        )
         return msg
 
 

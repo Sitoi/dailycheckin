@@ -57,6 +57,7 @@
 |_**MEIZU_COOKIE_LIST**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 抽奖次数|
 |_**CAIYUN_COOKIE_LIST**_.caiyun_cookie|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|Web| 和彩云 cookie|
 |_**ZHIYOO_COOKIE_LIST**_.zhiyoo_cookie|[智友邦](http://zhizhiyoo.net/)|Web| 智友邦 WEB Cookie|
+|_**CSDN_COOKIE_LIST**_.csdn_cookie|[CSDN](https://www.csdn.net/)|Web| CSDN Cookie|
 
 ### APP 签到配置
 
@@ -73,6 +74,7 @@
 |_**PICACOMIC_ACCOUNT_LIST**_.picacomic_password|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 密码|
 |_**WEIBO_COOKIE_LIST**_.weibo_show_url|微博|APP| 抓取开头为 `https://api.weibo.cn/2/users/show?` 的整个 url 填入即可|
 |_**DUOKAN_COOKIE_LIST**_.duokan_cookie|多看阅读|APP|多看阅读 cookie， 抓取开头为 `https://www.duokan.com` 下的 cookie 即可|
+|_**WZYD_DATA_LIST**_.wzyd_data|王者营地|APP|王者营地 请求体中的 data， 抓包 APP 中域名为 `https://ssl.kohsocial.qq.com` 请求内容的全部参数|
 
 ### 其他任务配置
 
@@ -120,9 +122,9 @@
 ]
 ```
 
-#### 喜马拉雅极速版 Cookie 参数获取
+#### 王者营地 data 参数获取
 
-抓包 APP 中域名为 `m.ximalaya.com` 中的 `cookie` 即可
+抓包 APP 中域名为 `https://ssl.kohsocial.qq.com` 请求内容的全部参数
 
 #### Fa米家 Cookie 等参数获取
 
@@ -438,6 +440,22 @@
     },
     {
       "duokan_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "CSDN_COOKIE_LIST": [
+    {
+      "csdn_cookie": "uuid_tt_dd=xxxxxx; _ga=xxxxxx; UserName=xxxxxx; UserInfo=xxxxxx; UserToken=xxxxxx; UserNick=xxxxxx; AU=768; UN=xxxxxx; BT=xxxxxx; p_uid=xxxxxx; Hm_up_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_ct_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_lvt_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx dc_sid=xxxxxx; c_segment=xxxxxx; dc_session_id=xxxxxx; csrfToken=xxxxxx; c_first_ref=xxxxxx; c_first_page=xxxxxx; c_page_id=xxxxxx; announcement-new=xxxxxx; log_Id_click=xxxxxx; c_pref=xxxxxx; c_ref=xxxxxx; dc_tos=xxxxxx; log_Id_pv=xxxxxx; log_Id_view=xxxxxx"
+    },
+    {
+      "csdn_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "WZYD_DATA_LIST": [
+    {
+      "wzyd_data": "areaId=xxxxxx&roleId=xxxxxx&gameId=xxxxxx&serverId=xxxxxx&gameOpenid=xxxxxx&userId=xxxxxx&appVersion=xxxxxx&cClientVersionName=xxxxxx&platid=xxxxxx&source=xxxxxx&algorithm=xxxxxx&version=xxxxxx&timestamp=xxxxxx&appid=xxxxxx&openid=xxxxxx&sig=xxxxxx&encode=2&msdkEncodeParam=xxxxxx&cSystem=xxxxxx&h5Get=xxxxxx&msdkToken=&appOpenid=xxxxxx"
+    },
+    {
+      "wzyd_data": "多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }
