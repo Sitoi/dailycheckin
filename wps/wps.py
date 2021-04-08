@@ -322,10 +322,7 @@ class WPSCheckIn:
         miniprogram_sign_msg = self.miniprogram_sign(session=session, sid=sid)
         user_info_msg, userid = self.user_info(session=session, sid=sid)
         miniprogram_invite_msg = self.miniprogram_invite(session=session, invite_userid=userid)
-        msg = (
-            f"{user_info_msg}\n{web_sign_msg}\n{docer_sign_msg}\n{miniprogram_sign_msg}"
-            f"\n{miniprogram_invite_msg}"
-        )
+        msg = f"{user_info_msg}\n{web_sign_msg}\n{docer_sign_msg}\n{miniprogram_sign_msg}\n{miniprogram_invite_msg}"
         return msg
 
 

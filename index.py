@@ -4,7 +4,7 @@ import os
 import time
 from datetime import datetime, timedelta
 
-from config import checkin_map, get_checkin_info, get_notice_info, env2config
+from config import checkin_map, env2config, get_checkin_info, get_notice_info
 from motto import Motto
 from utils.message import push_message
 
@@ -27,19 +27,22 @@ def main_handler(event, context):
     for one_check, check_tuple in checkin_map.items():
         check_name, check_func = check_tuple
         if check_info.get(one_check.lower()):
-            print(f"----------已检测到正确的配置，并开始执行 {one_check} 签到----------")
-            for check_item in check_info.get(one_check.lower(), []):
+            print(f"----------已检测到正确的配置，并开始执行【{check_name}】签到----------")
+            for index, check_item in enumerate(check_info.get(one_check.lower(), [])):
+                print(f"----------开始执行【{check_name}】签到 : 第 {index + 1} 个账号----------")
                 if "xxxxxx" not in str(check_item) and "多账号" not in str(check_item):
                     try:
                         msg = check_func(check_item).main()
                         content_list.append(f"【{check_name}】\n{msg}")
+                        print(f"----------执行完成 【{check_name}】签到 : 第 {index + 1} 个账号----------")
                     except Exception as e:
                         content_list.append(f"【{check_name}】\n{e}")
-                        print(check_name, e)
+                        print(f"----------执行失败 【{check_name}】签到 : 错误日志如下:----------\n{e}")
+
                 else:
-                    print(f"检测【{check_name}】脚本到配置文件包含模板配置,进行跳过")
+                    print(f"----------跳过执行【{check_name}】签到 : 配置文件包含自带的默认配置----------")
         else:
-            print(f"----------未检测到正确的配置，并跳过执行 {one_check} 签到----------")
+            print(f"----------未检测到正确的配置，并跳过执行【{check_name}】签到----------")
     if motto:
         try:
             msg_list = Motto().main()

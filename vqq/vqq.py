@@ -111,8 +111,7 @@ class VQQCheckIn:
         sign_once_msg = self.sign_once(headers=headers, cookies=vqq_cookie)
         sign_twice_msg = self.sign_twice(headers=headers, cookies=vqq_cookie)
         task_msg = self.tasks(headers=headers, cookies=vqq_cookie)
-        msg = f"用户信息: {nick}\n签到奖励1: {sign_once_msg}\n" \
-              f"签到奖励2: {sign_twice_msg}\n{task_msg}"
+        msg = f"用户信息: {nick}\n签到奖励1: {sign_once_msg}\n签到奖励2: {sign_twice_msg}\n{task_msg}"
         return msg
 
 

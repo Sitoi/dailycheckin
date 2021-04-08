@@ -45,7 +45,6 @@ curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
 docker exec dailycheckin python3 index.py
 ```
 
-
 ##### 更新最新脚本
 
 ```bash
