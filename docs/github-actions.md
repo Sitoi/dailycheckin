@@ -138,11 +138,13 @@ CONFIG_JSON
     {
       "fmapp_token": "xxxxxx.xxxxxx-xxxxxx-xxxxxx.xxxxxx-xxxxxx",
       "fmapp_cookie": "sensorsdata2015jssdkcross=xxxxxx",
+      "fmapp_blackbox": "eyJlcnJxxxxxx",
       "fmapp_device_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxx"
     },
     {
       "fmapp_token": "多账号 token 填写，请参考上面，以实际获取为准",
       "fmapp_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "fmapp_blackbox": "多账号 blackbox 填写，请参考上面，blackbox 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
       "fmapp_device_id": "多账号 device_id 填写，请参考上面，以实际获取为准"
     }
   ],

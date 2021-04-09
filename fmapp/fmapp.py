@@ -63,18 +63,21 @@ class FMAPPCheckIn:
     def main(self):
         fmapp_token = self.check_item.get("fmapp_token")
         fmapp_cookie = self.check_item.get("fmapp_cookie")
+        fmapp_blackbox = self.check_item.get("fmapp_blackbox")
         fmapp_device_id = self.check_item.get("fmapp_device_id")
         headers = {
+            "Accept": "*/*",
+            "Accept-Language": "zh-Hans;q=1.0",
+            "Accept-Encoding": "br;q=1.0, gzip;q=0.9, deflate;q=0.8",
             "Host": "fmapp.chinafamilymart.com.cn",
             "Content-Type": "application/json",
-            "Accept": "*/*",
             "loginChannel": "app",
-            "Accept-Language": "zh-Hans-CN;q=1.0, en-CN;q=0.9, ja-CN;q=0.8, zh-Hant-HK;q=0.7, io-Latn-CN;q=0.6",
             "token": fmapp_token,
-            "fmVersion": "2.0.0",
+            "fmVersion": "2.2.3",
             "deviceId": fmapp_device_id,
             "User-Agent": "Fa",
             "cookie": fmapp_cookie,
+            "blackBox": fmapp_blackbox,
         }
         sign_msg = self.sign(headers=headers)
         name_msg = self.user_info(headers=headers)

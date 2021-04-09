@@ -66,6 +66,7 @@
 |_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|APP|联通营业厅 每日签到|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_token|Fa米家|APP|Fa米家 APP headers 中的 token|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
+|_**FMAPP_ACCOUNT_LIST**_.fmapp_blackbox|Fa米家|APP|Fa米家 APP headers 中的 blackBox|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|APP|Fa米家 APP headers 中的 deviceId|
 |_**ACFUN_ACCOUNT_LIST**_.acfun_phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 手机账号|
 |_**ACFUN_ACCOUNT_LIST**_.acfun_password|[AcFun](https://www.acfun.cn/)|APP|AcFun 账号密码|
@@ -269,11 +270,13 @@
     {
       "fmapp_token": "xxxxxx.xxxxxx-xxxxxx-xxxxxx.xxxxxx-xxxxxx",
       "fmapp_cookie": "sensorsdata2015jssdkcross=xxxxxx",
+      "fmapp_blackbox": "eyJlcnJxxxxxx",
       "fmapp_device_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxx"
     },
     {
       "fmapp_token": "多账号 token 填写，请参考上面，以实际获取为准",
       "fmapp_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "fmapp_blackbox": "多账号 blackbox 填写，请参考上面，blackbox 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
       "fmapp_device_id": "多账号 device_id 填写，请参考上面，以实际获取为准"
     }
   ],
