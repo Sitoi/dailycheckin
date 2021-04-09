@@ -157,5 +157,5 @@ def get_notice_info(data):
     return result
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     env2config(save_file=True)

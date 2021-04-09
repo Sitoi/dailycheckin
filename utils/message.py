@@ -115,12 +115,7 @@ def message2qywxapp(qywx_corpid, qywx_agentid, qywx_corpsecret, qywx_touser, con
 
 def message2pushplus(pushplus_token, content, pushplus_topic=None):
     print("Pushplus 推送开始")
-    data = {
-        "token": pushplus_token,
-        "title": "签到通知",
-        "content": content.replace("\n", "<br>"),
-        "template": "json"
-    }
+    data = {"token": pushplus_token, "title": "签到通知", "content": content.replace("\n", "<br>"), "template": "json"}
     if pushplus_topic:
         data["topic"] = pushplus_topic
     requests.post(url=f"http://www.pushplus.plus/send", data=json.dumps(data))
