@@ -74,6 +74,7 @@
 |_**PICACOMIC_ACCOUNT_LIST**_.picacomic_password|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 密码|
 |_**WEIBO_COOKIE_LIST**_.weibo_show_url|微博|APP| 抓取开头为 `https://api.weibo.cn/2/users/show?` 的整个 url 填入即可|
 |_**DUOKAN_COOKIE_LIST**_.duokan_cookie|多看阅读|APP|多看阅读 cookie， 抓取开头为 `https://www.duokan.com` 下的 cookie 即可|
+|_**WZYD_DATA_LIST**_.wzyd_data|王者营地|APP|王者营地 请求体中的 data， 抓包 APP 中域名为 `https://ssl.kohsocial.qq.com` 请求内容的全部参数|
 
 ### 其他任务配置
 
@@ -441,6 +442,13 @@
     {
       "csdn_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
+  ],
+  "WZYD_DATA_LIST": [
+    {
+      "wzyd_data": "areaId=xxxxxx&roleId=xxxxxx&gameId=xxxxxx&serverId=xxxxxx&gameOpenid=xxxxxx&userId=xxxxxx&appVersion=xxxxxx&cClientVersionName=xxxxxx&platid=xxxxxx&source=xxxxxx&algorithm=xxxxxx&version=xxxxxx&timestamp=xxxxxx&appid=xxxxxx&openid=xxxxxx&sig=xxxxxx&encode=2&msdkEncodeParam=xxxxxx&cSystem=xxxxxx&h5Get=xxxxxx&msdkToken=&appOpenid=xxxxxx"
+    },
+    {
+      "wzyd_data": "多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
   ]
-}
-```
+}```

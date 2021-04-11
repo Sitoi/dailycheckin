@@ -74,3 +74,4 @@ jobs:
           WEIBO_COOKIE_LIST: ${{secrets.WEIBO_COOKIE_LIST}}
           DUOKAN_COOKIE_LIST: ${{secrets.DUOKAN_COOKIE_LIST}}
           CSDN_COOKIE_LIST: ${{secrets.CSDN_COOKIE_LIST}}
+          WZYD_DATA_LIST: ${{secrets.WZYD_DATA_LIST}}
