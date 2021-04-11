@@ -36,40 +36,38 @@
 
 ## 签到列表
 
-✔️: 正常运行 ❌: 脚本暂不可用 ❓: 可以执行(待更新) ⭕: 待测试 ❗: 看脸（有人可以有人不可以）
+🟢: 正常运行 ❌: 脚本暂不可用 ❓: 可以执行(待更新) ⭕: 待测试 ❗: 看脸（有人可以有人不可以）
 
 |类别|名称|备注|运行周期|状态|
 |:---:|:---:|:---|:---:|:---:|
-|签到|[爱奇艺](https://www.iqiyi.com/)|签7天奖1天，14天奖2天，28天奖7天；日常任务；随机成长值|每天一次|✔️|
-|签到|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 150 鲜花左右|每天一次|✔️|
-|签到|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|每天一次|✔️|
-|签到|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|每天一次|✔️|
-|签到|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|每天一次|✔️|
-|签到|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务|每天一次|✔️|
-|签到|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|每天一次|✔️|
-|签到|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|每天一次|✔️|
-|签到|[V2EX](https://www.v2ex.com/)|铜币奖励|每天一次|✔️|
-|签到|[咔叽网单](https://www.2nzz.com/)|论坛金币|每天一次|✔️|
-|签到|[什么值得买](https://www.smzdm.com)|每日签到|每天一次|✔️|
-|签到|[AcFun](https://www.acfun.cn/)|每日签到香蕉|每天一次|✔️|
-|签到|[天翼云盘](https://cloud.189.cn/)|每日签到+2次抽奖获得空间奖励|每天一次|✔️|
-|签到|[WPS](https://www.wps.cn/)|每日签到|每天一次|✔️|
+|签到|[爱奇艺](https://www.iqiyi.com/)|签7天奖1天，14天奖2天，28天奖7天；日常任务；随机成长值|每天一次|🟢️|
+|签到|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 150 鲜花左右|每天一次|🟢️|
+|签到|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|每天一次|🟢️|
+|签到|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|每天一次|🟢️|
+|签到|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|每天一次|🟢️|
+|签到|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务|每天一次|🟢️|
+|签到|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|每天一次|🟢️|
+|签到|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|每天一次|🟢️|
+|签到|[V2EX](https://www.v2ex.com/)|铜币奖励|每天一次|🟢️|
+|签到|[咔叽网单](https://www.2nzz.com/)|论坛金币|每天一次|🟢️|
+|签到|[什么值得买](https://www.smzdm.com)|每日签到|每天一次|🟢️|
+|签到|[AcFun](https://www.acfun.cn/)|每日签到香蕉|每天一次|🟢️|
+|签到|[天翼云盘](https://cloud.189.cn/)|每日签到+2次抽奖获得空间奖励|每天一次|🟢️|
+|签到|[WPS](https://www.wps.cn/)|每日签到|每天一次|🟢️|
 |签到|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|每天一次|❗|
 |签到|[哔咔漫画](https://www.picacomic.com)|成长值奖励|每天一次|❗|
-|签到|[MEIZU 社区](https://bbs.meizu.cn)|每日签到,可配置抽奖|每天一次|✔️|
-|签到|[和彩云](https://caiyun.feixin.10086.cn:7071/portal/newsignin/index.jsp)|每日签到获取积分，积分可兑换物品|每天一次|❌|
-|签到|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|每天一次|✔️|
-|签到|[CSDN](https://www.csdn.net/)|每日签到、抽奖|每天一次|✔️|
-|签到|王者营地|每日签到|每天一次|⭕|
-|签到|微博|每日钱包签到、打卡|每天一次|✔️|
-|签到|多看阅读|获取书豆，用于购买书籍|每天一次|✔️|
-|签到|芒果 TV|签到获取体验会员|每天一次|✔️|
-|签到|联通营业厅|积分+流量奖励|每天一次|✔️|
-|签到|Fa米家 APP|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|每天一次|✔️|
-|其他|小米运动|每日小米运动刷步数|每天一次|✔️|
-|其他|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|每天一次|✔️|
-|其他|每日天气预报|获取指定的多个城市天气信息|每天一次|✔️|
-|其他|每日一句|从词霸中获取每日一句，带英文|每天一次|✔️|
+|签到|[MEIZU 社区](https://bbs.meizu.cn)|每日签到,可配置抽奖|每天一次|🟢️|
+|签到|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|每天一次|🟢️|
+|签到|[CSDN](https://www.csdn.net/)|每日签到、抽奖|每天一次|🟢️|
+|签到|微博|每日钱包签到、打卡|每天一次|🟢️|
+|签到|多看阅读|获取书豆，用于购买书籍|每天一次|🟢️|
+|签到|芒果 TV|签到获取体验会员|每天一次|🟢️|
+|签到|联通营业厅|积分+流量奖励|每天一次|🟢️|
+|签到|Fa米家 APP|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|每天一次|🟢️|
+|其他|小米运动|每日小米运动刷步数|每天一次|🟢️|
+|其他|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|每天一次|🟢️|
+|其他|每日天气预报|获取指定的多个城市天气信息|每天一次|🟢️|
+|其他|每日一句|从词霸中获取每日一句，带英文|每天一次|🟢️|
 
 ## 详细文档
 
@@ -80,12 +78,6 @@
 
 如有签到脚本需求，请到 [DISCUSSIONS](https://github.com/Sitoi/dailycheckin/discussions/77) 中提交
 
-## 特别鸣谢
-
-- [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
-- [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
-- [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
-
 ## 交流群
 
 <table> 
@@ -94,6 +86,12 @@
  <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td> 
 </tr> 
 </table>
+
+## 特别鸣谢
+
+- [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
+- [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
+- [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
 
 ## 其他
 

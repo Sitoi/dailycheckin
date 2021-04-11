@@ -233,14 +233,6 @@
       "draw_count": "多账号 抽奖次数设置"
     }
   ],
-  "CAIYUN_COOKIE_LIST": [
-    {
-      "caiyun_cookie": "WAPJSESSIONID=xxxxxx; bc_mo=xxxxxx; bc_ps=xxxxxx; bc_to=xxxxxx; JSESSIONID=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; sajssdk_2015_cross_new_user=1"
-    },
-    {
-      "caiyun_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
   "ZHIYOO_COOKIE_LIST": [
     {
       "zhiyoo_cookie": "ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_onlineusernum=xxxxxx; ikdQ_9242_sendmail=1; ikdQ_9242_seccode=xxxxxx; ikdQ_9242_ulastactivity=xxxxxx; ikdQ_9242_auth=xxxxxx; ikdQ_9242_connect_is_bind=xxxxxx; ikdQ_9242_nofavfid=xxxxxx; ikdQ_9242_checkpm=xxxxxx; ikdQ_9242_noticeTitle=1; ikdQ_9242_sid=xxxxxx; ikdQ_9242_lip=xxxxxx; ikdQ_9242_lastact=xxxxxx"
@@ -271,14 +263,6 @@
     },
     {
       "csdn_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "WZYD_DATA_LIST": [
-    {
-      "wzyd_data": "areaId=xxxxxx&roleId=xxxxxx&gameId=xxxxxx&serverId=xxxxxx&gameOpenid=xxxxxx&userId=xxxxxx&appVersion=xxxxxx&cClientVersionName=xxxxxx&platid=xxxxxx&source=xxxxxx&algorithm=xxxxxx&version=xxxxxx&timestamp=xxxxxx&appid=xxxxxx&openid=xxxxxx&sig=xxxxxx&encode=2&msdkEncodeParam=xxxxxx&cSystem=xxxxxx&h5Get=xxxxxx&msdkToken=&appOpenid=xxxxxx"
-    },
-    {
-      "wzyd_data": "多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }
