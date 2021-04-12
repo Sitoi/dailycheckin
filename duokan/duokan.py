@@ -242,30 +242,18 @@ class DuoKanCheckIn:
     def info(self, cookies):
         url = "https://www.duokan.com/store/v0/award/coin/list"
         data = f"sandbox=0&{self.get_data(cookies=cookies)}&withid=1"
-        response = requests.post(
-            url=url,
-            data=data,
-            cookies=cookies,
-            headers=self.headers,
-        )
+        response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
         result = response.json()
         msg = "\n".join([f"{one.get('expire')} 到期，{one.get('coin')} 书豆" for one in result.get("data", {}).get("award")])
         return msg
 
     def free(self, cookies):
         url = "https://www.duokan.com/hs/v4/channel/query/2027"
-        response = requests.get(
-            url=url, cookies=cookies, headers=self.headers
-        )
+        response = requests.get(url=url, cookies=cookies, headers=self.headers)
         bid = response.json().get("items")[0].get("data").get("book_id")
         data = f"payment_name=BC&ch=VSZUVB&book_id={bid}&price=0&allow_discount=1"
         free_url = "https://www.duokan.com/store/v0/payment/book/create"
-        response = requests.post(
-            url=free_url,
-            data=data,
-            cookies=cookies,
-            headers=self.headers,
-        )
+        response = requests.post(url=free_url, data=data, cookies=cookies, headers=self.headers)
         result = response.json()
         book_title = result.get("book").get("title")
         book_msg = result.get("msg")
@@ -275,12 +263,7 @@ class DuoKanCheckIn:
     def gift(self, cookies):
         url = "https://www.duokan.com/events/common_task_gift_check"
         data = f"code=KYKJF7LL0G&{self.get_data(cookies=cookies)}&withid=1"
-        response = requests.post(
-            url=url,
-            data=data,
-            cookies=cookies,
-            headers=self.headers
-        )
+        response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
         result = response.json()
         if result.get("chances") == 0:
             msg = "体验任务: 已经做完啦"
@@ -289,12 +272,7 @@ class DuoKanCheckIn:
             for gift_code in self.gift_code_list:
                 url = "https://www.duokan.com/events/common_task_gift"
                 data = f"code=KYKJF7LL0G&chances=1&sign={gift_code}&{self.get_data(cookies=cookies)}&withid=1"
-                response = requests.post(
-                    url=url,
-                    data=data,
-                    cookies=cookies,
-                    headers=self.headers
-                )
+                response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
                 result = response.json()
                 if result.get("msg") == "成功":
                     num += 30
@@ -311,12 +289,7 @@ class DuoKanCheckIn:
         for one in range(6):
             url = "https://www.duokan.com/store/v0/event/chances/add"
             data = f"code=8ulcky4bknbe_f&count=1&{self.get_data(cookies=cookies)}&withid=1"
-            response = requests.post(
-                url=url,
-                data=data,
-                cookies=cookies,
-                headers=self.headers
-            )
+            response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
             result = response.json()
             if result.get("result") == 0:
                 success_count += 1
@@ -328,12 +301,7 @@ class DuoKanCheckIn:
         for one in range(6):
             url = "https://www.duokan.com/store/v0/event/drawing"
             data = f"code=8ulcky4bknbe_f&{self.get_data(cookies=cookies)}&withid=1"
-            response = requests.post(
-                url=url,
-                data=data,
-                cookies=cookies,
-                headers=self.headers
-            )
+            response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
             result = response.json()
             if result.get("result") == 0:
                 success_count += 1
@@ -343,12 +311,7 @@ class DuoKanCheckIn:
     def download(self, cookies):
         url = "https://www.duokan.com/events/common_task_gift"
         data = f"code=J18UK6YYAY&chances=17&{self.get_data(cookies=cookies)}&withid=1"
-        response = requests.post(
-            url=url,
-            data=data,
-            cookies=cookies,
-            headers=self.headers
-        )
+        response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
         result = response.json()
         msg = "下载任务: " + result.get("msg")
         return msg
@@ -358,12 +321,7 @@ class DuoKanCheckIn:
         url = "https://www.duokan.com/events/tasks_gift"
         for code in self.code_list:
             data = f"code={code}&chances=3&{self.get_data(cookies=cookies)}&withid=1"
-            response = requests.post(
-                url=url,
-                data=data,
-                cookies=cookies,
-                headers=self.headers
-            )
+            response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
             result = response.json()
             if result.get("result") == 0:
                 success_count += 1
@@ -381,8 +339,10 @@ class DuoKanCheckIn:
         download_msg = self.download(cookies=duokan_cookie)
         task_msg = self.task(cookies=duokan_cookie)
         info_msg = self.info(cookies=duokan_cookie)
-        msg = f"每日签到: {sign_msg}\n{free_msg}\n{gift_msg}\n" \
-              f"{add_draw_msg}\n{draw_msg}\n{download_msg}\n{task_msg}\n{info_msg}"
+        msg = (
+            f"每日签到: {sign_msg}\n{free_msg}\n{gift_msg}\n"
+            f"{add_draw_msg}\n{draw_msg}\n{download_msg}\n{task_msg}\n{info_msg}"
+        )
         return msg
 
 
