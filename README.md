@@ -92,7 +92,7 @@
 
 如有签到脚本需求，请到 [DISCUSSIONS](https://github.com/Sitoi/dailycheckin/discussions/77) 中提交
 
-## 交流群
+## 交流
 
 <table> 
 <tr> 
