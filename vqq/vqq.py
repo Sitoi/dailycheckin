@@ -90,6 +90,8 @@ class VQQCheckIn:
                 msg = f"获得+10成长值"
             elif "已发过货" in res.text:
                 msg = "任务已完成"
+            elif "任务未完成" in res.text:
+                msg = "任务未完成，需手动完成任务"
             else:
                 msg = res.text
             task_msg_list.append(f"{task_name}: {msg}")
