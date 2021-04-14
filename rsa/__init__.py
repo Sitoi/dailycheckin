@@ -21,9 +21,9 @@ prevent repetitions, or other common security improvements. Use with care.
 
 """
 
-from rsa.key import newkeys, PrivateKey, PublicKey
-from rsa.pkcs1 import encrypt, decrypt, sign, verify, DecryptionError, \
-    VerificationError, find_signature_hash,  sign_hash, compute_hash
+from rsa.key import PrivateKey, PublicKey, newkeys
+from rsa.pkcs1 import DecryptionError, VerificationError, compute_hash, decrypt, encrypt, find_signature_hash, sign, \
+    sign_hash, verify
 
 __author__ = "Sybren Stuvel, Barry Mead and Yesudeep Mangalapilly"
 __date__ = '2020-06-12'
@@ -36,5 +36,5 @@ if __name__ == "__main__":
     doctest.testmod()
 
 __all__ = ["newkeys", "encrypt", "decrypt", "sign", "verify", 'PublicKey',
-           'PrivateKey', 'DecryptionError', 'VerificationError',
-           'find_signature_hash', 'compute_hash', 'sign_hash']
+    'PrivateKey', 'DecryptionError', 'VerificationError',
+    'find_signature_hash', 'compute_hash', 'sign_hash']

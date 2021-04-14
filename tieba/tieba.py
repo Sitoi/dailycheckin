@@ -29,17 +29,12 @@ class TiebaCheckIn:
         return tbs, user_name
 
     @staticmethod
-    def tieba_list(session):
-        data = session.get(url="https://tieba.baidu.com/mo/q/newmoindex").json()
-        if data["no"] == 0:
-            return [x["forum_name"] for x in data["data"]["like_forum"]]
-        else:
-            return []
-
-    @staticmethod
     def tieba_list_more(session):
         content = session.get(url="http://tieba.baidu.com/f/like/mylike?&pn=1", timeout=(5, 20))
-        pn = int(re.match(r".*/f/like/mylike\?&pn=(.*?)\">尾页.*", content.text, re.S | re.I).group(1))
+        try:
+            pn = int(re.match(r".*/f/like/mylike\?&pn=(.*?)\">尾页.*", content.text, re.S | re.I).group(1))
+        except Exception as e:
+            pn = 1
         next_page = 1
         pattern = re.compile(r".*?<a href=\"/f\?kw=.*?title=\"(.*?)\">")
         while next_page <= pn:
@@ -50,18 +45,12 @@ class TiebaCheckIn:
             content = session.get(url=f"http://tieba.baidu.com/f/like/mylike?&pn={next_page}", timeout=(5, 20))
 
     def get_tieba_list(self, session):
-        try:
-            session.get(url="https://tieba.baidu.com/f/user/json_userinfo", allow_redirects=False).json()
-        except Exception as e:
-            print(e)
-            tieba_list = self.tieba_list(session=session)
-        else:
-            tieba_list = self.tieba_list_more(session=session)
+        tieba_list = list(self.tieba_list_more(session=session))
         return tieba_list
 
     @staticmethod
     def sign(session, tb_name_list, tbs):
-        success_count, error_count, exist_count = 0, 0, 0
+        success_count, error_count, exist_count, shield_count = 0, 0, 0, 0
         for tb_name in tb_name_list:
             md5 = hashlib.md5(f"kw={tb_name}tbs={tbs}tiebaclient!!!".encode("utf-8")).hexdigest()
             data = {"kw": tb_name, "tbs": tbs, "sign": md5}
@@ -71,11 +60,13 @@ class TiebaCheckIn:
                     success_count += 1
                 elif response["error_code"] == "160002":
                     exist_count += 1
+                elif response["error_code"] == "340006":
+                    shield_count += 1
                 else:
                     error_count += 1
             except Exception as e:
                 print(f"贴吧 {tb_name} 签到异常,原因{str(e)}")
-        msg = f"贴吧总数: {len(tb_name_list)}\n签到成功: {success_count}\n已经签到: {exist_count}\n签到失败: {error_count}"
+        msg = f"贴吧总数: {len(tb_name_list)}\n签到成功: {success_count}\n已经签到: {exist_count}\n被屏蔽的: {shield_count}\n签到失败: {error_count}"
         return msg
 
     def main(self):

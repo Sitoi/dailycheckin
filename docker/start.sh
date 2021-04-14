@@ -57,7 +57,7 @@ if [ $(grep -c "default_task.sh" $mergedListFile) -eq '0' ]; then
     echo "Merged crontab task file，the required default task is not included, append default task..."
     echo "合并后的定时任务文件，未包含必须的默认定时任务，增加默认定时任务..."
     echo -e >>$mergedListFile
-    echo "52 */1 * * * sh /dailycheckin/docker/default_task.sh >> /dailycheckin/logs/default_task.log 2>&1" >>$mergedListFile
+    echo "0 */12 * * * sh /dailycheckin/docker/default_task.sh >> /dailycheckin/logs/default_task.log 2>&1" >>$mergedListFile
 fi
 
 echo "Load the latest crontab task file..."

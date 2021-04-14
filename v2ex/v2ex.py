@@ -24,7 +24,9 @@ class V2exCheckIn:
         )
         urls = re.findall(pattern=pattern, string=response.text)
         url = urls[0] if urls else None
-        if url != "/balance":
+        if url is None:
+            return "cookie 可能过期"
+        elif url != "/balance":
             headers = {"Referer": "https://www.v2ex.com/mission/daily"}
             data = {"once": url.split("=")[-1]}
             _ = session.get(url="https://www.v2ex.com" + url, verify=False, headers=headers, params=data)

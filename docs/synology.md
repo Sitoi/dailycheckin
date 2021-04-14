@@ -36,6 +36,7 @@
 ![获取 cookie 教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/synology7.jpg)
 
 ## 三、回到容器，如图即是运行成功
+
 ![获取 cookie 教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/synology8.jpg)
 
 ## 四：配置测试
