@@ -14,7 +14,7 @@
     <a href="https://sitoi.github.io/dailycheckin"><img src="https://visitor-badge.glitch.me/badge?page_id=Sitoi-dailycheckin" alt="visitor"></a>
 </p>
 
-## 特别声明:
+### 特别声明:
 
 - 本仓库发布的脚本及其中涉及的任何解锁和解密分析脚本，仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断。
 
