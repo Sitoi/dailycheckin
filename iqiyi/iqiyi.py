@@ -116,10 +116,7 @@ class IQIYICheckIn:
                 params["taskCode"] = item.get("taskCode")
                 requests.get(url=url, params=params)
             elif item["status"] == 4:
-                requests.get(
-                    url='https://tc.vip.iqiyi.com/taskCenter/task/notify',
-                    params=params
-                )
+                requests.get(url="https://tc.vip.iqiyi.com/taskCenter/task/notify", params=params)
                 params["taskCode"] = item.get("taskCode")
                 requests.get(url=url, params=params)
             elif item["status"] == 1:

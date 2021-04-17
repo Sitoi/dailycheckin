@@ -7,7 +7,3 @@
 ##############每日签到一次任务##############
 # 每日签到(8：45 执行一次)
 45 8 * * * python /dailycheckin/index.py >> /dailycheckin/logs/dailycheckin.log 2>&1
-
-##############每日签到定时任务##############
-# 喜马拉雅极速版
-*/30 * * * * python /dailycheckin/index.py xmly >> /dailycheckin/logs/xmly.log 2>&1

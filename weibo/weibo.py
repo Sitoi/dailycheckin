@@ -60,19 +60,23 @@ class WeiBoCheckIn:
         response = requests.post(
             url=f"https://pay.sc.weibo.com/aj/mobile/home/welfare/signin/do", headers=headers, data=data, verify=False
         )
-        result = response.json()
-        if result.get("status") == 1:
-            msg = f'微博钱包: {result.get("score")} 积分'
-        elif result.get("status") == 2:
-            msg = f"微博钱包: 已签到"
-            info_response = requests.post(
-                url="https://pay.sc.weibo.com/api/client/sdk/app/balance", headers=headers, data=data
-            )
-            info_result = info_response.json()
-            msg += f"\n当前现金: {info_result.get('data').get('balance')} 元"
-        else:
+        try:
+            result = response.json()
+            if result.get("status") == 1:
+                msg = f'微博钱包: {result.get("score")} 积分'
+            elif result.get("status") == 2:
+                msg = f"微博钱包: 已签到"
+                info_response = requests.post(
+                    url="https://pay.sc.weibo.com/api/client/sdk/app/balance", headers=headers, data=data
+                )
+                info_result = info_response.json()
+                msg += f"\n当前现金: {info_result.get('data').get('balance')} 元"
+            else:
+                msg = f"微博钱包: Cookie失效"
+            return msg
+        except Exception as e:
             msg = f"微博钱包: Cookie失效"
-        return msg
+            return msg
 
     def main(self):
         weibo_show_url = self.check_item.get("weibo_show_url")

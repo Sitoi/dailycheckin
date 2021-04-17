@@ -244,22 +244,22 @@ class LianTongCheckIn:
     def dayoneg(session):
         try:
             # 观看视频任务
-            session.post(url='https://act.10010.com/SigninApp/doTask/finishVideo')
+            session.post(url="https://act.10010.com/SigninApp/doTask/finishVideo")
             # 请求任务列表
-            get_task_info = session.post(url='https://act.10010.com/SigninApp/doTask/getTaskInfo')
-            get_task_info.encoding = 'utf-8'
-            get_prize = session.post(url='https://act.10010.com/SigninApp/doTask/getPrize')
-            get_prize.encoding = 'utf-8'
-            session.post(url='https://act.10010.com/SigninApp/doTask/getTaskInfo')
+            get_task_info = session.post(url="https://act.10010.com/SigninApp/doTask/getTaskInfo")
+            get_task_info.encoding = "utf-8"
+            get_prize = session.post(url="https://act.10010.com/SigninApp/doTask/getPrize")
+            get_prize.encoding = "utf-8"
+            session.post(url="https://act.10010.com/SigninApp/doTask/getTaskInfo")
             res1 = get_task_info.json()
             res2 = get_prize.json()
-            if res1['data']['taskInfo']['status'] == '1':
-                msg = '1G流量日包: ' + res2['data']['statusDesc']
+            if res1["data"]["taskInfo"]["status"] == "1":
+                msg = "1G流量日包: " + res2["data"]["statusDesc"]
             else:
-                msg = '1G流量日包: ' + res1['data']['taskInfo']['btn']
+                msg = "1G流量日包: " + res1["data"]["taskInfo"]["btn"]
             time.sleep(1)
         except Exception as e:
-            msg = '1G流量日包: 错误，' + str(e)
+            msg = "1G流量日包: 错误，" + str(e)
         return msg
 
     @staticmethod
