@@ -3,6 +3,7 @@ import json
 import os
 import re
 import time
+from urllib.parse import unquote
 
 import requests
 
@@ -14,8 +15,9 @@ class IQIYICheckIn:
     @staticmethod
     def parse_cookie(cookie):
         p00001 = re.findall(r"P00001=(.*?);", cookie)[0]
+        p00002 = re.findall(r"P00002=(.*?);", cookie)[0]
         p00003 = re.findall(r"P00003=(.*?);", cookie)[0]
-        return p00001, p00003
+        return p00001, p00002, p00003
 
     @staticmethod
     def user_information(p00001):
@@ -33,7 +35,8 @@ class IQIYICheckIn:
                 growthvalue = res_data.get("growthvalue", 0)  # 当前 VIP 成长值
                 distance = res_data.get("distance", 0)  # 升级需要成长值
                 deadline = res_data.get("deadline", "非 VIP 用户")  # VIP 到期时间
-                today_growth_value = res_data.get("todayGrowthValue", 0)  # 今日成长值
+                today_growth_value = res_data.get("todayGrowthValue",
+                                                  0)  # 今日成长值
                 msg = (
                     f"VIP 等级: {level}\n当前成长值: {growthvalue}\n"
                     f"升级需成长值: {distance}\n今日成长值: +{today_growth_value}\nVIP 到期时间: {deadline}"
@@ -56,10 +59,10 @@ class IQIYICheckIn:
         if res["code"] == "A00000":
             try:
                 growth = res["data"]["signInfo"]["data"]["rewardMap"]["growth"]
-                continue_sign_days_sum = res["data"]["signInfo"]["data"]["continueSignDaysSum"]
-                reward_day = (
-                    7 if continue_sign_days_sum % 28 <= 7 else (14 if continue_sign_days_sum % 28 <= 14 else 28)
-                )
+                continue_sign_days_sum = res["data"]["signInfo"]["data"][
+                    "continueSignDaysSum"]
+                reward_day = (7 if continue_sign_days_sum % 28 <= 7 else (
+                    14 if continue_sign_days_sum % 28 <= 14 else 28))
                 rouund_day = 28 if continue_sign_days_sum % 28 == 0 else continue_sign_days_sum % 28
                 msg = f"+{growth}成长值\n连续签到: {continue_sign_days_sum}天\n签到周期: {rouund_day}天/{reward_day}天"
             except Exception as e:
@@ -80,14 +83,16 @@ class IQIYICheckIn:
         res = requests.get(url=url, params=params).json()
         if res["code"] == "A00000":
             for item in res["data"]["tasks"]["daily"]:
-                task_list.append(
-                    {
-                        "name": item["name"],
-                        "taskCode": item["taskCode"],
-                        "status": item["status"],
-                        "taskReward": item["taskReward"]["task_reward_growth"],
-                    }
-                )
+                task_list.append({
+                    "name":
+                    item["name"],
+                    "taskCode":
+                    item["taskCode"],
+                    "status":
+                    item["status"],
+                    "taskReward":
+                    item["taskReward"]["task_reward_growth"],
+                })
         return task_list
 
     @staticmethod
@@ -96,7 +101,12 @@ class IQIYICheckIn:
         遍历完成任务
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/joinTask"
-        params = {"P00001": p00001, "taskCode": "", "platform": "bb136ff4276771f3", "lang": "zh_CN"}
+        params = {
+            "P00001": p00001,
+            "taskCode": "",
+            "platform": "bb136ff4276771f3",
+            "lang": "zh_CN"
+        }
         for item in task_list:
             if item["status"] == 2:
                 params["taskCode"] = item["taskCode"]
@@ -109,14 +119,21 @@ class IQIYICheckIn:
         :return: 返回信息
         """
         url = "https://tc.vip.iqiyi.com/taskCenter/task/getTaskRewards"
-        params = {"P00001": p00001, "taskCode": "", "platform": "bb136ff4276771f3", "lang": "zh_CN"}
+        params = {
+            "P00001": p00001,
+            "taskCode": "",
+            "platform": "bb136ff4276771f3",
+            "lang": "zh_CN"
+        }
         growth_task = 0
         for item in task_list:
             if item["status"] == 0:
                 params["taskCode"] = item.get("taskCode")
                 requests.get(url=url, params=params)
             elif item["status"] == 4:
-                requests.get(url="https://tc.vip.iqiyi.com/taskCenter/task/notify", params=params)
+                requests.get(
+                    url="https://tc.vip.iqiyi.com/taskCenter/task/notify",
+                    params=params)
                 params["taskCode"] = item.get("taskCode")
                 requests.get(url=url, params=params)
             elif item["status"] == 1:
@@ -166,7 +183,8 @@ class IQIYICheckIn:
         return {"status": False, "msg": msg, "chance": 0}
 
     def main(self):
-        p00001, p00003 = self.parse_cookie(self.check_item.get("iqiyi_cookie"))
+        p00001, p00002, p00003 = self.parse_cookie(
+            self.check_item.get("iqiyi_cookie"))
         sign_msg = self.sign(p00001=p00001)
         chance = self.draw(0, p00001=p00001, p00003=p00003)["chance"]
         if chance:
@@ -177,20 +195,28 @@ class IQIYICheckIn:
         else:
             draw_msg = "抽奖机会不足"
         task_msg = ""
-        for one in range(6):
+        for _ in range(6):
             task_list = self.query_user_task(p00001=p00001)
             self.join_task(p00001=p00001, task_list=task_list)
             time.sleep(10)
-            task_msg = self.get_task_rewards(p00001=p00001, task_list=task_list)
+            task_msg = self.get_task_rewards(p00001=p00001,
+                                             task_list=task_list)
+        user_info = json.loads(unquote(p00002, encoding='utf-8'))
+        # 一般为手机号,加密处理
+        user_name = user_info.get('user_name')
+        user_name = user_name.replace(user_name[3:7], '****')
+        # 昵称
+        nickname = user_info.get('nickname')
         user_msg = self.user_information(p00001=p00001)
-        msg = f"{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
+        msg = f"iqiyi昵称: {nickname}\n用户名: {user_name}\n" f"{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
         return msg
 
 
 if __name__ == "__main__":
-    with open(
-        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
-    ) as f:
+    with open(os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                           "config/config.json"),
+              "r",
+              encoding="utf-8") as f:
         datas = json.loads(f.read())
     _check_item = datas.get("IQIYI_COOKIE_LIST", [])[0]
     print(IQIYICheckIn(check_item=_check_item).main())
