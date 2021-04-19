@@ -76,6 +76,7 @@ class FMAPPCheckIn:
             "fmVersion": "2.2.3",
             "deviceId": fmapp_device_id,
             "User-Agent": "Fa",
+            "os": "ios",
             "cookie": fmapp_cookie,
             "blackBox": fmapp_blackbox,
         }
