@@ -3,6 +3,7 @@ import json
 import os
 import re
 import time
+from urllib.parse import unquote
 
 import requests
 
@@ -14,8 +15,9 @@ class IQIYICheckIn:
     @staticmethod
     def parse_cookie(cookie):
         p00001 = re.findall(r"P00001=(.*?);", cookie)[0]
+        p00002 = re.findall(r"P00002=(.*?);", cookie)[0]
         p00003 = re.findall(r"P00003=(.*?);", cookie)[0]
-        return p00001, p00003
+        return p00001, p00002, p00003
 
     @staticmethod
     def user_information(p00001):
@@ -166,7 +168,7 @@ class IQIYICheckIn:
         return {"status": False, "msg": msg, "chance": 0}
 
     def main(self):
-        p00001, p00003 = self.parse_cookie(self.check_item.get("iqiyi_cookie"))
+        p00001, p00002, p00003 = self.parse_cookie(self.check_item.get("iqiyi_cookie"))
         sign_msg = self.sign(p00001=p00001)
         chance = self.draw(0, p00001=p00001, p00003=p00003)["chance"]
         if chance:
@@ -182,8 +184,13 @@ class IQIYICheckIn:
             self.join_task(p00001=p00001, task_list=task_list)
             time.sleep(10)
             task_msg = self.get_task_rewards(p00001=p00001, task_list=task_list)
+        user_info = json.loads(unquote(p00002, encoding="utf-8"))
+        user_name = user_info.get("user_name")
+        user_name = user_name.replace(user_name[3:7], "****")
+        nickname = user_info.get("nickname")
         user_msg = self.user_information(p00001=p00001)
-        msg = f"{user_msg}\n" f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
+        msg = f"用户账号: {user_name}\n用户昵称: {nickname}\n{user_msg}\n" \
+              f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
         return msg
 
 
