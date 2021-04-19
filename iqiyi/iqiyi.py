@@ -15,7 +15,7 @@ class IQIYICheckIn:
     @staticmethod
     def parse_cookie(cookie):
         p00001 = re.findall(r"P00001=(.*?);", cookie)[0]
-        p00002 = re.findall(r"P00002=(.*?);", cookie)[0]
+        p00002 = re.findall(r"P00002=(.*?);", cookie)[0] if re.findall(r"P00002=(.*?);", cookie) else ""
         p00003 = re.findall(r"P00003=(.*?);", cookie)[0]
         return p00001, p00002, p00003
 
@@ -184,10 +184,15 @@ class IQIYICheckIn:
             self.join_task(p00001=p00001, task_list=task_list)
             time.sleep(10)
             task_msg = self.get_task_rewards(p00001=p00001, task_list=task_list)
-        user_info = json.loads(unquote(p00002, encoding="utf-8"))
-        user_name = user_info.get("user_name")
-        user_name = user_name.replace(user_name[3:7], "****")
-        nickname = user_info.get("nickname")
+        try:
+            user_info = json.loads(unquote(p00002, encoding="utf-8"))
+            user_name = user_info.get("user_name")
+            user_name = user_name.replace(user_name[3:7], "****")
+            nickname = user_info.get("nickname")
+        except Exception as e:
+            print(f"获取用户信息失败，错误信息: {e}")
+            nickname = "未获取到，请检查 Cookie 中 P00002 字段"
+            user_name = "未获取到，请检查 Cookie 中 P00002 字段"
         user_msg = self.user_information(p00001=p00001)
         msg = f"用户账号: {user_name}\n用户昵称: {nickname}\n{user_msg}\n" \
               f"签到奖励: {sign_msg}\n任务奖励: {task_msg}\n抽奖奖励: {draw_msg}"
