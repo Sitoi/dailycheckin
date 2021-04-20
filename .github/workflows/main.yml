@@ -2,7 +2,7 @@ name: 每日签到合集
 
 on:
   schedule:
-    - cron: '0 13,20 * * * '
+    - cron: '0 13,19 * * * '
   watch:
     types: [ started ]
   workflow_dispatch:
