@@ -90,7 +90,7 @@
 
 ## 新增签到脚本需求
 
-如有签到脚本需求，请到 [DISCUSSIONS](https://github.com/Sitoi/dailycheckin/discussions/77) 中提交
+
 
 ## 交流
 
