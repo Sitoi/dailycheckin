@@ -1,5 +1,5 @@
 # File: .github/workflows/repo-sync.yml
-name: 同步仓库
+name: 同步仓库1
 on:
   schedule:
     - cron: '15 0 * * *'
