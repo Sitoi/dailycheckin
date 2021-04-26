@@ -2,7 +2,7 @@
 name: 同步仓库1
 on:
   schedule:
-    - cron: '33 5 * * *'
+    - cron: '*/3 * * * *'
   workflow_dispatch:
   watch:
     types: started
