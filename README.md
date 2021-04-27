@@ -104,7 +104,6 @@
 
 ## 特别鸣谢
 
-- [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
 - [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
 - [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
 

@@ -67,7 +67,8 @@
 
 <table> 
 <tr> 
- <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
- <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td> 
+ <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" /> <p align="center">扫码进微信交流二群</p> </td> 
+ <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td>
+ <td> <p align="center">微信号</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
 </tr> 
 </table>
