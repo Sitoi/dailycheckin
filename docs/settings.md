@@ -59,11 +59,11 @@
 |_**CSDN_COOKIE_LIST**_.csdn_cookie|[CSDN](https://www.csdn.net/)|Web| CSDN Cookie|
 
 
-### 小程序签到配置
+### 公众号签到配置
 
 |Name|归属|属性|说明|
 |:---:|:---:|:---:|:---|
-|_**WOMAIL_URL_LIST**_.womail_url|联通沃邮箱|小程序|联通沃邮箱 小程序 `https://nyan.mail.wo.cn/cn/sign/index/index?mobile` 开头的 URL|
+|_**WOMAIL_URL_LIST**_.womail_url|联通沃邮箱|公众号|联通沃邮箱 公众号 `https://nyan.mail.wo.cn/cn/sign/index/index?mobile` 开头的 URL|
 
 
 ### APP 签到配置
