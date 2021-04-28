@@ -75,3 +75,4 @@ jobs:
           DUOKAN_COOKIE_LIST: ${{secrets.DUOKAN_COOKIE_LIST}}
           CSDN_COOKIE_LIST: ${{secrets.CSDN_COOKIE_LIST}}
           WZYD_DATA_LIST: ${{secrets.WZYD_DATA_LIST}}
+          WOMAIL_URL_LIST: ${{secrets.WOMAIL_URL_LIST}}

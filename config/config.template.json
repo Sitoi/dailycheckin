@@ -272,5 +272,13 @@
     {
       "wzyd_data": "多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
+  ],
+  "WOMAIL_URL_LIST": [
+    {
+      "womail_url": "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=xxxxxx&userName=&openId=xxxxxx"
+    },
+    {
+      "womail_url": "多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
   ]
 }

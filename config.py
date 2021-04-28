@@ -25,6 +25,7 @@ from v2ex import V2exCheckIn
 from vqq import VQQCheckIn
 from weather import Weather
 from weibo import WeiBoCheckIn
+from womail import WoMailCheckIn
 from wps import WPSCheckIn
 from www2nzz import WWW2nzzCheckIn
 from wzyd import WZYDCheckIn
@@ -59,6 +60,7 @@ checkin_map = {
     "DUOKAN_COOKIE_LIST": ("多看阅读", DuoKanCheckIn),
     "CSDN_COOKIE_LIST": ("CSDN", CSDNCheckIn),
     "WZYD_DATA_LIST": ("王者营地", WZYDCheckIn),
+    "WOMAIL_URL_LIST": ("沃邮箱", WoMailCheckIn),
     "CITY_NAME_LIST": ("天气预报", Weather),
 }
 

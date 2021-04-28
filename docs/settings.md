@@ -58,11 +58,19 @@
 |_**ZHIYOO_COOKIE_LIST**_.zhiyoo_cookie|[智友邦](http://zhizhiyoo.net/)|Web| 智友邦 WEB Cookie|
 |_**CSDN_COOKIE_LIST**_.csdn_cookie|[CSDN](https://www.csdn.net/)|Web| CSDN Cookie|
 
+
+### 小程序签到配置
+
+|Name|归属|属性|说明|
+|:---:|:---:|:---:|:---|
+|_**WOMAIL_URL_LIST**_.womail_url|联通沃邮箱|小程序|联通沃邮箱 小程序 `https://nyan.mail.wo.cn/cn/sign/index/index?mobile` 开头的 URL|
+
+
 ### APP 签到配置
 
 |Name|归属|属性|说明|
 |:---:|:---:|:---:|:---|
-|_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|APP|联通营业厅 每日签到|
+|_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|APP|联通营业厅 APP 请求中的 Body|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_token|Fa米家|APP|Fa米家 APP headers 中的 token|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_blackbox|Fa米家|APP|Fa米家 APP headers 中的 blackBox|
@@ -449,6 +457,14 @@
     },
     {
       "wzyd_data": "多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "WOMAIL_URL_LIST": [
+    {
+      "womail_url": "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=xxxxxx&userName=&openId=xxxxxx"
+    },
+    {
+      "womail_url": "多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }
