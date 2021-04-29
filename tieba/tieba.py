@@ -31,7 +31,10 @@ class TiebaCheckIn:
     @staticmethod
     def tieba_list_more(session):
         content = session.get(url="http://tieba.baidu.com/f/like/mylike?&pn=1", timeout=(5, 20))
-        pn = int(re.match(r".*/f/like/mylike\?&pn=(.*?)\">尾页.*", content.text, re.S | re.I).group(1))
+        try:
+            pn = int(re.match(r".*/f/like/mylike\?&pn=(.*?)\">尾页.*", content.text, re.S | re.I).group(1))
+        except Exception as e:
+            pn = 1
         next_page = 1
         pattern = re.compile(r".*?<a href=\"/f\?kw=.*?title=\"(.*?)\">")
         while next_page <= pn:

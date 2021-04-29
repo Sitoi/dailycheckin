@@ -39,6 +39,7 @@
 |签到|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖|WEB|待测试|🟢️|
 |签到|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|WEB|待测试|🟢️|
 |签到|[CSDN](https://www.csdn.net/)|每日签到、抽奖|WEB|待测试|🟢️|
+|签到|联通沃邮箱|每日签到，签到7天得2元话费|公众号|待测试|🟡|
 |签到|王者营地|每日签到（仅限 QQ 区）|APP|待测试|🟢|
 |签到|微博|每日钱包签到、打卡|APP|待测试|🟢️|
 |签到|多看阅读|获取书豆，用于购买书籍|APP|待测试|🟢️|
@@ -67,7 +68,8 @@
 
 <table> 
 <tr> 
- <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
- <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td> 
+ <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" /> <p align="center">扫码进微信交流二群</p> </td> 
+ <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td>
+ <td> <p align="center">微信号</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
 </tr> 
 </table>

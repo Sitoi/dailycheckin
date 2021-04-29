@@ -53,20 +53,17 @@ class VQQCheckIn:
         url = "https://vip.video.qq.com/fcgi-bin/comm_cgi?name=hierarchical_task_system&cmd=2&_=" + str(this_time)
         res = requests.get(url=url, headers=headers, cookies=cookies)
         res.encoding = "utf8"
-        ret = re.search(r'ret": (\d+),', res.text).group(1)
-        if ret == "0":
-            try:
-                value = re.search('checkin_score": (.*?),', res.text).group(1)
-            except Exception as e:
-                print(res.text, e)
-                value = "数据获取失败"
-            msg = f"成长值x{value}"
-        elif "Account Verify Error" in res.text:
+        if "Account Verify Error" in res.text:
             msg = "签到失败-Cookie失效"
         elif "Not VIP" in res.text:
             msg = "非会员无法签到"
         else:
-            msg = res.text
+            try:
+                value = re.search('checkin_score": (.*?),', res.text).group(1)
+            except Exception as e:
+                print("获取成长值失败", e)
+                value = res.text
+            msg = f"成长值x{value}"
         return msg
 
     @staticmethod
@@ -87,6 +84,8 @@ class VQQCheckIn:
                 msg = f"获得+10成长值"
             elif "已发过货" in res.text:
                 msg = "任务已完成"
+            elif "任务未完成" in res.text:
+                msg = "任务未完成，需手动完成任务"
             else:
                 msg = res.text
             task_msg_list.append(f"{task_name}: {msg}")

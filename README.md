@@ -64,6 +64,7 @@
 |签到|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖|WEB|待测试|🟢️|
 |签到|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|WEB|待测试|🟢️|
 |签到|[CSDN](https://www.csdn.net/)|每日签到、抽奖|WEB|待测试|🟢️|
+|签到|联通沃邮箱|每日签到，签到7天得2元话费|公众号|待测试|🟡|
 |签到|王者营地|每日签到（仅限 QQ 区）|APP|待测试|🟢|
 |签到|微博|每日钱包签到、打卡|APP|待测试|🟢️|
 |签到|多看阅读|获取书豆，用于购买书籍|APP|待测试|🟢️|
@@ -96,14 +97,14 @@
 
 <table> 
 <tr> 
- <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
- <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td> 
+ <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" /> <p align="center">扫码进微信交流二群</p> </td> 
+ <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td>
+ <td> <p align="center">微信号</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
 </tr> 
 </table>
 
 ## 特别鸣谢
 
-- [@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
 - [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
 - [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
 
@@ -112,6 +113,8 @@
 <details>
 <summary>更新日志（点击展开）</summary>
 
+- 2021-04-28
+    * 添加【联通沃邮箱】每日签到脚本 感谢水友`@什么大风大浪都见过` 提供脚本
 - 2021-04-07
     * 添加【王者营地】每日签到脚本
     * 添加【CSDN】每日签到脚本
