@@ -17,6 +17,8 @@
 |_**QMSG_TYPE**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,如果需要推送到群填写 `group`,其他的都推送到 QQ |
 |_**TG_BOT_TOKEN**_|telegram 推送|推送|telegram 推送 `TG_BOT_TOKEN`|
 |_**TG_USER_ID**_|telegram 推送|推送|telegram 推送 `TG_USER_ID`|
+|_**TG_API_HOST**_|telegram 推送|推送|Telegram api 自建的反向代理地址 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc [简略搭建教程](https://shimo.im/docs/JD38CJDQtYy3yTd8/read)  |
+|_**TG_PROXY**_|telegram 推送|推送|Telegram 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
 |_**COOLPUSHSKEY**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`|
 |_**COOLPUSHQQ**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 QQ 推送，默认开启|
 |_**COOLPUSHWX**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 微信 推送，默认关闭|
@@ -194,6 +196,8 @@
   "QMSG_TYPE": "",
   "TG_BOT_TOKEN": "",
   "TG_USER_ID": "",
+  "TG_API_HOST": "",
+  "TG_PROXY": "",
   "COOLPUSHSKEY": "",
   "COOLPUSHQQ": true,
   "COOLPUSHWX": true,

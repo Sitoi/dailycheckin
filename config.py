@@ -72,6 +72,8 @@ notice_map = {
     "SENDKEY": "",
     "TG_BOT_TOKEN": "",
     "TG_USER_ID": "",
+    "TG_API_HOST": "",
+    "TG_PROXY": "",
     "QMSG_KEY": "",
     "QMSG_TYPE": "",
     "COOLPUSHSKEY": "",

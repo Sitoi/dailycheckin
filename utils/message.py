@@ -47,10 +47,21 @@ def message2qmsg(qmsg_key, qmsg_type, content):
     return
 
 
-def message2telegram(tg_bot_token, tg_user_id, content):
+def message2telegram(tg_api_host, tg_proxy, tg_bot_token, tg_user_id, content):
     print("Telegram 推送开始")
     send_data = {"chat_id": tg_user_id, "text": content, "disable_web_page_preview": "true"}
-    requests.post(url=f"https://api.telegram.org/bot{tg_bot_token}/sendMessage", data=send_data)
+    if tg_api_host:
+        url = f"https://{tg_api_host}/bot{tg_bot_token}/sendMessage"
+    else:
+        url = f"https://api.telegram.org/bot{tg_bot_token}/sendMessage"
+    if tg_proxy:
+        proxies = {
+            "http": tg_proxy,
+            "https": tg_proxy,
+        }
+    else:
+        proxies = None
+    requests.post(url=url, data=send_data, proxies=proxies)
     return
 
 
@@ -106,8 +117,8 @@ def message2qywxapp(qywx_corpid, qywx_agentid, qywx_corpsecret, qywx_touser, con
             "title": "签到通知",
             "description": content,
             "url": "https://github.com/Sitoi/dailycheckin",
-            "btntxt": "开源项目"
-        }
+            "btntxt": "开源项目",
+        },
     }
     requests.post(url=f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={token}", data=json.dumps(data))
     return
@@ -145,6 +156,8 @@ def push_message(content_list: list, notice_info: dict):
     qmsg_type = notice_info.get("qmsg_type")
     tg_bot_token = notice_info.get("tg_bot_token")
     tg_user_id = notice_info.get("tg_user_id")
+    tg_api_host = notice_info.get("tg_api_host")
+    tg_proxy = notice_info.get("tg_proxy")
     coolpushskey = notice_info.get("coolpushskey")
     coolpushqq = notice_info.get("coolpushqq")
     coolpushwx = notice_info.get("coolpushwx")
@@ -228,7 +241,13 @@ def push_message(content_list: list, notice_info: dict):
                 print("Pushplus 推送失败", e)
         if tg_user_id and tg_bot_token:
             try:
-                message2telegram(tg_user_id=tg_user_id, tg_bot_token=tg_bot_token, content=message)
+                message2telegram(
+                    tg_api_host=tg_api_host,
+                    tg_proxy=tg_proxy,
+                    tg_user_id=tg_user_id,
+                    tg_bot_token=tg_bot_token,
+                    content=message,
+                )
             except Exception as e:
                 print("Telegram 推送失败", e)
 

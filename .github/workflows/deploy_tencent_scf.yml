@@ -45,6 +45,8 @@ jobs:
           QMSG_TYPE: ${{secrets.QMSG_TYPE}}
           TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}}
           TG_USER_ID: ${{secrets.TG_USER_ID}}
+          TG_API_HOST: ${{secrets.TG_API_HOST}}
+          TG_PROXY: ${{secrets.TG_PROXY}}
           COOLPUSHSKEY: ${{secrets.COOLPUSHSKEY}}
           COOLPUSHQQ: ${{secrets.COOLPUSHQQ}}
           COOLPUSHWX: ${{secrets.COOLPUSHWX}}

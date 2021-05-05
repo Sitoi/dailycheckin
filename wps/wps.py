@@ -2,7 +2,6 @@
 import datetime
 import json
 import os
-import time
 
 import requests
 from requests import utils
@@ -11,26 +10,6 @@ from requests import utils
 class WPSCheckIn:
     def __init__(self, check_item):
         self.check_item = check_item
-        self.invite_sid = [
-            "V02S2UBSfNlvEprMOn70qP3jHPDqiZU00a7ef4a800341c7c3b",
-            "V02S2oI49T-Jp0_zJKZ5U38dIUSIl8Q00aa679530026780e96",
-            "V02S7tldy5ltYcikCzJ8PJQDSy_ElEs00a327c3c0026782526",
-            "V02SBpDdos7QiFOs_5TOLF0a80pWt-U00a94ce2c003a814a17",
-            "V02SBsNOf4sJZNFo4jOHdgHg7-2Tn1s00a338776000b669579",
-            "V02SFiqdXRGnH5oAV2FmDDulZyGDL3M00a61660c0026781be1",
-            "V02SPoOluAnWda0dTBYTXpdetS97tyI00a16135e002684bb5c",
-            "V02SWIvKWYijG6Rggo4m0xvDKj1m7ew00a8e26d3002508b828",
-            "V02Sb8gxW2inr6IDYrdHK_ywJnayd6s00ab7472b0026849b17",
-            "V02SfEpW1yy4wUUh_eEnEHpiJJuoDnE00ae12710000179aa7f",
-            "V02ShotJqqiWyubCX0VWTlcbgcHqtSQ00a45564e002678124c",
-            "V02Sr3nJ9IicoHWfeyQLiXgvrRpje6E00a240b890023270f97",
-            "V02StVuaNcoKrZ3BuvJQ1FcFS_xnG2k00af250d4002664c02f",
-            "V02SwV15KQ_8n6brU98_2kLnnFUDUOw00adf3fda0026934a7f",
-            "V02SC1mOHS0RiUBxeoA8NTliH2h2NGc00a803c35002693584d",
-            "V02ScVbtm2pQD49ArcgGLv360iqQFLs014c8062e000b6c37b6",
-        ]
-
-        self.invite_limit = 10
 
     @staticmethod
     def web_sign(session, sid):
@@ -278,34 +257,6 @@ class WPSCheckIn:
                 user_info += f"\n{one_vip.get('name')}: {datetime.datetime.fromtimestamp(one_vip.get('expire_time')).strftime('%Y-%m-%d %H:%M:%S')}"
         return user_info, userid
 
-    def miniprogram_invite(self, session, invite_userid: int):
-        k = 0
-        for index, i in enumerate(self.invite_sid):
-            time.sleep(5)
-            if k < self.invite_limit:
-                headers = {"sid": i}
-                resp = session.post(
-                    url="http://zt.wps.cn/2018/clock_in/api/invite",
-                    headers=headers,
-                    data={
-                        "invite_userid": invite_userid,
-                        "client_code": "040ce6c23213494c8de9653e0074YX30",
-                        "client": "alipay",
-                    },
-                )
-                if resp.status_code == 200:
-                    try:
-                        resp_json = resp.json()
-                        print("邀请对象ID={}, Result: {}".format(str(index + 1).zfill(2), resp_json["result"]))
-                        k += 1
-                    except Exception as e:
-                        print("邀请对象ID={0}, Result: ID已失效, 错误信息{1}".format(str(index + 1).zfill(2), e))
-                else:
-                    print(
-                        "邀请对象ID={}, 状态码: {}, 请求信息{}".format(str(index + 1).zfill(2), resp.status_code, resp.text[:25])
-                    )
-        return f"邀请用户: 成功邀请 {k} 人"
-
     def main(self):
         wps_cookie = {item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("wps_cookie").split("; ")}
         session = requests.session()
@@ -325,8 +276,7 @@ class WPSCheckIn:
         docer_sign_msg = self.docer_sign(session=session, sid=sid)
         miniprogram_sign_msg = self.miniprogram_sign(session=session, sid=sid)
         user_info_msg, userid = self.user_info(session=session, sid=sid)
-        miniprogram_invite_msg = self.miniprogram_invite(session=session, invite_userid=userid)
-        msg = f"{user_info_msg}\n{web_sign_msg}\n{docer_sign_msg}\n{miniprogram_sign_msg}\n{miniprogram_invite_msg}"
+        msg = f"{user_info_msg}\n{web_sign_msg}\n{docer_sign_msg}\n{miniprogram_sign_msg}"
         return msg
 
 
