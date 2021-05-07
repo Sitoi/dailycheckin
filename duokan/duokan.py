@@ -244,8 +244,13 @@ class DuoKanCheckIn:
         data = f"sandbox=0&{self.get_data(cookies=cookies)}&withid=1"
         response = requests.post(url=url, data=data, cookies=cookies, headers=self.headers)
         result = response.json()
-        msg = "\n".join([f"{one.get('expire')} 到期，{one.get('coin')} 书豆" for one in result.get("data", {}).get("award")])
-        return msg
+        if "尚未登录" not in result.get("msg"):
+            coin = sum([one.get('coin') for one in result.get("data", {}).get("award")])
+            msg = f"当前书豆: {coin}\n" + "\n".join(
+                [f"{one.get('expire')} 到期，{one.get('coin')} 书豆" for one in result.get("data", {}).get("award")])
+            return msg
+        else:
+            return "账号异常: Cookie 失效"
 
     def free(self, cookies):
         url = "https://www.duokan.com/hs/v4/channel/query/2027"
@@ -255,10 +260,13 @@ class DuoKanCheckIn:
         free_url = "https://www.duokan.com/store/v0/payment/book/create"
         response = requests.post(url=free_url, data=data, cookies=cookies, headers=self.headers)
         result = response.json()
-        book_title = result.get("book").get("title")
-        book_msg = result.get("msg")
-        msg = f"今日限免: {book_title} · {book_msg}"
-        return msg
+        if "尚未登录" not in result.get("msg"):
+            book_title = result.get("book").get("title")
+            book_msg = result.get("msg")
+            msg = f"今日限免: {book_title} · {book_msg}"
+            return msg
+        else:
+            return "今日限免: Cookie 失效"
 
     def gift(self, cookies):
         url = "https://www.duokan.com/events/common_task_gift_check"
@@ -351,5 +359,5 @@ if __name__ == "__main__":
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config/config.json"), "r", encoding="utf-8"
     ) as f:
         datas = json.loads(f.read())
-    _check_item = datas.get("DUOKAN_COOKIE_LIST", [])[0]
+    _check_item = datas.get("DUOKAN_COOKIE_LIST", [])[2]
     print(DuoKanCheckIn(check_item=_check_item).main())
