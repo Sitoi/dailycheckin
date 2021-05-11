@@ -49,6 +49,7 @@
 |_**BILIBILI_COOKIE_LIST**_.coin_type|[Bilibili](https://www.bilibili.com)|Web|Bilibili 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币|
 |_**BILIBILI_COOKIE_LIST**_.silver2coin|[Bilibili](https://www.bilibili.com)|Web|Bilibili 是否开启银瓜子换硬币，默认为 True 开启|
 |_**V2EX_COOKIE_LIST**_.v2ex_cookie|[V2EX](https://www.v2ex.com/)|Web|V2EX 每日签到|
+|_**V2EX_COOKIE_LIST**_.v2ex_proxy|[V2EX](https://www.v2ex.com/)|Web|V2EX 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
 |_**WWW2NZZ_COOKIE_LIST**_.www2nzz_cookie|[咔叽网单](https://www.2nzz.com/)|Web|咔叽网单 每日签到|
 |_**SMZDM_COOKIE_LIST**_.smzdm_cookie|[什么值得买](https://www.smzdm.com)|Web|什么值得买 每日签到|
 |_**CLOUD189_ACCOUNT_LIST**_.cloud189_phone|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号|
@@ -323,10 +324,12 @@
   ],
   "V2EX_COOKIE_LIST": [
     {
-      "v2ex_cookie": "_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;"
+      "v2ex_cookie": "_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;",
+      "v2ex_proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
     },
     {
-      "v2ex_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+      "v2ex_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "v2ex_proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
     }
   ],
   "WWW2NZZ_COOKIE_LIST": [
