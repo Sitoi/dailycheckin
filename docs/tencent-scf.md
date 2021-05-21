@@ -8,9 +8,7 @@
 
 > ⚠️ 下载的需要解压压缩包
 
-- 下载地址: [https://github.com/Sitoi/DailyCheckIn/archive/main.zip](https://github.com/Sitoi/DailyCheckIn/archive/main.zip)
-
-- Clone 地址: [https://github.com/Sitoi/dailycheckin.git](https://github.com/Sitoi/dailycheckin.git)
+- 下载地址: [https://pypi.org/project/dailycheckin](https://pypi.org/project/dailycheckin)
 
 ### 二、创建并修改 config.json 配置文件
 
@@ -27,20 +25,3 @@
 进入函数 → 触发管理 → 新建触发器 → 安装下图进行配置
 
 ![触发器配置](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/scf_timer.png)
-
-## 方式二、配置 Secrets 参数 基于 GitHub Action 上传致腾讯云函数
-
-### 一、将需要签到的 cookie 账号信息填入 GitHub Actions Secrets 变量里
-
-参考: [GitHub Actions 使用教程](https://sitoi.github.io/dailycheckin/github-actions/)
-
-### 二、多配置腾讯云函数相关的两个参数
-
-- TENCENT_SECRET_ID
-- TENCENT_SECRET_KEY
-
-### 三、运行相关的 GitHub Actions 进行部署
-
-- 根据 Secrets 配置的账号等信息自动渲染 config.json 文件
-- 自动将项目部署到腾讯云函数
-- 自动创建触发器

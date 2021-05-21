@@ -1,1 +1,1 @@
-0 18 * * * python /dailycheckin/index.py >> /dailycheckin/logs/dailycheckin.log 2>&1
+5 14 * * * cd /dailycheckin && dailycheckin >> /dailycheckin/logs/dailycheckin.log 2>&1

@@ -6,7 +6,7 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./my_crontab_list.sh:/dailycheckin/docker/my_crontab_list.sh
+      - ./my_crontab_list.sh:/dailycheckin/my_crontab_list.sh
       - ./config:/dailycheckin/config
       - ./logs:/dailycheckin/logs
     environment:

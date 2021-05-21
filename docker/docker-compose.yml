@@ -1,6 +1,8 @@
 version: '3'
 services:
   dailycheckin:
+    build:
+      context: .
     image: sitoi/dailycheckin:latest
     container_name: dailycheckin
     restart: always

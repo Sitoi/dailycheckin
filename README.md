@@ -1,18 +1,12 @@
-<p align="center">
-    <img src="https://socialify.git.ci/Sitoi/dailycheckin/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"/>
-    <br><strong><font size=50>每日签到集合</font></strong>
-    <br>基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本
-    <br>支持多账号使用
-</p>
+# 每日签到集合
 
 <p align="center">
     <a href="https://t.me/dailycheckin"><img src="https://img.shields.io/badge/Talk-Telegram-brightgreen.svg?style=popout-square" alt="Telegram"></a>
-    <a href="https://github.com/Sitoi/dailycheckin/stargazers"><img src="https://img.shields.io/github/stars/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub stars"></a>
-    <a href="https://github.com/Sitoi/dailycheckin/network/members"><img src="https://img.shields.io/github/forks/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub forks"></a>
-    <a href="https://github.com/Sitoi/dailycheckin/issues"><img src="https://img.shields.io/github/issues/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub issues"></a>
     <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/pulls/sitoi/dailycheckin?style=popout-square" alt="Docker Pulls"></a>
     <a href="https://sitoi.github.io/dailycheckin"><img src="https://visitor-badge.glitch.me/badge?page_id=Sitoi-dailycheckin" alt="visitor"></a>
 </p>
+
+基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本(支持多账号使用)
 
 ## 特别声明:
 
@@ -36,7 +30,6 @@
 
 ## 详细文档
 
-- 文档地址: [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
 - 国内地址: [https://sitoi.gitee.io/dailycheckin/](https://sitoi.gitee.io/dailycheckin/)
 
 ## 签到列表
@@ -88,20 +81,6 @@
 - pushplus（微信）
 - Cool Push（QQ,微信,邮箱）
 - qmsg 酱（QQ）
-
-## 新增签到脚本需求
-
-如有签到脚本需求，请到 [DISCUSSIONS](https://github.com/Sitoi/dailycheckin/discussions/77) 中提交
-
-## 交流群
-
-<table> 
-<tr> 
- <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_group.jpg" /> <p align="center">扫码进微信交流二群</p> </td> 
- <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td>
- <td> <p align="center">微信号</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
-</tr> 
-</table>
 
 ## 特别鸣谢
 
@@ -167,9 +146,3 @@
     * 添加【百度站点】每日提交脚本
 
 </details> 
-
-## 历史 Star 数
-
-<p align="center">
-    <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
-</p>

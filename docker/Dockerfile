@@ -2,11 +2,7 @@ FROM python:3.8-alpine
 MAINTAINER Sitoi <Sitoi0418@gmail.com>
 
 WORKDIR /dailycheckin
-
-#GitHub Actions 构建
-COPY ./docker/start.sh /usr/local/bin
-#本地构建
-#COPY ./start.sh /usr/local/bin
+COPY ./start.sh /usr/local/bin
 
 RUN set -ex \
     && apk update && apk upgrade\
@@ -14,9 +10,10 @@ RUN set -ex \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && chmod +x /usr/local/bin/start.sh \
-    && git clone https://github.com/Sitoi/dailycheckin.git /dailycheckin \
-    && cd /dailycheckin \
-    && mkdir logs \
-    && pip install -r requirements.txt
+    && pip install dailycheckin \
+    && ln -s /root/.local/bin/dailycheckin /usr/bin/dailycheckin
+
+ADD . /dailycheckin
+
 
 ENTRYPOINT ["start.sh"]

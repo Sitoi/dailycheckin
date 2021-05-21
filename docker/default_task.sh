@@ -3,21 +3,20 @@ set -e
 
 export LANG="zh_CN.UTF-8"
 
-echo "定时任务更新代码，Git 拉取最新代码，并安装更新依赖..."
-git -C /dailycheckin pull
-pip install -r /dailycheckin/requirements.txt
+echo "定时任务更新依赖..."
+pip install dailycheckin
 
-defaultListFile="/dailycheckin/docker/default_list.sh"
+defaultListFile="/dailycheckin/default_list.sh"
 
-customListFile="/dailycheckin/docker/$CUSTOM_LIST_FILE"
-mergedListFile="/dailycheckin/docker/merged_list_file.sh"
+customListFile="/dailycheckin/$CUSTOM_LIST_FILE"
+mergedListFile="/dailycheckin/merged_list_file.sh"
 
 if type ts >/dev/null 2>&1; then
     echo 'moreutils tools installed, default task append |ts output'
     echo '系统已安装 moreutils 工具包，默认定时任务增加｜ts 输出'
     ##复制一个新文件来追加|ts，防止git pull的时候冲突
-    cp $defaultListFile /dailycheckin/docker/crontab_list.sh
-    defaultListFile="/dailycheckin/docker/crontab_list.sh"
+    cp $defaultListFile /dailycheckin/crontab_list.sh
+    defaultListFile="/dailycheckin/crontab_list.sh"
 
     sed -i 's/>>/|ts >>/g' $defaultListFile
 fi
@@ -57,7 +56,7 @@ if [ $(grep -c "default_task.sh" $mergedListFile) -eq '0' ]; then
     echo "Merged crontab task file，the required default task is not included, append default task..."
     echo "合并后的定时任务文件，未包含必须的默认定时任务，增加默认定时任务..."
     echo -e >>$mergedListFile
-    echo "0 */12 * * * sh /dailycheckin/docker/default_task.sh >> /dailycheckin/logs/default_task.log 2>&1" >>$mergedListFile
+    echo "0 */12 * * * sh /dailycheckin/default_task.sh >> /dailycheckin/logs/default_task.log 2>&1" >>$mergedListFile
 fi
 
 echo "Load the latest crontab task file..."
