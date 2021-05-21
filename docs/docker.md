@@ -3,12 +3,6 @@
 ## 一、运行如下命令一键启动并创建服务
 
 ```bash
-curl https://raw.githubusercontent.com/Sitoi/dailycheckin/main/docker_start.sh | bash
-```
-
-国内源:
-
-```bash
 curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
 ```
 
@@ -39,16 +33,16 @@ curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
 
 ## 三、立即执行单次签到(确保容器已启动)，检查 config.json 是否配置正确
 
-##### 运行【日常签到类】（除喜马拉雅极速版）
+##### 运行【日常签到类】
 
 ```bash
-docker exec dailycheckin python3 index.py
+docker exec -it dailycheckin dailycheckin
 ```
 
 ##### 更新最新脚本
 
 ```bash
-docker exec dailycheckin sh /dailycheckin/docker/default_task.sh
+docker exec dailycheckin sh /dailycheckin/default_task.sh
 ```
 
 ## 附录
