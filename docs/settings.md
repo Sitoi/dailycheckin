@@ -107,7 +107,7 @@
 
 获取 Cookie 教程（以爱奇艺为例）
 
-![获取 cookie 教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/iqiyi_cookie.png)
+![获取 cookie 教程](img/iqiyi_cookie.png)
 
 1. 进入[爱奇艺官网](https://www.iqiyi.com/)
 2. 按 `F12` 打开开发者工具，刷新页面
@@ -164,7 +164,7 @@
 
 [百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)
 
-![获取百度云提交链接教程](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/submit_url.png)
+![获取百度云提交链接教程](img/submit_url.png)
 
 - _**BAIDU_URL_SUBMIT_LIST**_.data_url: 提交网站的 URL
   链接，参考链接：[https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)

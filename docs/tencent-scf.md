@@ -24,4 +24,4 @@
 
 进入函数 → 触发管理 → 新建触发器 → 安装下图进行配置
 
-![触发器配置](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/scf_timer.png)
+![触发器配置](img/scf_timer.png)
