@@ -1,27 +1,35 @@
 # 腾讯云函数教程
 
-## 方式一、下载到本地修改后上传
+### 一、创建云函数
 
-> （腾讯云函数相关教程请自行百度）
+> 地域选哪里都可以
 
-### 一、下载（Clone）本项目到本地
+![创建云函数](img/scf_create.png)
 
-> ⚠️ 下载的需要解压压缩包
 
-- 下载地址: [https://pypi.org/project/dailycheckin](https://pypi.org/project/dailycheckin)
+```python
+# -*- coding: utf-8 -*-
+from dailycheckin.main import checkin
 
-### 二、创建并修改 config.json 配置文件
 
-拷贝 `config/config.template.json` 到 `config/config.json` 并修改
+def main_handler(event, context):
+    checkin()
+```
 
-参考[配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config/config.json`
+### 二、安装依赖包
 
-### 三、上传至【腾讯云函数】
+![安装依赖包](img/scf_install.png)
 
-云函数 → 函数服务 → 新建 → 自定义创建 → 本地上传文件夹 → 选择带有自定义配置文件的文件夹上传
+```bash
+cd src
+pip3 install dailycheckin -t .
+```
 
-### 四、配置定时触发器
+### 三、添加配置文件
 
-进入函数 → 触发管理 → 新建触发器 → 安装下图进行配置
+![添加配置文件](img/scf_config.png)
 
-![触发器配置](img/scf_timer.png)
+### 四、部署测试
+
+![部署测试](img/scf_test.png)
+
