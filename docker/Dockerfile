@@ -10,7 +10,7 @@ RUN set -ex \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && chmod +x /usr/local/bin/start.sh \
-    && pip install dailycheckin \
+    && pip install dailycheckin --upgrade \
     && ln -s /root/.local/bin/dailycheckin /usr/bin/dailycheckin
 
 ADD . /dailycheckin

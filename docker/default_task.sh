@@ -4,7 +4,7 @@ set -e
 export LANG="zh_CN.UTF-8"
 
 echo "定时任务更新依赖..."
-pip install dailycheckin
+pip install dailycheckin --upgrade
 
 defaultListFile="/dailycheckin/default_list.sh"
 
