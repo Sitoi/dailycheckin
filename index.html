@@ -1,0 +1,743 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="可基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本（支持多账号使用）">
+      
+      
+      
+        <meta name="author" content="Sitoi">
+      
+      
+        <link rel="canonical" href="https://sitoi.gitee.io/dailycheckin/">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>DailyCheckIn</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://sitoi.gitee.io/dailycheckin/" title="DailyCheckIn" class="md-header-nav__button md-logo" aria-label="DailyCheckIn">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            DailyCheckIn
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              主页
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/sitoi/dailycheckin" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sitoi/dailycheckin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://sitoi.gitee.io/dailycheckin/" title="DailyCheckIn" class="md-nav__button md-logo" aria-label="DailyCheckIn">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    DailyCheckIn
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/sitoi/dailycheckin" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sitoi/dailycheckin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        主页
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="." class="md-nav__link md-nav__link--active">
+      主页
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    签到列表
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    支持的通知列表
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="settings/" class="md-nav__link">
+      配置
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      教程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="教程" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="local/" class="md-nav__link">
+      本地使用教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="docker/" class="md-nav__link">
+      Docker 使用教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="synology/" class="md-nav__link">
+      群辉 Docker 使用教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="tencent-scf/" class="md-nav__link">
+      腾讯云函数使用教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    签到列表
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    支持的通知列表
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">每日签到集合</h1>
+<p align="center">
+    <a href="https://t.me/dailycheckin"><img src="https://img.shields.io/badge/Talk-Telegram-brightgreen.svg?style=popout-square" alt="Telegram"></a>
+    <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/pulls/sitoi/dailycheckin?style=popout-square" alt="Docker Pulls"></a>
+    <a href="https://sitoi.github.io/dailycheckin"><img src="https://visitor-badge.glitch.me/badge?page_id=Sitoi-dailycheckin" alt="visitor"></a>
+</p>
+
+<h2 id="_2">签到列表</h2>
+<p>🟢: 正常运行 🔴: 脚本暂不可用 🔵: 可以执行(需更新) 🟡: 待测试 🟤: 看脸</p>
+<table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">名称</th>
+<th align="left">备注</th>
+<th align="center">终端</th>
+<th align="center">Cookie 时长</th>
+<th align="center">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.iqiyi.com/">爱奇艺</a></td>
+<td align="left">签7天奖1天，14天奖2天，28天奖7天；日常任务4成长值；随机成长值；三次抽奖</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://kg.qq.com/index-pc.html">全民K歌</a></td>
+<td align="left">每日签到获取鲜花 每日大约 150 鲜花左右</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://v.qq.com/">腾讯视频</a></td>
+<td align="left">每日两次腾讯视频签到获取成长值</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://note.youdao.com/web/">有道云笔记</a></td>
+<td align="left">每日签到获取存储空间</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://music.163.com/">网易云音乐</a></td>
+<td align="left">每日自动登录签到 + 刷歌 310 首</td>
+<td align="center">WEB</td>
+<td align="center">永久</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.oneplusbbs.com/">一加手机社区官方论坛</a></td>
+<td align="left">论坛每日签到 + 10 次抽奖任务</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://tieba.baidu.com/index.html">百度贴吧</a></td>
+<td align="left">贴吧每日签到</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.bilibili.com">Bilibili</a></td>
+<td align="left">直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.v2ex.com/">V2EX</a></td>
+<td align="left">铜币奖励</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.2nzz.com/">咔叽网单</a></td>
+<td align="left">论坛金币</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.smzdm.com">什么值得买</a></td>
+<td align="left">每日签到</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.acfun.cn/">AcFun</a></td>
+<td align="left">每日签到香蕉</td>
+<td align="center">WEB</td>
+<td align="center">永久</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://cloud.189.cn/">天翼云盘</a></td>
+<td align="left">每日签到 +2次抽奖获得空间奖励</td>
+<td align="center">WEB</td>
+<td align="center">永久</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.wps.cn/">WPS</a></td>
+<td align="left">每日签到</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.52pojie.cn/index.php">吾爱破解</a></td>
+<td align="left">2枚吾爱币</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟤</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.picacomic.com">哔咔漫画</a></td>
+<td align="left">成长值奖励</td>
+<td align="center">WEB</td>
+<td align="center">永久</td>
+<td align="center">🟤</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://bbs.meizu.cn">MEIZU 社区</a></td>
+<td align="left">每日签到、可配置抽奖</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="http://zhizhiyoo.net/">智友邦</a></td>
+<td align="left">每日签到获取金币</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center"><a href="https://www.csdn.net/">CSDN</a></td>
+<td align="left">每日签到、抽奖</td>
+<td align="center">WEB</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center">联通沃邮箱</td>
+<td align="left">每日签到，签到7天得2元话费</td>
+<td align="center">公众号</td>
+<td align="center">待测试</td>
+<td align="center">🟡</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center">王者营地</td>
+<td align="left">每日签到（仅限 QQ 区）</td>
+<td align="center">APP</td>
+<td align="center">待测试</td>
+<td align="center">🟢</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center">微博</td>
+<td align="left">每日钱包签到、打卡</td>
+<td align="center">APP</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center">多看阅读</td>
+<td align="left">获取书豆，用于购买书籍</td>
+<td align="center">APP</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center">芒果 TV</td>
+<td align="left">签到获取体验会员</td>
+<td align="center">APP</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center">联通营业厅</td>
+<td align="left">积分+流量奖励</td>
+<td align="center">APP</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">签到</td>
+<td align="center">Fa 米家</td>
+<td align="left">连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。</td>
+<td align="center">APP</td>
+<td align="center">待测试</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">其他</td>
+<td align="center">小米运动</td>
+<td align="left">每日小米运动刷步数</td>
+<td align="center">APP</td>
+<td align="center">永久</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">其他</td>
+<td align="center"><a href="https://ziyuan.baidu.com/site/index#/">百度搜索资源平台</a></td>
+<td align="left">提交网站页面供百度收录</td>
+<td align="center">WEB</td>
+<td align="center">永久</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">其他</td>
+<td align="center">每日天气预报</td>
+<td align="left">获取指定的多个城市天气信息</td>
+<td align="center">WEB</td>
+<td align="center">永久</td>
+<td align="center">🟢️</td>
+</tr>
+<tr>
+<td align="center">其他</td>
+<td align="center">每日一句</td>
+<td align="left">从词霸中获取每日一句，带英文</td>
+<td align="center">WEB</td>
+<td align="center">永久</td>
+<td align="center">🟢️</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">支持的通知列表</h2>
+<ul>
+<li>dingtalk（钉钉）</li>
+<li>企业微信群机器人（企业微信）</li>
+<li>企业微信应用消息（企业微信）</li>
+<li>telegram（TG）</li>
+<li>Bark（iOS）</li>
+<li>server 酱（微信）</li>
+<li>server 酱 TURBO（微信）</li>
+<li>pushplus（微信）</li>
+<li>Cool Push（QQ,微信,邮箱）</li>
+<li>qmsg 酱（QQ）</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="settings/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                配置
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

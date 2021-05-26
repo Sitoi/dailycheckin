@@ -1,0 +1,1594 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="可基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本（支持多账号使用）">
+      
+      
+      
+        <meta name="author" content="Sitoi">
+      
+      
+        <link rel="canonical" href="https://sitoi.gitee.io/dailycheckin/settings/">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.3">
+    
+    
+      
+        <title>配置 - DailyCheckIn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3b61ea93.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://sitoi.gitee.io/dailycheckin/" title="DailyCheckIn" class="md-header-nav__button md-logo" aria-label="DailyCheckIn">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            DailyCheckIn
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/sitoi/dailycheckin" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sitoi/dailycheckin
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://sitoi.gitee.io/dailycheckin/" title="DailyCheckIn" class="md-nav__button md-logo" aria-label="DailyCheckIn">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    DailyCheckIn
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/sitoi/dailycheckin" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sitoi/dailycheckin
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        配置
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      配置
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    参数说明
+  </a>
+  
+    <nav class="md-nav" aria-label="参数说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    推送配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    Web 签到配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    公众号签到配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    APP 签到配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    其他任务配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    参数获取方法
+  </a>
+  
+    <nav class="md-nav" aria-label="参数获取方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    网页 Cookie 获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app_1" class="md-nav__link">
+    APP 抓包
+  </a>
+  
+    <nav class="md-nav" aria-label="APP 抓包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tv" class="md-nav__link">
+    芒果 TV 请求参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    王者营地 data 参数获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fa-cookie" class="md-nav__link">
+    Fa米家 Cookie 等参数获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    联通营业厅参数获取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    其他参数
+  </a>
+  
+    <nav class="md-nav" aria-label="其他参数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    百度站点提交参数获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    城市天气列表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    每日一句 是否开启
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      教程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="教程" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../local/" class="md-nav__link">
+      本地使用教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../docker/" class="md-nav__link">
+      Docker 使用教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../synology/" class="md-nav__link">
+      群辉 Docker 使用教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../tencent-scf/" class="md-nav__link">
+      腾讯云函数使用教程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    参数说明
+  </a>
+  
+    <nav class="md-nav" aria-label="参数说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    推送配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    Web 签到配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    公众号签到配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    APP 签到配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    其他任务配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    参数获取方法
+  </a>
+  
+    <nav class="md-nav" aria-label="参数获取方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    网页 Cookie 获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app_1" class="md-nav__link">
+    APP 抓包
+  </a>
+  
+    <nav class="md-nav" aria-label="APP 抓包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tv" class="md-nav__link">
+    芒果 TV 请求参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    王者营地 data 参数获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fa-cookie" class="md-nav__link">
+    Fa米家 Cookie 等参数获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    联通营业厅参数获取
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    其他参数
+  </a>
+  
+    <nav class="md-nav" aria-label="其他参数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    百度站点提交参数获取
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    城市天气列表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    每日一句 是否开启
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">配置说明</h1>
+<h2 id="_2">参数说明</h2>
+<blockquote>
+<p>⚠️️ <em><strong>斜体加粗大写英文字母</strong></em> 表示 GitHub Actions Secrets 环境变量名称，内容直接复制 <em><strong>斜体加粗大写英文字母 key</strong></em>  对应的 value 是 List 格式的直接复制全部 List 内容</p>
+</blockquote>
+<h3 id="_3">推送配置</h3>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">归属</th>
+<th align="center">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em><strong>DINGTALK_SECRET</strong></em></td>
+<td align="center">钉钉推送</td>
+<td align="center">推送</td>
+<td align="left">钉钉推送<a href="https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq">官方文档</a> 密钥，机器人安全设置页面，加签一栏下面显示的 <code>SEC</code> 开头的字符串, 注:填写了 <code>DD_BOT_TOKEN</code> 和 <code>DD_BOT_SECRET</code>，钉钉机器人安全设置只需勾选<code>加签</code>即可，其他选项不要勾选</td>
+</tr>
+<tr>
+<td align="center"><em><strong>DINGTALK_ACCESS_TOKEN</strong></em></td>
+<td align="center">钉钉推送</td>
+<td align="center">推送</td>
+<td align="left">钉钉推送<a href="https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq">官方文档</a> ,只需 <code>https://oapi.dingtalk.com/robot/send?access_token=XXX</code> 等于符号后面的 <code>XXX</code></td>
+</tr>
+<tr>
+<td align="center"><em><strong>SCKEY</strong></em></td>
+<td align="center">server 酱推送</td>
+<td align="center">推送</td>
+<td align="left">server 酱推送<a href="https://sc.ftqq.com/3.version">官方文档</a> ,填写 <code>SCKEY</code> 代码即可</td>
+</tr>
+<tr>
+<td align="center"><em><strong>SENDKEY</strong></em></td>
+<td align="center">server 酱 TURBO 推送</td>
+<td align="center">推送</td>
+<td align="left">server 酱 TURBO 推送<a href="https://sct.ftqq.com/sendkey">官方文档</a> ,填写 <code>SENDKEY</code> 代码即可</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BARK_URL</strong></em></td>
+<td align="center">BARK 推送</td>
+<td align="center">推送</td>
+<td align="left">BARK 推送<a href="https://github.com/Sitoi/dailycheckin/issues/29">使用</a> ,填写 <code>BARK_URL</code> 即可，例如: <code>https://api.day.app/DxHcxxxxxRxxxxxxcm/</code></td>
+</tr>
+<tr>
+<td align="center"><em><strong>QMSG_KEY</strong></em></td>
+<td align="center">qmsg 酱推送</td>
+<td align="center">推送</td>
+<td align="left">qmsg 酱推送<a href="https://qmsg.zendee.cn/index.html">官方文档</a> ,填写 <code>KEY</code> 代码即可</td>
+</tr>
+<tr>
+<td align="center"><em><strong>QMSG_TYPE</strong></em></td>
+<td align="center">qmsg 酱推送</td>
+<td align="center">推送</td>
+<td align="left">qmsg 酱推送<a href="https://qmsg.zendee.cn/index.html">官方文档</a> ,如果需要推送到群填写 <code>group</code>,其他的都推送到 QQ</td>
+</tr>
+<tr>
+<td align="center"><em><strong>TG_BOT_TOKEN</strong></em></td>
+<td align="center">telegram 推送</td>
+<td align="center">推送</td>
+<td align="left">telegram 推送 <code>TG_BOT_TOKEN</code></td>
+</tr>
+<tr>
+<td align="center"><em><strong>TG_USER_ID</strong></em></td>
+<td align="center">telegram 推送</td>
+<td align="center">推送</td>
+<td align="left">telegram 推送 <code>TG_USER_ID</code></td>
+</tr>
+<tr>
+<td align="center"><em><strong>TG_API_HOST</strong></em></td>
+<td align="center">telegram 推送</td>
+<td align="center">推送</td>
+<td align="left">Telegram api 自建的反向代理地址 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc <a href="https://shimo.im/docs/JD38CJDQtYy3yTd8/read">简略搭建教程</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>TG_PROXY</strong></em></td>
+<td align="center">telegram 推送</td>
+<td align="center">推送</td>
+<td align="left">Telegram 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080</td>
+</tr>
+<tr>
+<td align="center"><em><strong>COOLPUSHSKEY</strong></em></td>
+<td align="center">Cool Push 推送</td>
+<td align="center">推送</td>
+<td align="left"><a href="https://cp.xuthus.cc/">Cool Push</a> 推送的 <code>SKEY</code></td>
+</tr>
+<tr>
+<td align="center"><em><strong>COOLPUSHQQ</strong></em></td>
+<td align="center">Cool Push 推送</td>
+<td align="center">推送</td>
+<td align="left"><a href="https://cp.xuthus.cc/">Cool Push</a> 是否开启 QQ 推送，默认开启</td>
+</tr>
+<tr>
+<td align="center"><em><strong>COOLPUSHWX</strong></em></td>
+<td align="center">Cool Push 推送</td>
+<td align="center">推送</td>
+<td align="left"><a href="https://cp.xuthus.cc/">Cool Push</a> 是否开启 微信 推送，默认关闭</td>
+</tr>
+<tr>
+<td align="center"><em><strong>COOLPUSHEMAIL</strong></em></td>
+<td align="center">Cool Push 推送</td>
+<td align="center">推送</td>
+<td align="left"><a href="https://cp.xuthus.cc/">Cool Push</a> 是否开启 邮件 推送，默认关闭</td>
+</tr>
+<tr>
+<td align="center"><em><strong>QYWX_KEY</strong></em></td>
+<td align="center">企业微信群机器人推送</td>
+<td align="center">推送</td>
+<td align="left">密钥，企业微信推送 <code>webhook</code> 后面的 <code>key</code> 详见<a href="https://work.weixin.qq.com/api/doc/90000/90136/91770">官方说明文档</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>QYWX_CORPID</strong></em></td>
+<td align="center">企业微信应用消息推送</td>
+<td align="center">推送</td>
+<td align="left">corpid <a href="https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&amp;type=note">参考文档1</a>  <a href="https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&amp;type=note">参考文档2</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>QYWX_AGENTID</strong></em></td>
+<td align="center">企业微信应用消息推送</td>
+<td align="center">推送</td>
+<td align="left">agentid <a href="https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&amp;type=note">参考文档1</a>  <a href="https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&amp;type=note">参考文档2</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>QYWX_CORPSECRET</strong></em></td>
+<td align="center">企业微信应用消息推送</td>
+<td align="center">推送</td>
+<td align="left">corpsecret <a href="https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&amp;type=note">参考文档1</a>  <a href="https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&amp;type=note">参考文档2</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>QYWX_TOUSER</strong></em></td>
+<td align="center">企业微信应用消息推送</td>
+<td align="center">推送</td>
+<td align="left">touser <a href="https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&amp;type=note">参考文档1</a>  <a href="https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&amp;type=note">参考文档2</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>PUSHPLUS_TOKEN</strong></em></td>
+<td align="center">pushplus 推送</td>
+<td align="center">推送</td>
+<td align="left">用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} <a href="https://www.pushplus.plus/doc/">官方文档</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>PUSHPLUS_TOPIC</strong></em></td>
+<td align="center">pushplus 推送</td>
+<td align="center">推送</td>
+<td align="left">群组编码，不填仅发送给自己 <a href="https://www.pushplus.plus/doc/">官方文档</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="web">Web 签到配置</h3>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">归属</th>
+<th align="center">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em><strong>IQIYI_COOKIE_LIST</strong></em>.iqiyi_cookie</td>
+<td align="center"><a href="https://www.iqiyi.com/">爱奇艺</a></td>
+<td align="center">Web</td>
+<td align="left">爱奇艺 帐号的 cookie 信息</td>
+</tr>
+<tr>
+<td align="center"><em><strong>KGQQ_COOKIE_LIST</strong></em>.kgqq_cookie</td>
+<td align="center"><a href="https://kg.qq.com/index-pc.html">全民K歌</a></td>
+<td align="center">Web</td>
+<td align="left">全民K歌 帐号的 cookie 信息</td>
+</tr>
+<tr>
+<td align="center"><em><strong>VQQ_COOKIE_LIST</strong></em>.auth_refresh</td>
+<td align="center"><a href="https://v.qq.com/">腾讯视频</a></td>
+<td align="center">Web</td>
+<td align="left">腾讯视频 搜索 带有 <code>auth_refresh</code> 的 url，填写其完整的 URL</td>
+</tr>
+<tr>
+<td align="center"><em><strong>VQQ_COOKIE_LIST</strong></em>.vqq_cookie</td>
+<td align="center"><a href="https://v.qq.com/">腾讯视频</a></td>
+<td align="center">Web</td>
+<td align="left">腾讯视频 搜索 带有 <code>auth_refresh</code> 的 url，填写其对应的 cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>YOUDAO_COOKIE_LIST</strong></em>.youdao_cookie</td>
+<td align="center"><a href="https://note.youdao.com/web/">有道云笔记</a></td>
+<td align="center">Web</td>
+<td align="left">有道云笔记 帐号的 cookie 信息</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MUSIC163_ACCOUNT_LIST</strong></em>.music163_phone</td>
+<td align="center"><a href="https://music.163.com/">网易云音乐</a></td>
+<td align="center">账号</td>
+<td align="left">网易云音乐 帐号的手机号</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MUSIC163_ACCOUNT_LIST</strong></em>.music163_password</td>
+<td align="center"><a href="https://music.163.com/">网易云音乐</a></td>
+<td align="center">账号</td>
+<td align="left">网易云音乐 帐号的密码</td>
+</tr>
+<tr>
+<td align="center"><em><strong>ONEPLUSBBS_COOKIE_LIST</strong></em>.oneplusbbs_cookie</td>
+<td align="center"><a href="https://www.oneplusbbs.com/">一加手机社区官方论坛</a></td>
+<td align="center">Web</td>
+<td align="left">一加手机社区官方论坛 账户的 cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>TIEBA_COOKIE_LIST</strong></em>.tieba_cookie</td>
+<td align="center"><a href="https://tieba.baidu.com/index.html">百度贴吧</a></td>
+<td align="center">Web</td>
+<td align="left">百度贴吧 cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BILIBILI_COOKIE_LIST</strong></em>.bilibili_cookie</td>
+<td align="center"><a href="https://www.bilibili.com">Bilibili</a></td>
+<td align="center">Web</td>
+<td align="left">Bilibili cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BILIBILI_COOKIE_LIST</strong></em>.coin_num</td>
+<td align="center"><a href="https://www.bilibili.com">Bilibili</a></td>
+<td align="center">Web</td>
+<td align="left">Bilibili 每日投币数量</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BILIBILI_COOKIE_LIST</strong></em>.coin_type</td>
+<td align="center"><a href="https://www.bilibili.com">Bilibili</a></td>
+<td align="center">Web</td>
+<td align="left">Bilibili 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BILIBILI_COOKIE_LIST</strong></em>.silver2coin</td>
+<td align="center"><a href="https://www.bilibili.com">Bilibili</a></td>
+<td align="center">Web</td>
+<td align="left">Bilibili 是否开启银瓜子换硬币，默认为 True 开启</td>
+</tr>
+<tr>
+<td align="center"><em><strong>V2EX_COOKIE_LIST</strong></em>.v2ex_cookie</td>
+<td align="center"><a href="https://www.v2ex.com/">V2EX</a></td>
+<td align="center">Web</td>
+<td align="left">V2EX 每日签到</td>
+</tr>
+<tr>
+<td align="center"><em><strong>V2EX_COOKIE_LIST</strong></em>.v2ex_proxy</td>
+<td align="center"><a href="https://www.v2ex.com/">V2EX</a></td>
+<td align="center">Web</td>
+<td align="left">V2EX 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080</td>
+</tr>
+<tr>
+<td align="center"><em><strong>WWW2NZZ_COOKIE_LIST</strong></em>.www2nzz_cookie</td>
+<td align="center"><a href="https://www.2nzz.com/">咔叽网单</a></td>
+<td align="center">Web</td>
+<td align="left">咔叽网单 每日签到</td>
+</tr>
+<tr>
+<td align="center"><em><strong>SMZDM_COOKIE_LIST</strong></em>.smzdm_cookie</td>
+<td align="center"><a href="https://www.smzdm.com">什么值得买</a></td>
+<td align="center">Web</td>
+<td align="left">什么值得买 每日签到</td>
+</tr>
+<tr>
+<td align="center"><em><strong>CLOUD189_ACCOUNT_LIST</strong></em>.cloud189_phone</td>
+<td align="center"><a href="https://cloud.189.cn/">天翼云盘</a></td>
+<td align="center">Web</td>
+<td align="left">天翼云盘 手机号</td>
+</tr>
+<tr>
+<td align="center"><em><strong>CLOUD189_ACCOUNT_LIST</strong></em>.cloud189_password</td>
+<td align="center"><a href="https://cloud.189.cn/">天翼云盘</a></td>
+<td align="center">Web</td>
+<td align="left">天翼云盘 手机号对应的密码</td>
+</tr>
+<tr>
+<td align="center"><em><strong>WPS_COOKIE_LIST</strong></em>.wps_cookie</td>
+<td align="center"><a href="https://www.wps.cn/">WPS</a></td>
+<td align="center">Web</td>
+<td align="left">WPS cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>POJIE_COOKIE_LIST</strong></em>.pojie_cookie</td>
+<td align="center"><a href="https://www.52pojie.cn/index.php">吾爱破解</a></td>
+<td align="center">Web</td>
+<td align="left">吾爱破解 cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MEIZU_COOKIE_LIST</strong></em>.meizu_cookie</td>
+<td align="center"><a href="https://bbs.meizu.cn">MEIZU 社区</a></td>
+<td align="center">Web</td>
+<td align="left">MEIZU 社区 cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MEIZU_COOKIE_LIST</strong></em>.draw_count</td>
+<td align="center"><a href="https://bbs.meizu.cn">MEIZU 社区</a></td>
+<td align="center">Web</td>
+<td align="left">MEIZU 社区 抽奖次数</td>
+</tr>
+<tr>
+<td align="center"><em><strong>ZHIYOO_COOKIE_LIST</strong></em>.zhiyoo_cookie</td>
+<td align="center"><a href="http://zhizhiyoo.net/">智友邦</a></td>
+<td align="center">Web</td>
+<td align="left">智友邦 WEB Cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>CSDN_COOKIE_LIST</strong></em>.csdn_cookie</td>
+<td align="center"><a href="https://www.csdn.net/">CSDN</a></td>
+<td align="center">Web</td>
+<td align="left">CSDN Cookie</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">公众号签到配置</h3>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">归属</th>
+<th align="center">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em><strong>WOMAIL_URL_LIST</strong></em>.womail_url</td>
+<td align="center">联通沃邮箱</td>
+<td align="center">公众号</td>
+<td align="left">联通沃邮箱 公众号 <code>https://nyan.mail.wo.cn/cn/sign/index/index?mobile</code> 开头的 URL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="app">APP 签到配置</h3>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">归属</th>
+<th align="center">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em><strong>LIANTONG_ACCOUNT_LIST</strong></em>.data</td>
+<td align="center">联通营业厅</td>
+<td align="center">APP</td>
+<td align="left">联通营业厅 APP 请求中的 Body</td>
+</tr>
+<tr>
+<td align="center"><em><strong>FMAPP_ACCOUNT_LIST</strong></em>.fmapp_token</td>
+<td align="center">Fa米家</td>
+<td align="center">APP</td>
+<td align="left">Fa米家 APP headers 中的 token</td>
+</tr>
+<tr>
+<td align="center"><em><strong>FMAPP_ACCOUNT_LIST</strong></em>.fmapp_cookie</td>
+<td align="center">Fa米家</td>
+<td align="center">APP</td>
+<td align="left">Fa米家 APP headers 中的 cookie</td>
+</tr>
+<tr>
+<td align="center"><em><strong>FMAPP_ACCOUNT_LIST</strong></em>.fmapp_blackbox</td>
+<td align="center">Fa米家</td>
+<td align="center">APP</td>
+<td align="left">Fa米家 APP headers 中的 blackBox</td>
+</tr>
+<tr>
+<td align="center"><em><strong>FMAPP_ACCOUNT_LIST</strong></em>.fmapp_device_id</td>
+<td align="center">Fa米家</td>
+<td align="center">APP</td>
+<td align="left">Fa米家 APP headers 中的 deviceId</td>
+</tr>
+<tr>
+<td align="center"><em><strong>ACFUN_ACCOUNT_LIST</strong></em>.acfun_phone</td>
+<td align="center"><a href="https://www.acfun.cn/">AcFun</a></td>
+<td align="center">APP</td>
+<td align="left">AcFun 手机账号</td>
+</tr>
+<tr>
+<td align="center"><em><strong>ACFUN_ACCOUNT_LIST</strong></em>.acfun_password</td>
+<td align="center"><a href="https://www.acfun.cn/">AcFun</a></td>
+<td align="center">APP</td>
+<td align="left">AcFun 账号密码</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MGTV_PARAMS_LIST</strong></em>.mgtv_params</td>
+<td align="center">芒果 TV</td>
+<td align="center">APP</td>
+<td align="left">芒果 TV 请求参数</td>
+</tr>
+<tr>
+<td align="center"><em><strong>PICACOMIC_ACCOUNT_LIST</strong></em>.picacomic_email</td>
+<td align="center"><a href="https://www.picacomic.com">哔咔漫画</a></td>
+<td align="center">APP</td>
+<td align="left">哔咔漫画 账号</td>
+</tr>
+<tr>
+<td align="center"><em><strong>PICACOMIC_ACCOUNT_LIST</strong></em>.picacomic_password</td>
+<td align="center"><a href="https://www.picacomic.com">哔咔漫画</a></td>
+<td align="center">APP</td>
+<td align="left">哔咔漫画 密码</td>
+</tr>
+<tr>
+<td align="center"><em><strong>WEIBO_COOKIE_LIST</strong></em>.weibo_show_url</td>
+<td align="center">微博</td>
+<td align="center">APP</td>
+<td align="left">抓取开头为 <code>https://api.weibo.cn/2/users/show?</code> 的整个 url 填入即可</td>
+</tr>
+<tr>
+<td align="center"><em><strong>DUOKAN_COOKIE_LIST</strong></em>.duokan_cookie</td>
+<td align="center">多看阅读</td>
+<td align="center">APP</td>
+<td align="left">多看阅读 cookie， 抓取开头为 <code>https://www.duokan.com</code> 下的 cookie 即可</td>
+</tr>
+<tr>
+<td align="center"><em><strong>WZYD_DATA_LIST</strong></em>.wzyd_data</td>
+<td align="center">王者营地</td>
+<td align="center">APP</td>
+<td align="left">王者营地 请求体中的 data， 抓包 APP 中域名为 <code>https://ssl.kohsocial.qq.com</code> 请求内容的全部参数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">其他任务配置</h3>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">归属</th>
+<th align="center">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em><strong>MIMOTION_ACCOUNT_LIST</strong></em>.mimotion_phone</td>
+<td align="center">小米运动</td>
+<td align="center">其他</td>
+<td align="left">小米运动刷步数的手机账号</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MIMOTION_ACCOUNT_LIST</strong></em>.mimotion_password</td>
+<td align="center">小米运动</td>
+<td align="center">其他</td>
+<td align="left">小米运动刷步数的手机账号密码</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MIMOTION_ACCOUNT_LIST</strong></em>.mimotion_min_step</td>
+<td align="center">小米运动</td>
+<td align="center">其他</td>
+<td align="left">小米运动刷步数的最小步数</td>
+</tr>
+<tr>
+<td align="center"><em><strong>MIMOTION_ACCOUNT_LIST</strong></em>.mimotion_max_step</td>
+<td align="center">小米运动</td>
+<td align="center">其他</td>
+<td align="left">小米运动刷步数的最大步数</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BAIDU_URL_SUBMIT_LIST</strong></em>.data_url</td>
+<td align="center"><a href="https://ziyuan.baidu.com/site/index#/">百度搜索资源平台</a></td>
+<td align="center">其他</td>
+<td align="left">提交网站的 URL 链接</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BAIDU_URL_SUBMIT_LIST</strong></em>.submit_url</td>
+<td align="center"><a href="https://ziyuan.baidu.com/site/index#/">百度搜索资源平台</a></td>
+<td align="center">其他</td>
+<td align="left">百度搜索资源平台 提交百度网站的目标 URL</td>
+</tr>
+<tr>
+<td align="center"><em><strong>BAIDU_URL_SUBMIT_LIST</strong></em>.times</td>
+<td align="center"><a href="https://ziyuan.baidu.com/site/index#/">百度搜索资源平台</a></td>
+<td align="center">其他</td>
+<td align="left">每日对同一个网站提交次数</td>
+</tr>
+<tr>
+<td align="center"><em><strong>CITY_NAME_LIST</strong></em></td>
+<td align="center">每日天气</td>
+<td align="center">其他</td>
+<td align="left">填写城市名称，点击查看<a href="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/weather/city.json">城市名称列表</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>MOTTO</strong></em></td>
+<td align="center">每日一句</td>
+<td align="center">其他</td>
+<td align="left">是否开启默认为 false</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">参数获取方法</h2>
+<h3 id="cookie">网页 Cookie 获取</h3>
+<p>获取 Cookie 教程（以爱奇艺为例）</p>
+<p><img alt="获取 cookie 教程" src="../img/iqiyi_cookie.png" /></p>
+<ol>
+<li>进入<a href="https://www.iqiyi.com/">爱奇艺官网</a></li>
+<li>按 <code>F12</code> 打开开发者工具，刷新页面</li>
+<li>点击 <code>Network</code> 标签</li>
+<li>选择 <code>Doc</code> 标签</li>
+<li>选中 <code>www.iqiyi.com</code></li>
+<li>下滑找到 <code>cookie</code> 全选复制即可</li>
+</ol>
+<h3 id="app_1">APP 抓包</h3>
+<h4 id="tv">芒果 TV 请求参数</h4>
+<p>抓包 APP 中获取 url 关键词 <code>credits.bz.mgtv.com/user/creditsTake</code>，提取 <code>?</code> 后所有参数</p>
+<p><strong>示例</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;mgtv_params&quot;</span><span class="p">:</span> <span class="s2">&quot;uuid=xxx&amp;uid=xxx&amp;ticket=xxx&amp;token=xxx&amp;device=iPhone&amp;did=xxx&amp;deviceId=xxx&amp;appVersion=6.8.2&amp;osType=ios&amp;platform=iphone&amp;abroad=0&amp;aid=xxx&amp;nonce=xxx&amp;timestamp=1614595550&amp;appid=xxx&amp;type=1&amp;sign=xxx&amp;callback=__jp18&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<h4 id="data">王者营地 data 参数获取</h4>
+<p>抓包 APP 中域名为 <code>https://ssl.kohsocial.qq.com</code> 请求内容的全部参数</p>
+<h4 id="fa-cookie">Fa米家 Cookie 等参数获取</h4>
+<p>抓包 APP 的请求中的 <code>headers</code> 信息中提取 <code>token</code>、<code>deviceId</code>、<code>cookie</code> 即可</p>
+<h4 id="_7">联通营业厅参数获取</h4>
+<ol>
+<li>退出手机营业厅登录，然后开启抓包软件，登录手机营业厅</li>
+</ol>
+<p>查找网址为 <code>https://m.client.10010.com/mobileService/login.htm</code> 的记录，找到请求内容，将 <code>simCount</code> 开始到最后的内容按要求填入 <code>config/config.json</code> 文件。</p>
+<p><strong>样例</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;LIANTONG_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;simCount=1&amp;version=iphone_c@8.0100&amp;mobile=xxxxxx&amp;netWay=wifi&amp;isRemberPwd=false&amp;appId=xxxxxx&amp;deviceId=xxxxxx&amp;pip=192.168.1.1&amp;password=xxxxxx&amp;deviceOS=14.3&amp;deviceBrand=iphone&amp;deviceModel=iPhone&amp;remark4=&amp;keyVersion=2&amp;deviceCode=xxxxxx&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="_8">其他参数</h3>
+<h4 id="_9">百度站点提交参数获取</h4>
+<p><a href="https://ziyuan.baidu.com/site/index#/">百度搜索资源平台</a></p>
+<p><img alt="获取百度云提交链接教程" src="../img/submit_url.png" /></p>
+<ul>
+<li><em><strong>BAIDU_URL_SUBMIT_LIST</strong></em>.data_url: 提交网站的 URL
+  链接，参考链接：<a href="https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt">https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt</a></li>
+<li><em><strong>BAIDU_URL_SUBMIT_LIST</strong></em>.submit_url: 提交百度网站的目标
+  URL，参考格式：<code>http://data.zz.baidu.com/urls?site=https://sitoi.cn&amp;token=xxxxx</code></li>
+<li><em><strong>BAIDU_URL_SUBMIT_LIST</strong></em>.times: 单次任务执行对同一个网站提交次数</li>
+</ul>
+<h4 id="_10">城市天气列表</h4>
+<p><a href="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/weather/city.json">城市名称列表</a></p>
+<h4 id="_11">每日一句 是否开启</h4>
+<p>默认为 false。false: 表示关闭；true: 表示开启</p>
+<h2 id="_12">示例</h2>
+<blockquote>
+<p>⚠️ 请务必到 <a href="http://www.json.cn">http://www.json.cn</a> 网站检查 <code>config.json</code> 文件格式是否正确！</p>
+</blockquote>
+<p>配置文件：<code>config/config.json</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;DINGTALK_SECRET&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;DINGTALK_ACCESS_TOKEN&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SCKEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SENDKEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;BARK_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;QMSG_KEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;QMSG_TYPE&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TG_BOT_TOKEN&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TG_USER_ID&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TG_API_HOST&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TG_PROXY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;COOLPUSHSKEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;COOLPUSHQQ&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;COOLPUSHWX&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;COOLPUSHEMAIL&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;QYWX_KEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;QYWX_CORPID&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;QYWX_AGENTID&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;QYWX_CORPSECRET&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;QYWX_TOUSER&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;PUSHPLUS_TOKEN&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;PUSHPLUS_TOPIC&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;CITY_NAME_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;上海&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;MOTTO&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;IQIYI_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;iqiyi_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;__dfp=xxxxxx; QP0013=xxxxxx; QP0022=xxxxxx; QYABEX=xxxxxx; P00001=xxxxxx; P00002=xxxxxx; P00003=xxxxxx; P00007=xxxxxx; QC163=xxxxxx; QC175=xxxxxx; QC179=xxxxxx; QC170=xxxxxx; P00010=xxxxxx; P00PRU=xxxxxx; P01010=xxxxxx; QC173=xxxxxx; QC180=xxxxxx; P00004=xxxxxx; QP0030=xxxxxx; QC006=xxxxxx; QC007=xxxxxx; QC008=xxxxxx; QC010=xxxxxx; nu=xxxxxx; __uuid=xxxxxx; QC005=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;iqiyi_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;VQQ_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;auth_refresh&quot;</span><span class="p">:</span> <span class="s2">&quot;https://access.video.qq.com/user/auth_refresh?vappid=xxxxxx&amp;vsecret=xxxxxx&amp;type=qq&amp;g_tk=&amp;g_vstk=xxxxxx&amp;g_actk=xxxxxx&amp;callback=xxxxxx&amp;_=xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;vqq_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;pgv_pvid=xxxxxx; pac_uid=xxxxxx; RK=xxxxxx; ptcz=xxxxxx; tvfe_boss_uuid=xxxxxx; video_guid=xxxxxx; video_platform=xxxxxx; pgv_info=xxxxxx; main_login=xxxxxx; vqq_access_token=xxxxxx; vqq_appid=xxxxxx; vqq_openid=xxxxxx; vqq_vuserid=xxxxxx; vqq_refresh_token=xxxxxx; login_time_init=xxxxxx; uid=xxxxxx; vqq_vusession=xxxxxx; vqq_next_refresh_time=xxxxxx; vqq_login_time_init=xxxxxx; login_time_last=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;auth_refresh&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 refresh url，请参考上面，以实际获取为准&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;vqq_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;YOUDAO_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;youdao_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;JSESSIONID=xxxxxx; __yadk_uid=xxxxxx; OUTFOX_SEARCH_USER_ID_NCOO=xxxxxx; YNOTE_SESS=xxxxxx; YNOTE_PERS=xxxxxx; YNOTE_LOGIN=xxxxxx; YNOTE_CSTK=xxxxxx; _ga=xxxxxx; _gid=xxxxxx; _gat=xxxxxx; PUBLIC_SHARE_18a9dde3de846b6a69e24431764270c4=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;youdao_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;KGQQ_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;kgqq_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;muid=xxxxxx; uid=xxxxxx; userlevel=xxxxxx; openid=xxxxxx; openkey=xxxxxx; opentype=xxxxxx; qrsig=xxxxxx; pgv_pvid=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;kgqq_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;MUSIC163_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;music163_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;18888xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;music163_password&quot;</span><span class="p">:</span> <span class="s2">&quot;Sitoi&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;music163_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 手机号&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;music163_password&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 密码&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;ONEPLUSBBS_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;oneplusbbs_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;acw_tc=xxxxxx; qKc3_0e8d_saltkey=xxxxxx; qKc3_0e8d_lastvisit=xxxxxx; bbs_avatar=xxxxxx; qKc3_0e8d_sendmail=xxxxxx; opcid=xxxxxx; opcct=xxxxxx; oppt=xxxxxx; opsid=xxxxxx; opsct=xxxxxx; opbct=xxxxxx; UM_distinctid=xxxxxx; CNZZDATA1277373783=xxxxxx; www_clear=xxxxxx; ONEPLUSID=xxxxxx; qKc3_0e8d_sid=xxxxxx; bbs_uid=xxxxxx; bbs_uname=xxxxxx; bbs_grouptitle=xxxxxx; opuserid=xxxxxx; bbs_sign=xxxxxx; bbs_formhash=xxxxxx; qKc3_0e8d_ulastactivity=xxxxxx; opsertime=xxxxxx; qKc3_0e8d_lastact=xxxxxx; qKc3_0e8d_checkpm=xxxxxx; qKc3_0e8d_noticeTitle=xxxxxx; optime_browser=xxxxxx; opnt=xxxxxx; opstep=xxxxxx; opstep_event=xxxxxx; fp=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;oneplusbbs_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;BAIDU_URL_SUBMIT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;data_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;submit_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://data.zz.baidu.com/urls?site=https://sitoi.cn&amp;token=xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;times&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;data_url&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 data_url 链接地址，以实际获取为准&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;submit_url&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 submit_url 链接地址，以实际获取为准&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;times&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;FMAPP_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;fmapp_token&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxx.xxxxxx-xxxxxx-xxxxxx.xxxxxx-xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fmapp_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;sensorsdata2015jssdkcross=xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fmapp_blackbox&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJlcnJxxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fmapp_device_id&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxx-xxxx-xxxx-xxxx-xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;fmapp_token&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 token 填写，请参考上面，以实际获取为准&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fmapp_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fmapp_blackbox&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 blackbox 填写，请参考上面，blackbox 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fmapp_device_id&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 device_id 填写，请参考上面，以实际获取为准&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;TIEBA_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;tieba_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;BIDUPSID=xxxxxx; PSTM=xxxxxx; BAIDUID=xxxxxx; BAIDUID_BFESS=xxxxxx; delPer=xxxxxx; PSINO=xxxxxx; H_PS_PSSID=xxxxxx; BA_HECTOR=xxxxxx; BDORZ=xxxxxx; TIEBA_USERTYPE=xxxxxx; st_key_id=xxxxxx; BDUSS=xxxxxx; BDUSS_BFESS=xxxxxx; STOKEN=xxxxxx; TIEBAUID=xxxxxx; ab_sr=xxxxxx; st_data=xxxxxx; st_sign=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;tieba_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;BILIBILI_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;bilibili_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;_uuid=xxxxxx; rpdid=xxxxxx; LIVE_BUVID=xxxxxx; PVID=xxxxxx; blackside_state=xxxxxx; CURRENT_FNVAL=xxxxxx; buvid3=xxxxxx; fingerprint3=xxxxxx; fingerprint=xxxxxx; buivd_fp=xxxxxx; buvid_fp_plain=xxxxxx; DedeUserID=xxxxxx; DedeUserID__ckMd5=xxxxxx; SESSDATA=xxxxxx; bili_jct=xxxxxx; bsource=xxxxxx; finger=xxxxxx; fingerprint_s=xxxxxx;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;coin_num&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;coin_type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;silver2coin&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;bilibili_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;coin_num&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;coin_type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">&quot;silver2coin&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;LIANTONG_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;simCount=1&amp;version=xxxxxx@8.0100&amp;mobile=xxxxxx&amp;netWay=wifi&amp;isRemberPwd=false&amp;appId=xxxxxx&amp;deviceId=xxxxxx&amp;pip=xxxxxx&amp;password=xxxxxx&amp;deviceOS=14.3&amp;deviceBrand=iphone&amp;deviceModel=iPhone&amp;remark4=&amp;keyVersion=2&amp;deviceCode=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 请求 中的参数信息填写，请参考上面，以实际获取为准&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;V2EX_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;v2ex_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;v2ex_proxy&quot;</span><span class="p">:</span> <span class="s2">&quot;使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;v2ex_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;v2ex_proxy&quot;</span><span class="p">:</span> <span class="s2">&quot;使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;WWW2NZZ_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;www2nzz_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;YPx9_2132_saltkey=xxxxxx; YPx9_2132_lastvisit=xxxxxx; YPx9_2132_sendmail=xxxxxx; YPx9_2132_con_request_uri=xxxxxx; YPx9_2132_sid=xxxxxx; YPx9_2132_client_created=xxxxxx; YPx9_2132_client_token=xxxxxx; YPx9_2132_ulastactivity=xxxxxx; YPx9_2132_auth=xxxxxx; YPx9_2132_connect_login=xxxxxx; YPx9_2132_connect_is_bind=xxxxxx; YPx9_2132_connect_uin=xxxxxx; YPx9_2132_stats_qc_login=xxxxxx; YPx9_2132_checkpm=xxxxxx; YPx9_2132_noticeTitle=xxxxxx; YPx9_2132_nofavfid=xxxxxx; YPx9_2132_lastact=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;www2nzz_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;SMZDM_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;smzdm_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;__jsluid_s=xxxxxx; __ckguid=xxxxxx; device_id=xxxxxx; homepage_sug=xxxxxx; r_sort_type=xxxxxx; _zdmA.vid=xxxxxx; sajssdk_2015_cross_new_user=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; footer_floating_layer=xxxxxx; ad_date=xxxxxx; ad_json_feed=xxxxxx; zdm_qd=xxxxxx; sess=xxxxxx; user=xxxxxx; _zdmA.uid=xxxxxx; smzdm_id=xxxxxx; userId=xxxxxx; bannerCounter=xxxxxx; _zdmA.time=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;smzdm_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;MIMOTION_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;mimotion_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;18888xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mimotion_password&quot;</span><span class="p">:</span> <span class="s2">&quot;Sitoi&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mimotion_min_step&quot;</span><span class="p">:</span> <span class="s2">&quot;10000&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mimotion_max_step&quot;</span><span class="p">:</span> <span class="s2">&quot;20000&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;mimotion_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 手机号填写，请参考上面&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mimotion_password&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 密码填写，请参考上面&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mimotion_min_step&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 最小步数填写，请参考上面&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mimotion_max_step&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 最大步数填写，请参考上面&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;ACFUN_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;acfun_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;18888xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;acfun_password&quot;</span><span class="p">:</span> <span class="s2">&quot;Sitoi&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;acfun_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 手机号填写，请参考上面&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;acfun_password&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 密码填写，请参考上面&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;CLOUD189_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;cloud189_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;18888xxxxxx&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;cloud189_password&quot;</span><span class="p">:</span> <span class="s2">&quot;Sitoi&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;cloud189_phone&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 手机号填写，请参考上面&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;cloud189_password&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 密码填写，请参考上面&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;WPS_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;wps_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;csrf=xxxxxx; wpsqing_autoLoginV1=xxxxxx; wps_sid=xxxxxx; uzone=xxxxxx; ulocale=xxxxxx; XSRF-TOKEN=xxxxxx; _session=xxxxxx; logined=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;wps_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;POJIE_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;pojie_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;htVD_2132_client_token=xxxxxx; htVD_2132_connect_is_bind=xxxxxx; htVD_2132_connect_uin=xxxxxx; htVD_2132_nofavfid=xxxxxx; htVD_2132_smile=xxxxxx; Hm_lvt_46d556462595ed05e05f009cdafff31a=xxxxxx; htVD_2132_saltkey=xxxxxx; htVD_2132_lastvisit=xxxxxx; htVD_2132_client_created=xxxxxx; htVD_2132_auth=xxxxxx; htVD_2132_connect_login=xxxxxx; htVD_2132_home_diymode=xxxxxx; htVD_2132_visitedfid=xxxxxx; htVD_2132_viewid=xxxxxx; KF4=xxxxxx; htVD_2132_st_p=xxxxxx; htVD_2132_lastcheckfeed=xxxxxx; htVD_2132_sid=xxxxxx; htVD_2132_ulastactivity=xxxxxx; htVD_2132_noticeTitle=xxxxxx;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;pojie_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;MGTV_PARAMS_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;mgtv_params&quot;</span><span class="p">:</span> <span class="s2">&quot;uuid=xxxxxx&amp;uid=xxxxxx&amp;ticket=xxxxxx&amp;token=xxxxxx&amp;device=iPhone&amp;did=xxxxxx&amp;deviceId=xxxxxx&amp;appVersion=6.8.2&amp;osType=ios&amp;platform=iphone&amp;abroad=0&amp;aid=xxxxxx&amp;nonce=xxxxxx&amp;timestamp=xxxxxx&amp;appid=xxxxxx&amp;type=1&amp;sign=xxxxxx&amp;callback=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;mgtv_params&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 请求参数填写，请参考上面&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;PICACOMIC_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;picacomic_email&quot;</span><span class="p">:</span> <span class="s2">&quot;Sitoi&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;picacomic_password&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;picacomic_email&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 账号填写，请参考上面&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;picacomic_password&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 密码填写，请参考上面&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;MEIZU_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;meizu_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;aliyungf_tc=xxxxxx; logined_uid=xxxxxx; acw_tc=xxxxxx; LT=xxxxxx; MZBBS_2132_saltkey=xxxxxx; MZBBS_2132_lastvisit=xxxxxx; MZBBSUC_2132_auth=xxxxxx; MZBBSUC_2132_loginmember=xxxxxx; MZBBSUC_2132_ticket=xxxxxx; MZBBS_2132_sid=xxxxxx; MZBBS_2132_ulastactivity=xxxxxx; MZBBS_2132_auth=xxxxxx; MZBBS_2132_loginmember=xxxxxx; MZBBS_2132_lastcheckfeed=xxxxxx; MZBBS_2132_checkfollow=xxxxxx; MZBBS_2132_lastact=xxxxxx;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;draw_count&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;meizu_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;draw_count&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 抽奖次数设置&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;ZHIYOO_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zhiyoo_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_onlineusernum=xxxxxx; ikdQ_9242_sendmail=1; ikdQ_9242_seccode=xxxxxx; ikdQ_9242_ulastactivity=xxxxxx; ikdQ_9242_auth=xxxxxx; ikdQ_9242_connect_is_bind=xxxxxx; ikdQ_9242_nofavfid=xxxxxx; ikdQ_9242_checkpm=xxxxxx; ikdQ_9242_noticeTitle=1; ikdQ_9242_sid=xxxxxx; ikdQ_9242_lip=xxxxxx; ikdQ_9242_lastact=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;zhiyoo_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;WEIBO_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;weibo_show_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.weibo.cn/2/users/show?wm=xxxxxx&amp;launchid=xxxxxx&amp;b=xxxxxx&amp;from=xxxxxx&amp;c=xxxxxx&amp;networktype=xxxxxx&amp;v_p=xxxxxx&amp;skin=xxxxxx&amp;v_f=xxxxxx&amp;lang=xxxxxx&amp;sflag=xxxxxx&amp;ua=xxxxxx&amp;ft=xxxxxx&amp;aid=xxxxxx&amp;has_extend=xxxxxx&amp;uid=xxxxxx&amp;gsid=xxxxxx&amp;sourcetype=&amp;get_teenager=xxxxxx&amp;s=xxxxxx&amp;has_profile=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;weibo_show_url&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 show_url 填写，请参考上面，show_url 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;DUOKAN_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;duokan_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;user_id=xxxxxx; token=xxxxxx; user_gender=xxxxxx; device_id=xxxxxx; app_id=xxxxxx; build=xxxxxx; short_version=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;duokan_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;CSDN_COOKIE_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;csdn_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;uuid_tt_dd=xxxxxx; _ga=xxxxxx; UserName=xxxxxx; UserInfo=xxxxxx; UserToken=xxxxxx; UserNick=xxxxxx; AU=768; UN=xxxxxx; BT=xxxxxx; p_uid=xxxxxx; Hm_up_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_ct_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_lvt_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx dc_sid=xxxxxx; c_segment=xxxxxx; dc_session_id=xxxxxx; csrfToken=xxxxxx; c_first_ref=xxxxxx; c_first_page=xxxxxx; c_page_id=xxxxxx; announcement-new=xxxxxx; log_Id_click=xxxxxx; c_pref=xxxxxx; c_ref=xxxxxx; dc_tos=xxxxxx; log_Id_pv=xxxxxx; log_Id_view=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;csdn_cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;WZYD_DATA_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;wzyd_data&quot;</span><span class="p">:</span> <span class="s2">&quot;areaId=xxxxxx&amp;roleId=xxxxxx&amp;gameId=xxxxxx&amp;serverId=xxxxxx&amp;gameOpenid=xxxxxx&amp;userId=xxxxxx&amp;appVersion=xxxxxx&amp;cClientVersionName=xxxxxx&amp;platid=xxxxxx&amp;source=xxxxxx&amp;algorithm=xxxxxx&amp;version=xxxxxx&amp;timestamp=xxxxxx&amp;appid=xxxxxx&amp;openid=xxxxxx&amp;sig=xxxxxx&amp;encode=2&amp;msdkEncodeParam=xxxxxx&amp;cSystem=xxxxxx&amp;h5Get=xxxxxx&amp;msdkToken=&amp;appOpenid=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;wzyd_data&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;WOMAIL_URL_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;womail_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://nyan.mail.wo.cn/cn/sign/index/index?mobile=xxxxxx&amp;userName=&amp;openId=xxxxxx&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;womail_url&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                主页
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../local/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                本地使用教程
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
