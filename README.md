@@ -94,6 +94,15 @@
 - [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
 - [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
 
+## 交流群
+
+<table> 
+<tr> 
+ <td> <p align="center">微信群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.gif" /> <p align="center">进群加微信，备注：签到</p> </td> 
+ <td> <p align="center">QQ群</p> <img width="282" height="282" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.gif" /> <p align="center">扫码进QQ群</p> </td> 
+</tr> 
+</table>
+
 ## 其他
 
 <details>
@@ -153,3 +162,9 @@
     * 添加【百度站点】每日提交脚本
 
 </details> 
+
+## 历史 Star 数
+
+<p align="center">
+    <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
+</p>
