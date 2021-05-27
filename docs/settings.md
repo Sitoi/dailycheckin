@@ -78,6 +78,9 @@
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_blackbox|Fa米家|APP|Fa米家 APP headers 中的 blackBox|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_device_id|Fa米家|APP|Fa米家 APP headers 中的 deviceId|
+|_**FMAPP_ACCOUNT_LIST**_.fmapp_fmversion|Fa米家|APP|Fa米家 APP headers 中的 fmVersion|
+|_**FMAPP_ACCOUNT_LIST**_.fmapp_os|Fa米家|APP|Fa米家 APP headers 中的 os|
+|_**FMAPP_ACCOUNT_LIST**_.fmapp_useragent|Fa米家|APP|Fa米家 APP headers 中的 User-Agent|
 |_**ACFUN_ACCOUNT_LIST**_.acfun_phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 手机账号|
 |_**ACFUN_ACCOUNT_LIST**_.acfun_password|[AcFun](https://www.acfun.cn/)|APP|AcFun 账号密码|
 |_**MGTV_PARAMS_LIST**_.mgtv_params|芒果 TV|APP|芒果 TV 请求参数|
@@ -283,13 +286,19 @@
       "fmapp_token": "xxxxxx.xxxxxx-xxxxxx-xxxxxx.xxxxxx-xxxxxx",
       "fmapp_cookie": "sensorsdata2015jssdkcross=xxxxxx",
       "fmapp_blackbox": "eyJlcnJxxxxxx",
-      "fmapp_device_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxx"
+      "fmapp_device_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxx",
+      "fmapp_fmversion": "xxxxxx",
+      "fmapp_os": "xxxxxx",
+      "fmapp_useragent": "xxxxxx"
     },
     {
       "fmapp_token": "多账号 token 填写，请参考上面，以实际获取为准",
       "fmapp_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
       "fmapp_blackbox": "多账号 blackbox 填写，请参考上面，blackbox 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "fmapp_device_id": "多账号 device_id 填写，请参考上面，以实际获取为准"
+      "fmapp_device_id": "多账号 device_id 填写，请参考上面，以实际获取为准",
+      "fmapp_fmversion": "多账号 fmVersion 填写，请参考上面，以实际获取为准",
+      "fmapp_os": "多账号 os 填写，请参考上面，以实际获取为准",
+      "fmapp_useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准"
     }
   ],
   "TIEBA_COOKIE_LIST": [
