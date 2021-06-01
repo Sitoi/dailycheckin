@@ -54,7 +54,6 @@
 |_**SMZDM_COOKIE_LIST**_.smzdm_cookie|[什么值得买](https://www.smzdm.com)|Web|什么值得买 每日签到|
 |_**CLOUD189_ACCOUNT_LIST**_.cloud189_phone|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号|
 |_**CLOUD189_ACCOUNT_LIST**_.cloud189_password|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号对应的密码|
-|_**WPS_COOKIE_LIST**_.wps_cookie|[WPS](https://www.wps.cn/)|Web| WPS cookie|
 |_**POJIE_COOKIE_LIST**_.pojie_cookie|[吾爱破解](https://www.52pojie.cn/index.php)|Web| 吾爱破解 cookie|
 |_**MEIZU_COOKIE_LIST**_.meizu_cookie|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 cookie|
 |_**MEIZU_COOKIE_LIST**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 抽奖次数|
@@ -73,7 +72,6 @@
 
 |Name|归属|属性|说明|
 |:---:|:---:|:---:|:---|
-|_**LIANTONG_ACCOUNT_LIST**_.data|联通营业厅|APP|联通营业厅 APP 请求中的 Body|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_token|Fa米家|APP|Fa米家 APP headers 中的 token|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
 |_**FMAPP_ACCOUNT_LIST**_.fmapp_blackbox|Fa米家|APP|Fa米家 APP headers 中的 blackBox|
@@ -323,14 +321,6 @@
       "silver2coin": true
     }
   ],
-  "LIANTONG_ACCOUNT_LIST": [
-    {
-      "data": "simCount=1&version=xxxxxx@8.0100&mobile=xxxxxx&netWay=wifi&isRemberPwd=false&appId=xxxxxx&deviceId=xxxxxx&pip=xxxxxx&password=xxxxxx&deviceOS=14.3&deviceBrand=iphone&deviceModel=iPhone&remark4=&keyVersion=2&deviceCode=xxxxxx"
-    },
-    {
-      "data": "多账号 请求 中的参数信息填写，请参考上面，以实际获取为准"
-    }
-  ],
   "V2EX_COOKIE_LIST": [
     {
       "v2ex_cookie": "_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;",
@@ -389,14 +379,6 @@
     {
       "cloud189_phone": "多账号 手机号填写，请参考上面",
       "cloud189_password": "多账号 密码填写，请参考上面"
-    }
-  ],
-  "WPS_COOKIE_LIST": [
-    {
-      "wps_cookie": "csrf=xxxxxx; wpsqing_autoLoginV1=xxxxxx; wps_sid=xxxxxx; uzone=xxxxxx; ulocale=xxxxxx; XSRF-TOKEN=xxxxxx; _session=xxxxxx; logined=xxxxxx;"
-    },
-    {
-      "wps_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
   "POJIE_COOKIE_LIST": [

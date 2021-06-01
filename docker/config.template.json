@@ -131,14 +131,6 @@
       "silver2coin": true
     }
   ],
-  "LIANTONG_ACCOUNT_LIST": [
-    {
-      "data": "simCount=1&version=xxxxxx@8.0100&mobile=xxxxxx&netWay=wifi&isRemberPwd=false&appId=xxxxxx&deviceId=xxxxxx&pip=xxxxxx&password=xxxxxx&deviceOS=14.3&deviceBrand=iphone&deviceModel=iPhone&remark4=&keyVersion=2&deviceCode=xxxxxx"
-    },
-    {
-      "data": "多账号 请求 中的参数信息填写，请参考上面，以实际获取为准"
-    }
-  ],
   "V2EX_COOKIE_LIST": [
     {
       "v2ex_cookie": "_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;",
@@ -197,14 +189,6 @@
     {
       "cloud189_phone": "多账号 手机号填写，请参考上面",
       "cloud189_password": "多账号 密码填写，请参考上面"
-    }
-  ],
-  "WPS_COOKIE_LIST": [
-    {
-      "wps_cookie": "csrf=xxxxxx; wpsqing_autoLoginV1=xxxxxx; wps_sid=xxxxxx; uzone=xxxxxx; ulocale=xxxxxx; XSRF-TOKEN=xxxxxx; _session=xxxxxx; logined=xxxxxx;"
-    },
-    {
-      "wps_cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
   "POJIE_COOKIE_LIST": [
