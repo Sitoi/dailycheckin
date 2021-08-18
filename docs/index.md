@@ -25,14 +25,14 @@
 |签到|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 150 鲜花左右|WEB|待测试|🟢️|
 |签到|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|WEB|待测试|🟢️|
 |签到|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|WEB|待测试|🟢️|
-|签到|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|WEB|永久|🟢️|
+|签到|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|WEB|永久|🟡|
 |签到|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务|WEB|待测试|🟢️|
 |签到|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|WEB|待测试|🟢️|
 |签到|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|WEB|待测试|🟢️|
 |签到|[V2EX](https://www.v2ex.com/)|铜币奖励|WEB|待测试|🟢️|
 |签到|[咔叽网单](https://www.2nzz.com/)|论坛金币|WEB|待测试|🟢️|
 |签到|[什么值得买](https://www.smzdm.com)|每日签到|WEB|待测试|🟢️|
-|签到|[AcFun](https://www.acfun.cn/)|每日签到香蕉|WEB|永久|🟢️|
+|签到|[AcFun](https://www.acfun.cn/)|每日签到香蕉|WEB|永久|🟡️|
 |签到|[天翼云盘](https://cloud.189.cn/)|每日签到 +2次抽奖获得空间奖励|WEB|永久|🟢️|
 |签到|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|WEB|待测试|🟤|
 |签到|[哔咔漫画](https://www.picacomic.com)|成长值奖励|WEB|永久|🟤|
@@ -45,7 +45,7 @@
 |签到|多看阅读|获取书豆，用于购买书籍|APP|待测试|🟢️|
 |签到|芒果 TV|签到获取体验会员|APP|待测试|🟢️|
 |签到|Fa 米家|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|APP|待测试|🟢️|
-|其他|小米运动|每日小米运动刷步数|APP|永久|🟢️|
+|其他|小米运动|每日小米运动刷步数|APP|永久|🟡|
 |其他|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|WEB|永久|🟢️|
 |其他|每日天气预报|获取指定的多个城市天气信息|WEB|永久|🟢️|
 |其他|每日一句|从词霸中获取每日一句，带英文|WEB|永久|🟢️|

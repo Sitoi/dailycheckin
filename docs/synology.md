@@ -16,10 +16,12 @@
 
 ![获取 cookie 教程](img/synology4.jpg)
 
+> Makefile 文件不需要创建
 ![获取 cookie 教程](img/synology5.jpg)
 
 群晖内本地文件夹请自行创建
 
+> Makefile 文件不需要创建
 ![获取 cookie 教程](img/synology6.jpg)
 
 ```text
@@ -27,12 +29,12 @@
 |-- config
 |   `-- config.json
 |-- docker-compose.yml
-|-- logs
-|   `-- default_task.log
-`-- Makefile
+`-- logs
+    `-- default_task.log
 ```
 
 如图，设置好直接点应用，其他默认，可按需点击高级设置里的启用自动重新启动，以防机器意外重启出现脚本停止现象。
+> Makefile 文件不需要创建
 ![获取 cookie 教程](img/synology7.jpg)
 
 ## 三、回到容器，如图即是运行成功
