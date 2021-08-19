@@ -62,6 +62,7 @@
 - pushplus（微信）
 - Cool Push（QQ,微信,邮箱）
 - qmsg 酱（QQ）
+- 飞书
 
 ## 交流群
 

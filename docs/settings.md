@@ -30,6 +30,7 @@
 |_**QYWX_TOUSER**_|企业微信应用消息推送|推送|touser [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
 |_**PUSHPLUS_TOKEN**_|pushplus 推送|推送|用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} [官方文档](https://www.pushplus.plus/doc/)|
 |_**PUSHPLUS_TOPIC**_|pushplus 推送|推送|群组编码，不填仅发送给自己 [官方文档](https://www.pushplus.plus/doc/)|
+|_**FSKEY**_|飞书 推送|推送|`https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx` **xxxxxx** 部分就是需要填写的 FSKEY|
 
 ### Web 签到配置
 
@@ -60,13 +61,11 @@
 |_**ZHIYOO_COOKIE_LIST**_.zhiyoo_cookie|[智友邦](http://zhizhiyoo.net/)|Web| 智友邦 WEB Cookie|
 |_**CSDN_COOKIE_LIST**_.csdn_cookie|[CSDN](https://www.csdn.net/)|Web| CSDN Cookie|
 
-
 ### 公众号签到配置
 
 |Name|归属|属性|说明|
 |:---:|:---:|:---:|:---|
 |_**WOMAIL_URL_LIST**_.womail_url|联通沃邮箱|公众号|联通沃邮箱 公众号 `https://nyan.mail.wo.cn/cn/sign/index/index?mobile` 开头的 URL|
-
 
 ### APP 签到配置
 
@@ -141,24 +140,6 @@
 
 抓包 APP 的请求中的 `headers` 信息中提取 `token`、`deviceId`、`cookie` 即可
 
-#### 联通营业厅参数获取
-
-1. 退出手机营业厅登录，然后开启抓包软件，登录手机营业厅
-
-查找网址为 `https://m.client.10010.com/mobileService/login.htm` 的记录，找到请求内容，将 `simCount` 开始到最后的内容按要求填入 `config/config.json` 文件。
-
-**样例**
-
-```json
-{
-  "LIANTONG_ACCOUNT_LIST": [
-    {
-      "data": "simCount=1&version=iphone_c@8.0100&mobile=xxxxxx&netWay=wifi&isRemberPwd=false&appId=xxxxxx&deviceId=xxxxxx&pip=192.168.1.1&password=xxxxxx&deviceOS=14.3&deviceBrand=iphone&deviceModel=iPhone&remark4=&keyVersion=2&deviceCode=xxxxxx"
-    }
-  ]
-}
-```
-
 ### 其他参数
 
 #### 百度站点提交参数获取
@@ -191,6 +172,7 @@
 {
   "DINGTALK_SECRET": "",
   "DINGTALK_ACCESS_TOKEN": "",
+  "FSKEY": "",
   "SCKEY": "",
   "SENDKEY": "",
   "BARK_URL": "",

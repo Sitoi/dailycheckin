@@ -86,6 +86,7 @@
 - pushplus（微信）
 - Cool Push（QQ,微信,邮箱）
 - qmsg 酱（QQ）
+- 飞书
 
 ## 特别鸣谢
 
@@ -101,11 +102,20 @@
 </tr> 
 </table>
 
-## 其他
+## 更新日志
 
-<details>
-<summary>更新日志（点击展开）</summary>
-
+- 2021-08-18 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.4-brightgreen)
+    * 修复【小米运动】签到脚本
+- 2021-07-29 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.3-brightgreen)
+    * 修复【天翼云】签到脚本
+    * 修复【AcFun】签到脚本
+    * 添加【飞书】推送功能
+- 2021-07-05 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.1-brightgreen)
+    * 修复【Bilibili】签到脚本
+- 2021-06-01 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.0-brightgreen)
+    * 删除【联通】&【WPS】签到脚本
+- 2021-05-30 ![PyPI](https://img.shields.io/badge/Pypi-v0.0.8-brightgreen)
+    * 更新【联通沃邮箱】每日签到脚本
 - 2021-04-28
     * 添加【联通沃邮箱】每日签到脚本 感谢水友`@什么大风大浪都见过` 提供脚本
 - 2021-04-07
@@ -159,7 +169,6 @@
     * 添加【爱奇艺】每日签到脚本
     * 添加【百度站点】每日提交脚本
 
-</details> 
 
 ## 历史 Star 数
 
