@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://sitoi.gitee.io/dailycheckin/settings/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.5">
     
     
       
@@ -340,20 +340,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    联通营业厅参数获取
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     其他参数
   </a>
   
@@ -361,21 +354,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     百度站点提交参数获取
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     城市天气列表
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     每日一句 是否开启
   </a>
   
@@ -392,7 +385,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     示例
   </a>
   
@@ -601,20 +594,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    联通营业厅参数获取
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     其他参数
   </a>
   
@@ -622,21 +608,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     百度站点提交参数获取
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     城市天气列表
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     每日一句 是否开启
   </a>
   
@@ -653,7 +639,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     示例
   </a>
   
@@ -819,6 +805,12 @@
 <td align="center">pushplus 推送</td>
 <td align="center">推送</td>
 <td align="left">群组编码，不填仅发送给自己 <a href="https://www.pushplus.plus/doc/">官方文档</a></td>
+</tr>
+<tr>
+<td align="center"><em><strong>FSKEY</strong></em></td>
+<td align="center">飞书 推送</td>
+<td align="center">推送</td>
+<td align="left"><code>https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx</code> <strong>xxxxxx</strong> 部分就是需要填写的 FSKEY</td>
 </tr>
 </tbody>
 </table>
@@ -1194,22 +1186,8 @@
 <p>抓包 APP 中域名为 <code>https://ssl.kohsocial.qq.com</code> 请求内容的全部参数</p>
 <h4 id="fa-cookie">Fa米家 Cookie 等参数获取</h4>
 <p>抓包 APP 的请求中的 <code>headers</code> 信息中提取 <code>token</code>、<code>deviceId</code>、<code>cookie</code> 即可</p>
-<h4 id="_7">联通营业厅参数获取</h4>
-<ol>
-<li>退出手机营业厅登录，然后开启抓包软件，登录手机营业厅</li>
-</ol>
-<p>查找网址为 <code>https://m.client.10010.com/mobileService/login.htm</code> 的记录，找到请求内容，将 <code>simCount</code> 开始到最后的内容按要求填入 <code>config/config.json</code> 文件。</p>
-<p><strong>样例</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;LIANTONG_ACCOUNT_LIST&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;simCount=1&amp;version=iphone_c@8.0100&amp;mobile=xxxxxx&amp;netWay=wifi&amp;isRemberPwd=false&amp;appId=xxxxxx&amp;deviceId=xxxxxx&amp;pip=192.168.1.1&amp;password=xxxxxx&amp;deviceOS=14.3&amp;deviceBrand=iphone&amp;deviceModel=iPhone&amp;remark4=&amp;keyVersion=2&amp;deviceCode=xxxxxx&quot;</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="_8">其他参数</h3>
-<h4 id="_9">百度站点提交参数获取</h4>
+<h3 id="_7">其他参数</h3>
+<h4 id="_8">百度站点提交参数获取</h4>
 <p><a href="https://ziyuan.baidu.com/site/index#/">百度搜索资源平台</a></p>
 <p><img alt="获取百度云提交链接教程" src="../img/submit_url.png" /></p>
 <ul>
@@ -1219,11 +1197,11 @@
   URL，参考格式：<code>http://data.zz.baidu.com/urls?site=https://sitoi.cn&amp;token=xxxxx</code></li>
 <li><em><strong>BAIDU_URL_SUBMIT_LIST</strong></em>.times: 单次任务执行对同一个网站提交次数</li>
 </ul>
-<h4 id="_10">城市天气列表</h4>
+<h4 id="_9">城市天气列表</h4>
 <p><a href="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/weather/city.json">城市名称列表</a></p>
-<h4 id="_11">每日一句 是否开启</h4>
+<h4 id="_10">每日一句 是否开启</h4>
 <p>默认为 false。false: 表示关闭；true: 表示开启</p>
-<h2 id="_12">示例</h2>
+<h2 id="_11">示例</h2>
 <blockquote>
 <p>⚠️ 请务必到 <a href="http://www.json.cn">http://www.json.cn</a> 网站检查 <code>config.json</code> 文件格式是否正确！</p>
 </blockquote>
@@ -1231,6 +1209,7 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;DINGTALK_SECRET&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
   <span class="nt">&quot;DINGTALK_ACCESS_TOKEN&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;FSKEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
   <span class="nt">&quot;SCKEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
   <span class="nt">&quot;SENDKEY&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
   <span class="nt">&quot;BARK_URL&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
