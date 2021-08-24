@@ -1,17 +1,19 @@
 <p align="center">
     <img src="https://socialify.git.ci/Sitoi/dailycheckin/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"/>
     <br><strong><font size=50>每日签到集合</font></strong>
-    <br>基于【腾讯云函数】/【GitHub Actions】/【Docker】的每日签到脚本
+    <br>基于【腾讯云函数】/【Docker】的每日签到脚本
     <br>支持多账号使用
 </p>
 
 <p align="center">
-    <a href="https://t.me/dailycheckin"><img src="https://img.shields.io/badge/Talk-Telegram-brightgreen.svg?style=popout-square" alt="Telegram"></a>
+    <a href="https://github.com/Sitoi/dailycheckin"><img src="https://img.shields.io/pypi/l/dailycheckin?style=popout-square" alt="license"></a>
     <a href="https://github.com/Sitoi/dailycheckin/stargazers"><img src="https://img.shields.io/github/stars/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub stars"></a>
     <a href="https://github.com/Sitoi/dailycheckin/network/members"><img src="https://img.shields.io/github/forks/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub forks"></a>
     <a href="https://github.com/Sitoi/dailycheckin/issues"><img src="https://img.shields.io/github/issues/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub issues"></a>
     <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/pulls/sitoi/dailycheckin?style=popout-square" alt="Docker Pulls"></a>
-    <a href="https://pypi.org/project/dailycheckin/"><img src="https://img.shields.io/pypi/dm/dailycheckin?label=pypi&style=flat-square" alt="Pypi Download"></a>
+    <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/image-size/sitoi/dailycheckin?style=popout-square" alt="Docker Size"></a>
+    <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/stars/sitoi/dailycheckin?style=popout-square" alt="Docker Stars"></a>
+    <a href="https://pypi.org/project/dailycheckin/"><img src="https://img.shields.io/pypi/dm/dailycheckin?label=pypi&style=popout-square" alt="Pypi Download"></a>
     <a href="https://sitoi.github.io/dailycheckin"><img src="https://visitor-badge.glitch.me/badge?page_id=Sitoi-dailycheckin" alt="visitor"></a>
 </p>
 
