@@ -68,9 +68,9 @@
 
 <table> 
 <tr> 
- <td> <p align="center">TG 群</p> <a href="https://t.me/dailycheckin"> <img width="250" height="350" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/Telegram.jpg"></a> <p align="center">点击图片或扫码进TG群</p> </td> 
- <td> <p align="center">QQ 群</p> <img width="250" height="350" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.jpg" /> <p align="center">扫码直接进QQ群</p> </td>
- <td> <p align="center">微信群</p> <img width="250" height="350" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_groups.jpg" /> <p align="center">扫码直接进微信群</p> </td> 
- <td> <p align="center">微信</p> <img width="250" height="350" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.jpg" /> <p align="center">进群加微信，备注：签到</p> </td> 
+ <td> <p align="center">TG 群</p> <a href="https://t.me/dailycheckin"> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/Telegram.jpg"></a> <p align="center">扫码进 TG 群</p> </td> 
+ <td> <p align="center">QQ 群</p> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qq.jpg" /> <p align="center">扫码进 QQ 群</p> </td>
+ <td> <p align="center">微信群</p> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat_groups.jpg" /> <p align="center">扫码进微信群</p> </td> 
+ <td> <p align="center">微信</p> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.jpg" /> <p align="center">加微信备注：签到</p> </td> 
 </tr> 
 </table>
