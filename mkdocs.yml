@@ -17,6 +17,7 @@ nav:
   - 配置: settings.md
   - 教程:
       - 本地使用教程: local.md
+      - 青龙使用教程: qinglong.md
       - Docker 使用教程: docker.md
       - 群辉 Docker 使用教程: synology.md
       - 腾讯云函数使用教程: tencent-scf.md
