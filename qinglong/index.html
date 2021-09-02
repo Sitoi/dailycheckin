@@ -13,14 +13,14 @@
         <meta name="author" content="Sitoi">
       
       
-        <link rel="canonical" href="https://sitoi.gitee.io/dailycheckin/tencent-scf/">
+        <link rel="canonical" href="https://sitoi.gitee.io/dailycheckin/qinglong/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.5">
     
     
       
-        <title>腾讯云函数使用教程 - DailyCheckIn</title>
+        <title>青龙使用教程 - DailyCheckIn</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              腾讯云函数使用教程
+              青龙使用教程
             
           </span>
         </div>
@@ -264,11 +264,72 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../qinglong/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          青龙使用教程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         青龙使用教程
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    一、进入青龙容器内部
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    二、安装依赖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qlconfigconfigjson" class="md-nav__link">
+    三、编写 /ql/config/config.json 配置文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、配置定时任务
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -300,72 +361,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          腾讯云函数使用教程
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tencent-scf/" class="md-nav__link">
         腾讯云函数使用教程
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    一、创建云函数
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    二、安装依赖包（更新依赖与安装一致）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    三、添加配置文件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    四、部署测试
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -403,28 +403,28 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    一、创建云函数
+    一、进入青龙容器内部
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    二、安装依赖包（更新依赖与安装一致）
+    二、安装依赖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qlconfigconfigjson" class="md-nav__link">
+    三、编写 /ql/config/config.json 配置文件
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    三、添加配置文件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    四、部署测试
+    四、配置定时任务
   </a>
   
 </li>
@@ -442,28 +442,20 @@
               
                 
                 
-                <h1 id="_1">腾讯云函数教程</h1>
-<h3 id="_2">一、创建云函数</h3>
-<blockquote>
-<p>地域选哪里都可以</p>
-</blockquote>
-<p><img alt="创建云函数" src="../img/scf_create.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">from</span> <span class="nn">dailycheckin.main</span> <span class="kn">import</span> <span class="n">checkin</span>
-
-
-<span class="k">def</span> <span class="nf">main_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">checkin</span><span class="p">()</span>
+                <h1 id="_1">青龙使用教程</h1>
+<h2 id="_2">一、进入青龙容器内部</h2>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it qinglong bash
 </code></pre></div>
-<h3 id="_3">二、安装依赖包（更新依赖与安装一致）</h3>
-<p><img alt="安装依赖包" src="../img/scf_install.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> src
-pip3 install dailycheckin --upgrade -t .
+<h2 id="_3">二、安装依赖</h2>
+<div class="highlight"><pre><span></span><code>apk add --no-cache gcc g++ python python-dev py-pip mysql-dev linux-headers libffi-dev openssl-dev
 </code></pre></div>
-<h3 id="_4">三、添加配置文件</h3>
-<p><img alt="添加配置文件" src="../img/scf_config.png" /></p>
-<h3 id="_5">四、部署测试</h3>
-<p><img alt="部署测试" src="../img/scf_test.png" /></p>
+<div class="highlight"><pre><span></span><code>pip3 install dailycheckin --upgrade
+</code></pre></div>
+<h2 id="qlconfigconfigjson">三、编写 <code>/ql/config/config.json</code> 配置文件</h2>
+<p>参考<a href="https://sitoi.gitee.io/dailycheckin/settings/">配置说明文档</a> ，并修改 <code>config.json</code></p>
+<h2 id="_4">四、配置定时任务</h2>
+<p><img alt="定时任务" src="../img/qinglong.png" /></p>
+<p><img alt="定时更新" src="../img/update.png" /></p>
                 
               
               
@@ -482,7 +474,7 @@ pip3 install dailycheckin --upgrade -t .
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../synology/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../local/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -491,11 +483,25 @@ pip3 install dailycheckin --upgrade -t .
               <span class="md-footer__direction">
                 Previous
               </span>
-              群辉 Docker 使用教程
+              本地使用教程
             </div>
           </div>
         </a>
       
+      
+        <a href="../docker/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Docker 使用教程
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
