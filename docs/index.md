@@ -76,3 +76,12 @@
  <td> <p align="center">微信</p> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/wechat.jpg" /> <p align="center">加微信备注：签到</p> </td> 
 </tr> 
 </table>
+
+## 赞赏码
+
+<table> 
+<tr> 
+ <td> <p align="center">支付宝</p> <img width="420" height="420" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/alipay.jpg" /> </td> 
+ <td> <p align="center">微信</p> <img width="420" height="420" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/wechat.jpg" /></td> 
+</tr> 
+</table>

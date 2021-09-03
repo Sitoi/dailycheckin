@@ -179,3 +179,12 @@
 <p align="center">
     <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
 </p>
+
+## 赞赏码
+
+<table> 
+<tr> 
+ <td> <p align="center">支付宝</p> <img width="420" height="420" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/alipay.jpg" /> </td> 
+ <td> <p align="center">微信</p> <img width="420" height="420" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/wechat.jpg" /></td> 
+</tr> 
+</table>
