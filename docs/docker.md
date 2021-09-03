@@ -33,17 +33,32 @@ curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
 
 ## 三、立即执行单次签到(确保容器已启动)，检查 config.json 是否配置正确
 
-##### 运行【日常签到类】
+##### 运行
 
-```bash
-docker exec -it dailycheckin dailycheckin
-```
+1. 运行全部脚本
+
+    ```bash
+    docker exec -it dailycheckin dailycheckin
+    ```
+
+2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
+
+    ```bash
+    docker exec -it dailycheckin dailycheckin --include MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+    ```
+
+3. 运行指定脚本（排序），可以同时选择多个，用「空格」分开
+    
+    ```bash
+    docker exec -it dailycheckin dailycheckin --exclude MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+    ```
 
 ##### 更新最新脚本
 
 ```bash
 docker exec dailycheckin sh /dailycheckin/default_task.sh
 ```
+
 
 ## 附录
 

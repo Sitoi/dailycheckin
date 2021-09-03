@@ -16,12 +16,17 @@ apk add --no-cache gcc g++ python python-dev py-pip mysql-dev linux-headers libf
 pip3 install dailycheckin --upgrade
 ```
 
-## 三、编写 `/ql/config/config.json` 配置文件
+## 三、编写 `/ql/scripts/config.json` 配置文件
 
 参考[配置说明文档](https://sitoi.gitee.io/dailycheckin/settings/) ，并修改 `config.json`
 
 ## 四、配置定时任务
 
-![定时任务](img/qinglong.png)
-
-![定时更新](img/update.png)
+1. 运行全部脚本
+    ![定时任务](img/qinglong-base.png)
+2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
+    ![定时任务](img/qinglong-include.png)
+3. 运行指定脚本（排序），可以同时选择多个，用「空格」分开
+    ![定时任务](img/qinglong-exclude.png)
+4. 配置定时更新
+    ![定时更新](img/update.png)
