@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sitoi.gitee.io/dailycheckin/</loc>
-         <lastmod>2021-09-02</lastmod>
+         <lastmod>2021-09-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sitoi.gitee.io/dailycheckin/docker/</loc>
-         <lastmod>2021-09-02</lastmod>
+         <lastmod>2021-09-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sitoi.gitee.io/dailycheckin/local/</loc>
-         <lastmod>2021-09-02</lastmod>
+         <lastmod>2021-09-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sitoi.gitee.io/dailycheckin/qinglong/</loc>
-         <lastmod>2021-09-02</lastmod>
+         <lastmod>2021-09-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sitoi.gitee.io/dailycheckin/settings/</loc>
-         <lastmod>2021-09-02</lastmod>
+         <lastmod>2021-09-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sitoi.gitee.io/dailycheckin/synology/</loc>
-         <lastmod>2021-09-02</lastmod>
+         <lastmod>2021-09-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sitoi.gitee.io/dailycheckin/tencent-scf/</loc>
-         <lastmod>2021-09-02</lastmod>
+         <lastmod>2021-09-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
