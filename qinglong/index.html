@@ -314,7 +314,7 @@
       
         <li class="md-nav__item">
   <a href="#qlscriptsconfigjson" class="md-nav__link">
-    三、编写 /ql/scripts/config.json 配置文件
+    三、新建并编写 /ql/scripts/config.json 配置文件
   </a>
   
 </li>
@@ -417,7 +417,7 @@
       
         <li class="md-nav__item">
   <a href="#qlscriptsconfigjson" class="md-nav__link">
-    三、编写 /ql/scripts/config.json 配置文件
+    三、新建并编写 /ql/scripts/config.json 配置文件
   </a>
   
 </li>
@@ -451,7 +451,14 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>pip3 install dailycheckin --upgrade
 </code></pre></div>
-<h2 id="qlscriptsconfigjson">三、编写 <code>/ql/scripts/config.json</code> 配置文件</h2>
+<blockquote>
+<p>如果上述命令仍然安装失败运行下面的命令</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>apk add --no-cache --virtual .build-deps gcc musl-dev
+pip3 install pip setuptools --upgrade
+pip3 install cryptography~<span class="o">=</span><span class="m">3</span>.2.1
+</code></pre></div>
+<h2 id="qlscriptsconfigjson">三、新建并编写 <code>/ql/scripts/config.json</code> 配置文件</h2>
 <p>参考<a href="https://sitoi.gitee.io/dailycheckin/settings/">配置说明文档</a> ，并修改 <code>config.json</code></p>
 <h2 id="_4">四、配置定时任务</h2>
 <ol>
@@ -459,7 +466,7 @@
     <img alt="定时任务" src="../img/qinglong-base.png" /></li>
 <li>运行指定脚本（包含），可以同时选择多个，用「空格」分开
     <img alt="定时任务" src="../img/qinglong-include.png" /></li>
-<li>运行指定脚本（排序），可以同时选择多个，用「空格」分开
+<li>运行指定脚本（排除），可以同时选择多个，用「空格」分开
     <img alt="定时任务" src="../img/qinglong-exclude.png" /></li>
 <li>配置定时更新
     <img alt="定时更新" src="../img/update.png" /></li>
