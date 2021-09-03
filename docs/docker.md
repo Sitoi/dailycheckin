@@ -47,7 +47,7 @@ curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
     docker exec -it dailycheckin dailycheckin --include MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
     ```
 
-3. 运行指定脚本（排序），可以同时选择多个，用「空格」分开
+3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
     
     ```bash
     docker exec -it dailycheckin dailycheckin --exclude MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 

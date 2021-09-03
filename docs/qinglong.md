@@ -16,7 +16,15 @@ apk add --no-cache gcc g++ python python-dev py-pip mysql-dev linux-headers libf
 pip3 install dailycheckin --upgrade
 ```
 
-## 三、编写 `/ql/scripts/config.json` 配置文件
+> 如果上述命令仍然安装失败运行下面的命令
+
+```bash
+apk add --no-cache --virtual .build-deps gcc musl-dev
+pip3 install pip setuptools --upgrade
+pip3 install cryptography~=3.2.1
+```
+
+## 三、新建并编写 `/ql/scripts/config.json` 配置文件
 
 参考[配置说明文档](https://sitoi.gitee.io/dailycheckin/settings/) ，并修改 `config.json`
 
@@ -26,7 +34,7 @@ pip3 install dailycheckin --upgrade
     ![定时任务](img/qinglong-base.png)
 2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
     ![定时任务](img/qinglong-include.png)
-3. 运行指定脚本（排序），可以同时选择多个，用「空格」分开
+3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
     ![定时任务](img/qinglong-exclude.png)
 4. 配置定时更新
     ![定时更新](img/update.png)
