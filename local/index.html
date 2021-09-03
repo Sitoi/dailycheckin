@@ -307,6 +307,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、更新
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -415,6 +422,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、更新
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -435,7 +449,25 @@
 <h2 id="configjson">二、编写 <code>config.json</code> 配置文件</h2>
 <p>参考<a href="https://sitoi.gitee.io/dailycheckin/settings/">配置说明文档</a> ，并修改 <code>config.json</code></p>
 <h2 id="_3">三、单次运行</h2>
+<ol>
+<li>
+<p>运行全部脚本</p>
 <div class="highlight"><pre><span></span><code>dailycheckin
+</code></pre></div>
+</li>
+<li>
+<p>运行指定脚本（包含），可以同时选择多个，用「空格」分开</p>
+<div class="highlight"><pre><span></span><code>dailycheckin --include MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+</code></pre></div>
+</li>
+<li>
+<p>运行指定脚本（排序），可以同时选择多个，用「空格」分开</p>
+<div class="highlight"><pre><span></span><code>dailycheckin --exclude MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+</code></pre></div>
+</li>
+</ol>
+<h2 id="_4">四、更新</h2>
+<div class="highlight"><pre><span></span><code>pip install dailycheckin --user --upgrade
 </code></pre></div>
                 
               

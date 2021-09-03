@@ -334,7 +334,7 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    运行【日常签到类】
+    运行
   </a>
   
 </li>
@@ -485,7 +485,7 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    运行【日常签到类】
+    运行
   </a>
   
 </li>
@@ -590,9 +590,24 @@
 </blockquote>
 <p>参考 <a href="https://sitoi.github.io/dailycheckin/settings/">配置说明文档</a> ，并修改 <code>config.json</code></p>
 <h2 id="configjson">三、立即执行单次签到(确保容器已启动)，检查 config.json 是否配置正确</h2>
-<h5 id="_3">运行【日常签到类】</h5>
+<h5 id="_3">运行</h5>
+<ol>
+<li>
+<p>运行全部脚本</p>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it dailycheckin dailycheckin
 </code></pre></div>
+</li>
+<li>
+<p>运行指定脚本（包含），可以同时选择多个，用「空格」分开</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it dailycheckin dailycheckin --include MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+</code></pre></div>
+</li>
+<li>
+<p>运行指定脚本（排序），可以同时选择多个，用「空格」分开</p>
+<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it dailycheckin dailycheckin --exclude MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+</code></pre></div>
+</li>
+</ol>
 <h5 id="_4">更新最新脚本</h5>
 <div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> dailycheckin sh /dailycheckin/default_task.sh
 </code></pre></div>
