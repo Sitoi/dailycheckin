@@ -1,56 +1,33 @@
 # 群晖 Docker 使用教程
 
-## 一、注册表搜索 sitoi 或者 dailycheckin ， 双击下载
+## 一、下载安装并配置容器
 
-![获取 cookie 教程](img/synology1.jpg)
+1. 注册表搜索「dailycheckin」，双击下载
+   ![获取 cookie 教程](img/synology1.png)
+2. 下载完成后，点击映像，选中「dailycheckin」，点击「启动」
+   ![获取 cookie 教程](img/synology2.png)
+3. 点击「高级设置」
+   ![获取 cookie 教程](img/synology3.png)
+4. 「存储空间」,「添加文件夹」，「新建文件夹」，按照图中的文件夹添加一致的目录结构
+   ![获取 cookie 教程](img/synology4.png)
+5. 配置映射关系（如下图），点击「应用」
+   ![获取 cookie 教程](img/synology5.png)
+6. 点击「下一步」
+   ![获取 cookie 教程](img/synology6.png)
+7. 点击「应用」
+   ![获取 cookie 教程](img/synology7.png)
+8. 容器启动成功
+   ![获取 cookie 教程](img/synology11.png)
 
-如果注册表储存库没找到，请添加 Docker Hub 库地址：https://registry.hub.docker.com
+## 二、上传配置文件「config.json」到 「dailycheckin/config」目录下
 
-![获取 cookie 教程](img/synology2.jpg)
+参考[配置说明文档](https://sitoi.gitee.io/dailycheckin/settings/) ，并修改 `config.json`
 
-## 二、映像 下载完成 双击或者点击启动开始创建
+![获取 cookie 教程](img/synology8.png)
 
-![获取 cookie 教程](img/synology3.jpg)
+## 三、配置测试
 
-点击高级设置，设置卷，按照下图添加文件夹和装载路径
-
-![获取 cookie 教程](img/synology4.jpg)
-
-> Makefile 文件不需要创建
-![获取 cookie 教程](img/synology5.jpg)
-
-群晖内本地文件夹请自行创建
-
-> Makefile 文件不需要创建
-![获取 cookie 教程](img/synology6.jpg)
-
-```text
-.
-|-- config
-|   `-- config.json
-|-- docker-compose.yml
-`-- logs
-    `-- default_task.log
-```
-
-如图，设置好直接点应用，其他默认，可按需点击高级设置里的启用自动重新启动，以防机器意外重启出现脚本停止现象。
-> Makefile 文件不需要创建
-![获取 cookie 教程](img/synology7.jpg)
-
-## 三、回到容器，如图即是运行成功
-
-![获取 cookie 教程](img/synology8.jpg)
-
-## 四：配置测试
-
-1、双击容器查看进程，如下图说明正在运行
-
-![获取 cookie 教程](img/synology9.jpg)
-
-2、日志查看运行状态
-
-![获取 cookie 教程](img/synology10.jpg)
-
-3、执行脚本之后自动生成的脚本
-
-![获取 cookie 教程](img/synology11.jpg)
+1. 点击「详情」，「终端机」，点击「新增」右侧「下拉按钮」，输入「dailycheckin」命令
+   ![获取 cookie 教程](img/synology9.png)
+2. 点击命令，输出如下内容，表示配置成功
+   ![获取 cookie 教程](img/synology10.png)
