@@ -323,29 +323,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sitoi-dailycheckin" class="md-nav__link">
-    一、注册表搜索 sitoi 或者 dailycheckin ， 双击下载
+  <a href="#_1" class="md-nav__link">
+    一、下载安装并配置容器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    二、映像 下载完成 双击或者点击启动开始创建
+  <a href="#configjson-dailycheckinconfig" class="md-nav__link">
+    二、上传配置文件「config.json」到 「dailycheckin/config」目录下
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    三、回到容器，如图即是运行成功
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    四：配置测试
+    三、配置测试
   </a>
   
 </li>
@@ -402,29 +395,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sitoi-dailycheckin" class="md-nav__link">
-    一、注册表搜索 sitoi 或者 dailycheckin ， 双击下载
+  <a href="#_1" class="md-nav__link">
+    一、下载安装并配置容器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    二、映像 下载完成 双击或者点击启动开始创建
+  <a href="#configjson-dailycheckinconfig" class="md-nav__link">
+    二、上传配置文件「config.json」到 「dailycheckin/config」目录下
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    三、回到容器，如图即是运行成功
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    四：配置测试
+    三、配置测试
   </a>
   
 </li>
@@ -443,44 +429,35 @@
                 
                 
                 <h1 id="docker">群晖 Docker 使用教程</h1>
-<h2 id="sitoi-dailycheckin">一、注册表搜索 sitoi 或者 dailycheckin ， 双击下载</h2>
-<p><img alt="获取 cookie 教程" src="../img/synology1.jpg" /></p>
-<p>如果注册表储存库没找到，请添加 Docker Hub 库地址：https://registry.hub.docker.com</p>
-<p><img alt="获取 cookie 教程" src="../img/synology2.jpg" /></p>
-<h2 id="_1">二、映像 下载完成 双击或者点击启动开始创建</h2>
-<p><img alt="获取 cookie 教程" src="../img/synology3.jpg" /></p>
-<p>点击高级设置，设置卷，按照下图添加文件夹和装载路径</p>
-<p><img alt="获取 cookie 教程" src="../img/synology4.jpg" /></p>
-<blockquote>
-<p>Makefile 文件不需要创建
-<img alt="获取 cookie 教程" src="../img/synology5.jpg" /></p>
-</blockquote>
-<p>群晖内本地文件夹请自行创建</p>
-<blockquote>
-<p>Makefile 文件不需要创建
-<img alt="获取 cookie 教程" src="../img/synology6.jpg" /></p>
-</blockquote>
-<div class="highlight"><pre><span></span><code>.
-|-- config
-|   `-- config.json
-|-- docker-compose.yml
-`-- logs
-    `-- default_task.log
-</code></pre></div>
-<p>如图，设置好直接点应用，其他默认，可按需点击高级设置里的启用自动重新启动，以防机器意外重启出现脚本停止现象。</p>
-<blockquote>
-<p>Makefile 文件不需要创建
-<img alt="获取 cookie 教程" src="../img/synology7.jpg" /></p>
-</blockquote>
-<h2 id="_2">三、回到容器，如图即是运行成功</h2>
-<p><img alt="获取 cookie 教程" src="../img/synology8.jpg" /></p>
-<h2 id="_3">四：配置测试</h2>
-<p>1、双击容器查看进程，如下图说明正在运行</p>
-<p><img alt="获取 cookie 教程" src="../img/synology9.jpg" /></p>
-<p>2、日志查看运行状态</p>
-<p><img alt="获取 cookie 教程" src="../img/synology10.jpg" /></p>
-<p>3、执行脚本之后自动生成的脚本</p>
-<p><img alt="获取 cookie 教程" src="../img/synology11.jpg" /></p>
+<h2 id="_1">一、下载安装并配置容器</h2>
+<ol>
+<li>注册表搜索「dailycheckin」，双击下载
+   <img alt="下载" src="../img/synology1.png" /></li>
+<li>下载完成后，点击映像，选中「dailycheckin」，点击「启动」
+   <img alt="启动" src="../img/synology2.png" /></li>
+<li>点击「高级设置」
+   <img alt="高级设置" src="../img/synology3.png" /></li>
+<li>「存储空间」,「添加文件夹」，「新建文件夹」，按照图中的文件夹添加一致的目录结构
+   <img alt="添加目录" src="../img/synology4.png" /></li>
+<li>配置映射关系（如下图），点击「应用」
+   <img alt="配置映射" src="../img/synology5.png" /></li>
+<li>点击「下一步」
+   <img alt="下一步" src="../img/synology6.png" /></li>
+<li>点击「应用」
+   <img alt="应用" src="../img/synology7.png" /></li>
+<li>容器启动成功
+   <img alt="启动成功" src="../img/synology11.png" /></li>
+</ol>
+<h2 id="configjson-dailycheckinconfig">二、上传配置文件「config.json」到 「dailycheckin/config」目录下</h2>
+<p>参考<a href="https://sitoi.gitee.io/dailycheckin/settings/">配置说明文档</a> ，并修改 <code>config.json</code></p>
+<p><img alt="配置并上传配置文件" src="../img/synology8.png" /></p>
+<h2 id="_2">三、配置测试</h2>
+<ol>
+<li>点击「详情」，「终端机」，点击「新增」右侧「下拉按钮」，输入「dailycheckin」命令
+   <img alt="添加命令" src="../img/synology9.png" /></li>
+<li>点击命令，输出如下内容，表示配置成功
+   <img alt="运行命令" src="../img/synology10.png" /></li>
+</ol>
                 
               
               
