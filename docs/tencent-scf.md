@@ -26,6 +26,8 @@ pip3 install dailycheckin --upgrade -t .
 
 ### 三、添加配置文件
 
+> ⚠️ 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
+
 ![添加配置文件](img/scf_config.png)
 
 ### 四、部署测试
