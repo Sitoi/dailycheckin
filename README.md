@@ -70,6 +70,7 @@
 |签到|WEIBO_COOKIE_LIST|微博|每日钱包签到、打卡|APP|待测试|🟢️|
 |签到|DUOKAN_COOKIE_LIST|多看阅读|获取书豆，用于购买书籍|APP|待测试|🟢️|
 |签到|MGTV_PARAMS_LIST|芒果 TV|签到获取体验会员|APP|待测试|🟢️|
+|签到|HEYTAP|欢太商城|获取积分|APP|待测试|🟡|
 |签到|FMAPP_ACCOUNT_LIST|Fa 米家|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|APP|待测试|🟢️|
 |其他|MIMOTION_ACCOUNT_LIST|小米运动|每日小米运动刷步数|APP|永久|🟡|
 |其他|BAIDU_URL_SUBMIT_LIST|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|WEB|永久|🟢️|
