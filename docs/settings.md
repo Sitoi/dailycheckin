@@ -86,6 +86,8 @@
 |_**WEIBO_COOKIE_LIST**_.weibo_show_url|微博|APP| 抓取开头为 `https://api.weibo.cn/2/users/show?` 的整个 url 填入即可|
 |_**DUOKAN_COOKIE_LIST**_.duokan_cookie|多看阅读|APP|多看阅读 cookie， 抓取开头为 `https://www.duokan.com` 下的 cookie 即可|
 |_**WZYD_DATA_LIST**_.wzyd_data|王者营地|APP|王者营地 请求体中的 data， 抓包 APP 中域名为 `https://ssl.kohsocial.qq.com` 请求内容的全部参数|
+|_**HEYTAP**_.cookie|欢太商城|APP|欢太商城 请求体中的 Cookie， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 Cookie|
+|_**HEYTAP**_.useragent|欢太商城|APP|欢太商城 请求体中的 User-Agent， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 User-Agent|
 
 ### 其他任务配置
 
@@ -443,6 +445,16 @@
     },
     {
       "womail_url": "多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "HEYTAP": [
+    {
+      "cookie": "sa_distinct_id=xxxxxx;Personalized=xxxxxx;s_channel=xxxxxx;source_type=xxxxxx;app_param=xxxxxx;ENCODE_TOKENSID=xxxxxx;scene_id=xxxxxx;apkPkg=xxxxxx;exp_id=;app_utm=xxxxxx;TOKENSID=xxxxxx;strategy_id=xxxxxx;referer=;experiment_id=xxxxxx;section_id=;s_version=xxxxxx;app_innerutm=xxxxxx;retrieve_id=;log_id=;",
+      "useragent": "xxxxxx"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准"
     }
   ]
 }

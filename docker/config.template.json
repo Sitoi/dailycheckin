@@ -274,5 +274,15 @@
     {
       "womail_url": "多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
+  ],
+  "HEYTAP": [
+    {
+      "cookie": "sa_distinct_id=xxxxxx;Personalized=xxxxxx;s_channel=xxxxxx;source_type=xxxxxx;app_param=xxxxxx;ENCODE_TOKENSID=xxxxxx;scene_id=xxxxxx;apkPkg=xxxxxx;exp_id=;app_utm=xxxxxx;TOKENSID=xxxxxx;strategy_id=xxxxxx;referer=;experiment_id=xxxxxx;section_id=;s_version=xxxxxx;app_innerutm=xxxxxx;retrieve_id=;log_id=;",
+      "useragent": "xxxxxx"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准"
+    }
   ]
 }

@@ -107,6 +107,9 @@
 
 ## 更新日志
 
+- 2021-09-20 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.9-brightgreen)
+    * 优化项目结构
+    * 添加【欢太商城】脚本
 - 2021-09-19 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.8-brightgreen)
     * 优化日志输出
     * 移除每日一句脚本
