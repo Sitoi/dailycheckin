@@ -99,7 +99,6 @@
 |_**BAIDU_URL_SUBMIT_LIST**_.submit_url|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|其他|百度搜索资源平台 提交百度网站的目标 URL|
 |_**BAIDU_URL_SUBMIT_LIST**_.times|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|其他|每日对同一个网站提交次数|
 |_**CITY_NAME_LIST**_|每日天气|其他|填写城市名称，点击查看[城市名称列表](https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/weather/city.json)|
-|_**MOTTO**_|每日一句|其他|是否开启默认为 false|
 
 ## 参数获取方法
 
@@ -196,7 +195,6 @@
   "CITY_NAME_LIST": [
     "上海"
   ],
-  "MOTTO": true,
   "IQIYI_COOKIE_LIST": [
     {
       "iqiyi_cookie": "__dfp=xxxxxx; QP0013=xxxxxx; QP0022=xxxxxx; QYABEX=xxxxxx; P00001=xxxxxx; P00002=xxxxxx; P00003=xxxxxx; P00007=xxxxxx; QC163=xxxxxx; QC175=xxxxxx; QC179=xxxxxx; QC170=xxxxxx; P00010=xxxxxx; P00PRU=xxxxxx; P01010=xxxxxx; QC173=xxxxxx; QC180=xxxxxx; P00004=xxxxxx; QP0030=xxxxxx; QC006=xxxxxx; QC007=xxxxxx; QC008=xxxxxx; QC010=xxxxxx; nu=xxxxxx; __uuid=xxxxxx; QC005=xxxxxx;"

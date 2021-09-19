@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://socialify.git.ci/Sitoi/dailycheckin/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"/>
     <br><strong><font size=50>每日签到集合</font></strong>
-    <br>基于【腾讯云函数】/【Docker】的每日签到脚本
+    <br>基于【腾讯云函数】/【Docker】/【青龙面板】的每日签到脚本
     <br>支持多账号使用
 </p>
 
@@ -74,7 +74,6 @@
 |其他|MIMOTION_ACCOUNT_LIST|小米运动|每日小米运动刷步数|APP|永久|🟡|
 |其他|BAIDU_URL_SUBMIT_LIST|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|WEB|永久|🟢️|
 |其他|CITY_NAME_LIST|每日天气预报|获取指定的多个城市天气信息|WEB|永久|🟢️|
-|其他|MOTTO|每日一句|从词霸中获取每日一句，带英文|WEB|永久|🟢️|
 
 ## 支持的通知列表
 
@@ -108,6 +107,9 @@
 
 ## 更新日志
 
+- 2021-09-19 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.8-brightgreen)
+    * 优化日志输出
+    * 移除每日一句脚本
 - 2021-09-03 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.7-brightgreen)
     * 修复【小米运动】签到脚本
     * 修复【爱奇艺】签到脚本
