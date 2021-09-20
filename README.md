@@ -110,9 +110,10 @@
 
 ## 更新日志
 
-- 2021-09-20 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.0-brightgreen)
+- 2021-09-20 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.1-brightgreen)
     * 移除【每日天气】
     * 添加【联通营业厅】脚本
+    * 更新【联通沃邮箱】每日签到脚本(21 天自动断签)
     * 优化配置文件
 - 2021-09-20 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.9-brightgreen)
     * 优化项目结构
