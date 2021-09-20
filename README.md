@@ -47,34 +47,34 @@
 
 |类别|任务名称|名称|备注|终端|Cookie 时长|状态|
 |:---:|:---:|:---|:---:|:---:|:---:|:---:|
-|签到|IQIYI_COOKIE_LIST|[爱奇艺](https://www.iqiyi.com/)|签7天奖1天，14天奖2天，28天奖7天；日常任务4成长值；随机成长值；三次抽奖|WEB|待测试|🟢️|
-|签到|KGQQ_COOKIE_LIST|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 150 鲜花左右|WEB|待测试|🟢️|
-|签到|VQQ_COOKIE_LIST|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|WEB|待测试|🟢️|
-|签到|YOUDAO_COOKIE_LIST|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|WEB|待测试|🟢️|
-|签到|MUSIC163_ACCOUNT_LIST|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|WEB|永久|🟡|
-|签到|ONEPLUSBBS_COOKIE_LIST|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务|WEB|待测试|🟢️|
-|签到|TIEBA_COOKIE_LIST|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|WEB|待测试|🟢️|
-|签到|BILIBILI_COOKIE_LIST|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|WEB|待测试|🟢️|
-|签到|V2EX_COOKIE_LIST|[V2EX](https://www.v2ex.com/)|铜币奖励|WEB|待测试|🟢️|
-|签到|WWW2NZZ_COOKIE_LIST|[咔叽网单](https://www.2nzz.com/)|论坛金币|WEB|待测试|🟢️|
-|签到|SMZDM_COOKIE_LIST|[什么值得买](https://www.smzdm.com)|每日签到|WEB|待测试|🟢️|
-|签到|ACFUN_ACCOUNT_LIST|[AcFun](https://www.acfun.cn/)|每日签到香蕉|WEB|永久|🟡️|
-|签到|CLOUD189_ACCOUNT_LIST|[天翼云盘](https://cloud.189.cn/)|每日签到 +2次抽奖获得空间奖励|WEB|永久|🟢️|
-|签到|POJIE_COOKIE_LIST|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|WEB|待测试|🟤|
-|签到|PICACOMIC_ACCOUNT_LIST|[哔咔漫画](https://www.picacomic.com)|成长值奖励|WEB|永久|🟤|
-|签到|MEIZU_COOKIE_LIST|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖|WEB|待测试|🟢️|
-|签到|ZHIYOO_COOKIE_LIST|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|WEB|待测试|🟢️|
-|签到|CSDN_COOKIE_LIST|[CSDN](https://www.csdn.net/)|每日签到、抽奖|WEB|待测试|🟢️|
-|签到|WOMAIL_URL_LIST|联通沃邮箱|每日签到，签到7天得2元话费|公众号|待测试|🟢|
-|签到|WZYD_DATA_LIST|王者营地|每日签到（仅限 QQ 区）|APP|待测试|🟢|
-|签到|WEIBO_COOKIE_LIST|微博|每日钱包签到、打卡|APP|待测试|🟢️|
-|签到|DUOKAN_COOKIE_LIST|多看阅读|获取书豆，用于购买书籍|APP|待测试|🟢️|
-|签到|MGTV_PARAMS_LIST|芒果 TV|签到获取体验会员|APP|待测试|🟢️|
+|签到|IQIYI|[爱奇艺](https://www.iqiyi.com/)|签7天奖1天，14天奖2天，28天奖7天；日常任务4成长值；随机成长值；三次抽奖|WEB|待测试|🟢️|
+|签到|KGQQ|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 150 鲜花左右|WEB|待测试|🟢️|
+|签到|VQQ|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|WEB|待测试|🟢️|
+|签到|YOUDAO|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|WEB|待测试|🟢️|
+|签到|MUSIC163|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|WEB|永久|🟡|
+|签到|ONEPLUSBBS|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务|WEB|待测试|🟢️|
+|签到|TIEBA|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|WEB|待测试|🟢️|
+|签到|BILIBILI|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|WEB|待测试|🟢️|
+|签到|V2EX|[V2EX](https://www.v2ex.com/)|铜币奖励|WEB|待测试|🟢️|
+|签到|WWW2NZZ|[咔叽网单](https://www.2nzz.com/)|论坛金币|WEB|待测试|🟢️|
+|签到|SMZDM|[什么值得买](https://www.smzdm.com)|每日签到|WEB|待测试|🟢️|
+|签到|ACFUN|[AcFun](https://www.acfun.cn/)|每日签到香蕉|WEB|永久|🟡️|
+|签到|CLOUD189|[天翼云盘](https://cloud.189.cn/)|每日签到 +2次抽奖获得空间奖励|WEB|永久|🟢️|
+|签到|POJIE|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|WEB|待测试|🟤|
+|签到|PICACOMIC|[哔咔漫画](https://www.picacomic.com)|成长值奖励|WEB|永久|🟤|
+|签到|MEIZU|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖|WEB|待测试|🟢️|
+|签到|ZHIYOO|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|WEB|待测试|🟢️|
+|签到|CSDN|[CSDN](https://www.csdn.net/)|每日签到、抽奖|WEB|待测试|🟢️|
+|签到|WOMAIL|联通沃邮箱|每日签到，签到7天得2元话费|公众号|待测试|🟢|
+|签到|WZYD|王者营地|每日签到（仅限 QQ 区）|APP|待测试|🟢|
+|签到|WEIBO|微博|每日钱包签到、打卡|APP|待测试|🟢️|
+|签到|DUOKAN|多看阅读|获取书豆，用于购买书籍|APP|待测试|🟢️|
+|签到|MGTV|芒果 TV|签到获取体验会员|APP|待测试|🟢️|
 |签到|HEYTAP|欢太商城|获取积分|APP|待测试|🟡|
-|签到|FMAPP_ACCOUNT_LIST|Fa 米家|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|APP|待测试|🟢️|
-|其他|MIMOTION_ACCOUNT_LIST|小米运动|每日小米运动刷步数|APP|永久|🟡|
-|其他|BAIDU_URL_SUBMIT_LIST|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|WEB|永久|🟢️|
-|其他|CITY_NAME_LIST|每日天气预报|获取指定的多个城市天气信息|WEB|永久|🟢️|
+|签到|UNICOM|联通营业厅|获取积分、流量等|APP|待测试|🟡|
+|签到|FMAPP|Fa 米家|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|APP|待测试|🟢️|
+|其他|MIMOTION|小米运动|每日小米运动刷步数|APP|永久|🟡|
+|其他|BAIDU|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|WEB|永久|🟢️|
 
 ## 支持的通知列表
 
@@ -94,6 +94,8 @@
 
 - [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
 - [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
+- [@srcrs](https://github.com/srcrs/unicom-task) - unicom-task
+- [@hwkxk](https://github.com/hwkxk/HeytapTask) - HeytapTask
 
 ## 交流群
 
@@ -108,6 +110,10 @@
 
 ## 更新日志
 
+- 2021-09-20 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.0-brightgreen)
+    * 移除【每日天气】
+    * 添加【联通营业厅】脚本
+    * 优化配置文件
 - 2021-09-20 ![PyPI](https://img.shields.io/badge/Pypi-v0.1.9-brightgreen)
     * 优化项目结构
     * 添加【欢太商城】脚本
@@ -183,7 +189,6 @@
     * 添加【有道云笔记】每日签到脚本
     * 添加【爱奇艺】每日签到脚本
     * 添加【百度站点】每日提交脚本
-
 
 ## 历史 Star 数
 

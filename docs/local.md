@@ -23,13 +23,13 @@ pip install dailycheckin --user
 2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
 
     ```bash
-    dailycheckin --include MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+    dailycheckin --include MUSIC163 BAIDU 
     ```
 
 3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
 
     ```bash
-    dailycheckin --exclude MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+    dailycheckin --exclude MUSIC163 BAIDU 
     ```
 
 ## 四、更新

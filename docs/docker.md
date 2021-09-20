@@ -44,13 +44,13 @@ curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
 2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
 
     ```bash
-    docker exec -it dailycheckin dailycheckin --include MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+    docker exec -it dailycheckin dailycheckin --include MUSIC163 BAIDU 
     ```
 
 3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
     
     ```bash
-    docker exec -it dailycheckin dailycheckin --exclude MUSIC163_ACCOUNT_LIST BAIDU_URL_SUBMIT_LIST 
+    docker exec -it dailycheckin dailycheckin --exclude MUSIC163 BAIDU 
     ```
 
 ##### 更新最新脚本
