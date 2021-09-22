@@ -25,12 +25,12 @@
       "running": false
     },
     {
-      "name": "安装 Dailycheckin",
+      "name": "安装/更新 Dailycheckin",
       "type": "schedule",
       "time": "0 3",
       "job": {
         "type": "exec",
-        "target": "pip3 install dailycheckin"
+        "target": "pip3 install dailycheckin --upgrade"
       },
       "running": false
     },
