@@ -293,5 +293,15 @@
       "password": "多账号 密码",
       "app_id": "多账号 appId"
     }
+  ],
+  "EVERPHOTO": [
+    {
+      "mobile": "+8618888xxxxxx",
+      "password": "xxxxxx"
+    },
+    {
+      "mobile": "多账号 手机号",
+      "password": "多账号 密码"
+    }
   ]
 }

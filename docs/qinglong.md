@@ -33,10 +33,10 @@ pip3 install cryptography~=3.2.1
 ## 四、配置定时任务
 
 1. 运行全部脚本
-   ![定时任务](img/qinglong-base.png)
+   ![定时任务](img/ql-base.png)
 2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
-   ![定时任务](img/qinglong-include.png)
+   ![定时任务](img/ql-include.png)
 3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
-   ![定时任务](img/qinglong-exclude.png)
+   ![定时任务](img/ql-exclude.png)
 4. 配置定时更新
-   ![定时更新](img/update.png)
+   ![定时更新](img/ql-update.png)

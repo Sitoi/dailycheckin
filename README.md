@@ -65,6 +65,7 @@
 |签到|MEIZU|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖|WEB|待测试|🟢️|
 |签到|ZHIYOO|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|WEB|待测试|🟢️|
 |签到|CSDN|[CSDN](https://www.csdn.net/)|每日签到、抽奖|WEB|待测试|🟢️|
+|签到|EVERPHOTO|[时光相册](https://web.everphoto.cn/)|每日签到|WEB|待测试|🟢️|
 |签到|WOMAIL|联通沃邮箱|每日签到，签到7天得2元话费|公众号|待测试|🟢|
 |签到|WZYD|王者营地|每日签到（仅限 QQ 区）|APP|待测试|🟢|
 |签到|WEIBO|微博|每日钱包签到、打卡|APP|待测试|🟢️|
@@ -88,7 +89,7 @@
 - pushplus（微信）
 - Cool Push（QQ,微信,邮箱）
 - qmsg 酱（QQ）
-- 飞书
+- 飞书（飞书）
 
 ## 特别鸣谢
 
@@ -110,6 +111,11 @@
 
 ## 更新日志
 
+- 2021-09-22 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.2-brightgreen)
+    * 添加【时光相册】签到脚本
+    * 优化日志输出
+    * Bark 通知改为分批发送
+    * 修复【联通营业厅】日志错误
 - 2021-09-20 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.1-brightgreen)
     * 移除【每日天气】
     * 添加【联通营业厅】脚本

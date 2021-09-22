@@ -41,6 +41,7 @@
 |签到|MEIZU|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖|WEB|待测试|🟢️|
 |签到|ZHIYOO|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币|WEB|待测试|🟢️|
 |签到|CSDN|[CSDN](https://www.csdn.net/)|每日签到、抽奖|WEB|待测试|🟢️|
+|签到|EVERPHOTO|[时光相册](https://web.everphoto.cn/)|每日签到|WEB|待测试|🟢️|
 |签到|WOMAIL|联通沃邮箱|每日签到，签到7天得2元话费|公众号|待测试|🟢|
 |签到|WZYD|王者营地|每日签到（仅限 QQ 区）|APP|待测试|🟢|
 |签到|WEIBO|微博|每日钱包签到、打卡|APP|待测试|🟢️|
@@ -64,7 +65,7 @@
 - pushplus（微信）
 - Cool Push（QQ,微信,邮箱）
 - qmsg 酱（QQ）
-- 飞书
+- 飞书（飞书）
 
 ## 交流群
 

@@ -58,6 +58,8 @@
 |_**MEIZU**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 抽奖次数|
 |_**ZHIYOO**_.cookie|[智友邦](http://zhizhiyoo.net/)|Web| 智友邦 WEB Cookie|
 |_**CSDN**_.cookie|[CSDN](https://www.csdn.net/)|Web| CSDN Cookie|
+|_**EVERPHOTO**_.mobile|[时光相册](https://web.everphoto.cn/)|Web| 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 mobile 数据 |
+|_**EVERPHOTO**_.password|[时光相册](https://web.everphoto.cn/)|Web| 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 password 数据|
 
 ### 公众号签到配置
 
@@ -457,6 +459,16 @@
       "mobile": "多账号 手机号",
       "password": "多账号 密码",
       "app_id": "多账号 appId"
+    }
+  ],
+  "EVERPHOTO": [
+    {
+      "mobile": "+8618888xxxxxx",
+      "password": "xxxxxx"
+    },
+    {
+      "mobile": "多账号 手机号",
+      "password": "多账号 密码"
     }
   ]
 }
