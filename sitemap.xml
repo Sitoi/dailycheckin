@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://sitoi.gitee.io/dailycheckin/elecV2P/</loc>
+         <lastmod>2021-09-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://sitoi.gitee.io/dailycheckin/local/</loc>
          <lastmod>2021-09-22</lastmod>
          <changefreq>daily</changefreq>
