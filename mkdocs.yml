@@ -14,11 +14,11 @@ markdown_extensions:
   - pymdownx.superfences
 nav:
   - 主页: index.md
+  - 安装:
+      - 本地: local.md
+      - 青龙: qinglong.md
+      - 群辉: synology.md
+      - 云函数: tencent-scf.md
+      - Docker: docker.md
+      - elecV2P: elecV2P.md
   - 配置: settings.md
-  - 教程:
-      - 本地使用教程: local.md
-      - 青龙使用教程: qinglong.md
-      - Docker 使用教程: docker.md
-      - elecV2P 使用教程: elecV2P.md
-      - 群辉 Docker 使用教程: synology.md
-      - 腾讯云函数使用教程: tencent-scf.md

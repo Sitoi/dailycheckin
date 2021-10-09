@@ -29,6 +29,7 @@
 |_**PUSHPLUS_TOKEN**_|pushplus 推送|推送|用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} [官方文档](https://www.pushplus.plus/doc/)|
 |_**PUSHPLUS_TOPIC**_|pushplus 推送|推送|群组编码，不填仅发送给自己 [官方文档](https://www.pushplus.plus/doc/)|
 |_**FSKEY**_|飞书 推送|推送|`https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx` **xxxxxx** 部分就是需要填写的 FSKEY|
+|_**MERGE_PUSH**_|合并推送|推送配置|true: 将推送消息合并；false: 分开推送|
 
 ### Web 签到配置
 

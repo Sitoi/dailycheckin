@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://socialify.git.ci/Sitoi/dailycheckin/image?description=1&font=Rokkitt&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"/>
     <br><strong><font size=50>每日签到集合</font></strong>
-    <br>基于【腾讯云函数】/【Docker】/【青龙面板】的每日签到脚本
+    <br>基于【腾讯云函数】/【Docker】/【青龙面板】/【elecV2P】/【群晖】的每日签到脚本
     <br>支持多账号使用
 </p>
 
@@ -39,7 +39,12 @@
 
 ## 详细文档
 
+- 文档地址: [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
 - 国内地址: [https://sitoi.gitee.io/dailycheckin/](https://sitoi.gitee.io/dailycheckin/)
+
+## 视频教程
+
+网盘链接：[https://alywp.net/7BKy9O](https://alywp.net/7BKy9O)
 
 ## 签到列表
 
@@ -51,14 +56,14 @@
 |签到|KGQQ|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 150 鲜花左右|WEB|待测试|🟢️|
 |签到|VQQ|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值|WEB|待测试|🟢️|
 |签到|YOUDAO|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间|WEB|待测试|🟢️|
-|签到|MUSIC163|[网易云音乐](https://music.163.com/)|每日自动登录签到 + 刷歌 310 首|WEB|永久|🟡|
+|签到|MUSIC163|[网易云音乐](https://music.163.com/)|每日刷歌 310 首，登录失效|WEB|永久|🟢|
 |签到|ONEPLUSBBS|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务|WEB|待测试|🟢️|
 |签到|TIEBA|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到|WEB|待测试|🟢️|
 |签到|BILIBILI|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能|WEB|待测试|🟢️|
 |签到|V2EX|[V2EX](https://www.v2ex.com/)|铜币奖励|WEB|待测试|🟢️|
 |签到|WWW2NZZ|[咔叽网单](https://www.2nzz.com/)|论坛金币|WEB|待测试|🟢️|
 |签到|SMZDM|[什么值得买](https://www.smzdm.com)|每日签到|WEB|待测试|🟢️|
-|签到|ACFUN|[AcFun](https://www.acfun.cn/)|每日签到香蕉|WEB|永久|🟡️|
+|签到|ACFUN|[AcFun](https://www.acfun.cn/)|每日签到香蕉|WEB|永久|🟢|
 |签到|CLOUD189|[天翼云盘](https://cloud.189.cn/)|每日签到 +2次抽奖获得空间奖励|WEB|永久|🟢️|
 |签到|POJIE|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币|WEB|待测试|🟤|
 |签到|PICACOMIC|[哔咔漫画](https://www.picacomic.com)|成长值奖励|WEB|永久|🟤|
@@ -71,10 +76,10 @@
 |签到|WEIBO|微博|每日钱包签到、打卡|APP|待测试|🟢️|
 |签到|DUOKAN|多看阅读|获取书豆，用于购买书籍|APP|待测试|🟢️|
 |签到|MGTV|芒果 TV|签到获取体验会员|APP|待测试|🟢️|
-|签到|HEYTAP|欢太商城|获取积分|APP|待测试|🟡|
-|签到|UNICOM|联通营业厅|获取积分、流量等|APP|待测试|🟡|
+|签到|HEYTAP|欢太商城|获取积分|APP|待测试|🟢|
+|签到|UNICOM|联通营业厅|获取积分、流量等|APP|待测试|🟢|
 |签到|FMAPP|Fa 米家|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。|APP|待测试|🟢️|
-|其他|MIMOTION|小米运动|每日小米运动刷步数|APP|永久|🟡|
+|其他|MIMOTION|小米运动|每日小米运动刷步数|APP|永久|🟢|
 |其他|BAIDU|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录|WEB|永久|🟢️|
 
 ## 支持的通知列表
@@ -111,6 +116,8 @@
 
 ## 更新日志
 
+- 2021-10-09 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.4-brightgreen)
+    * 添加推送合并或拆分功能
 - 2021-09-22 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.2-brightgreen)
     * 添加【时光相册】签到脚本
     * 优化日志输出
