@@ -116,8 +116,9 @@
 
 ## 更新日志
 
-- 2021-10-09 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.4-brightgreen)
+- 2021-10-09 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.5-brightgreen)
     * 添加推送合并或拆分功能
+    * 优化企业微信推送
 - 2021-09-22 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.2-brightgreen)
     * 添加【时光相册】签到脚本
     * 优化日志输出
