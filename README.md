@@ -116,6 +116,8 @@
 
 ## 更新日志
 
+- 2021-10-11 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.6-brightgreen)
+    * 修复【联通沃邮箱】脚本
 - 2021-10-09 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.5-brightgreen)
     * 添加推送合并或拆分功能
     * 优化企业微信推送
