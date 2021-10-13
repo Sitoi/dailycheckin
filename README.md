@@ -116,6 +116,11 @@
 
 ## 更新日志
 
+- 2021-10-13 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.1-brightgreen)
+    * 修复【联通沃邮箱】脚本
+    * 完善【欢太商城】脚本
+    * 修复【pushplus 推送】限制，改为分开推送
+    * 添加最新版本内容推送
 - 2021-10-11 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.6-brightgreen)
     * 修复【联通沃邮箱】脚本
 - 2021-10-09 ![PyPI](https://img.shields.io/badge/Pypi-v0.2.5-brightgreen)

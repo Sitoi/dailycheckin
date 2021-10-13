@@ -91,7 +91,8 @@
 
 <table> 
 <tr> 
- <td> <p align="center">支付宝</p> <img width="420" height="420" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/alipay.jpg" /> </td> 
- <td> <p align="center">微信</p> <img width="420" height="420" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/wechat.jpg" /></td> 
+ <td> <p align="center">领红包</p> <img width="300" height="300" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/hb.jpg" /> </td> 
+ <td> <p align="center">支付宝</p> <img width="300" height="300" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/alipay.jpg" /> </td> 
+ <td> <p align="center">微信</p> <img width="300" height="300" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/reward/wechat.jpg" /></td> 
 </tr> 
 </table>

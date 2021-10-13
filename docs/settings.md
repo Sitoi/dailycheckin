@@ -6,31 +6,31 @@
 
 |Name|归属|属性|说明|
 |:---:|:---:|:---:|:---|
-|_**DINGTALK_SECRET**_|钉钉推送|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选|
-|_**DINGTALK_ACCESS_TOKEN**_|钉钉推送|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`|
-|_**SCKEY**_|server 酱推送|推送|server 酱推送[官方文档](https://sc.ftqq.com/3.version) ,填写 `SCKEY` 代码即可|
-|_**SENDKEY**_|server 酱 TURBO 推送|推送|server 酱 TURBO 推送[官方文档](https://sct.ftqq.com/sendkey) ,填写 `SENDKEY` 代码即可|
-|_**BARK_URL**_|BARK 推送|推送|BARK 推送[使用](https://github.com/Sitoi/dailycheckin/issues/29) ,填写 `BARK_URL` 即可，例如: `https://api.day.app/DxHcxxxxxRxxxxxxcm/` |
-|_**QMSG_KEY**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
-|_**QMSG_TYPE**_|qmsg 酱推送|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,如果需要推送到群填写 `group`,其他的都推送到 QQ |
-|_**TG_BOT_TOKEN**_|telegram 推送|推送|telegram 推送 `TG_BOT_TOKEN`|
-|_**TG_USER_ID**_|telegram 推送|推送|telegram 推送 `TG_USER_ID`|
-|_**TG_API_HOST**_|telegram 推送|推送|Telegram api 自建的反向代理地址 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc [简略搭建教程](https://shimo.im/docs/JD38CJDQtYy3yTd8/read)  |
-|_**TG_PROXY**_|telegram 推送|推送|Telegram 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
-|_**COOLPUSHSKEY**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`|
-|_**COOLPUSHQQ**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 QQ 推送，默认开启|
-|_**COOLPUSHWX**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 微信 推送，默认关闭|
-|_**COOLPUSHEMAIL**_|Cool Push 推送|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 邮件 推送，默认关闭|
-|_**QYWX_KEY**_|企业微信群机器人推送|推送|密钥，企业微信推送 `webhook` 后面的 `key` 详见[官方说明文档](https://work.weixin.qq.com/api/doc/90000/90136/91770) |
-|_**QYWX_CORPID**_|企业微信应用消息推送|推送|corpid [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
-|_**QYWX_AGENTID**_|企业微信应用消息推送|推送|agentid [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
-|_**QYWX_CORPSECRET**_|企业微信应用消息推送|推送|corpsecret [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
-|_**QYWX_TOUSER**_|企业微信应用消息推送|推送|touser [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
-|_**QYWX_MEDIA_ID**_|企业微信应用消息推送|推送|media_id [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
-|_**PUSHPLUS_TOKEN**_|pushplus 推送|推送|用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} [官方文档](https://www.pushplus.plus/doc/)|
-|_**PUSHPLUS_TOPIC**_|pushplus 推送|推送|群组编码，不填仅发送给自己 [官方文档](https://www.pushplus.plus/doc/)|
-|_**FSKEY**_|飞书 推送|推送|`https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx` **xxxxxx** 部分就是需要填写的 FSKEY|
-|_**MERGE_PUSH**_|合并推送|推送配置|true: 将推送消息合并；false: 分开推送|
+|_**DINGTALK_SECRET**_|钉钉|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选|
+|_**DINGTALK_ACCESS_TOKEN**_|钉钉|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`|
+|_**SCKEY**_|server 酱|推送|server 酱推送[官方文档](https://sc.ftqq.com/3.version) ,填写 `SCKEY` 代码即可|
+|_**SENDKEY**_|server 酱 TURBO|推送|server 酱 TURBO 推送[官方文档](https://sct.ftqq.com/sendkey) ,填写 `SENDKEY` 代码即可|
+|_**BARK_URL**_|BARK|推送|BARK 推送[使用](https://github.com/Sitoi/dailycheckin/issues/29) ,填写 `BARK_URL` 即可，例如: `https://api.day.app/DxHcxxxxxRxxxxxxcm/` |
+|_**QMSG_KEY**_|qmsg 酱|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
+|_**QMSG_TYPE**_|qmsg 酱|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,如果需要推送到群填写 `group`,其他的都推送到 QQ |
+|_**TG_BOT_TOKEN**_|telegram|推送|telegram 推送 `TG_BOT_TOKEN`|
+|_**TG_USER_ID**_|telegram|推送|telegram 推送 `TG_USER_ID`|
+|_**TG_API_HOST**_|telegram|推送|Telegram api 自建的反向代理地址 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc [简略搭建教程](https://shimo.im/docs/JD38CJDQtYy3yTd8/read)  |
+|_**TG_PROXY**_|telegram|推送|Telegram 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
+|_**COOLPUSHSKEY**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`|
+|_**COOLPUSHQQ**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 QQ 推送，默认开启|
+|_**COOLPUSHWX**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 微信 推送，默认关闭|
+|_**COOLPUSHEMAIL**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 邮件 推送，默认关闭|
+|_**QYWX_KEY**_|企业微信群机器人|推送|密钥，企业微信推送 `webhook` 后面的 `key` 详见[官方说明文档](https://work.weixin.qq.com/api/doc/90000/90136/91770) |
+|_**QYWX_CORPID**_|企业微信应用消息|推送|corpid |
+|_**QYWX_AGENTID**_|企业微信应用消息|推送|agentid  |
+|_**QYWX_CORPSECRET**_|企业微信应用消息|推送|corpsecret |
+|_**QYWX_TOUSER**_|企业微信应用消息|推送|touser |
+|_**QYWX_MEDIA_ID**_|企业微信应用消息|推送|media_id [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
+|_**PUSHPLUS_TOKEN**_|pushplus|推送|用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} [官方文档](https://www.pushplus.plus/doc/)|
+|_**PUSHPLUS_TOPIC**_|pushplus|推送|群组编码，不填仅发送给自己 [官方文档](https://www.pushplus.plus/doc/)|
+|_**FSKEY**_|飞书|推送|`https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx` **xxxxxx** 部分就是需要填写的 FSKEY|
+|_**MERGE_PUSH**_|合并推送|配置|**true**: 将推送消息合并；**false**: 分开推送|
 
 ### Web 签到配置
 
@@ -90,6 +90,7 @@
 |_**WZYD**_.data|王者营地|APP|王者营地 请求体中的 data， 抓包 APP 中域名为 `https://ssl.kohsocial.qq.com` 请求内容的全部参数|
 |_**HEYTAP**_.cookie|欢太商城|APP|欢太商城 请求体中的 Cookie， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 Cookie|
 |_**HEYTAP**_.useragent|欢太商城|APP|欢太商城 请求体中的 User-Agent， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 User-Agent|
+|_**HEYTAP**_.draw|欢太商城|APP|是否开启抽奖，默认 false|
 |_**UNICOM**_.mobile|联通营业厅|APP|联通营业厅 手机号|
 |_**UNICOM**_.password|联通营业厅|APP|联通营业厅 6位登录密码|
 |_**UNICOM**_.app_id|联通营业厅|APP|联通营业厅 请求体中的 appId， 抓包 APP 中域名为 `https://m.client.10010.com/mobileService/login.htm` 请求内容的 appId|
@@ -153,12 +154,9 @@
 
 ![获取百度云提交链接教程](img/submit_url.png)
 
-- _**BAIDUT**_.data_url: 提交网站的 URL
-  链接，参考链接：[https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)
-- _**BAIDUT**_.submit_url: 提交百度网站的目标
-  URL，参考格式：`http://data.zz.baidu.com/urls?site=https://sitoi.cn&token=xxxxx`
+- _**BAIDUT**_.data_url: 提交网站的 URL 链接，参考链接：[https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt](https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt)
+- _**BAIDUT**_.submit_url: 提交百度网站的目标 URL，参考格式：`http://data.zz.baidu.com/urls?site=https://sitoi.cn&token=xxxxx`
 - _**BAIDUT**_.times: 单次任务执行对同一个网站提交次数
-
 
 ## 示例
 
@@ -446,11 +444,13 @@
   "HEYTAP": [
     {
       "cookie": "sa_distinct_id=xxxxxx;Personalized=xxxxxx;s_channel=xxxxxx;source_type=xxxxxx;app_param=xxxxxx;ENCODE_TOKENSID=xxxxxx;scene_id=xxxxxx;apkPkg=xxxxxx;exp_id=;app_utm=xxxxxx;TOKENSID=xxxxxx;strategy_id=xxxxxx;referer=;experiment_id=xxxxxx;section_id=;s_version=xxxxxx;app_innerutm=xxxxxx;retrieve_id=;log_id=;",
-      "useragent": "xxxxxx"
+      "useragent": "xxxxxx",
+      "draw": false
     },
     {
       "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准"
+      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准",
+      "draw": false
     }
   ],
   "UNICOM": [
