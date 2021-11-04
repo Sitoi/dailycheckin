@@ -1011,6 +1011,18 @@
 <td align="center">公众号</td>
 <td align="left">true: 开启21天自动暂停，false: 关闭自动暂停，每天都签到。默认开启自动暂停</td>
 </tr>
+<tr>
+<td align="center"><em><strong>WOMAIL</strong></em>.phone</td>
+<td align="center">联通沃邮箱</td>
+<td align="center">公众号</td>
+<td align="left">手机号</td>
+</tr>
+<tr>
+<td align="center"><em><strong>WOMAIL</strong></em>.password</td>
+<td align="center">联通沃邮箱</td>
+<td align="center">公众号</td>
+<td align="left">密码</td>
+</tr>
 </tbody>
 </table>
 <h3 id="app">APP 签到配置</h3>
@@ -1518,11 +1530,15 @@
   <span class="nt">&quot;WOMAIL&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://nyan.mail.wo.cn/cn/sign/index/index?mobile=xxxxxx&amp;userName=&amp;openId=xxxxxx&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;pause21days&quot;</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="nt">&quot;pause21days&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;Sitoi&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;18888xxxxxx&quot;</span>
     <span class="p">},</span>
     <span class="p">{</span>
       <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\&quot; 请加反斜杠转义）&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;pause21days&quot;</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="nt">&quot;pause21days&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 密码填写，请参考上面&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;多账号 手机号填写，请参考上面&quot;</span>
     <span class="p">}</span>
   <span class="p">],</span>
   <span class="nt">&quot;HEYTAP&quot;</span><span class="p">:</span> <span class="p">[</span>
