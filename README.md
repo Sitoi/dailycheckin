@@ -116,7 +116,8 @@
 
 ## 更新日志
 
-- 2021-11-04 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.3-brightgreen)
+- 2021-11-04 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.4-brightgreen)
+    * 新增【联通沃邮箱】网页端和客户端任务
     * 新增【联通沃邮箱】是否21天断签配置
     * 修复【联通沃邮箱】俱乐部签到
     * 移除【联通沃邮箱】拼图活动

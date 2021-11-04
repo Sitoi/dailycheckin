@@ -269,11 +269,15 @@
   "WOMAIL": [
     {
       "url": "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=xxxxxx&userName=&openId=xxxxxx",
-      "pause21days": true
+      "pause21days": true,
+      "password": "Sitoi",
+      "phone": "18888xxxxxx"
     },
     {
       "url": "多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "pause21days": true
+      "pause21days": true,
+      "password": "多账号 密码填写，请参考上面",
+      "phone": "多账号 手机号填写，请参考上面"
     }
   ],
   "HEYTAP": [

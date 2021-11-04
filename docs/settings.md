@@ -69,6 +69,8 @@
 |:---:|:---:|:---:|:---|
 |_**WOMAIL**_.url|联通沃邮箱|公众号|联通沃邮箱 公众号 `https://nyan.mail.wo.cn/cn/sign/index/index?mobile` 开头的 URL|
 |_**WOMAIL**_.pause21days|联通沃邮箱|公众号|true: 开启21天自动暂停，false: 关闭自动暂停，每天都签到。默认开启自动暂停|
+|_**WOMAIL**_.phone|联通沃邮箱|公众号|手机号|
+|_**WOMAIL**_.password|联通沃邮箱|公众号|密码|
 
 ### APP 签到配置
 
@@ -437,11 +439,15 @@
   "WOMAIL": [
     {
       "url": "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=xxxxxx&userName=&openId=xxxxxx",
-      "pause21days": true
+      "pause21days": true,
+      "password": "Sitoi",
+      "phone": "18888xxxxxx"
     },
     {
       "url": "多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "pause21days": true
+      "pause21days": true,
+      "password": "多账号 密码填写，请参考上面",
+      "phone": "多账号 手机号填写，请参考上面"
     }
   ],
   "HEYTAP": [
