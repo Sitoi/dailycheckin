@@ -116,6 +116,10 @@
 
 ## 更新日志
 
+- 2021-11-04 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.3-brightgreen)
+    * 新增【联通沃邮箱】是否21天断签配置
+    * 修复【联通沃邮箱】俱乐部签到
+    * 移除【联通沃邮箱】拼图活动
 - 2021-10-13 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.1-brightgreen)
     * 修复【联通沃邮箱】脚本
     * 完善【欢太商城】脚本
