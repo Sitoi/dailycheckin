@@ -24,7 +24,7 @@
 
 ## 视频教程
 
-网盘链接：[https://alywp.net/7BKy9O](https://alywp.net/7BKy9O)
+网盘链接：[https://www.aliyundrive.com/s/hYC6FziXppq](https://www.aliyundrive.com/s/hYC6FziXppq)
 
 ## 签到列表
 
