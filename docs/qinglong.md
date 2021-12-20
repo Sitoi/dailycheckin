@@ -16,12 +16,16 @@ apk add --no-cache gcc g++ python python-dev py-pip mysql-dev linux-headers libf
 pip3 install dailycheckin --upgrade
 ```
 
-> 如果上述命令仍然安装失败运行下面的命令
+> 如果上述命令仍然安装失败先运行下面的命令
 
 ```bash
-apk add --no-cache --virtual .build-deps gcc musl-dev python2-dev python3-dev
+apk add --no-cache --virtual .build-deps gcc musl-dev python2-dev python3-dev libffi libffi-dev openssl openssl-dev
 pip3 install pip setuptools --upgrade
 pip3 install cryptography~=3.2.1
+```
+
+```bash
+pip3 install dailycheckin --upgrade
 ```
 
 ## 三、新建并编写 `/ql/scripts/config.json` 配置文件
