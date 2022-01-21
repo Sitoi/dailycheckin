@@ -36,7 +36,6 @@
 
 |Name|归属|属性|说明|
 |:---:|:---:|:---:|:---|
-|_**IQIYI**_.cookie|[爱奇艺](https://www.iqiyi.com/)|Web|爱奇艺 帐号的 cookie 信息|
 |_**KGQQ**_.cookie|[全民K歌](https://kg.qq.com/index-pc.html)|Web|全民K歌 帐号的 cookie 信息|
 |_**VQQ**_.auth_refresh|[腾讯视频](https://v.qq.com/)|Web|腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其完整的 URL|
 |_**VQQ**_.cookie|[腾讯视频](https://v.qq.com/)|Web|腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其对应的 cookie|
@@ -62,6 +61,9 @@
 |_**CSDN**_.cookie|[CSDN](https://www.csdn.net/)|Web| CSDN Cookie|
 |_**EVERPHOTO**_.mobile|[时光相册](https://web.everphoto.cn/)|Web| 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 mobile 数据 |
 |_**EVERPHOTO**_.password|[时光相册](https://web.everphoto.cn/)|Web| 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 password 数据|
+|_**SSPANEL**_.email|SSPANEL系列网站|Web| SSPANEL 登陆邮箱|
+|_**SSPANEL**_.password|SSPANEL系列网站|Web| SSPANEL 登陆密码|
+|_**SSPANEL**_.url|SSPANEL系列网站|Web|SSPANEL 网站主页|
 
 ### 公众号签到配置
 
@@ -74,29 +76,30 @@
 
 ### APP 签到配置
 
-|Name|归属|属性|说明|
-|:---:|:---:|:---:|:---|
-|_**FMAPP**_.token|Fa米家|APP|Fa米家 APP headers 中的 token|
-|_**FMAPP**_.cookie|Fa米家|APP|Fa米家 APP headers 中的 cookie|
-|_**FMAPP**_.blackbox|Fa米家|APP|Fa米家 APP headers 中的 blackBox|
-|_**FMAPP**_.device_id|Fa米家|APP|Fa米家 APP headers 中的 deviceId|
-|_**FMAPP**_.fmversion|Fa米家|APP|Fa米家 APP headers 中的 fmVersion|
-|_**FMAPP**_.os|Fa米家|APP|Fa米家 APP headers 中的 os|
-|_**FMAPP**_.useragent|Fa米家|APP|Fa米家 APP headers 中的 User-Agent|
-|_**ACFUN**_.phone|[AcFun](https://www.acfun.cn/)|APP|AcFun 手机账号|
-|_**ACFUN**_.password|[AcFun](https://www.acfun.cn/)|APP|AcFun 账号密码|
-|_**MGTV**_.params|芒果 TV|APP|芒果 TV 请求参数|
-|_**PICACOMIC**_.email|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 账号|
-|_**PICACOMIC**_.password|[哔咔漫画](https://www.picacomic.com)|APP| 哔咔漫画 密码|
-|_**WEIBO**_.url|微博|APP| 抓取开头为 `https://api.weibo.cn/2/users/show?` 的整个 url 填入即可|
-|_**DUOKAN**_.cookie|多看阅读|APP|多看阅读 cookie， 抓取开头为 `https://www.duokan.com` 下的 cookie 即可|
-|_**WZYD**_.data|王者营地|APP|王者营地 请求体中的 data， 抓包 APP 中域名为 `https://ssl.kohsocial.qq.com` 请求内容的全部参数|
-|_**HEYTAP**_.cookie|欢太商城|APP|欢太商城 请求体中的 Cookie， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 Cookie|
-|_**HEYTAP**_.useragent|欢太商城|APP|欢太商城 请求体中的 User-Agent， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 User-Agent|
-|_**HEYTAP**_.draw|欢太商城|APP|是否开启抽奖，默认 false|
-|_**UNICOM**_.mobile|联通营业厅|APP|联通营业厅 手机号|
-|_**UNICOM**_.password|联通营业厅|APP|联通营业厅 6位登录密码|
-|_**UNICOM**_.app_id|联通营业厅|APP|联通营业厅 请求体中的 appId， 抓包 APP 中域名为 `https://m.client.10010.com/mobileService/login.htm` 请求内容的 appId|
+|Name|                归属                 |属性|说明|
+|:---:|:---------------------------------:|:---:|:---|
+|_**IQIYI**_.cookie|                爱奇艺                |APP|爱奇艺 APP headers 中的 token|
+|_**FMAPP**_.token|               Fa米家                |APP|Fa米家 APP headers 中的 token|
+|_**FMAPP**_.cookie|               Fa米家                |APP|Fa米家 APP headers 中的 cookie|
+|_**FMAPP**_.blackbox|               Fa米家                |APP|Fa米家 APP headers 中的 blackBox|
+|_**FMAPP**_.device_id|               Fa米家                |APP|Fa米家 APP headers 中的 deviceId|
+|_**FMAPP**_.fmversion|               Fa米家                |APP|Fa米家 APP headers 中的 fmVersion|
+|_**FMAPP**_.os|               Fa米家                |APP|Fa米家 APP headers 中的 os|
+|_**FMAPP**_.useragent|               Fa米家                |APP|Fa米家 APP headers 中的 User-Agent|
+|_**ACFUN**_.phone|  [AcFun](https://www.acfun.cn/)   |APP|AcFun 手机账号|
+|_**ACFUN**_.password|  [AcFun](https://www.acfun.cn/)   |APP|AcFun 账号密码|
+|_**MGTV**_.params|               芒果 TV               |APP|芒果 TV 请求参数|
+|_**PICACOMIC**_.email| [哔咔漫画](https://www.picacomic.com) |APP| 哔咔漫画 账号|
+|_**PICACOMIC**_.password| [哔咔漫画](https://www.picacomic.com) |APP| 哔咔漫画 密码|
+|_**WEIBO**_.url|                微博                 |APP| 抓取开头为 `https://api.weibo.cn/2/users/show?` 的整个 url 填入即可|
+|_**DUOKAN**_.cookie|               多看阅读                |APP|多看阅读 cookie， 抓取开头为 `https://www.duokan.com` 下的 cookie 即可|
+|_**WZYD**_.data|               王者营地                |APP|王者营地 请求体中的 data， 抓包 APP 中域名为 `https://ssl.kohsocial.qq.com` 请求内容的全部参数|
+|_**HEYTAP**_.cookie|               欢太商城                |APP|欢太商城 请求体中的 Cookie， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 Cookie|
+|_**HEYTAP**_.useragent|               欢太商城                |APP|欢太商城 请求体中的 User-Agent， 抓包 APP 中域名为 `https://store.oppo.com/` 请求内容的 User-Agent|
+|_**HEYTAP**_.draw|               欢太商城                |APP|是否开启抽奖，默认 false|
+|_**UNICOM**_.mobile|               联通营业厅               |APP|联通营业厅 手机号|
+|_**UNICOM**_.password|               联通营业厅               |APP|联通营业厅 6位登录密码|
+|_**UNICOM**_.app_id|               联通营业厅               |APP|联通营业厅 请求体中的 appId， 抓包 APP 中域名为 `https://m.client.10010.com/mobileService/login.htm` 请求内容的 appId|
 
 ### 其他任务配置
 
@@ -482,6 +485,18 @@
     {
       "mobile": "多账号 手机号",
       "password": "多账号 密码"
+    }
+  ],
+  "SSPANEL": [
+    {
+      "email": "邮箱",
+      "password": "密码",
+      "url": "https://sitoi.cn"
+    },
+    {
+      "email": "多账号 邮箱",
+      "password": "多账号 密码",
+      "url": "https://sitoi.cn"
     }
   ]
 }

@@ -313,5 +313,17 @@
       "mobile": "多账号 手机号",
       "password": "多账号 密码"
     }
+  ],
+  "SSPANEL": [
+    {
+      "email": "邮箱",
+      "password": "密码",
+      "url": "https://sitoi.cn"
+    },
+    {
+      "email": "多账号 邮箱",
+      "password": "多账号 密码",
+      "url": "https://sitoi.cn"
+    }
   ]
 }
