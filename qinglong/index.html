@@ -464,11 +464,13 @@
 <div class="highlight"><pre><span></span><code>pip3 install dailycheckin --upgrade
 </code></pre></div>
 <blockquote>
-<p>如果上述命令仍然安装失败运行下面的命令</p>
+<p>如果上述命令仍然安装失败先运行下面的命令</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code>apk add --no-cache --virtual .build-deps gcc musl-dev python2-dev python3-dev
+<div class="highlight"><pre><span></span><code>apk add --no-cache --virtual .build-deps gcc musl-dev python2-dev python3-dev libffi libffi-dev openssl openssl-dev
 pip3 install pip setuptools --upgrade
 pip3 install cryptography~<span class="o">=</span><span class="m">3</span>.2.1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>pip3 install dailycheckin --upgrade
 </code></pre></div>
 <h2 id="qlscriptsconfigjson">三、新建并编写 <code>/ql/scripts/config.json</code> 配置文件</h2>
 <blockquote>
