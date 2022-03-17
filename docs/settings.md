@@ -34,36 +34,37 @@
 
 ### Web 签到配置
 
-|Name|归属|属性|说明|
+|Name|归属| 属性  |说明|
 |:---:|:---:|:---:|:---|
-|_**KGQQ**_.cookie|[全民K歌](https://kg.qq.com/index-pc.html)|Web|全民K歌 帐号的 cookie 信息|
-|_**VQQ**_.auth_refresh|[腾讯视频](https://v.qq.com/)|Web|腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其完整的 URL|
-|_**VQQ**_.cookie|[腾讯视频](https://v.qq.com/)|Web|腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其对应的 cookie|
-|_**YOUDAO**_.cookie|[有道云笔记](https://note.youdao.com/web/)|Web|有道云笔记 帐号的 cookie 信息|
-|_**MUSIC163**_.phone|[网易云音乐](https://music.163.com/)|账号|网易云音乐 帐号的手机号|
-|_**MUSIC163**_.password|[网易云音乐](https://music.163.com/)|账号|网易云音乐 帐号的密码|
-|_**ONEPLUSBBS**_.cookie|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|Web|一加手机社区官方论坛 账户的 cookie|
-|_**TIEBA**_.cookie|[百度贴吧](https://tieba.baidu.com/index.html)|Web|百度贴吧 cookie|
-|_**BILIBILI**_.cookie|[Bilibili](https://www.bilibili.com)|Web|Bilibili cookie|
-|_**BILIBILI**_.coin_num|[Bilibili](https://www.bilibili.com)|Web|Bilibili 每日投币数量|
-|_**BILIBILI**_.coin_type|[Bilibili](https://www.bilibili.com)|Web|Bilibili 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币|
-|_**BILIBILI**_.silver2coin|[Bilibili](https://www.bilibili.com)|Web|Bilibili 是否开启银瓜子换硬币，默认为 True 开启|
-|_**V2EX**_.cookie|[V2EX](https://www.v2ex.com/)|Web|V2EX 每日签到|
-|_**V2EX**_.proxy|[V2EX](https://www.v2ex.com/)|Web|V2EX 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
-|_**WWW2NZZ**_.cookie|[咔叽网单](https://www.2nzz.com/)|Web|咔叽网单 每日签到|
-|_**SMZDM**_.cookie|[什么值得买](https://www.smzdm.com)|Web|什么值得买 每日签到|
-|_**CLOUD189**_.phone|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号|
-|_**CLOUD189**_.password|[天翼云盘](https://cloud.189.cn/)|Web| 天翼云盘 手机号对应的密码|
-|_**POJIE**_.cookie|[吾爱破解](https://www.52pojie.cn/index.php)|Web| 吾爱破解 cookie|
-|_**MEIZU**_.cookie|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 cookie|
-|_**MEIZU**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)|Web| MEIZU 社区 抽奖次数|
-|_**ZHIYOO**_.cookie|[智友邦](http://zhizhiyoo.net/)|Web| 智友邦 WEB Cookie|
-|_**CSDN**_.cookie|[CSDN](https://www.csdn.net/)|Web| CSDN Cookie|
-|_**EVERPHOTO**_.mobile|[时光相册](https://web.everphoto.cn/)|Web| 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 mobile 数据 |
-|_**EVERPHOTO**_.password|[时光相册](https://web.everphoto.cn/)|Web| 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 password 数据|
-|_**SSPANEL**_.email|SSPANEL系列网站|Web| SSPANEL 登陆邮箱|
-|_**SSPANEL**_.password|SSPANEL系列网站|Web| SSPANEL 登陆密码|
-|_**SSPANEL**_.url|SSPANEL系列网站|Web|SSPANEL 网站主页|
+|_**IQIYI**_.cookie|                爱奇艺                | WEB |爱奇艺 APP headers 中的 token|
+|_**KGQQ**_.cookie|[全民K歌](https://kg.qq.com/index-pc.html)| Web |全民K歌 帐号的 cookie 信息|
+|_**VQQ**_.auth_refresh|[腾讯视频](https://v.qq.com/)| Web |腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其完整的 URL|
+|_**VQQ**_.cookie|[腾讯视频](https://v.qq.com/)| Web |腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其对应的 cookie|
+|_**YOUDAO**_.cookie|[有道云笔记](https://note.youdao.com/web/)| Web |有道云笔记 帐号的 cookie 信息|
+|_**MUSIC163**_.phone|[网易云音乐](https://music.163.com/)| 账号  |网易云音乐 帐号的手机号|
+|_**MUSIC163**_.password|[网易云音乐](https://music.163.com/)| 账号  |网易云音乐 帐号的密码|
+|_**ONEPLUSBBS**_.cookie|[一加手机社区官方论坛](https://www.oneplusbbs.com/)| Web |一加手机社区官方论坛 账户的 cookie|
+|_**TIEBA**_.cookie|[百度贴吧](https://tieba.baidu.com/index.html)| Web |百度贴吧 cookie|
+|_**BILIBILI**_.cookie|[Bilibili](https://www.bilibili.com)| Web |Bilibili cookie|
+|_**BILIBILI**_.coin_num|[Bilibili](https://www.bilibili.com)| Web |Bilibili 每日投币数量|
+|_**BILIBILI**_.coin_type|[Bilibili](https://www.bilibili.com)| Web |Bilibili 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币|
+|_**BILIBILI**_.silver2coin|[Bilibili](https://www.bilibili.com)| Web |Bilibili 是否开启银瓜子换硬币，默认为 True 开启|
+|_**V2EX**_.cookie|[V2EX](https://www.v2ex.com/)| Web |V2EX 每日签到|
+|_**V2EX**_.proxy|[V2EX](https://www.v2ex.com/)| Web |V2EX 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
+|_**WWW2NZZ**_.cookie|[咔叽网单](https://www.2nzz.com/)| Web |咔叽网单 每日签到|
+|_**SMZDM**_.cookie|[什么值得买](https://www.smzdm.com)| Web |什么值得买 每日签到|
+|_**CLOUD189**_.phone|[天翼云盘](https://cloud.189.cn/)| Web | 天翼云盘 手机号|
+|_**CLOUD189**_.password|[天翼云盘](https://cloud.189.cn/)| Web | 天翼云盘 手机号对应的密码|
+|_**POJIE**_.cookie|[吾爱破解](https://www.52pojie.cn/index.php)| Web | 吾爱破解 cookie|
+|_**MEIZU**_.cookie|[MEIZU 社区](https://bbs.meizu.cn)| Web | MEIZU 社区 cookie|
+|_**MEIZU**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)| Web | MEIZU 社区 抽奖次数|
+|_**ZHIYOO**_.cookie|[智友邦](http://zhizhiyoo.net/)| Web | 智友邦 WEB Cookie|
+|_**CSDN**_.cookie|[CSDN](https://www.csdn.net/)| Web | CSDN Cookie|
+|_**EVERPHOTO**_.mobile|[时光相册](https://web.everphoto.cn/)| Web | 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 mobile 数据 |
+|_**EVERPHOTO**_.password|[时光相册](https://web.everphoto.cn/)| Web | 时光相册 https://web.everphoto.cn/api/auth URL 表单内的 password 数据|
+|_**SSPANEL**_.email|SSPANEL系列网站| Web | SSPANEL 登陆邮箱|
+|_**SSPANEL**_.password|SSPANEL系列网站| Web | SSPANEL 登陆密码|
+|_**SSPANEL**_.url|SSPANEL系列网站| Web |SSPANEL 网站主页|
 
 ### 公众号签到配置
 
@@ -78,7 +79,6 @@
 
 |Name|                归属                 |属性|说明|
 |:---:|:---------------------------------:|:---:|:---|
-|_**IQIYI**_.cookie|                爱奇艺                |APP|爱奇艺 APP headers 中的 token|
 |_**FMAPP**_.token|               Fa米家                |APP|Fa米家 APP headers 中的 token|
 |_**FMAPP**_.cookie|               Fa米家                |APP|Fa米家 APP headers 中的 cookie|
 |_**FMAPP**_.blackbox|               Fa米家                |APP|Fa米家 APP headers 中的 blackBox|
