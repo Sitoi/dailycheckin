@@ -28,6 +28,10 @@ pip3 install cryptography~=3.2.1
 pip3 install dailycheckin --upgrade
 ```
 
+> 如果仍无法解决，请参考下面的教程
+
+[https://blog.csdn.net/u013557771/article/details/121601973](https://blog.csdn.net/u013557771/article/details/121601973)
+
 ## 三、新建并编写 `/ql/scripts/config.json` 配置文件
 
 > ⚠️ 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
