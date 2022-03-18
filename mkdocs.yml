@@ -22,3 +22,4 @@ nav:
       - Docker: docker.md
       - elecV2P: elecV2P.md
   - 配置: settings.md
+  - 更新日志: history.md
