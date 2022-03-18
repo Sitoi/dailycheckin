@@ -13,14 +13,14 @@
         <meta name="author" content="Sitoi">
       
       
-        <link rel="canonical" href="https://sitoi.gitee.io/dailycheckin/tencent-scf/">
+        <link rel="canonical" href="https://sitoi.gitee.io/dailycheckin/history/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.5">
     
     
       
-        <title>云函数 - DailyCheckIn</title>
+        <title>更新日志 - DailyCheckIn</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              云函数
+              更新日志
             
           </span>
         </div>
@@ -214,14 +214,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       <label class="md-nav__link" for="__nav_2">
         安装
@@ -273,72 +271,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          云函数
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tencent-scf/" class="md-nav__link">
         云函数
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    一、创建云函数
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    二、安装依赖包（更新依赖与安装一致）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    三、添加配置文件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    四、部署测试
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -394,11 +331,21 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../history/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         更新日志
       </a>
+      
     </li>
   
 
@@ -422,42 +369,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    一、创建云函数
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    二、安装依赖包（更新依赖与安装一致）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    三、添加配置文件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    四、部署测试
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -469,31 +380,166 @@
               
                 
                 
-                <h1 id="_1">腾讯云函数教程</h1>
-<h3 id="_2">一、创建云函数</h3>
-<blockquote>
-<p>地域选哪里都可以</p>
-</blockquote>
-<p><img alt="创建云函数" src="../img/scf_create.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">from</span> <span class="nn">dailycheckin.main</span> <span class="kn">import</span> <span class="n">checkin</span>
-
-
-<span class="k">def</span> <span class="nf">main_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">checkin</span><span class="p">()</span>
-</code></pre></div>
-<h3 id="_3">二、安装依赖包（更新依赖与安装一致）</h3>
-<p><img alt="安装依赖包" src="../img/scf_install.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> src
-pip3 install dailycheckin --upgrade -t .
-</code></pre></div>
-<h3 id="_4">三、添加配置文件</h3>
-<blockquote>
-<p>⚠️ 请务必到 <a href="http://www.json.cn">http://www.json.cn</a> 网站检查 <code>config.json</code> 文件格式是否正确！</p>
-</blockquote>
-<p><img alt="添加配置文件" src="../img/scf_config.png" /></p>
-<h3 id="_5">四、部署测试</h3>
-<p><img alt="部署测试" src="../img/scf_test.png" /></p>
+                <h1 id="_1">更新日志</h1>
+<ul>
+<li>2022-03-17 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.3.7-brightgreen" /><ul>
+<li>新增【多看阅读】延期功能</li>
+<li>新增【Bilibili】银瓜子兑换功能</li>
+<li>新增【爱奇艺】WEB 签到功能</li>
+<li>修复【爱奇艺】签到功能</li>
+</ul>
+</li>
+<li>2021-11-04 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.3.4-brightgreen" /><ul>
+<li>新增【联通沃邮箱】网页端和客户端任务</li>
+<li>新增【联通沃邮箱】是否21天断签配置</li>
+<li>修复【联通沃邮箱】俱乐部签到</li>
+<li>移除【联通沃邮箱】拼图活动</li>
+</ul>
+</li>
+<li>2021-10-13 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.3.1-brightgreen" /><ul>
+<li>修复【联通沃邮箱】脚本</li>
+<li>完善【欢太商城】脚本</li>
+<li>修复【pushplus 推送】限制，改为分开推送</li>
+<li>添加最新版本内容推送</li>
+</ul>
+</li>
+<li>2021-10-11 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.2.6-brightgreen" /><ul>
+<li>修复【联通沃邮箱】脚本</li>
+</ul>
+</li>
+<li>2021-10-09 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.2.5-brightgreen" /><ul>
+<li>添加推送合并或拆分功能</li>
+<li>优化企业微信推送</li>
+</ul>
+</li>
+<li>2021-09-22 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.2.2-brightgreen" /><ul>
+<li>添加【时光相册】签到脚本</li>
+<li>优化日志输出</li>
+<li>Bark 通知改为分批发送</li>
+<li>修复【联通营业厅】日志错误</li>
+</ul>
+</li>
+<li>2021-09-20 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.2.1-brightgreen" /><ul>
+<li>移除【每日天气】</li>
+<li>添加【联通营业厅】脚本</li>
+<li>更新【联通沃邮箱】每日签到脚本(21 天自动断签)</li>
+<li>优化配置文件</li>
+</ul>
+</li>
+<li>2021-09-20 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.1.9-brightgreen" /><ul>
+<li>优化项目结构</li>
+<li>添加【欢太商城】脚本</li>
+</ul>
+</li>
+<li>2021-09-19 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.1.8-brightgreen" /><ul>
+<li>优化日志输出</li>
+<li>移除每日一句脚本</li>
+</ul>
+</li>
+<li>2021-09-03 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.1.7-brightgreen" /><ul>
+<li>修复【小米运动】签到脚本</li>
+<li>修复【爱奇艺】签到脚本</li>
+<li>适配青龙</li>
+<li>支持指定运行某个脚本</li>
+</ul>
+</li>
+<li>2021-08-18 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.1.4-brightgreen" /><ul>
+<li>修复【小米运动】签到脚本</li>
+</ul>
+</li>
+<li>2021-07-29 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.1.3-brightgreen" /><ul>
+<li>修复【天翼云】签到脚本</li>
+<li>修复【AcFun】签到脚本</li>
+<li>添加【飞书】推送功能</li>
+</ul>
+</li>
+<li>2021-07-05 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.1.1-brightgreen" /><ul>
+<li>修复【Bilibili】签到脚本</li>
+</ul>
+</li>
+<li>2021-06-01 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.1.0-brightgreen" /><ul>
+<li>删除【联通】&amp;【WPS】签到脚本</li>
+</ul>
+</li>
+<li>2021-05-30 <img alt="PyPI" src="https://img.shields.io/badge/Pypi-v0.0.8-brightgreen" /><ul>
+<li>更新【联通沃邮箱】每日签到脚本</li>
+</ul>
+</li>
+<li>2021-04-28<ul>
+<li>添加【联通沃邮箱】每日签到脚本 感谢水友<code>@什么大风大浪都见过</code> 提供脚本</li>
+</ul>
+</li>
+<li>2021-04-07<ul>
+<li>添加【王者营地】每日签到脚本</li>
+<li>添加【CSDN】每日签到脚本</li>
+<li>添加【AcFun】每日分享任务功能</li>
+</ul>
+</li>
+<li>2021-03-30<ul>
+<li>添加【微博】每日签到脚本</li>
+<li>添加【多看阅读】每日签到脚本</li>
+</ul>
+</li>
+<li>2021-03-16 添加【智友邦】每日签到脚本</li>
+<li>2021-03-10 添加【爱奇艺】10s 任务</li>
+<li>2021-03-09<ul>
+<li>添加【pushplus】推送功能</li>
+<li>添加【配置文件】GitHub Actions 使用整个 config.json 配置文件</li>
+</ul>
+</li>
+<li>2021-03-06 添加【和彩云】签到和抽奖功能</li>
+<li>2021-03-03 添加【MEIZU 社区】签到和抽奖功能</li>
+<li>2021-03-02<ul>
+<li>添加【企业微信群机器人】推送功能</li>
+<li>添加【企业微信应用消息】推送功能</li>
+</ul>
+</li>
+<li>2021-03-01<ul>
+<li>添加【哔咔漫画】每日签到脚本</li>
+<li>添加【芒果TV】每日签到脚本</li>
+</ul>
+</li>
+<li>2021-02-23<ul>
+<li>添加【WPS】每日签到脚本</li>
+<li>添加【吾爱破解】每日签到脚本</li>
+</ul>
+</li>
+<li>2021-02-21 添加【全民K歌】VIP 每日签到脚本</li>
+<li>2021-02-20 添加【server酱 turbo 版】推送功能</li>
+<li>2021-01-27 添加【天翼云盘】每日签到脚本</li>
+<li>2021-01-22 添加【AcFun】每日签到脚本</li>
+<li>2021-01-19 添加【Bark】推送功能</li>
+<li>2021-01-16 添加【小米运动】刷步数功能</li>
+<li>2021-01-07<ul>
+<li>添加【什么值得买】每日签到脚本</li>
+<li>添加【咔叽网单】每日签到脚本</li>
+<li>添加【V2EX】每日签到脚本</li>
+</ul>
+</li>
+<li>2021-01-03 添加【联通】每日签到脚本</li>
+<li>2020-12-22 添加【Cool Push】推送功能</li>
+<li>2020-12-21<ul>
+<li>添加【bilibili】每日签到脚本</li>
+<li>添加【百度贴吧】每日签到脚本</li>
+</ul>
+</li>
+<li>2020-12-19 添加【Fa 米家 App】每日签到脚本</li>
+<li>2020-12-10 添加【一加手机社区官方论坛】每日签到脚本</li>
+<li>2020-12-07<ul>
+<li>添加【每日天气】预报</li>
+<li>添加【每日一句】获取</li>
+</ul>
+</li>
+<li>2020-12-06<ul>
+<li>添加【网易云音乐】每日签到脚本</li>
+<li>添加【腾讯视频】每日签到脚本</li>
+<li>添加【吾爱破解】每日签到脚本</li>
+<li>添加【有道云笔记】每日签到脚本</li>
+<li>添加【爱奇艺】每日签到脚本</li>
+<li>添加【百度站点】每日提交脚本</li>
+</ul>
+</li>
+</ul>
                 
               
               
@@ -512,7 +558,7 @@ pip3 install dailycheckin --upgrade -t .
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../synology/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../settings/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -521,25 +567,11 @@ pip3 install dailycheckin --upgrade -t .
               <span class="md-footer__direction">
                 Previous
               </span>
-              群辉
+              配置
             </div>
           </div>
         </a>
       
-      
-        <a href="../docker/" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Docker
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

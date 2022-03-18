@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://sitoi.gitee.io/dailycheckin/history/</loc>
+         <lastmod>2022-03-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://sitoi.gitee.io/dailycheckin/local/</loc>
          <lastmod>2022-03-18</lastmod>
          <changefreq>daily</changefreq>
