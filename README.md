@@ -61,7 +61,6 @@
 |签到|KGQQ|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 125 鲜花左右| WEB |待测试|🟢️|2022-03-17|
 |签到|VQQ|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值| WEB |待测试|🟢️|2022-03-17|
 |签到|YOUDAO|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间| WEB |待测试|🟢️|2022-03-17|
-|签到|MUSIC163|[网易云音乐](https://music.163.com/)|每日刷歌 310 首，登录失效❌（云函数 IP 可能被 ban）| WEB |永久|🟢|2022-03-17|
 |签到|ONEPLUSBBS|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务| WEB |待测试|🟢️|2022-03-17|
 |签到|TIEBA|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到| WEB |待测试|🟢️|2022-03-17|
 |签到|BILIBILI|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能| WEB |待测试|🟢️|2022-03-17|
@@ -70,7 +69,6 @@
 |签到|SMZDM|[什么值得买](https://www.smzdm.com)|每日签到| WEB |待测试|🟢️|2022-03-17|
 |签到|ACFUN|[AcFun](https://www.acfun.cn/)|每日签到香蕉| WEB |永久|🔴|2022-03-17|
 |签到|CLOUD189|[天翼云盘](https://cloud.189.cn/)|每日签到 +2次抽奖获得空间奖励| WEB |永久|🟢️|2022-03-17|
-|签到|POJIE|[吾爱破解](https://www.52pojie.cn/index.php)|2枚吾爱币(加了js加载)| WEB |待测试|🔴|2022-03-17|
 |签到|PICACOMIC|[哔咔漫画](https://www.picacomic.com)|成长值奖励| WEB |永久|🟤|2022-03-17|
 |签到|MEIZU|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖| WEB |待测试|🟢️|2022-03-17|
 |签到|ZHIYOO|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币| WEB |待测试|🟢️|2022-03-17|
@@ -123,6 +121,9 @@
 ## 更新日志
 
 
+- 2022-04-26 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.8-brightgreen)
+    * 修复【百度贴吧】签到功能
+    * 删除【吾爱破解】&【网易云音乐】
 - 2022-03-17 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.7-brightgreen)
     * 新增【多看阅读】延期功能
     * 新增【Bilibili】银瓜子兑换功能

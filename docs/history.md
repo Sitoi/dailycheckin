@@ -1,5 +1,8 @@
 # 更新日志
 
+- 2022-04-26 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.8-brightgreen)
+    * 修复【百度贴吧】签到功能
+    * 删除【吾爱破解】&【网易云音乐】
 - 2022-03-17 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.7-brightgreen)
     * 新增【多看阅读】延期功能
     * 新增【Bilibili】银瓜子兑换功能

@@ -41,8 +41,6 @@
 |_**VQQ**_.auth_refresh|[腾讯视频](https://v.qq.com/)| Web |腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其完整的 URL|
 |_**VQQ**_.cookie|[腾讯视频](https://v.qq.com/)| Web |腾讯视频 搜索 带有 `auth_refresh` 的 url，填写其对应的 cookie|
 |_**YOUDAO**_.cookie|[有道云笔记](https://note.youdao.com/web/)| Web |有道云笔记 帐号的 cookie 信息|
-|_**MUSIC163**_.phone|[网易云音乐](https://music.163.com/)| 账号  |网易云音乐 帐号的手机号|
-|_**MUSIC163**_.password|[网易云音乐](https://music.163.com/)| 账号  |网易云音乐 帐号的密码|
 |_**ONEPLUSBBS**_.cookie|[一加手机社区官方论坛](https://www.oneplusbbs.com/)| Web |一加手机社区官方论坛 账户的 cookie|
 |_**TIEBA**_.cookie|[百度贴吧](https://tieba.baidu.com/index.html)| Web |百度贴吧 cookie|
 |_**BILIBILI**_.cookie|[Bilibili](https://www.bilibili.com)| Web |Bilibili cookie|
@@ -55,7 +53,6 @@
 |_**SMZDM**_.cookie|[什么值得买](https://www.smzdm.com)| Web |什么值得买 每日签到|
 |_**CLOUD189**_.phone|[天翼云盘](https://cloud.189.cn/)| Web | 天翼云盘 手机号|
 |_**CLOUD189**_.password|[天翼云盘](https://cloud.189.cn/)| Web | 天翼云盘 手机号对应的密码|
-|_**POJIE**_.cookie|[吾爱破解](https://www.52pojie.cn/index.php)| Web | 吾爱破解 cookie|
 |_**MEIZU**_.cookie|[MEIZU 社区](https://bbs.meizu.cn)| Web | MEIZU 社区 cookie|
 |_**MEIZU**_.draw_count|[MEIZU 社区](https://bbs.meizu.cn)| Web | MEIZU 社区 抽奖次数|
 |_**ZHIYOO**_.cookie|[智友邦](http://zhizhiyoo.net/)| Web | 智友邦 WEB Cookie|
@@ -231,16 +228,6 @@
       "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
-  "MUSIC163": [
-    {
-      "password": "Sitoi",
-      "phone": "18888xxxxxx"
-    },
-    {
-      "password": "多账号 密码",
-      "phone": "多账号 手机号"
-    }
-  ],
   "ONEPLUSBBS": [
     {
       "cookie": "acw_tc=xxxxxx; qKc3_0e8d_saltkey=xxxxxx; qKc3_0e8d_lastvisit=xxxxxx; bbs_avatar=xxxxxx; qKc3_0e8d_sendmail=xxxxxx; opcid=xxxxxx; opcct=xxxxxx; oppt=xxxxxx; opsid=xxxxxx; opsct=xxxxxx; opbct=xxxxxx; UM_distinctid=xxxxxx; CNZZDATA1277373783=xxxxxx; www_clear=xxxxxx; ONEPLUSID=xxxxxx; qKc3_0e8d_sid=xxxxxx; bbs_uid=xxxxxx; bbs_uname=xxxxxx; bbs_grouptitle=xxxxxx; opuserid=xxxxxx; bbs_sign=xxxxxx; bbs_formhash=xxxxxx; qKc3_0e8d_ulastactivity=xxxxxx; opsertime=xxxxxx; qKc3_0e8d_lastact=xxxxxx; qKc3_0e8d_checkpm=xxxxxx; qKc3_0e8d_noticeTitle=xxxxxx; optime_browser=xxxxxx; opnt=xxxxxx; opstep=xxxxxx; opstep_event=xxxxxx; fp=xxxxxx;"
@@ -361,14 +348,6 @@
     {
       "password": "多账号 密码填写，请参考上面",
       "phone": "多账号 手机号填写，请参考上面"
-    }
-  ],
-  "POJIE": [
-    {
-      "cookie": "htVD_2132_client_token=xxxxxx; htVD_2132_connect_is_bind=xxxxxx; htVD_2132_connect_uin=xxxxxx; htVD_2132_nofavfid=xxxxxx; htVD_2132_smile=xxxxxx; Hm_lvt_46d556462595ed05e05f009cdafff31a=xxxxxx; htVD_2132_saltkey=xxxxxx; htVD_2132_lastvisit=xxxxxx; htVD_2132_client_created=xxxxxx; htVD_2132_auth=xxxxxx; htVD_2132_connect_login=xxxxxx; htVD_2132_home_diymode=xxxxxx; htVD_2132_visitedfid=xxxxxx; htVD_2132_viewid=xxxxxx; KF4=xxxxxx; htVD_2132_st_p=xxxxxx; htVD_2132_lastcheckfeed=xxxxxx; htVD_2132_sid=xxxxxx; htVD_2132_ulastactivity=xxxxxx; htVD_2132_noticeTitle=xxxxxx;"
-    },
-    {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
   "MGTV": [
