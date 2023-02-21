@@ -50,42 +50,25 @@
 
 ## 视频教程
 
-网盘链接：[https://alywp.net/7BKy9O](https://alywp.net/7BKy9O)
+网盘链接：[https://www.aliyundrive.com/s/hYC6FziXppq](https://www.aliyundrive.com/s/hYC6FziXppq)
 
 ## 签到列表
 
 🟢: 正常运行 🔴: 脚本暂不可用 🔵: 可以执行(需更新) 🟡: 待测试 🟤: 看脸
 
-|类别|任务名称|名称|备注| 终端  |Cookie 时长|状态|检查日期|
-|:---:|:---:|:---|:---:|:---:|:---:|:---:|:---:|
-|签到|KGQQ|[全民K歌](https://kg.qq.com/index-pc.html)|每日签到获取鲜花 每日大约 125 鲜花左右| WEB |待测试|🟢️|2022-03-17|
-|签到|VQQ|[腾讯视频](https://v.qq.com/)|每日两次腾讯视频签到获取成长值| WEB |待测试|🟢️|2022-03-17|
-|签到|YOUDAO|[有道云笔记](https://note.youdao.com/web/)|每日签到获取存储空间| WEB |待测试|🟢️|2022-03-17|
-|签到|ONEPLUSBBS|[一加手机社区官方论坛](https://www.oneplusbbs.com/)|论坛每日签到 + 10 次抽奖任务| WEB |待测试|🟢️|2022-03-17|
-|签到|TIEBA|[百度贴吧](https://tieba.baidu.com/index.html)|贴吧每日签到| WEB |待测试|🟢️|2022-03-17|
-|签到|BILIBILI|[Bilibili](https://www.bilibili.com)|直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能| WEB |待测试|🟢️|2022-03-17|
-|签到|V2EX|[V2EX](https://www.v2ex.com/)|铜币奖励| WEB |待测试|🟢️|2022-03-17|
-|签到|WWW2NZZ|[咔叽网单](https://www.2nzz.com/)|论坛金币| WEB |待测试|🟢️|2022-03-17|
-|签到|SMZDM|[什么值得买](https://www.smzdm.com)|每日签到| WEB |待测试|🟢️|2022-03-17|
-|签到|ACFUN|[AcFun](https://www.acfun.cn/)|每日签到香蕉| WEB |永久|🔴|2022-03-17|
-|签到|CLOUD189|[天翼云盘](https://cloud.189.cn/)|每日签到 +2次抽奖获得空间奖励| WEB |永久|🟢️|2022-03-17|
-|签到|PICACOMIC|[哔咔漫画](https://www.picacomic.com)|成长值奖励| WEB |永久|🟤|2022-03-17|
-|签到|MEIZU|[MEIZU 社区](https://bbs.meizu.cn)|每日签到、可配置抽奖| WEB |待测试|🟢️|2022-03-17|
-|签到|ZHIYOO|[智友邦](http://zhizhiyoo.net/)|每日签到获取金币| WEB |待测试|🟢️|2022-03-17|
-|签到|CSDN|[CSDN](https://www.csdn.net/)|每日签到、抽奖| WEB |待测试|🟢️|2022-03-17|
-|签到|EVERPHOTO|[时光相册](https://web.everphoto.cn/)|每日签到| WEB |待测试|🟢️|2022-03-17|
-|签到|SSPANEL|SSPANEL 系列签到|签到获取流量| WEB |待测试|🟢️|2022-03-17|
-|签到|WOMAIL|联通沃邮箱|每日签到，签到7天得2元话费| 公众号 |待测试|🟢|2022-03-17|
-|签到|IQIYI|爱奇艺|签3天奖1天，7天奖1天，14天奖1天，满签奖5天；日常任务4成长值；随机成长值；三次抽奖| APP |待测试|🟢️|2022-03-17|
-|签到|WZYD|王者营地|每日签到（仅限 QQ 区）| APP |待测试|🟢|2022-03-17|
-|签到|WEIBO|微博|每日钱包签到、打卡| APP |待测试|🟢️|2022-03-17|
-|签到|DUOKAN|多看阅读|获取书豆，用于购买书籍| APP |待测试|🟢️|2022-03-17|
-|签到|MGTV|芒果 TV|签到获取体验会员| APP |待测试|🟢️|2022-03-17|
-|签到|HEYTAP|欢太商城|每日签到，浏览，分享任务| APP |待测试|🟢|2022-03-17|
-|签到|UNICOM|联通营业厅|获取积分、流量等| APP |待测试|🔴|2022-03-17|
-|签到|FMAPP|Fa 米家|连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。| APP |待测试|🟢️|2022-03-17|
-|其他|MIMOTION|小米运动|每日小米运动刷步数| APP |永久|🟢|2022-03-17|
-|其他|BAIDU|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|提交网站页面供百度收录| WEB |永久|🟢️|2022-03-17|
+| 状态 | 类别 | 终端 | 任务名称 | 名称 | Cookie 时长 | 检查日期 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 🟢️ | 签到 | WEB | KGQQ | https://kg.qq.com/index-pc.html | 待测试 | 2023-02-21 | 每日签到获取鲜花 每日大约 125 鲜花左右 |
+| 🟢️ | 签到 | WEB | YOUDAO | https://note.youdao.com/web/ | 待测试 | 2023-02-21 | 每日签到获取存储空间 |
+| 🟢️ | 签到 | WEB | TIEBA | https://tieba.baidu.com/index.html | 待测试 | 2023-02-21 | 贴吧每日签到 |
+| 🟢️ | 签到 | WEB | BILIBILI | https://www.bilibili.com/ | 待测试 | 2023-02-21 | 直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能 |
+| 🟢️ | 签到 | WEB | V2EX | https://www.v2ex.com/ | 待测试 | 2023-02-21 | 铜币奖励 |
+| 🟢️ | 签到 | WEB | ACFUN | https://www.acfun.cn/ | 永久 | 2023-02-21 | 每日签到香蕉 |
+| 🟢️ | 签到 | WEB | CLOUD189 | https://cloud.189.cn/ | 永久 | 2023-02-21 | 每日签到 +2次抽奖获得空间奖励 |
+| 🟢️ | 签到 | APP | IQIYI | 爱奇艺 | 待测试 | 2023-02-21 | 签3天奖1天，7天奖1天，14天奖1天，满签奖5天；日常任务4成长值；随机成长值；三次抽奖 |
+| 🟢️ | 签到 | APP | FMAPP | Fa 米家 | 待测试 | 2023-02-21 | 连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。 |
+| 🟤 | 其他 | APP | MIMOTION | 小米运动 | 永久 | 2023-02-21 | 每日小米运动刷步数 |
+| 🟢️ | 其他 | WEB | BAIDU | https://ziyuan.baidu.com/site/index#/ | 永久 | 2023-02-21 | 提交网站页面供百度收录 |
 
 
 ## 支持的通知列表
@@ -106,8 +89,6 @@
 
 - [@Wenmoux](https://github.com/Wenmoux/checkbox) - 签到盒
 - [@chavyleung](https://github.com/chavyleung/scripts) - Chavy Scripts
-- [@srcrs](https://github.com/srcrs/unicom-task) - unicom-task
-- [@hwkxk](https://github.com/hwkxk/HeytapTask) - HeytapTask
 
 ## 交流群
 
@@ -120,7 +101,8 @@
 
 ## 更新日志
 
-
+- 2023-02-21 ![PyPI](https://img.shields.io/badge/Pypi-v0.4.0-brightgreen)
+    * 修复&删除失效脚本
 - 2022-04-26 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.8-brightgreen)
     * 修复【百度贴吧】签到功能
     * 删除【吾爱破解】&【网易云音乐】
