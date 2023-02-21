@@ -1,69 +1,37 @@
 {
-  "DINGTALK_SECRET": "",
-  "DINGTALK_ACCESS_TOKEN": "",
-  "FSKEY": "",
-  "SCKEY": "",
-  "SENDKEY": "",
   "BARK_URL": "",
-  "QMSG_KEY": "",
-  "QMSG_TYPE": "",
-  "TG_BOT_TOKEN": "",
-  "TG_USER_ID": "",
-  "TG_API_HOST": "",
-  "TG_PROXY": "",
-  "COOLPUSHSKEY": "",
-  "COOLPUSHQQ": true,
-  "COOLPUSHWX": true,
   "COOLPUSHEMAIL": true,
-  "QYWX_KEY": "",
-  "QYWX_CORPID": "",
-  "QYWX_AGENTID": "",
-  "QYWX_CORPSECRET": "",
-  "QYWX_TOUSER": "",
-  "QYWX_MEDIA_ID": "",
+  "COOLPUSHQQ": true,
+  "COOLPUSHSKEY": "",
+  "COOLPUSHWX": true,
+  "DINGTALK_ACCESS_TOKEN": "",
+  "DINGTALK_SECRET": "",
+  "FSKEY": "",
   "PUSHPLUS_TOKEN": "",
   "PUSHPLUS_TOPIC": "",
+  "QMSG_KEY": "",
+  "QMSG_TYPE": "",
+  "QYWX_AGENTID": "",
+  "QYWX_CORPID": "",
+  "QYWX_CORPSECRET": "",
+  "QYWX_KEY": "",
+  "QYWX_MEDIA_ID": "",
+  "QYWX_TOUSER": "",
+  "SCKEY": "",
+  "SENDKEY": "",
+  "TG_API_HOST": "",
+  "TG_BOT_TOKEN": "",
+  "TG_PROXY": "",
+  "TG_USER_ID": "",
   "MERGE_PUSH": "",
-  "IQIYI": [
+  "ACFUN": [
     {
-      "cookie": "__dfp=xxxxxx; QP0013=xxxxxx; QP0022=xxxxxx; QYABEX=xxxxxx; P00001=xxxxxx; P00002=xxxxxx; P00003=xxxxxx; P00007=xxxxxx; QC163=xxxxxx; QC175=xxxxxx; QC179=xxxxxx; QC170=xxxxxx; P00010=xxxxxx; P00PRU=xxxxxx; P01010=xxxxxx; QC173=xxxxxx; QC180=xxxxxx; P00004=xxxxxx; QP0030=xxxxxx; QC006=xxxxxx; QC007=xxxxxx; QC008=xxxxxx; QC010=xxxxxx; nu=xxxxxx; __uuid=xxxxxx; QC005=xxxxxx;"
+      "password": "Sitoi",
+      "phone": "18888xxxxxx"
     },
     {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "VQQ": [
-    {
-      "auth_refresh": "https://access.video.qq.com/user/auth_refresh?vappid=xxxxxx&vsecret=xxxxxx&type=qq&g_tk=&g_vstk=xxxxxx&g_actk=xxxxxx&callback=xxxxxx&_=xxxxxx",
-      "cookie": "pgv_pvid=xxxxxx; pac_uid=xxxxxx; RK=xxxxxx; ptcz=xxxxxx; tvfe_boss_uuid=xxxxxx; video_guid=xxxxxx; video_platform=xxxxxx; pgv_info=xxxxxx; main_login=xxxxxx; vqq_access_token=xxxxxx; vqq_appid=xxxxxx; vqq_openid=xxxxxx; vqq_vuserid=xxxxxx; vqq_refresh_token=xxxxxx; login_time_init=xxxxxx; uid=xxxxxx; vqq_vusession=xxxxxx; vqq_next_refresh_time=xxxxxx; vqq_login_time_init=xxxxxx; login_time_last=xxxxxx;"
-    },
-    {
-      "auth_refresh": "多账号 refresh url，请参考上面，以实际获取为准",
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "YOUDAO": [
-    {
-      "cookie": "JSESSIONID=xxxxxx; __yadk_uid=xxxxxx; OUTFOX_SEARCH_USER_ID_NCOO=xxxxxx; YNOTE_SESS=xxxxxx; YNOTE_PERS=xxxxxx; YNOTE_LOGIN=xxxxxx; YNOTE_CSTK=xxxxxx; _ga=xxxxxx; _gid=xxxxxx; _gat=xxxxxx; PUBLIC_SHARE_18a9dde3de846b6a69e24431764270c4=xxxxxx;"
-    },
-    {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "KGQQ": [
-    {
-      "cookie": "muid=xxxxxx; uid=xxxxxx; userlevel=xxxxxx; openid=xxxxxx; openkey=xxxxxx; opentype=xxxxxx; qrsig=xxxxxx; pgv_pvid=xxxxxx;"
-    },
-    {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "ONEPLUSBBS": [
-    {
-      "cookie": "acw_tc=xxxxxx; qKc3_0e8d_saltkey=xxxxxx; qKc3_0e8d_lastvisit=xxxxxx; bbs_avatar=xxxxxx; qKc3_0e8d_sendmail=xxxxxx; opcid=xxxxxx; opcct=xxxxxx; oppt=xxxxxx; opsid=xxxxxx; opsct=xxxxxx; opbct=xxxxxx; UM_distinctid=xxxxxx; CNZZDATA1277373783=xxxxxx; www_clear=xxxxxx; ONEPLUSID=xxxxxx; qKc3_0e8d_sid=xxxxxx; bbs_uid=xxxxxx; bbs_uname=xxxxxx; bbs_grouptitle=xxxxxx; opuserid=xxxxxx; bbs_sign=xxxxxx; bbs_formhash=xxxxxx; qKc3_0e8d_ulastactivity=xxxxxx; opsertime=xxxxxx; qKc3_0e8d_lastact=xxxxxx; qKc3_0e8d_checkpm=xxxxxx; qKc3_0e8d_noticeTitle=xxxxxx; optime_browser=xxxxxx; opnt=xxxxxx; opstep=xxxxxx; opstep_event=xxxxxx; fp=xxxxxx;"
-    },
-    {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+      "password": "多账号 密码填写，请参考上面",
+      "phone": "多账号 手机号填写，请参考上面"
     }
   ],
   "BAIDU": [
@@ -76,34 +44,6 @@
       "data_url": "多账号 data_url 链接地址，以实际获取为准",
       "submit_url": "多账号 submit_url 链接地址，以实际获取为准",
       "times": 10
-    }
-  ],
-  "FMAPP": [
-    {
-      "blackbox": "eyJlcnJxxxxxx",
-      "cookie": "sensorsdata2015jssdkcross=xxxxxx",
-      "device_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxx",
-      "fmversion": "xxxxxx",
-      "os": "xxxxxx",
-      "token": "xxxxxx.xxxxxx-xxxxxx-xxxxxx.xxxxxx-xxxxxx",
-      "useragent": "xxxxxx"
-    },
-    {
-      "blackbox": "多账号 blackbox 填写，请参考上面，blackbox 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "device_id": "多账号 device_id 填写，请参考上面，以实际获取为准",
-      "fmversion": "多账号 fmVersion 填写，请参考上面，以实际获取为准",
-      "os": "多账号 os 填写，请参考上面，以实际获取为准",
-      "token": "多账号 token 填写，请参考上面，以实际获取为准",
-      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准"
-    }
-  ],
-  "TIEBA": [
-    {
-      "cookie": "BIDUPSID=xxxxxx; PSTM=xxxxxx; BAIDUID=xxxxxx; BAIDUID_BFESS=xxxxxx; delPer=xxxxxx; PSINO=xxxxxx; H_PS_PSSID=xxxxxx; BA_HECTOR=xxxxxx; BDORZ=xxxxxx; TIEBA_USERTYPE=xxxxxx; st_key_id=xxxxxx; BDUSS=xxxxxx; BDUSS_BFESS=xxxxxx; STOKEN=xxxxxx; TIEBAUID=xxxxxx; ab_sr=xxxxxx; st_data=xxxxxx; st_sign=xxxxxx;"
-    },
-    {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
   "BILIBILI": [
@@ -120,27 +60,45 @@
       "silver2coin": true
     }
   ],
-  "V2EX": [
+  "CLOUD189": [
     {
-      "cookie": "_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;",
-      "proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
+      "password": "Sitoi",
+      "phone": "18888xxxxxx"
     },
     {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
+      "password": "多账号 密码填写，请参考上面",
+      "phone": "多账号 手机号填写，请参考上面"
     }
   ],
-  "WWW2NZZ": [
+  "FMAPP": [
     {
-      "cookie": "YPx9_2132_saltkey=xxxxxx; YPx9_2132_lastvisit=xxxxxx; YPx9_2132_sendmail=xxxxxx; YPx9_2132_con_request_uri=xxxxxx; YPx9_2132_sid=xxxxxx; YPx9_2132_client_created=xxxxxx; YPx9_2132_client_token=xxxxxx; YPx9_2132_ulastactivity=xxxxxx; YPx9_2132_auth=xxxxxx; YPx9_2132_connect_login=xxxxxx; YPx9_2132_connect_is_bind=xxxxxx; YPx9_2132_connect_uin=xxxxxx; YPx9_2132_stats_qc_login=xxxxxx; YPx9_2132_checkpm=xxxxxx; YPx9_2132_noticeTitle=xxxxxx; YPx9_2132_nofavfid=xxxxxx; YPx9_2132_lastact=xxxxxx;"
+      "blackbox": "eyJlcnJxxxxxx",
+      "device_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxx",
+      "fmversion": "xxxxxx",
+      "os": "xxxxxx",
+      "token": "xxxxxx.xxxxxx-xxxxxx-xxxxxx.xxxxxx-xxxxxx",
+      "useragent": "xxxxxx"
+    },
+    {
+      "blackbox": "多账号 blackbox 填写，请参考上面，blackbox 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "device_id": "多账号 device_id 填写，请参考上面，以实际获取为准",
+      "fmversion": "多账号 fmVersion 填写，请参考上面，以实际获取为准",
+      "os": "多账号 os 填写，请参考上面，以实际获取为准",
+      "token": "多账号 token 填写，请参考上面，以实际获取为准",
+      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准"
+    }
+  ],
+  "IQIYI": [
+    {
+      "cookie": "__dfp=xxxxxx; QP0013=xxxxxx; QP0022=xxxxxx; QYABEX=xxxxxx; P00001=xxxxxx; P00002=xxxxxx; P00003=xxxxxx; P00007=xxxxxx; QC163=xxxxxx; QC175=xxxxxx; QC179=xxxxxx; QC170=xxxxxx; P00010=xxxxxx; P00PRU=xxxxxx; P01010=xxxxxx; QC173=xxxxxx; QC180=xxxxxx; P00004=xxxxxx; QP0030=xxxxxx; QC006=xxxxxx; QC007=xxxxxx; QC008=xxxxxx; QC010=xxxxxx; nu=xxxxxx; __uuid=xxxxxx; QC005=xxxxxx;"
     },
     {
       "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
-  "SMZDM": [
+  "KGQQ": [
     {
-      "cookie": "__jsluid_s=xxxxxx; __ckguid=xxxxxx; device_id=xxxxxx; homepage_sug=xxxxxx; r_sort_type=xxxxxx; _zdmA.vid=xxxxxx; sajssdk_2015_cross_new_user=xxxxxx; sensorsdata2015jssdkcross=xxxxxx; footer_floating_layer=xxxxxx; ad_date=xxxxxx; ad_json_feed=xxxxxx; zdm_qd=xxxxxx; sess=xxxxxx; user=xxxxxx; _zdmA.uid=xxxxxx; smzdm_id=xxxxxx; userId=xxxxxx; bannerCounter=xxxxxx; _zdmA.time=xxxxxx;"
+      "cookie": "muid=xxxxxx; uid=xxxxxx; userlevel=xxxxxx; openid=xxxxxx; openkey=xxxxxx; opentype=xxxxxx; qrsig=xxxxxx; pgv_pvid=xxxxxx;"
     },
     {
       "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
@@ -160,152 +118,30 @@
       "phone": "多账号 手机号填写，请参考上面"
     }
   ],
-  "ACFUN": [
+  "TIEBA": [
     {
-      "password": "Sitoi",
-      "phone": "18888xxxxxx"
-    },
-    {
-      "password": "多账号 密码填写，请参考上面",
-      "phone": "多账号 手机号填写，请参考上面"
-    }
-  ],
-  "CLOUD189": [
-    {
-      "password": "Sitoi",
-      "phone": "18888xxxxxx"
-    },
-    {
-      "password": "多账号 密码填写，请参考上面",
-      "phone": "多账号 手机号填写，请参考上面"
-    }
-  ],
-  "MGTV": [
-    {
-      "params": "uuid=xxxxxx&uid=xxxxxx&ticket=xxxxxx&token=xxxxxx&device=iPhone&did=xxxxxx&deviceId=xxxxxx&appVersion=6.8.2&osType=ios&platform=iphone&abroad=0&aid=xxxxxx&nonce=xxxxxx&timestamp=xxxxxx&appid=xxxxxx&type=1&sign=xxxxxx&callback=xxxxxx"
-    },
-    {
-      "params": "多账号 请求参数填写，请参考上面"
-    }
-  ],
-  "PICACOMIC": [
-    {
-      "email": "Sitoi",
-      "password": "xxxxxx"
-    },
-    {
-      "email": "多账号 账号填写，请参考上面",
-      "password": "多账号 密码填写，请参考上面"
-    }
-  ],
-  "MEIZU": [
-    {
-      "draw_count": "1",
-      "cookie": "aliyungf_tc=xxxxxx; logined_uid=xxxxxx; acw_tc=xxxxxx; LT=xxxxxx; MZBBS_2132_saltkey=xxxxxx; MZBBS_2132_lastvisit=xxxxxx; MZBBSUC_2132_auth=xxxxxx; MZBBSUC_2132_loginmember=xxxxxx; MZBBSUC_2132_ticket=xxxxxx; MZBBS_2132_sid=xxxxxx; MZBBS_2132_ulastactivity=xxxxxx; MZBBS_2132_auth=xxxxxx; MZBBS_2132_loginmember=xxxxxx; MZBBS_2132_lastcheckfeed=xxxxxx; MZBBS_2132_checkfollow=xxxxxx; MZBBS_2132_lastact=xxxxxx;"
-    },
-    {
-      "draw_count": "多账号 抽奖次数设置",
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "ZHIYOO": [
-    {
-      "cookie": "ikdQ_9242_saltkey=xxxxxx; ikdQ_9242_lastvisit=xxxxxx; ikdQ_9242_onlineusernum=xxxxxx; ikdQ_9242_sendmail=1; ikdQ_9242_seccode=xxxxxx; ikdQ_9242_ulastactivity=xxxxxx; ikdQ_9242_auth=xxxxxx; ikdQ_9242_connect_is_bind=xxxxxx; ikdQ_9242_nofavfid=xxxxxx; ikdQ_9242_checkpm=xxxxxx; ikdQ_9242_noticeTitle=1; ikdQ_9242_sid=xxxxxx; ikdQ_9242_lip=xxxxxx; ikdQ_9242_lastact=xxxxxx"
+      "cookie": "BIDUPSID=xxxxxx; PSTM=xxxxxx; BAIDUID=xxxxxx; BAIDUID_BFESS=xxxxxx; delPer=xxxxxx; PSINO=xxxxxx; H_PS_PSSID=xxxxxx; BA_HECTOR=xxxxxx; BDORZ=xxxxxx; TIEBA_USERTYPE=xxxxxx; st_key_id=xxxxxx; BDUSS=xxxxxx; BDUSS_BFESS=xxxxxx; STOKEN=xxxxxx; TIEBAUID=xxxxxx; ab_sr=xxxxxx; st_data=xxxxxx; st_sign=xxxxxx;"
     },
     {
       "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
-  "WEIBO": [
+  "V2EX": [
     {
-      "url": "https://api.weibo.cn/2/users/show?wm=xxxxxx&launchid=xxxxxx&b=xxxxxx&from=xxxxxx&c=xxxxxx&networktype=xxxxxx&v_p=xxxxxx&skin=xxxxxx&v_f=xxxxxx&lang=xxxxxx&sflag=xxxxxx&ua=xxxxxx&ft=xxxxxx&aid=xxxxxx&has_extend=xxxxxx&uid=xxxxxx&gsid=xxxxxx&sourcetype=&get_teenager=xxxxxx&s=xxxxxx&has_profile=xxxxxx"
-    },
-    {
-      "url": "多账号 show_url 填写，请参考上面，show_url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "DUOKAN": [
-    {
-      "cookie": "user_id=xxxxxx; token=xxxxxx; user_gender=xxxxxx; device_id=xxxxxx; app_id=xxxxxx; build=xxxxxx; short_version=xxxxxx"
-    },
-    {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "CSDN": [
-    {
-      "cookie": "uuid_tt_dd=xxxxxx; _ga=xxxxxx; UserName=xxxxxx; UserInfo=xxxxxx; UserToken=xxxxxx; UserNick=xxxxxx; AU=768; UN=xxxxxx; BT=xxxxxx; p_uid=xxxxxx; Hm_up_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_ct_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx; Hm_lvt_6bcd52f51e9b3dce32bec4a3997715ac=xxxxxx dc_sid=xxxxxx; c_segment=xxxxxx; dc_session_id=xxxxxx; csrfToken=xxxxxx; c_first_ref=xxxxxx; c_first_page=xxxxxx; c_page_id=xxxxxx; announcement-new=xxxxxx; log_Id_click=xxxxxx; c_pref=xxxxxx; c_ref=xxxxxx; dc_tos=xxxxxx; log_Id_pv=xxxxxx; log_Id_view=xxxxxx"
-    },
-    {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "WZYD": [
-    {
-      "data": "areaId=xxxxxx&roleId=xxxxxx&gameId=xxxxxx&serverId=xxxxxx&gameOpenid=xxxxxx&userId=xxxxxx&appVersion=xxxxxx&cClientVersionName=xxxxxx&platid=xxxxxx&source=xxxxxx&algorithm=xxxxxx&version=xxxxxx&timestamp=xxxxxx&appid=xxxxxx&openid=xxxxxx&sig=xxxxxx&encode=2&msdkEncodeParam=xxxxxx&cSystem=xxxxxx&h5Get=xxxxxx&msdkToken=&appOpenid=xxxxxx"
-    },
-    {
-      "data": "多账号 data 填写，请参考上面，data 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
-    }
-  ],
-  "WOMAIL": [
-    {
-      "url": "https://nyan.mail.wo.cn/cn/sign/index/index?mobile=xxxxxx&userName=&openId=xxxxxx",
-      "pause21days": true,
-      "password": "Sitoi",
-      "phone": "18888xxxxxx"
-    },
-    {
-      "url": "多账号 url 填写，请参考上面，url 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "pause21days": true,
-      "password": "多账号 密码填写，请参考上面",
-      "phone": "多账号 手机号填写，请参考上面"
-    }
-  ],
-  "HEYTAP": [
-    {
-      "cookie": "sa_distinct_id=xxxxxx;Personalized=xxxxxx;s_channel=xxxxxx;source_type=xxxxxx;app_param=xxxxxx;ENCODE_TOKENSID=xxxxxx;scene_id=xxxxxx;apkPkg=xxxxxx;exp_id=;app_utm=xxxxxx;TOKENSID=xxxxxx;strategy_id=xxxxxx;referer=;experiment_id=xxxxxx;section_id=;s_version=xxxxxx;app_innerutm=xxxxxx;retrieve_id=;log_id=;",
-      "useragent": "xxxxxx",
-      "draw": false
+      "cookie": "_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;",
+      "proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
     },
     {
       "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准",
-      "draw": false
+      "proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
     }
   ],
-  "UNICOM": [
+  "YOUDAO": [
     {
-      "mobile": "18888xxxxxx",
-      "password": "xxxxxx",
-      "app_id": "xxxxxx"
+      "cookie": "JSESSIONID=xxxxxx; __yadk_uid=xxxxxx; OUTFOX_SEARCH_USER_ID_NCOO=xxxxxx; YNOTE_SESS=xxxxxx; YNOTE_PERS=xxxxxx; YNOTE_LOGIN=xxxxxx; YNOTE_CSTK=xxxxxx; _ga=xxxxxx; _gid=xxxxxx; _gat=xxxxxx; PUBLIC_SHARE_18a9dde3de846b6a69e24431764270c4=xxxxxx;"
     },
     {
-      "mobile": "多账号 手机号",
-      "password": "多账号 密码",
-      "app_id": "多账号 appId"
-    }
-  ],
-  "EVERPHOTO": [
-    {
-      "mobile": "+8618888xxxxxx",
-      "password": "xxxxxx"
-    },
-    {
-      "mobile": "多账号 手机号",
-      "password": "多账号 密码"
-    }
-  ],
-  "SSPANEL": [
-    {
-      "email": "邮箱",
-      "password": "密码",
-      "url": "https://sitoi.cn"
-    },
-    {
-      "email": "多账号 邮箱",
-      "password": "多账号 密码",
-      "url": "https://sitoi.cn"
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ]
 }

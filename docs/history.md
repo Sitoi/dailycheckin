@@ -1,5 +1,7 @@
 # 更新日志
 
+- 2023-02-21 ![PyPI](https://img.shields.io/badge/Pypi-v0.4.0-brightgreen)
+    * 修复&删除失效脚本
 - 2022-04-26 ![PyPI](https://img.shields.io/badge/Pypi-v0.3.8-brightgreen)
     * 修复【百度贴吧】签到功能
     * 删除【吾爱破解】&【网易云音乐】
