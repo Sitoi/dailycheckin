@@ -45,7 +45,6 @@
 ## 详细文档
 
 - 文档地址: [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
-- 国内地址: [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
 
 ## 视频教程
 
