@@ -36,7 +36,7 @@ pip3 install dailycheckin --upgrade
 
 > ⚠️ 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
 
-参考[配置说明文档](https://sitoi.gitee.io/dailycheckin/settings/) ，并修改 `config.json`
+参考[配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config.json`
 
 ## 四、配置定时任务
 

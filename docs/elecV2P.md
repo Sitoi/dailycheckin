@@ -19,7 +19,7 @@
 
 > ⚠️ 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
 
-参考[配置说明文档](https://sitoi.gitee.io/dailycheckin/settings/) ，并修改 `config.json`
+参考[配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config.json`
 
 1. 单独运行一次，下方日志会提示在哪个目录中添加「config.json」文件
    ![单次运行](img/elecV2P-once.png)
@@ -33,18 +33,18 @@
 
 1. 运行全部脚本
 
-    ```bash
-    dailycheckin -timeout 1200000
-    ```
+   ```bash
+   dailycheckin -timeout 1200000
+   ```
 
 2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
 
-    ```bash
-    dailycheckin --include MUSIC163 BAIDU -timeout 1200000
-    ```
+   ```bash
+   dailycheckin --include MUSIC163 BAIDU -timeout 1200000
+   ```
 
 3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
 
-    ```bash
-    dailycheckin --exclude MUSIC163 BAIDU -timeout 1200000
-    ```
+   ```bash
+   dailycheckin --exclude MUSIC163 BAIDU -timeout 1200000
+   ```

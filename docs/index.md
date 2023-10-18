@@ -17,17 +17,14 @@
     <a href="https://sitoi.github.io/dailycheckin"><img src="https://visitor-badge.glitch.me/badge?page_id=Sitoi-dailycheckin" alt="visitor"></a>
 </p>
 
-
 ## 阿里云盘资源分享
 
 - 「DC 系列」[https://www.aliyundrive.com/s/mYg8ZAZLjzg](https://www.aliyundrive.com/s/mYg8ZAZLjzg)
 - 「漫威系列」[https://www.aliyundrive.com/s/gRwQtRagUMt](https://www.aliyundrive.com/s/gRwQtRagUMt)
 
-
 ## 详细文档
 
 - 文档地址: [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
-- 国内地址: [https://sitoi.gitee.io/dailycheckin/](https://sitoi.gitee.io/dailycheckin/)
 
 ## 视频教程
 
@@ -37,20 +34,18 @@
 
 🟢: 正常运行 🔴: 脚本暂不可用 🔵: 可以执行(需更新) 🟡: 待测试 🟤: 看脸
 
-| 状态 | 类别 | 终端 | 任务名称 | 名称 | Cookie 时长 | 检查日期 | 备注 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 🟢️ | 签到 | WEB | KGQQ | https://kg.qq.com/index-pc.html | 待测试 | 2023-02-21 | 每日签到获取鲜花 每日大约 125 鲜花左右 |
-| 🟢️ | 签到 | WEB | YOUDAO | https://note.youdao.com/web/ | 待测试 | 2023-02-21 | 每日签到获取存储空间 |
-| 🟢️ | 签到 | WEB | TIEBA | https://tieba.baidu.com/index.html | 待测试 | 2023-02-21 | 贴吧每日签到 |
-| 🟢️ | 签到 | WEB | BILIBILI | https://www.bilibili.com/ | 待测试 | 2023-02-21 | 直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能 |
-| 🟢️ | 签到 | WEB | V2EX | https://www.v2ex.com/ | 待测试 | 2023-02-21 | 铜币奖励 |
-| 🟢️ | 签到 | WEB | ACFUN | https://www.acfun.cn/ | 永久 | 2023-02-21 | 每日签到香蕉 |
-| 🟢️ | 签到 | WEB | CLOUD189 | https://cloud.189.cn/ | 永久 | 2023-02-21 | 每日签到 +2次抽奖获得空间奖励 |
-| 🟢️ | 签到 | APP | IQIYI | 爱奇艺 | 待测试 | 2023-02-21 | 签3天奖1天，7天奖1天，14天奖1天，满签奖5天；日常任务4成长值；随机成长值；三次抽奖 |
-| 🟢️ | 签到 | APP | FMAPP | Fa 米家 | 待测试 | 2023-02-21 | 连续签到7天总计获得6粒Fa米粒，每月15号23.59分清空Fa米粒。理论一个月最少获得24粒fa米粒。 |
-| 🟤 | 其他 | APP | MIMOTION | 小米运动 | 永久 | 2023-02-21 | 每日小米运动刷步数 |
-| 🟢️ | 其他 | WEB | BAIDU | https://ziyuan.baidu.com/site/index#/ | 永久 | 2023-02-21 | 提交网站页面供百度收录 |
-
+| 状态 | 类别 | 终端 | 任务名称 | 名称                                  | Cookie 时长 | 检查日期   | 备注                                                                                                    |
+| ---- | ---- | ---- | -------- | ------------------------------------- | ----------- | ---------- | ------------------------------------------------------------------------------------------------------- |
+| 🟢️  | 签到 | WEB  | KGQQ     | https://kg.qq.com/index-pc.html       | 待测试      | 2023-02-21 | 每日签到获取鲜花 每日大约 125 鲜花左右                                                                  |
+| 🟢️  | 签到 | WEB  | YOUDAO   | https://note.youdao.com/web/          | 待测试      | 2023-02-21 | 每日签到获取存储空间                                                                                    |
+| 🟢️  | 签到 | WEB  | TIEBA    | https://tieba.baidu.com/index.html    | 待测试      | 2023-02-21 | 贴吧每日签到                                                                                            |
+| 🟢️  | 签到 | WEB  | BILIBILI | https://www.bilibili.com/             | 待测试      | 2023-02-21 | 直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能                                          |
+| 🟢️  | 签到 | WEB  | V2EX     | https://www.v2ex.com/                 | 待测试      | 2023-02-21 | 铜币奖励                                                                                                |
+| 🟢️  | 签到 | WEB  | ACFUN    | https://www.acfun.cn/                 | 永久        | 2023-02-21 | 每日签到香蕉                                                                                            |
+| 🟢️  | 签到 | APP  | IQIYI    | 爱奇艺                                | 待测试      | 2023-02-21 | 签 3 天奖 1 天，7 天奖 1 天，14 天奖 1 天，满签奖 5 天；日常任务 4 成长值；随机成长值；三次抽奖         |
+| 🟢️  | 签到 | APP  | FMAPP    | Fa 米家                               | 待测试      | 2023-02-21 | 连续签到 7 天总计获得 6 粒 Fa 米粒，每月 15 号 23.59 分清空 Fa 米粒。理论一个月最少获得 24 粒 fa 米粒。 |
+| 🟤   | 其他 | APP  | MIMOTION | 小米运动                              | 永久        | 2023-02-21 | 每日小米运动刷步数                                                                                      |
+| 🟢️  | 其他 | WEB  | BAIDU    | https://ziyuan.baidu.com/site/index#/ | 永久        | 2023-02-21 | 提交网站页面供百度收录                                                                                  |
 
 ## 支持的通知列表
 
@@ -71,6 +66,5 @@
 <table> 
 <tr> 
  <td> <p align="center">TG 群</p> <a href="https://t.me/dailycheckin"> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/Telegram.jpg"></a> <p align="center">扫码进 TG 群</p> </td> 
- <td> <p align="center">QQ 群</p> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/qqgroup.jpg" /> <p align="center">扫码进 QQ 群</p> </td>
 </tr> 
 </table>

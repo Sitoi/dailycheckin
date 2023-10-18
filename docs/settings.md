@@ -4,76 +4,75 @@
 
 ### 推送配置
 
-|Name|归属|属性|说明|
-|:---:|:---:|:---:|:---|
-|_**DINGTALK_SECRET**_|钉钉|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选|
-|_**DINGTALK_ACCESS_TOKEN**_|钉钉|推送|钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`|
-|_**SCKEY**_|server 酱|推送|server 酱推送[官方文档](https://sc.ftqq.com/3.version) ,填写 `SCKEY` 代码即可|
-|_**SENDKEY**_|server 酱 TURBO|推送|server 酱 TURBO 推送[官方文档](https://sct.ftqq.com/sendkey) ,填写 `SENDKEY` 代码即可|
-|_**BARK_URL**_|BARK|推送|BARK 推送[使用](https://github.com/Sitoi/dailycheckin/issues/29) ,填写 `BARK_URL` 即可，例如: `https://api.day.app/DxHcxxxxxRxxxxxxcm/` |
-|_**QMSG_KEY**_|qmsg 酱|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可|
-|_**QMSG_TYPE**_|qmsg 酱|推送|qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,如果需要推送到群填写 `group`,其他的都推送到 QQ |
-|_**TG_BOT_TOKEN**_|telegram|推送|telegram 推送 `TG_BOT_TOKEN`|
-|_**TG_USER_ID**_|telegram|推送|telegram 推送 `TG_USER_ID`|
-|_**TG_API_HOST**_|telegram|推送|Telegram api 自建的反向代理地址 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc [简略搭建教程](https://shimo.im/docs/JD38CJDQtYy3yTd8/read)  |
-|_**TG_PROXY**_|telegram|推送|Telegram 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
-|_**COOLPUSHSKEY**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`|
-|_**COOLPUSHQQ**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 QQ 推送，默认开启|
-|_**COOLPUSHWX**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 微信 推送，默认关闭|
-|_**COOLPUSHEMAIL**_|Cool Push|推送|[Cool Push](https://cp.xuthus.cc/) 是否开启 邮件 推送，默认关闭|
-|_**QYWX_KEY**_|企业微信群机器人|推送|密钥，企业微信推送 `webhook` 后面的 `key` 详见[官方说明文档](https://work.weixin.qq.com/api/doc/90000/90136/91770) |
-|_**QYWX_CORPID**_|企业微信应用消息|推送|corpid |
-|_**QYWX_AGENTID**_|企业微信应用消息|推送|agentid  |
-|_**QYWX_CORPSECRET**_|企业微信应用消息|推送|corpsecret |
-|_**QYWX_TOUSER**_|企业微信应用消息|推送|touser |
-|_**QYWX_MEDIA_ID**_|企业微信应用消息|推送|media_id [参考文档1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note)  [参考文档2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note) |
-|_**PUSHPLUS_TOKEN**_|pushplus|推送|用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} [官方文档](https://www.pushplus.plus/doc/)|
-|_**PUSHPLUS_TOPIC**_|pushplus|推送|群组编码，不填仅发送给自己 [官方文档](https://www.pushplus.plus/doc/)|
-|_**FSKEY**_|飞书|推送|`https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx` **xxxxxx** 部分就是需要填写的 FSKEY|
-|_**MERGE_PUSH**_|合并推送|配置|**true**: 将推送消息合并；**false**: 分开推送|
+|            Name             |       归属       | 属性 | 说明                                                                                                                                                                                                                                          |
+| :-------------------------: | :--------------: | :--: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    _**DINGTALK_SECRET**_    |       钉钉       | 推送 | 钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) 密钥，机器人安全设置页面，加签一栏下面显示的 `SEC` 开头的字符串, 注:填写了 `DD_BOT_TOKEN` 和 `DD_BOT_SECRET`，钉钉机器人安全设置只需勾选`加签`即可，其他选项不要勾选 |
+| _**DINGTALK_ACCESS_TOKEN**_ |       钉钉       | 推送 | 钉钉推送[官方文档](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq) ,只需 `https://oapi.dingtalk.com/robot/send?access_token=XXX` 等于符号后面的 `XXX`                                                                                   |
+|         _**SCKEY**_         |    server 酱     | 推送 | server 酱推送[官方文档](https://sc.ftqq.com/3.version) ,填写 `SCKEY` 代码即可                                                                                                                                                                 |
+|        _**SENDKEY**_        | server 酱 TURBO  | 推送 | server 酱 TURBO 推送[官方文档](https://sct.ftqq.com/sendkey) ,填写 `SENDKEY` 代码即可                                                                                                                                                         |
+|       _**BARK_URL**_        |       BARK       | 推送 | BARK 推送[使用](https://github.com/Sitoi/dailycheckin/issues/29) ,填写 `BARK_URL` 即可，例如: `https://api.day.app/DxHcxxxxxRxxxxxxcm/`                                                                                                       |
+|       _**QMSG_KEY**_        |     qmsg 酱      | 推送 | qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,填写 `KEY` 代码即可                                                                                                                                                                 |
+|       _**QMSG_TYPE**_       |     qmsg 酱      | 推送 | qmsg 酱推送[官方文档](https://qmsg.zendee.cn/index.html) ,如果需要推送到群填写 `group`,其他的都推送到 QQ                                                                                                                                      |
+|     _**TG_BOT_TOKEN**_      |     telegram     | 推送 | telegram 推送 `TG_BOT_TOKEN`                                                                                                                                                                                                                  |
+|      _**TG_USER_ID**_       |     telegram     | 推送 | telegram 推送 `TG_USER_ID`                                                                                                                                                                                                                    |
+|      _**TG_API_HOST**_      |     telegram     | 推送 | Telegram api 自建的反向代理地址 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc [简略搭建教程](https://shimo.im/docs/JD38CJDQtYy3yTd8/read)                                                                                          |
+|       _**TG_PROXY**_        |     telegram     | 推送 | Telegram 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080                                                                                                                                    |
+|     _**COOLPUSHSKEY**_      |    Cool Push     | 推送 | [Cool Push](https://cp.xuthus.cc/) 推送的 `SKEY`                                                                                                                                                                                              |
+|      _**COOLPUSHQQ**_       |    Cool Push     | 推送 | [Cool Push](https://cp.xuthus.cc/) 是否开启 QQ 推送，默认开启                                                                                                                                                                                 |
+|      _**COOLPUSHWX**_       |    Cool Push     | 推送 | [Cool Push](https://cp.xuthus.cc/) 是否开启 微信 推送，默认关闭                                                                                                                                                                               |
+|     _**COOLPUSHEMAIL**_     |    Cool Push     | 推送 | [Cool Push](https://cp.xuthus.cc/) 是否开启 邮件 推送，默认关闭                                                                                                                                                                               |
+|       _**QYWX_KEY**_        | 企业微信群机器人 | 推送 | 密钥，企业微信推送 `webhook` 后面的 `key` 详见[官方说明文档](https://work.weixin.qq.com/api/doc/90000/90136/91770)                                                                                                                            |
+|      _**QYWX_CORPID**_      | 企业微信应用消息 | 推送 | corpid                                                                                                                                                                                                                                        |
+|     _**QYWX_AGENTID**_      | 企业微信应用消息 | 推送 | agentid                                                                                                                                                                                                                                       |
+|    _**QYWX_CORPSECRET**_    | 企业微信应用消息 | 推送 | corpsecret                                                                                                                                                                                                                                    |
+|      _**QYWX_TOUSER**_      | 企业微信应用消息 | 推送 | touser                                                                                                                                                                                                                                        |
+|     _**QYWX_MEDIA_ID**_     | 企业微信应用消息 | 推送 | media_id [参考文档 1](https://note.youdao.com/ynoteshare1/index.html?id=351e08a72378206f9dd64d2281e9b83b&type=note) [参考文档 2](https://note.youdao.com/ynoteshare1/index.html?id=1a0c8aff284ad28cbd011b29b3ad0191&type=note)                |
+|    _**PUSHPLUS_TOKEN**_     |     pushplus     | 推送 | 用户令牌，可直接加到请求地址后，如：http://www.pushplus.plus/send/{token} [官方文档](https://www.pushplus.plus/doc/)                                                                                                                          |
+|    _**PUSHPLUS_TOPIC**_     |     pushplus     | 推送 | 群组编码，不填仅发送给自己 [官方文档](https://www.pushplus.plus/doc/)                                                                                                                                                                         |
+|         _**FSKEY**_         |       飞书       | 推送 | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx` **xxxxxx** 部分就是需要填写的 FSKEY                                                                                                                                                     |
+|      _**MERGE_PUSH**_       |     合并推送     | 配置 | **true**: 将推送消息合并；**false**: 分开推送                                                                                                                                                                                                 |
 
 ### Web 签到配置
 
-|Name|归属| 属性  |说明|
-|:---:|:---:|:---:|:---|
-|_**IQIYI**_.cookie|                爱奇艺                | WEB |爱奇艺 APP headers 中的 token|
-|_**KGQQ**_.cookie|[全民K歌](https://kg.qq.com/index-pc.html)| Web |全民K歌 帐号的 cookie 信息|
-|_**YOUDAO**_.cookie|[有道云笔记](https://note.youdao.com/web/)| Web |有道云笔记 帐号的 cookie 信息|
-|_**TIEBA**_.cookie|[百度贴吧](https://tieba.baidu.com/index.html)| Web |百度贴吧 cookie|
-|_**BILIBILI**_.cookie|[Bilibili](https://www.bilibili.com)| Web |Bilibili cookie|
-|_**BILIBILI**_.coin_num|[Bilibili](https://www.bilibili.com)| Web |Bilibili 每日投币数量|
-|_**BILIBILI**_.coin_type|[Bilibili](https://www.bilibili.com)| Web |Bilibili 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币|
-|_**BILIBILI**_.silver2coin|[Bilibili](https://www.bilibili.com)| Web |Bilibili 是否开启银瓜子换硬币，默认为 True 开启|
-|_**V2EX**_.cookie|[V2EX](https://www.v2ex.com/)| Web |V2EX 每日签到|
-|_**V2EX**_.proxy|[V2EX](https://www.v2ex.com/)| Web |V2EX 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080|
-|_**CLOUD189**_.phone|[天翼云盘](https://cloud.189.cn/)| Web | 天翼云盘 手机号|
-|_**CLOUD189**_.password|[天翼云盘](https://cloud.189.cn/)| Web | 天翼云盘 手机号对应的密码|
-
+|            Name            |                      归属                      | 属性 | 说明                                                                                                                                 |
+| :------------------------: | :--------------------------------------------: | :--: | :----------------------------------------------------------------------------------------------------------------------------------- |
+|     _**IQIYI**_.cookie     |                     爱奇艺                     | WEB  | 爱奇艺 APP headers 中的 token                                                                                                        |
+|     _**KGQQ**_.cookie      |  [全民 K 歌](https://kg.qq.com/index-pc.html)  | Web  | 全民 K 歌 帐号的 cookie 信息                                                                                                         |
+|    _**YOUDAO**_.cookie     |   [有道云笔记](https://note.youdao.com/web/)   | Web  | 有道云笔记 帐号的 cookie 信息                                                                                                        |
+|     _**TIEBA**_.cookie     | [百度贴吧](https://tieba.baidu.com/index.html) | Web  | 百度贴吧 cookie                                                                                                                      |
+|   _**BILIBILI**_.cookie    |      [Bilibili](https://www.bilibili.com)      | Web  | Bilibili cookie                                                                                                                      |
+|  _**BILIBILI**_.coin_num   |      [Bilibili](https://www.bilibili.com)      | Web  | Bilibili 每日投币数量                                                                                                                |
+|  _**BILIBILI**_.coin_type  |      [Bilibili](https://www.bilibili.com)      | Web  | Bilibili 投币方式 默认为 0 ；1: 为关注用户列表视频投币 0: 为随机投币。如果关注用户发布的视频不足配置的投币数，则剩余部分使用随机投币 |
+| _**BILIBILI**_.silver2coin |      [Bilibili](https://www.bilibili.com)      | Web  | Bilibili 是否开启银瓜子换硬币，默认为 True 开启                                                                                      |
+|     _**V2EX**_.cookie      |         [V2EX](https://www.v2ex.com/)          | Web  | V2EX 每日签到                                                                                                                        |
+|      _**V2EX**_.proxy      |         [V2EX](https://www.v2ex.com/)          | Web  | V2EX 代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080                               |
+|    _**CLOUD189**_.phone    |       [天翼云盘](https://cloud.189.cn/)        | Web  | 天翼云盘 手机号                                                                                                                      |
+|  _**CLOUD189**_.password   |       [天翼云盘](https://cloud.189.cn/)        | Web  | 天翼云盘 手机号对应的密码                                                                                                            |
 
 ### APP 签到配置
 
-|Name|                归属                 |属性|说明|
-|:---:|:---------------------------------:|:---:|:---|
-|_**FMAPP**_.token|               Fa米家                |APP|Fa米家 APP headers 中的 token|
-|_**FMAPP**_.blackbox|               Fa米家                |APP|Fa米家 APP headers 中的 blackBox|
-|_**FMAPP**_.device_id|               Fa米家                |APP|Fa米家 APP headers 中的 deviceId|
-|_**FMAPP**_.fmversion|               Fa米家                |APP|Fa米家 APP headers 中的 fmVersion|
-|_**FMAPP**_.os|               Fa米家                |APP|Fa米家 APP headers 中的 os|
-|_**FMAPP**_.useragent|               Fa米家                |APP|Fa米家 APP headers 中的 User-Agent|
-|_**ACFUN**_.phone|  [AcFun](https://www.acfun.cn/)   |APP|AcFun 手机账号|
-|_**ACFUN**_.password|  [AcFun](https://www.acfun.cn/)   |APP|AcFun 账号密码|
+|         Name          |              归属              | 属性 | 说明                                |
+| :-------------------: | :----------------------------: | :--: | :---------------------------------- |
+|   _**FMAPP**_.token   |            Fa 米家             | APP  | Fa 米家 APP headers 中的 token      |
+| _**FMAPP**_.blackbox  |            Fa 米家             | APP  | Fa 米家 APP headers 中的 blackBox   |
+| _**FMAPP**_.device_id |            Fa 米家             | APP  | Fa 米家 APP headers 中的 deviceId   |
+| _**FMAPP**_.fmversion |            Fa 米家             | APP  | Fa 米家 APP headers 中的 fmVersion  |
+|    _**FMAPP**_.os     |            Fa 米家             | APP  | Fa 米家 APP headers 中的 os         |
+| _**FMAPP**_.useragent |            Fa 米家             | APP  | Fa 米家 APP headers 中的 User-Agent |
+|   _**ACFUN**_.phone   | [AcFun](https://www.acfun.cn/) | APP  | AcFun 手机账号                      |
+| _**ACFUN**_.password  | [AcFun](https://www.acfun.cn/) | APP  | AcFun 账号密码                      |
 
 ### 其他任务配置
 
-|Name|归属|属性|说明|
-|:---:|:---:|:---:|:---|
-|_**MIMOTION**_.phone|小米运动|其他|小米运动刷步数的手机账号|
-|_**MIMOTION**_.password|小米运动|其他|小米运动刷步数的手机账号密码|
-|_**MIMOTION**_.min_step|小米运动|其他|小米运动刷步数的最小步数|
-|_**MIMOTION**_.max_step|小米运动|其他|小米运动刷步数的最大步数|
-|_**BAIDUT**_.data_url|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|其他|提交网站的 URL 链接|
-|_**BAIDUT**_.submit_url|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|其他|百度搜索资源平台 提交百度网站的目标 URL|
-|_**BAIDUT**_.times|[百度搜索资源平台](https://ziyuan.baidu.com/site/index#/)|其他|每日对同一个网站提交次数|
+|          Name           |                           归属                            | 属性 | 说明                                    |
+| :---------------------: | :-------------------------------------------------------: | :--: | :-------------------------------------- |
+|  _**MIMOTION**_.phone   |                         小米运动                          | 其他 | 小米运动刷步数的手机账号                |
+| _**MIMOTION**_.password |                         小米运动                          | 其他 | 小米运动刷步数的手机账号密码            |
+| _**MIMOTION**_.min_step |                         小米运动                          | 其他 | 小米运动刷步数的最小步数                |
+| _**MIMOTION**_.max_step |                         小米运动                          | 其他 | 小米运动刷步数的最大步数                |
+|  _**BAIDUT**_.data_url  | [百度搜索资源平台](https://ziyuan.baidu.com/site/index#/) | 其他 | 提交网站的 URL 链接                     |
+| _**BAIDUT**_.submit_url | [百度搜索资源平台](https://ziyuan.baidu.com/site/index#/) | 其他 | 百度搜索资源平台 提交百度网站的目标 URL |
+|   _**BAIDUT**_.times    | [百度搜索资源平台](https://ziyuan.baidu.com/site/index#/) | 其他 | 每日对同一个网站提交次数                |
 
 ## 参数获取方法
 
@@ -92,8 +91,7 @@
 
 ### APP 抓包
 
-
-#### Fa米家 Cookie 等参数获取
+#### Fa 米家 Cookie 等参数获取
 
 抓包 APP 的请求中的 `headers` 信息中提取 `token`、`deviceId`、`cookie` 即可
 
@@ -176,16 +174,6 @@
       "coin_num": 0,
       "coin_type": 1,
       "silver2coin": true
-    }
-  ],
-  "CLOUD189": [
-    {
-      "password": "Sitoi",
-      "phone": "18888xxxxxx"
-    },
-    {
-      "password": "多账号 密码填写，请参考上面",
-      "phone": "多账号 手机号填写，请参考上面"
     }
   ],
   "FMAPP": [

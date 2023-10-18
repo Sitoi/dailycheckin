@@ -3,7 +3,7 @@
 ## 一、运行如下命令一键启动并创建服务
 
 ```bash
-curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
+curl https://ghproxy.com/https://raw.githubusercontent.com/sitoi/dailycheckin/main/docker_start.sh | bash
 ```
 
 > 运行成功会自动创建如下目录结构, 并成功启动 docker 服务。
@@ -27,7 +27,7 @@ curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
 
 文件路径: `./config/config.json`
 
-> ⚠️ ️请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
+> ⚠️ ️ 请务必到 [http://www.json.cn](http://www.json.cn) 网站检查 `config.json` 文件格式是否正确！
 
 参考 [配置说明文档](https://sitoi.github.io/dailycheckin/settings/) ，并修改 `config.json`
 
@@ -37,28 +37,27 @@ curl https://gitee.com/sitoi/dailycheckin/raw/main/docker_start.sh | bash
 
 1. 运行全部脚本
 
-    ```bash
-    docker exec -it dailycheckin dailycheckin
-    ```
+   ```bash
+   docker exec -it dailycheckin dailycheckin
+   ```
 
 2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
 
-    ```bash
-    docker exec -it dailycheckin dailycheckin --include MUSIC163 BAIDU 
-    ```
+   ```bash
+   docker exec -it dailycheckin dailycheckin --include MUSIC163 BAIDU
+   ```
 
 3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
-    
-    ```bash
-    docker exec -it dailycheckin dailycheckin --exclude MUSIC163 BAIDU 
-    ```
+
+   ```bash
+   docker exec -it dailycheckin dailycheckin --exclude MUSIC163 BAIDU
+   ```
 
 ##### 更新最新脚本
 
 ```bash
 docker exec dailycheckin sh /dailycheckin/default_task.sh
 ```
-
 
 ## 附录
 
