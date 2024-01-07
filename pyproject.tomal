@@ -1,0 +1,10 @@
+[tool.black]
+line-length = 88
+skip-string-normalization = true
+
+[tool.autoflake]
+check = true
+verbose = true
+
+[tool.isort]
+profile = "black"
