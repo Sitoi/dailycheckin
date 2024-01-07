@@ -63,8 +63,4 @@
 
 ## 交流群
 
-<table> 
-<tr> 
- <td> <p align="center">TG 群</p> <a href="https://t.me/dailycheckin"> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/Telegram.jpg"></a> <p align="center">扫码进 TG 群</p> </td> 
-</tr> 
-</table>
+<a href="https://t.me/dailycheckin"> <img width="200" height="280" src="https://cdn.jsdelivr.net/gh/Sitoi/dailycheckin/docs/img/Telegram.jpg"></a>

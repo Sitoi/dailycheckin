@@ -1,5 +1,7 @@
 # 更新日志
 
+- 2024-01-07 ![PyPI](https://img.shields.io/badge/Pypi-v24.1.7-brightgreen)
+  - 修复 Bilibili 兑换银瓜子 BUG
 - 2023-10-18 ![PyPI](https://img.shields.io/badge/Pypi-v23.10.18-brightgreen)
   - 删除失效脚本
 - 2023-02-21 ![PyPI](https://img.shields.io/badge/Pypi-v0.4.0-brightgreen)
