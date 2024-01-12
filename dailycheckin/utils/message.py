@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import base64
 import hashlib
 import hmac
@@ -86,7 +85,7 @@ def message2dingtalk(dingtalk_secret, dingtalk_access_token, content):
     print("Dingtalk 推送开始")
     timestamp = str(round(time.time() * 1000))
     secret_enc = dingtalk_secret.encode("utf-8")
-    string_to_sign = "{}\n{}".format(timestamp, dingtalk_secret)
+    string_to_sign = f"{timestamp}\n{dingtalk_secret}"
     string_to_sign_enc = string_to_sign.encode("utf-8")
     hmac_code = hmac.new(
         secret_enc, string_to_sign_enc, digestmod=hashlib.sha256
@@ -94,7 +93,7 @@ def message2dingtalk(dingtalk_secret, dingtalk_access_token, content):
     sign = urllib.parse.quote_plus(base64.b64encode(hmac_code))
     send_data = {"msgtype": "text", "text": {"content": content}}
     requests.post(
-        url="https://oapi.dingtalk.com/robot/send?access_token={0}&timestamp={1}&sign={2}".format(
+        url="https://oapi.dingtalk.com/robot/send?access_token={}&timestamp={}&sign={}".format(
             dingtalk_access_token, timestamp, sign
         ),
         headers={"Content-Type": "application/json", "Charset": "UTF-8"},

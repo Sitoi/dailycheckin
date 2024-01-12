@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import hashlib
 import json
 import os
@@ -51,8 +50,7 @@ class Tieba(CheckIn):
         pattern = re.compile(r".*?<a href=\"/f\?kw=.*?title=\"(.*?)\">")
         while next_page <= pn:
             tbname = pattern.findall(content.text)
-            for x in tbname:
-                yield x
+            yield from tbname
             next_page += 1
             content = session.get(
                 url=f"https://tieba.baidu.com/f/like/mylike?&pn={next_page}",
@@ -69,7 +67,7 @@ class Tieba(CheckIn):
         success_count, error_count, exist_count, shield_count = 0, 0, 0, 0
         for tb_name in tb_name_list:
             md5 = hashlib.md5(
-                f"kw={tb_name}tbs={tbs}tiebaclient!!!".encode("utf-8")
+                f"kw={tb_name}tbs={tbs}tiebaclient!!!".encode()
             ).hexdigest()
             data = {"kw": tb_name, "tbs": tbs, "sign": md5}
             try:
@@ -122,7 +120,6 @@ class Tieba(CheckIn):
 if __name__ == "__main__":
     with open(
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"),
-        "r",
         encoding="utf-8",
     ) as f:
         datas = json.loads(f.read())

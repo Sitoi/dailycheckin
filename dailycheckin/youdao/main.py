@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import json
 import os
 
@@ -37,7 +36,7 @@ class YouDao(CheckIn):
                 sync_space = res.json().get("rewardSpace", 0) // 1048576
                 checkin_space = checkin_response.json().get("space", 0) // 1048576
                 space = sync_space + checkin_space + ad_space
-                youdao_message = "+{0}M".format(space)
+                youdao_message = f"+{space}M"
             else:
                 youdao_message = "获取失败"
         else:
@@ -67,7 +66,6 @@ class YouDao(CheckIn):
 if __name__ == "__main__":
     with open(
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"),
-        "r",
         encoding="utf-8",
     ) as f:
         datas = json.loads(f.read())

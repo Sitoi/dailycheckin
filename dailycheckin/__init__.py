@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 import pkgutil as _pkgutil
 
 
-class CheckIn(object):
+class CheckIn:
     name = "Base"
 
 
