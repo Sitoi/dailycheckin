@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import argparse
 import json
 import os
@@ -9,7 +8,6 @@ import requests
 
 from dailycheckin.__version__ import __version__
 from dailycheckin.configs import checkin_map, get_checkin_info, get_notice_info
-from dailycheckin.utils.format_config import format_data
 from dailycheckin.utils.message import push_message
 
 
@@ -38,25 +36,11 @@ def check_config(task_list):
         config_path_list.append(os.path.normpath(os.path.dirname(_config_path)))
     if config_path:
         print("使用配置文件路径:", config_path)
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             try:
                 data = json.load(f)
-                flag, _data = format_data(data)
-                if flag:
-                    print(
-                        f"""\n\n当前版本大于 0.2.0 需要对「config.json」配置格式已更新，请按照如下更新步骤进行更新:
-  1. 更新 Pypi 到最新版本（>= v0.2.0 版本，如何更新看教程文档）
-  2. 手动执行一次签到（请复制本次运行输出的配置覆盖到「config.json」文件后，再重新运行）（记得去 https://json.cn 校验一下）
-  3. 更新 新版「config.json」配置后，再次手动运行一次，检测签到是否正常即可
-  4. 如果失败，请确定 pypi 版本大于 0.2.0 并根据「配置文档」: https://sitoi.github.io/dailycheckin/settings/ 手动更新配置。\n
-下方内容即是新版配置内容，全部复制即可（记得去 https://json.cn 校验一下）
-{'-' * 100}
-{json.dumps(_data, ensure_ascii=False)}
-{'-' * 100}\n\n"""
-                    )
-                    return False, False
-            except Exception as e:
-                print("Json 格式错误，请务必到 http://www.json.cn 网站检查 config.json 文件格式是否正确！")
+            except Exception:
+                print("Json 格式错误，请检查 config.json 文件格式是否正确！")
                 return False, False
         try:
             notice_info = get_notice_info(data=data)

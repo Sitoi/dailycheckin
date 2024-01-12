@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import json
 import os
 import time
@@ -40,6 +39,13 @@ class BiliBili(CheckIn):
                 session.get(url=url).json().get("data").get("list"),
             )
         )
+
+    @staticmethod
+    def vip_privilege_my(session) -> dict:
+        """取B站大会员硬币经验信息"""
+        url = "https://api.bilibili.com/x/vip/privilege/my"
+        ret = session.get(url=url).json()
+        return ret
 
     @staticmethod
     def reward(session) -> dict:
@@ -317,7 +323,17 @@ class BiliBili(CheckIn):
         if is_login:
             manhua_msg = self.manga_sign(session=session)
             live_msg = self.live_sign(session=session)
-            aid_list = self.get_region(session=session) if coin_type == 0 else []
+            aid_list = self.get_region(session=session)
+            vip_privilege_my_ret = self.vip_privilege_my(session=session)
+            welfare_list = vip_privilege_my_ret.get("data", {}).get("list", [])
+            for welfare in welfare_list:
+                if welfare.get("state") == 0 and welfare.get("vip_type") == vip_type:
+                    vip_privilege_receive_ret = self.vip_privilege_receive(
+                        session=session,
+                        bili_jct=bili_jct,
+                        receive_type=welfare.get("type"),
+                    )
+                    print(vip_privilege_receive_ret)
             coins_av_count = len(
                 list(
                     filter(
@@ -421,7 +437,6 @@ class BiliBili(CheckIn):
 if __name__ == "__main__":
     with open(
         os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"),
-        "r",
         encoding="utf-8",
     ) as f:
         datas = json.loads(f.read())

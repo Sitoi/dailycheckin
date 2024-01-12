@@ -5,5 +5,5 @@
 
 
 ##############每日签到一次任务##############
-# 每日签到(8：45 执行一次)
-45 8 * * * cd /dailycheckin && dailycheckin >> /dailycheckin/logs/dailycheckin.log 2>&1
+# 每日签到(9:00 执行一次)
+0 9 * * * cd /dailycheckin && dailycheckin >> /dailycheckin/logs/dailycheckin.log 2>&1

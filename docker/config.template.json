@@ -60,34 +60,6 @@
       "silver2coin": true
     }
   ],
-  "CLOUD189": [
-    {
-      "password": "Sitoi",
-      "phone": "18888xxxxxx"
-    },
-    {
-      "password": "多账号 密码填写，请参考上面",
-      "phone": "多账号 手机号填写，请参考上面"
-    }
-  ],
-  "FMAPP": [
-    {
-      "blackbox": "eyJlcnJxxxxxx",
-      "device_id": "xxxxxx-xxxx-xxxx-xxxx-xxxxxx",
-      "fmversion": "xxxxxx",
-      "os": "xxxxxx",
-      "token": "xxxxxx.xxxxxx-xxxxxx-xxxxxx.xxxxxx-xxxxxx",
-      "useragent": "xxxxxx"
-    },
-    {
-      "blackbox": "多账号 blackbox 填写，请参考上面，blackbox 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
-      "device_id": "多账号 device_id 填写，请参考上面，以实际获取为准",
-      "fmversion": "多账号 fmVersion 填写，请参考上面，以实际获取为准",
-      "os": "多账号 os 填写，请参考上面，以实际获取为准",
-      "token": "多账号 token 填写，请参考上面，以实际获取为准",
-      "useragent": "多账号 User-Agent 填写，请参考上面，以实际获取为准"
-    }
-  ],
   "IQIYI": [
     {
       "cookie": "__dfp=xxxxxx; QP0013=xxxxxx; QP0022=xxxxxx; QYABEX=xxxxxx; P00001=xxxxxx; P00002=xxxxxx; P00003=xxxxxx; P00007=xxxxxx; QC163=xxxxxx; QC175=xxxxxx; QC179=xxxxxx; QC170=xxxxxx; P00010=xxxxxx; P00PRU=xxxxxx; P01010=xxxxxx; QC173=xxxxxx; QC180=xxxxxx; P00004=xxxxxx; QP0030=xxxxxx; QC006=xxxxxx; QC007=xxxxxx; QC008=xxxxxx; QC010=xxxxxx; nu=xxxxxx; __uuid=xxxxxx; QC005=xxxxxx;"
