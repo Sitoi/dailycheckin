@@ -34,6 +34,14 @@
       "phone": "多账号 手机号填写，请参考上面"
     }
   ],
+  "ALIYUN": [
+    {
+      "refresh_token": "599dcf65xxxxxx"
+    },
+    {
+      "refresh_token": "多账号 refresh_token"
+    }
+  ],
   "BAIDU": [
     {
       "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
@@ -48,16 +56,37 @@
   ],
   "BILIBILI": [
     {
-      "cookie": "_uuid=xxxxxx; rpdid=xxxxxx; LIVE_BUVID=xxxxxx; PVID=xxxxxx; blackside_state=xxxxxx; CURRENT_FNVAL=xxxxxx; buvid3=xxxxxx; fingerprint3=xxxxxx; fingerprint=xxxxxx; buivd_fp=xxxxxx; buvid_fp_plain=xxxxxx; DedeUserID=xxxxxx; DedeUserID__ckMd5=xxxxxx; SESSDATA=xxxxxx; bili_jct=xxxxxx; bsource=xxxxxx; finger=xxxxxx; fingerprint_s=xxxxxx;",
       "coin_num": 0,
       "coin_type": 1,
+      "cookie": "_uuid=xxxxxx; rpdid=xxxxxx; LIVE_BUVID=xxxxxx; PVID=xxxxxx; blackside_state=xxxxxx; CURRENT_FNVAL=xxxxxx; buvid3=xxxxxx; fingerprint3=xxxxxx; fingerprint=xxxxxx; buivd_fp=xxxxxx; buvid_fp_plain=xxxxxx; DedeUserID=xxxxxx; DedeUserID__ckMd5=xxxxxx; SESSDATA=xxxxxx; bili_jct=xxxxxx; bsource=xxxxxx; finger=xxxxxx; fingerprint_s=xxxxxx;",
       "silver2coin": true
     },
     {
-      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
       "coin_num": 0,
       "coin_type": 1,
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
       "silver2coin": true
+    }
+  ],
+  
+  "IMAOTAI": [
+    {
+      "city": "上海市",
+      "lat": "3.025626",
+      "lng": "3.025626",
+      "mobile": "18888xxxxxx",
+      "province": "上海市",
+      "token": "eyJxxxxxx",
+      "userid": "1xxxxxx4"
+    },
+    {
+      "city": "多账号 城市",
+      "lat": "多账号 纬度",
+      "lng": "多账号 经度",
+      "mobile": "多账号 手机号",
+      "province": "多账号 省份",
+      "token": "多账号 token",
+      "userid": "多账号 用户 id"
     }
   ],
   "IQIYI": [
@@ -88,6 +117,14 @@
       "min_step": "多账号 最小步数填写，请参考上面",
       "password": "多账号 密码填写，请参考上面",
       "phone": "多账号 手机号填写，请参考上面"
+    }
+  ],
+  "SMZDM": [
+    {
+      "cookie": "__ckguid=xxxxxx"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
     }
   ],
   "TIEBA": [

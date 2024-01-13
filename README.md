@@ -1,23 +1,27 @@
-<p align="center">
-    <img src="https://socialify.git.ci/Sitoi/dailycheckin/image?font=Rokkitt&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark"/>
-    <br><strong><font size=50>每日签到集合</font></strong>
-    <br>基于【腾讯云函数】/【Docker】/【青龙面板】/【elecV2P】/【群晖】/【阿里云函数计算】的每日签到脚本
-    <br>支持多账号使用
-</p>
+<div align="center">
 
-<p align="center">
-    <a href="https://github.com/Sitoi/dailycheckin"><img src="https://img.shields.io/pypi/l/dailycheckin?style=popout-square" alt="license"></a>
-    <a href="https://github.com/Sitoi/dailycheckin/stargazers"><img src="https://img.shields.io/github/stars/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub stars"></a>
-    <a href="https://github.com/Sitoi/dailycheckin/network/members"><img src="https://img.shields.io/github/forks/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub forks"></a>
-    <a href="https://github.com/Sitoi/dailycheckin/issues"><img src="https://img.shields.io/github/issues/Sitoi/dailycheckin.svg?style=popout-square" alt="GitHub issues"></a>
-    <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/pulls/sitoi/dailycheckin?style=popout-square" alt="Docker Pulls"></a>
-    <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/image-size/sitoi/dailycheckin?style=popout-square" alt="Docker Size"></a>
-    <a href="https://hub.docker.com/repository/docker/sitoi/dailycheckin"><img src="https://img.shields.io/docker/stars/sitoi/dailycheckin?style=popout-square" alt="Docker Stars"></a>
-    <a href="https://pypi.org/project/dailycheckin/"><img src="https://img.shields.io/pypi/dm/dailycheckin?label=pypi&style=popout-square" alt="Pypi Download"></a>
-    <a href="https://sitoi.github.io/dailycheckin"><img src="https://visitor-badge.glitch.me/badge?page_id=Sitoi-dailycheckin" alt="visitor"></a>
-</p>
+<img  src="https://socialify.git.ci/Sitoi/dailycheckin/image?font=Rokkitt&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark">
 
-## 特别声明
+<h1>DailyCheckIn</h1>
+
+基于「Docker」/「青龙面板」/「群晖」/「本地」的每日签到脚本
+
+<!-- SHIELD GROUP -->
+
+[![][github-stars-shield]][github-stars-link]
+[![][github-forks-shield]][github-forks-link]
+[![][github-issues-shield]][github-issues-link]
+[![][github-contributors-shield]][github-contributors-link]
+[![][github-license-shield]][github-license-link]
+
+[![][docker-pull-shield]][docker-pull-link]
+[![][docker-size-shield]][docker-size-link]
+[![][docker-stars-shield]][docker-stars-link]
+[![][pypi-dm-shield]][pypi-dm-link]
+
+</div>
+
+## 📢 声明
 
 - 本仓库发布的脚本及其中涉及的任何解锁和解密分析脚本，仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断。
 
@@ -37,16 +41,71 @@
 
 > **_您使用或者复制了本仓库且本人制作的任何脚本，则视为 `已接受` 此声明，请仔细阅读_**
 
-## 详细文档
+## ✨ 特性
 
-- 文档地址: [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
+- 💻 支持使用「Docker」/「青龙面板」/「群晖」/「本地」 部署
+- 📦 支持 Pypi 包安装
+- ⚙️ 支持多个平台签到
+- 📢 支持多个平台通知
+- ♾️ 支持多个账号签到
+- 🕙 支持定时任务设置
+- 🆙 支持项目自动更新
 
-## 视频教程
+## 🦄 教程
 
-网盘链接：[https://www.aliyundrive.com/s/hYC6FziXppq](https://www.aliyundrive.com/s/hYC6FziXppq)
+### 📄 文档教程
 
-## 历史 Star 数
+[https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
 
-<p align="center">
-    <a href="https://starchart.cc/Sitoi/dailycheckin"><img src="https://starchart.cc/Sitoi/dailycheckin.svg" alt="starchart"></a>
-</p>
+### 🎬 视频教程
+
+[https://www.aliyundrive.com/s/hYC6FziXppq](https://www.aliyundrive.com/s/hYC6FziXppq)
+
+## 🤝 参与贡献
+
+我们非常欢迎各种形式的贡献。如果你对贡献代码感兴趣，可以查看我们的 GitHub [Issues][github-issues-link]，大展身手，向我们展示你的奇思妙想。
+
+[![][pr-welcome-shield]][pr-welcome-link]
+
+### 💗 感谢我们的贡献者
+
+[![][github-contrib-shield]][github-contrib-link]
+
+## ✨ Star 数
+
+[![][starchart-shield]][starchart-link]
+
+---
+
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
+
+<!-- LINK GROUP -->
+
+[github-codespace-link]: https://codespaces.new/sitoi/dailycheckin
+[github-codespace-shield]: https://github.com/sitoi/dailycheckin/blob/main/images/codespaces.png?raw=true
+[github-contributors-link]: https://github.com/sitoi/dailycheckin/graphs/contributors
+[github-contributors-shield]: https://img.shields.io/github/contributors/sitoi/dailycheckin?color=c4f042&labelColor=black&style=flat-square
+[github-forks-link]: https://github.com/sitoi/dailycheckin/network/members
+[github-forks-shield]: https://img.shields.io/github/forks/sitoi/dailycheckin?color=8ae8ff&labelColor=black&style=flat-square
+[github-issues-link]: https://github.com/sitoi/dailycheckin/issues
+[github-issues-shield]: https://img.shields.io/github/issues/sitoi/dailycheckin?color=ff80eb&labelColor=black&style=flat-square
+[github-license-link]: https://github.com/sitoi/dailycheckin/blob/main/LICENSE
+[github-license-shield]: https://img.shields.io/github/license/sitoi/dailycheckin?color=white&labelColor=black&style=flat-square
+[github-stars-link]: https://github.com/sitoi/dailycheckin/network/stargazers
+[github-stars-shield]: https://img.shields.io/github/stars/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[pr-welcome-link]: https://github.com/sitoi/dailycheckin/pulls
+[pr-welcome-shield]: https://img.shields.io/badge/🤯_pr_welcome-%E2%86%92-ffcb47?labelColor=black&style=for-the-badge
+[github-contrib-link]: https://github.com/sitoi/dailycheckin/graphs/contributors
+[github-contrib-shield]: https://contrib.rocks/image?repo=sitoi%2Fdailycheckin
+[docker-pull-shield]: https://img.shields.io/docker/pulls/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[docker-pull-link]: https://hub.docker.com/repository/docker/sitoi/
+[docker-size-shield]: https://img.shields.io/docker/image-size/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[docker-size-link]: https://hub.docker.com/repository/docker/sitoi/dailycheckin
+[docker-stars-shield]: https://img.shields.io/docker/stars/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[docker-stars-link]: https://hub.docker.com/repository/docker/sitoi/dailycheckin
+[pypi-dm-shield]: https://img.shields.io/pypi/dm/dailycheckin?label=pypi&color=ffcb47&labelColor=black&style=flat-square
+[pypi-dm-link]: https://pypi.org/project/dailycheckin/
+[starchart-shield]: https://starchart.cc/Sitoi/dailycheckin.svg
+[starchart-link]: https://starchart.cc/Sitoi/dailycheckin
