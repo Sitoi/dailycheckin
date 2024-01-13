@@ -77,7 +77,9 @@
       "mobile": "18888xxxxxx",
       "province": "上海市",
       "token": "eyJxxxxxx",
-      "userid": "1xxxxxx4"
+      "userid": "1xxxxxx4",
+      "reserve_rule": 0
+
     },
     {
       "city": "多账号 城市",
@@ -86,7 +88,8 @@
       "mobile": "多账号 手机号",
       "province": "多账号 省份",
       "token": "多账号 token",
-      "userid": "多账号 用户 id"
+      "userid": "多账号 用户 id",
+      "reserve_rule": 0
     }
   ],
   "IQIYI": [

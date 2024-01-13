@@ -209,6 +209,7 @@ userId: 2
         source_data: dict,
         lat: str = "29.83826",
         lng: str = "102.182324",
+        reserve_rule: int = 0,
     ):
         day_time = int(time.mktime(datetime.date.today().timetuple())) * 1000
         session_id = self.headers["current_session_id"]
@@ -221,9 +222,9 @@ userId: 2
             )
         shops = responses.json()["data"]["shops"]
 
-        if self.RESERVE_RULE == 0:
+        if reserve_rule == 0:
             return self.distance_shop(item_code, shops, source_data, lat, lng)
-        if self.RESERVE_RULE == 1:
+        if reserve_rule == 1:
             return self.max_shop(city, item_code, p_c_map, province, shops)
 
     def act_params(self, shop_id: str, item_id: str):
@@ -282,6 +283,7 @@ userId: 2
         userId = self.check_item.get("userid")
         lat = self.check_item.get("lat")
         lng = self.check_item.get("lng")
+        reserve_rule = self.check_item.get("reserve_rule", 0)
         msg = [
             {
                 "name": "手机号",
@@ -305,6 +307,7 @@ userId: 2
                     source_data=source_data,
                     lat=lat,
                     lng=lng,
+                    reserve_rule=reserve_rule,
                 )
                 if max_shop_id == "0":
                     continue
