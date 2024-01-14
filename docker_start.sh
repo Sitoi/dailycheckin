@@ -20,6 +20,7 @@ else
   if [ $? -ne 0 ];then
     echo "未安装 docker-compose，将使用 docker 命令启动容器..."
     echo "开始通过 docker 命令创建容器"
+    docker pull sitoi/dailycheckin:latest
     docker run -d -v $(pwd)/config:/dailycheckin/config \
       -v $(pwd)/logs:/dailycheckin/logs \
       -v $(pwd)/cron:/dailycheckin/cron \
@@ -31,6 +32,7 @@ else
     echo "下载 docker-compose.yml 文件"
     curl -O https://raw.githubusercontent.com/sitoi/dailycheckin/main/docker/docker-compose.yml
     echo "开始通过 docker-compose 命令创建容器"
+    docker-compose pull
     docker-compose up -d
   fi
 fi
