@@ -6,5 +6,6 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./config:/dailycheckin/config
-      - ./logs:/dailycheckin/logs
+      - ./config/:/dailycheckin/config/
+      - ./logs/:/dailycheckin/logs/
+      - ./cron/:/dailycheckin/cron/

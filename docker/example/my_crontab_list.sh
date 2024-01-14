@@ -1,1 +1,0 @@
-5 14 * * * cd /dailycheckin && dailycheckin >> /dailycheckin/logs/dailycheckin.log 2>&1
