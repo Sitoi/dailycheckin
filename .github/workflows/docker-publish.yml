@@ -29,6 +29,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY_IMAGE }}
+          tags: latest
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -46,8 +47,8 @@ jobs:
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
-          tags: |
-            docker.io/sitoi/dailycheckin:latest
+          tags: ${{ steps.meta.outputs.tags }}
+
       - name: Export digest
         run: |
           mkdir -p /tmp/digests
