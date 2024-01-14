@@ -1,0 +1,38 @@
+name: '🐛 签到失败 BUG'
+description: '反馈一个签到失败的 BUG'
+title: '[Bug] '
+labels: ['🐛 Bug']
+body:
+  - type: dropdown
+    attributes:
+      label: '💻 系统环境'
+      options:
+        - Windows
+        - macOS
+        - Ubuntu
+        - Other Linux
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: '📦 部署环境'
+      options:
+        - 本地
+        - 青龙
+        - Docker
+        - 群晖
+        - 云函数
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: '🐛 问题描述'
+      description: 请提供一个清晰且简洁的问题描述。并贴上图片
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: '📝 运行日志'
+      description: 请提供运行的详细日志，隐私数据请马赛克。
