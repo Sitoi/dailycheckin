@@ -109,10 +109,8 @@ def checkin():
                     print(f"第 {index + 1} 个账号: ❌❌❌❌❌\n{e}")
         print("\n\n")
         try:
-            url = "https://pypi.python.org/pypi/dailycheckin/json"
-            data = list(requests.get(url=url, timeout=30).json()["releases"].keys())
-            data.sort()
-            latest_version = data[-1]
+            url = "https://pypi.org/pypi/dailycheckin/json"
+            latest_version = requests.get(url=url, timeout=30).json()["info"]["version"]
         except:
             print("获取最新版本失败")
             latest_version = "0.0.0"
