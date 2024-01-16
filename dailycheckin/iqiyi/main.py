@@ -2,6 +2,7 @@ import json
 import os
 import re
 import time
+from hashlib import md5
 from random import randint
 from urllib.parse import unquote
 from uuid import uuid4
@@ -76,25 +77,42 @@ class IQIYI(CheckIn):
             ]
         return msg
 
-    @staticmethod
-    def sign(p00001):
+    def sign(self, p00001, p00003):
         """
         VIP 签到
         """
-        url = "https://tc.vip.iqiyi.com/taskCenter/task/queryUserTask"
-        params = {"P00001": p00001, "autoSign": "yes"}
-        res = requests.get(url=url, params=params).json()
+        qyid = uuid4().hex[:16]
+        print(qyid)
+        time_stamp = int(time.time() * 1000)
+        data = f"agentType=1|agentversion=1|appKey=basic_pcw|authCookie={p00001}|qyid={qyid}|task_code=natural_month_sign|timestamp={time_stamp}|typeCode=point|userId={p00003}|UKobMjDMsDoScuWOfp6F"
+        sign = md5(data.encode(encoding="utf-8")).hexdigest()
+        url = f"https://community.iqiyi.com/openApi/task/execute?agentType=1&agentversion=1&appKey=basic_pcw&authCookie={p00001}&qyid={qyid}&sign={sign}&task_code=natural_month_sign&timestamp={time_stamp}&typeCode=point&userId={p00003}"
+        body = {
+            "natural_month_sign": {
+                "taskCode": "iQIYI_mofhr",
+                "agentType": 1,
+                "agentversion": 1,
+                "authCookie": p00001,
+                "qyid": qyid,
+                "verticalCode": "iQIYI",
+            }
+        }
+        res = requests.post(
+            url=url,
+            data=json.dumps(body),
+            headers={"Cookie": f"P00001={p00001}", "Content-Type": "application/json"},
+        ).json()
         if res["code"] == "A00000":
-            try:
-                cumulate_sign_days_sum = res["data"]["monthlyGrowthReward"]
-                msg = [
-                    {"name": "当月成长", "value": f"{cumulate_sign_days_sum}成长值"},
-                ]
-            except Exception as e:
-                print(e)
-                msg = [{"name": "当月成长", "value": str(e)}]
+            _msg = res["data"]["msg"]
+            if _msg:
+                msg = [{"name": "签到天数", "value": _msg}]
+            else:
+                try:
+                    msg = [{"name": "签到天数", "value": res["data"]["data"]["signDays"]}]
+                except Exception as e:
+                    msg = [{"name": "签到天数", "value": str(e)}]
         else:
-            msg = [{"name": "当月成长", "value": res.get("msg")}]
+            msg = [{"name": "签到天数", "value": res.get("msg")}]
         return msg
 
     @staticmethod
@@ -330,7 +348,7 @@ class IQIYI(CheckIn):
 
     def main(self):
         p00001, p00002, p00003, dfp = self.parse_cookie(self.check_item.get("cookie"))
-        sign_msg = self.sign(p00001=p00001)
+        sign_msg = self.sign(p00001=p00001, p00003=p00003)
         watch_msg = self.start_watch(p00001=p00001, p00003=p00003, dfp=dfp)
         level_right_msg = self.level_right(p00001=p00001)
         chance = self.draw(0, p00001=p00001, p00003=p00003)["chance"]

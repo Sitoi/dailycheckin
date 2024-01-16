@@ -74,5 +74,4 @@ if __name__ == "__main__":
     ) as f:
         datas = json.loads(f.read())
     _check_item = datas.get("ALIYUN", [])[0]
-    # _check_item = {"refresh_token": "599dcf6504364c6ca362eddf62e3d5c6"}
     print(AliYun(check_item=_check_item).main())
