@@ -181,8 +181,5 @@ if __name__ == "__main__":
         encoding="utf-8",
     ) as f:
         datas = json.loads(f.read())
-    # _check_item = datas.get("SMZDM", [])[0]
-    _check_item = {
-        "cookie": """__ckguid=syS3E6T5OCJLT2E2LtVRkn7; device_id=188331107416928912791221025b946eae97755d38628197ea52594f71; homepage_sug=d; r_sort_type=score; footer_floating_layer=0; ad_date=12; ad_json_feed=%7B%7D; _zdmA.vid=*; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%2218a282eeded81d-0de23c34e957fb-4f641475-2304000-18a282eedee1f08%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E8%87%AA%E7%84%B6%E6%90%9C%E7%B4%A2%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC%22%2C%22%24latest_referrer%22%3A%22https%3A%2F%2Fwww.google.com%2F%22%7D%2C%22%24device_id%22%3A%2218a282eeded81d-0de23c34e957fb-4f641475-2304000-18a282eedee1f08%22%7D; sess=BA-13x0dQd4qdaZ4D80mDJAjqYFq9dT%2BR50CBfBp0Jnd41uWsf0FTKL%2FVdoJeSxRpXZMjc8EqTPS8hHhlyOAUmmX6RtU51votM3vyQB%2BhygL6cVeuCChgalixWu; user=user%3A9072273596%7C9072273596; smzdm_id=9072273596; _zdmA.uid=ZDMA.z9bFuVR0E.1704990066.2419200; bannerCounter=%5B%7B%22number%22%3A1%2C%22surplus%22%3A1%7D%2C%7B%22number%22%3A0%2C%22surplus%22%3A2%7D%2C%7B%22number%22%3A0%2C%22surplus%22%3A1%7D%2C%7B%22number%22%3A0%2C%22surplus%22%3A1%7D%2C%7B%22number%22%3A1%2C%22surplus%22%3A1%7D%5D; _zdmA.time=1704990066978.0.https%3A%2F%2Fwww.smzdm.com%2F"""
-    }
+    _check_item = datas.get("SMZDM", [])[0]
     print(SMZDM(check_item=_check_item).main())
