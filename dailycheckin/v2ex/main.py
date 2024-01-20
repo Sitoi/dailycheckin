@@ -4,7 +4,6 @@ import re
 
 import requests
 import urllib3
-from requests import utils
 
 from dailycheckin import CheckIn
 

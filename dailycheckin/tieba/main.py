@@ -4,7 +4,6 @@ import os
 import re
 
 import requests
-from requests import utils
 
 from dailycheckin import CheckIn
 

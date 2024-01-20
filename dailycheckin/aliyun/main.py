@@ -10,7 +10,7 @@ urllib3.disable_warnings()
 
 
 class AliYun(CheckIn):
-    name = "AliYun"
+    name = "阿里云盘"
 
     def __init__(self, check_item: dict):
         self.check_item = check_item

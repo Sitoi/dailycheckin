@@ -168,7 +168,10 @@ class AcFun(CheckIn):
                 throwbanana_msg,
             ] + info_msg
         else:
-            msg = [{"name": "帐号信息", "value": phone}, {"name": "错误信息", "value": res}]
+            msg = [
+                {"name": "帐号信息", "value": phone},
+                {"name": "错误信息", "value": res},
+            ]
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
 

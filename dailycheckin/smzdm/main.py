@@ -13,7 +13,7 @@ urllib3.disable_warnings()
 
 
 class SMZDM(CheckIn):
-    name = "SMZDM"
+    name = "什么值得买"
 
     def __init__(self, check_item: dict):
         self.check_item = check_item
