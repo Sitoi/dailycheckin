@@ -8,16 +8,19 @@
 
 <!-- SHIELD GROUP -->
 
+[![][github-releases-shield]][github-releases-link]
+[![][pypi-version-shield]][pypi-version-link]
+[![][github-release-date-shield]][github-release-date-link]
 [![][github-stars-shield]][github-stars-link]
 [![][github-forks-shield]][github-forks-link]
 [![][github-issues-shield]][github-issues-link]
 [![][github-contributors-shield]][github-contributors-link]
-[![][github-license-shield]][github-license-link]
 
 [![][docker-pull-shield]][docker-pull-link]
 [![][docker-size-shield]][docker-size-link]
 [![][docker-stars-shield]][docker-stars-link]
 [![][pypi-dm-shield]][pypi-dm-link]
+[![][github-license-shield]][github-license-link]
 
 </div>
 
@@ -43,8 +46,8 @@
 
 ## ✨ 特性
 
-- 💻 支持使用「Docker」/「青龙面板」/「群晖」/「本地」 部署
 - 📦 支持 Pypi 包安装
+- 💻 支持多个平台部署
 - ⚙️ 支持多个平台签到
 - 📢 支持多个平台通知
 - ♾️ 支持多个账号签到
@@ -53,13 +56,7 @@
 
 ## 🦄 教程
 
-### 📄 文档教程
-
 [https://sitoi.github.io/dailycheckin/](https://sitoi.github.io/dailycheckin/)
-
-### 🎬 视频教程
-
-[https://www.aliyundrive.com/s/hYC6FziXppq](https://www.aliyundrive.com/s/hYC6FziXppq)
 
 ## 🤝 参与贡献
 
@@ -92,20 +89,26 @@ This project is [MIT](./LICENSE) licensed.
 [github-issues-link]: https://github.com/sitoi/dailycheckin/issues
 [github-issues-shield]: https://img.shields.io/github/issues/sitoi/dailycheckin?color=ff80eb&labelColor=black&style=flat-square
 [github-license-link]: https://github.com/sitoi/dailycheckin/blob/main/LICENSE
-[github-license-shield]: https://img.shields.io/github/license/sitoi/dailycheckin?color=white&labelColor=black&style=flat-square
+[github-license-shield]: https://img.shields.io/github/license/sitoi/dailycheckin?labelColor=black&style=flat-square
 [github-stars-link]: https://github.com/sitoi/dailycheckin/network/stargazers
 [github-stars-shield]: https://img.shields.io/github/stars/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[github-releases-link]: https://github.com/sitoi/dailycheckin/releases
+[github-releases-shield]: https://img.shields.io/github/v/release/sitoi/dailycheckin?labelColor=black&style=flat-square
+[github-release-date-link]: https://github.com/sitoi/dailycheckin/releases
+[github-release-date-shield]: https://img.shields.io/github/release-date/sitoi/dailycheckin?labelColor=black&style=flat-square
 [pr-welcome-link]: https://github.com/sitoi/dailycheckin/pulls
 [pr-welcome-shield]: https://img.shields.io/badge/🤯_pr_welcome-%E2%86%92-ffcb47?labelColor=black&style=for-the-badge
 [github-contrib-link]: https://github.com/sitoi/dailycheckin/graphs/contributors
 [github-contrib-shield]: https://contrib.rocks/image?repo=sitoi%2Fdailycheckin
-[docker-pull-shield]: https://img.shields.io/docker/pulls/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[docker-pull-shield]: https://img.shields.io/docker/pulls/sitoi/dailycheckin?labelColor=black&style=flat-square
 [docker-pull-link]: https://hub.docker.com/repository/docker/sitoi/
-[docker-size-shield]: https://img.shields.io/docker/image-size/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[docker-size-shield]: https://img.shields.io/docker/image-size/sitoi/dailycheckin?labelColor=black&style=flat-square
 [docker-size-link]: https://hub.docker.com/repository/docker/sitoi/dailycheckin
-[docker-stars-shield]: https://img.shields.io/docker/stars/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
+[docker-stars-shield]: https://img.shields.io/docker/stars/sitoi/dailycheckin?labelColor=black&style=flat-square
 [docker-stars-link]: https://hub.docker.com/repository/docker/sitoi/dailycheckin
-[pypi-dm-shield]: https://img.shields.io/pypi/dm/dailycheckin?label=pypi&color=ffcb47&labelColor=black&style=flat-square
+[pypi-dm-shield]: https://img.shields.io/pypi/dm/dailycheckin?label=pypi&labelColor=black&style=flat-square
 [pypi-dm-link]: https://pypi.org/project/dailycheckin/
+[pypi-version-shield]: https://img.shields.io/pypi/v/dailycheckin?labelColor=black&style=flat-square
+[pypi-version-link]: https://pypi.org/project/dailycheckin/
 [starchart-shield]: https://starchart.cc/Sitoi/dailycheckin.svg
 [starchart-link]: https://starchart.cc/Sitoi/dailycheckin
