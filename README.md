@@ -1,6 +1,6 @@
 <div align="center">
 
-<img  src="https://socialify.git.ci/Sitoi/dailycheckin/image?font=Rokkitt&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark">
+<img src="https://socialify.git.ci/Sitoi/dailycheckin/image?font=Rokkitt&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark">
 
 <h1>DailyCheckIn</h1>
 
@@ -90,7 +90,7 @@ This project is [MIT](./LICENSE) licensed.
 [github-issues-shield]: https://img.shields.io/github/issues/sitoi/dailycheckin?color=ff80eb&labelColor=black&style=flat-square
 [github-license-link]: https://github.com/sitoi/dailycheckin/blob/main/LICENSE
 [github-license-shield]: https://img.shields.io/github/license/sitoi/dailycheckin?labelColor=black&style=flat-square
-[github-stars-link]: https://github.com/sitoi/dailycheckin/network/stargazers
+[github-stars-link]: https://github.com/sitoi/dailycheckin/stargazers
 [github-stars-shield]: https://img.shields.io/github/stars/sitoi/dailycheckin?color=ffcb47&labelColor=black&style=flat-square
 [github-releases-link]: https://github.com/sitoi/dailycheckin/releases
 [github-releases-shield]: https://img.shields.io/github/v/release/sitoi/dailycheckin?labelColor=black&style=flat-square
@@ -101,7 +101,7 @@ This project is [MIT](./LICENSE) licensed.
 [github-contrib-link]: https://github.com/sitoi/dailycheckin/graphs/contributors
 [github-contrib-shield]: https://contrib.rocks/image?repo=sitoi%2Fdailycheckin
 [docker-pull-shield]: https://img.shields.io/docker/pulls/sitoi/dailycheckin?labelColor=black&style=flat-square
-[docker-pull-link]: https://hub.docker.com/repository/docker/sitoi/
+[docker-pull-link]: https://hub.docker.com/repository/docker/sitoi/dailycheckin
 [docker-size-shield]: https://img.shields.io/docker/image-size/sitoi/dailycheckin?labelColor=black&style=flat-square
 [docker-size-link]: https://hub.docker.com/repository/docker/sitoi/dailycheckin
 [docker-stars-shield]: https://img.shields.io/docker/stars/sitoi/dailycheckin?labelColor=black&style=flat-square

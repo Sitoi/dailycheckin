@@ -67,7 +67,20 @@ class SMZDM(CheckIn):
         url2 = "https://user-api.smzdm.com/checkin/all_reward"
         resp = requests.post(url=url2, headers=headers, data=data)
         result = resp.json()
-        return result
+        normal_reward = result["data"]["normal_reward"]
+        msgs = []
+        if normal_reward:
+            msgs = [
+                {
+                    "name": "签到奖励",
+                    "value": normal_reward["reward_add"]["content"],
+                },
+                {
+                    "name": "连续签到",
+                    "value": normal_reward["sub_title"],
+                },
+            ]
+        return msgs
 
     def active(self, cookie):
         zdm_active_id = ["ljX8qVlEA7"]
@@ -164,13 +177,8 @@ class SMZDM(CheckIn):
         token = self.robot_token(headers)
         error_msg, data = self.sign(headers, token)
         msg.append({"name": "签到结果", "value": error_msg})
-        result = self.all_reward(headers, data)
-        msg.append(
-            {
-                "name": "什么值得买",
-                "value": json.dumps(result["data"], ensure_ascii=False),
-            },
-        )
+        reward_msg = self.all_reward(headers, data)
+        msg += reward_msg
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
 

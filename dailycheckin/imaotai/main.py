@@ -250,7 +250,7 @@ userId: 2
         )
         msg = {
             "name": "申购结果",
-            "value": responses.text,
+            "value": responses.json().get("data", {}).get("successDesc"),
         }
         return msg
 
@@ -264,14 +264,14 @@ userId: 2
             "YX_SUPPORT_WEBP": "1",
         }
         response = requests.post(
-            "https://h5.moutai519.com.cn/game/isolationPage/getUserEnergyAward",
+            url="https://h5.moutai519.com.cn/game/isolationPage/getUserEnergyAward",
             cookies=cookies,
             headers=self.headers,
             json={},
         )
         return {
             "name": "小茅运",
-            "value": response.text,
+            "value": response.json().get("message"),
         }
 
     def main(self):
