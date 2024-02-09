@@ -54,11 +54,11 @@ class IQIYI(CheckIn):
         if res["code"] == "A00000":
             try:
                 res_data = res.get("data", {})
-                level = res_data.get("level", 0)  # VIP 等级
-                growthvalue = res_data.get("growthvalue", 0)  # 当前 VIP 成长值
-                distance = res_data.get("distance", 0)  # 升级需要成长值
-                deadline = res_data.get("deadline", "非 VIP 用户")  # VIP 到期时间
-                today_growth_value = res_data.get("todayGrowthValue", 0)  # 今日成长值
+                level = res_data.get("level", 0)
+                growthvalue = res_data.get("growthvalue", 0)
+                distance = res_data.get("distance", 0)
+                deadline = res_data.get("deadline", "非 VIP 用户")
+                today_growth_value = res_data.get("todayGrowthValue", 0)
                 msg = [
                     {"name": "VIP 等级", "value": level},
                     {"name": "当前成长", "value": growthvalue},
@@ -70,7 +70,6 @@ class IQIYI(CheckIn):
                 msg = [
                     {"name": "账号信息", "value": str(e)},
                 ]
-                print(msg)
         else:
             msg = [
                 {"name": "账号信息", "value": res.get("msg")},
@@ -82,7 +81,6 @@ class IQIYI(CheckIn):
         VIP 签到
         """
         qyid = uuid4().hex[:16]
-        print(qyid)
         time_stamp = int(time.time() * 1000)
         data = f"agentType=1|agentversion=1|appKey=basic_pcw|authCookie={p00001}|qyid={qyid}|task_code=natural_month_sign|timestamp={time_stamp}|typeCode=point|userId={p00003}|UKobMjDMsDoScuWOfp6F"
         sign = md5(data.encode(encoding="utf-8")).hexdigest()
@@ -108,7 +106,9 @@ class IQIYI(CheckIn):
                 msg = [{"name": "签到天数", "value": _msg}]
             else:
                 try:
-                    msg = [{"name": "签到天数", "value": res["data"]["data"]["signDays"]}]
+                    msg = [
+                        {"name": "签到天数", "value": res["data"]["data"]["signDays"]}
+                    ]
                 except Exception as e:
                     msg = [{"name": "签到天数", "value": str(e)}]
         else:
@@ -181,6 +181,29 @@ class IQIYI(CheckIn):
                 growth_task += item["taskReward"]
         msg = {"name": "任务奖励", "value": f"+{growth_task}成长值"}
         return msg
+
+    def lottery(self, p00001, award_list=[]):
+        url = "https://act.vip.iqiyi.com/shake-api/lottery"
+        params = {
+            "P00001": p00001,
+            "lotteryType": "0",
+            "actCode": "0k9GkUcjqqj4tne8",
+        }
+        res = requests.get(url, params=params).json()
+        msgs = []
+        if res.get("code") == "A00000":
+            award_info = res.get("data", {}).get("title")
+            award_list.append(award_info)
+            time.sleep(3)
+            return self.lottery(p00001=p00001, award_list=award_list)
+        elif res.get("msg") == "抽奖次数用完":
+            if award_list:
+                msgs = [{"name": "每天摇一摇", "value": "、".join(award_list)}]
+            else:
+                msgs = [{"name": "每天摇一摇", "value": res.get("msg")}]
+        else:
+            msgs = [{"name": "每天摇一摇", "value": res.get("msg")}]
+        return msgs
 
     @staticmethod
     def draw(draw_type, p00001, p00003):
@@ -351,11 +374,12 @@ class IQIYI(CheckIn):
         sign_msg = self.sign(p00001=p00001, p00003=p00003)
         watch_msg = self.start_watch(p00001=p00001, p00003=p00003, dfp=dfp)
         level_right_msg = self.level_right(p00001=p00001)
-        chance = self.draw(0, p00001=p00001, p00003=p00003)["chance"]
+        chance = self.draw(draw_type=0, p00001=p00001, p00003=p00003)["chance"]
+        lottery_msgs = self.lottery(p00001=p00001, award_list=[])
         if chance:
             draw_msg = ""
-            for i in range(chance):
-                ret = self.draw(1, p00001=p00001, p00003=p00003)
+            for _ in range(chance):
+                ret = self.draw(draw_type=1, p00001=p00001, p00003=p00003)
                 draw_msg += ret["msg"] + ";" if ret["status"] else ""
         else:
             draw_msg = "抽奖机会不足"
@@ -388,6 +412,7 @@ class IQIYI(CheckIn):
                 {"name": "抽奖奖励", "value": draw_msg},
             ]
             + [watch_msg]
+            + lottery_msgs
             + level_right_msg
         )
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
