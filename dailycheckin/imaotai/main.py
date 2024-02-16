@@ -283,6 +283,7 @@ userId: 2
         userId = self.check_item.get("userid")
         lat = self.check_item.get("lat")
         lng = self.check_item.get("lng")
+        item_codes = self.check_item.get("item_codes", self.ITEM_CODES)
         reserve_rule = self.check_item.get("reserve_rule", 0)
         msg = [
             {
@@ -298,7 +299,7 @@ userId: 2
         self.get_current_session_id()
         self.init_headers(user_id=userId, token=token, lng=lng, lat=lat)
         try:
-            for item in self.ITEM_CODES:
+            for item in item_codes:
                 max_shop_id = self.get_location_count(
                     province=province,
                     city=city,
