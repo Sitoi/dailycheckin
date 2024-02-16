@@ -128,7 +128,7 @@ class IQIYI(CheckIn):
             for item in res["data"]["tasks"]["daily"]:
                 task_list.append(
                     {
-                        "name": item["name"],
+                        "taskTitle": item["taskTitle"],
                         "taskCode": item["taskCode"],
                         "status": item["status"],
                         "taskReward": item["taskReward"]["task_reward_growth"],
@@ -172,10 +172,10 @@ class IQIYI(CheckIn):
                 params["taskCode"] = item.get("taskCode")
                 requests.get(url=url, params=params)
             elif item["status"] == 4:
+                params["taskCode"] = item.get("taskCode")
                 requests.get(
                     url="https://tc.vip.iqiyi.com/taskCenter/task/notify", params=params
                 )
-                params["taskCode"] = item.get("taskCode")
                 requests.get(url=url, params=params)
             elif item["status"] == 1:
                 growth_task += item["taskReward"]
@@ -384,10 +384,9 @@ class IQIYI(CheckIn):
         else:
             draw_msg = "抽奖机会不足"
         task_msg = ""
-        for _ in range(6):
+        for _ in range(3):
             task_list = self.query_user_task(p00001=p00001)
             self.join_task(p00001=p00001, task_list=task_list)
-            time.sleep(10)
             task_msg = self.get_task_rewards(p00001=p00001, task_list=task_list)
         try:
             user_info = json.loads(unquote(p00002, encoding="utf-8"))
