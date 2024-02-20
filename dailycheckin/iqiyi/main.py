@@ -369,6 +369,33 @@ class IQIYI(CheckIn):
             "value": f"已经刷了 {total_time}秒, 数据同步有延迟, 仅供参考",
         }
 
+    def give_times(self, p00001):
+        url = "https://pcell.iqiyi.com/lotto/giveTimes"
+        times_code_list = ["browseWeb", "browseWeb", "bookingMovie"]
+        for times_code in times_code_list:
+            params = {
+                "actCode": "bcf9d354bc9f677c",
+                "timesCode": times_code,
+                "P00001": p00001,
+            }
+            response = requests.get(url, params=params)
+            print(response.json())
+
+    def lotto_lottery(self, p00001):
+        self.give_times(p00001=p00001)
+        gift_list = []
+        for _ in range(5):
+            url = "https://pcell.iqiyi.com/lotto/lottery"
+            params = {"actCode": "bcf9d354bc9f677c", "P00001": p00001}
+            response = requests.get(url, params=params)
+            gift_name = response.json()["data"]["giftName"]
+            if gift_name and "未中奖" not in gift_name:
+                gift_list.append(gift_name)
+        if gift_list:
+            return [{"name": "白金抽奖", "value": "、".join(gift_list)}]
+        else:
+            return [{"name": "白金抽奖", "value": "未中奖"}]
+
     def main(self):
         p00001, p00002, p00003, dfp = self.parse_cookie(self.check_item.get("cookie"))
         sign_msg = self.sign(p00001=p00001, p00003=p00003)
@@ -376,6 +403,8 @@ class IQIYI(CheckIn):
         level_right_msg = self.level_right(p00001=p00001)
         chance = self.draw(draw_type=0, p00001=p00001, p00003=p00003)["chance"]
         lottery_msgs = self.lottery(p00001=p00001, award_list=[])
+        lotto_lottery_msg = self.lotto_lottery(p00001=p00001)
+
         if chance:
             draw_msg = ""
             for _ in range(chance):
@@ -413,6 +442,7 @@ class IQIYI(CheckIn):
             + [watch_msg]
             + lottery_msgs
             + level_right_msg
+            + lotto_lottery_msg
         )
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
