@@ -1,0 +1,34 @@
+{
+  "name": "dailycheckin-docs",
+  "version": "2024-01-14",
+  "description": "DailyCheckIn docs",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && touch out/.nojekyll",
+    "deploy": "gh-pages -d out -t true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sitoi/dailycheckin.git"
+  },
+  "author": "Sitoi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sitoi/dailycheckin/issues"
+  },
+  "homepage": "https://github.com/Sitoi/dailycheckin#readme",
+  "dependencies": {
+    "next": "14.0.4",
+    "nextra": "latest",
+    "nextra-theme-docs": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3",
+    "gh-pages": "^6.1.1"
+  }
+}

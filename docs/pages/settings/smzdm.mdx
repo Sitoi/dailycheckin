@@ -1,0 +1,105 @@
+import { Callout } from 'nextra/components'
+import { Cards, Card } from 'nextra/components'
+import { Steps } from 'nextra/components'
+
+<Cards>
+  <Card
+    title="AcFun"
+    href="/settings/acfun"
+  />
+  <Card
+    title="阿里云盘"
+    href="/settings/aliyun"
+  />
+  <Card
+    title="奥拉星"
+    href="/settings/aolaxing"
+  />
+  <Card
+    title="Baidu 站点提交"
+    href="/settings/baidu"
+  />
+  <Card
+    title="Bilibili"
+    href="/settings/bilibili"
+  />
+  <Card
+    title="恩山无线论坛"
+    href="/settings/enshan"
+  />
+  <Card
+    title="i茅台"
+    href="/settings/imaotai"
+  />
+  <Card
+    title="爱奇艺"
+    href="/settings/iqiyi"
+  />
+  <Card
+    title="全民 K 歌"
+    href="/settings/kgqq"
+  />
+  <Card
+    title="小米运动"
+    href="/settings/mimotion"
+  />
+  <Card
+    title="什么值得买"
+    href="/settings/smzdm"
+  />
+  <Card
+    title="百度贴吧"
+    href="/settings/tieba"
+  />
+  <Card
+    title="V2EX"
+    href="/settings/v2ex"
+  />
+  <Card
+    title="有道云笔记"
+    href="/settings/youdao"
+  />
+</Cards>
+
+# 什么值得买
+
+### 配置示例
+
+```json filename="config.json" copy filename="config.json"
+{
+  "SMZDM": [
+    {
+      "cookie": "__ckguid=xxxxxx"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ]
+}
+```
+
+### 配置说明
+
+|        参数        |          说明          |
+| :----------------: | :--------------------: |
+| _**SMZDM**_.cookie | 什么值得买 cookie 信息 |
+
+## 获取方式
+
+<Steps>
+
+### 进入[什么值得买](https://www.smzdm.com/)
+
+### 打开开发者工具
+
+按 `F12` 打开开发者工具，刷新页面
+
+### 点击 Network 标签
+
+### 选择 Doc 标签
+
+### 选中 www.smzdm.com
+
+### 下滑找到 cookie 全选复制即可
+
+</Steps>

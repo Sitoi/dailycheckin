@@ -1,0 +1,40 @@
+import { Callout } from 'nextra/components'
+
+# 2024-01-14
+
+![PyPI](https://img.shields.io/badge/Pypi-v24.1.14-brightgreen)
+
+## ✨ 功能
+
+- 新增「爱奇艺」刷观看时长、领域 VIP7 升级星钻会员等功能
+
+## 📦 部署
+
+- 更新 Docker 部署
+
+  - 优化自定义定时任务方式（建议优化）
+
+## ⚠️ 建议
+
+<Callout
+  type="warning"
+  emoji="⚠️"
+>
+  建议 Docker 用户 和 群晖用户 升级 Docker Image。
+</Callout>
+
+1. 备份 config.json 文件
+2. 更新 image 镜像{' '}
+
+```bash copy
+curl https://cdn.jsdelivr.net/gh/sitoi/dailycheckin@main/docker_start.sh | bash
+```
+
+<Callout
+  type="warning"
+  emoji="⚠️"
+>
+  建议 其他方式部署的用户，更改定时时间到早上 09:00-10:00（茅台申购时间段）。
+</Callout>
+
+1. 修改 crontab 定时配置即可

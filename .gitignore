@@ -131,3 +131,6 @@ dmypy.json
 .pyre/
 .idea
 config.json
+
+.next
+node_modules

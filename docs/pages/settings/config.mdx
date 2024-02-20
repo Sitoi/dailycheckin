@@ -1,0 +1,317 @@
+import { Callout } from 'nextra/components'
+import { Cards, Card } from 'nextra/components'
+import { Steps } from 'nextra/components'
+
+# config.json 配置
+
+## 示例文件
+
+以下是一份默认的 `config.json` 配置文件，你可以直接复制到你的 `config.json` 文件中，然后修改其中的参数。
+
+<Callout
+  type="warning"
+  emoji="⚠️"
+>
+  请务必到 [https://www.json.cn/](https://www.json.cn/) 网站检查 `config.json`
+  文件格式是否正确！
+</Callout>
+
+```json filename="config.json" copy
+{
+  "BARK_URL": "",
+  "COOLPUSHEMAIL": true,
+  "COOLPUSHQQ": true,
+  "COOLPUSHSKEY": "",
+  "COOLPUSHWX": true,
+  "DINGTALK_ACCESS_TOKEN": "",
+  "DINGTALK_SECRET": "",
+  "FSKEY": "",
+  "PUSHPLUS_TOKEN": "",
+  "PUSHPLUS_TOPIC": "",
+  "QMSG_KEY": "",
+  "QMSG_TYPE": "",
+  "QYWX_AGENTID": "",
+  "QYWX_CORPID": "",
+  "QYWX_CORPSECRET": "",
+  "QYWX_KEY": "",
+  "QYWX_MEDIA_ID": "",
+  "QYWX_TOUSER": "",
+  "SCKEY": "",
+  "SENDKEY": "",
+  "TG_API_HOST": "",
+  "TG_BOT_TOKEN": "",
+  "TG_PROXY": "",
+  "TG_USER_ID": "",
+  "MERGE_PUSH": "",
+  "ACFUN": [
+    {
+      "password": "Sitoi",
+      "phone": "18888xxxxxx"
+    },
+    {
+      "password": "多账号 密码填写，请参考上面",
+      "phone": "多账号 手机号填写，请参考上面"
+    }
+  ],
+  "ALIYUN": [
+    {
+      "refresh_token": "599dcf65xxxxxx"
+    },
+    {
+      "refresh_token": "多账号 refresh_token"
+    }
+  ],
+  "BAIDU": [
+    {
+      "data_url": "https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/baidu_urls.txt",
+      "submit_url": "http://data.zz.baidu.com/urls?site=https://sitoi.cn&token=xxxxxx",
+      "times": 10
+    },
+    {
+      "data_url": "多账号 data_url 链接地址，以实际获取为准",
+      "submit_url": "多账号 submit_url 链接地址，以实际获取为准",
+      "times": 10
+    }
+  ],
+  "BILIBILI": [
+    {
+      "coin_num": 0,
+      "coin_type": 1,
+      "cookie": "_uuid=xxxxxx; rpdid=xxxxxx; LIVE_BUVID=xxxxxx; PVID=xxxxxx; blackside_state=xxxxxx; CURRENT_FNVAL=xxxxxx; buvid3=xxxxxx; fingerprint3=xxxxxx; fingerprint=xxxxxx; buivd_fp=xxxxxx; buvid_fp_plain=xxxxxx; DedeUserID=xxxxxx; DedeUserID__ckMd5=xxxxxx; SESSDATA=xxxxxx; bili_jct=xxxxxx; bsource=xxxxxx; finger=xxxxxx; fingerprint_s=xxxxxx;",
+      "silver2coin": true
+    },
+    {
+      "coin_num": 0,
+      "coin_type": 1,
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "silver2coin": true
+    }
+  ],
+
+  "IMAOTAI": [
+    {
+      "city": "上海市",
+      "lat": "3.025626",
+      "lng": "3.025626",
+      "mobile": "18888xxxxxx",
+      "province": "上海市",
+      "token": "eyJxxxxxx",
+      "userid": "1xxxxxx4"
+    },
+    {
+      "city": "多账号 城市",
+      "lat": "多账号 纬度",
+      "lng": "多账号 经度",
+      "mobile": "多账号 手机号",
+      "province": "多账号 省份",
+      "token": "多账号 token",
+      "userid": "多账号 用户 id"
+    }
+  ],
+  "IQIYI": [
+    {
+      "cookie": "__dfp=xxxxxx; QP0013=xxxxxx; QP0022=xxxxxx; QYABEX=xxxxxx; P00001=xxxxxx; P00002=xxxxxx; P00003=xxxxxx; P00007=xxxxxx; QC163=xxxxxx; QC175=xxxxxx; QC179=xxxxxx; QC170=xxxxxx; P00010=xxxxxx; P00PRU=xxxxxx; P01010=xxxxxx; QC173=xxxxxx; QC180=xxxxxx; P00004=xxxxxx; QP0030=xxxxxx; QC006=xxxxxx; QC007=xxxxxx; QC008=xxxxxx; QC010=xxxxxx; nu=xxxxxx; __uuid=xxxxxx; QC005=xxxxxx;"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "KGQQ": [
+    {
+      "cookie": "muid=xxxxxx; uid=xxxxxx; userlevel=xxxxxx; openid=xxxxxx; openkey=xxxxxx; opentype=xxxxxx; qrsig=xxxxxx; pgv_pvid=xxxxxx;"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "MIMOTION": [
+    {
+      "max_step": "20000",
+      "min_step": "10000",
+      "password": "Sitoi",
+      "phone": "18888xxxxxx"
+    },
+    {
+      "max_step": "多账号 最大步数填写，请参考上面",
+      "min_step": "多账号 最小步数填写，请参考上面",
+      "password": "多账号 密码填写，请参考上面",
+      "phone": "多账号 手机号填写，请参考上面"
+    }
+  ],
+  "SMZDM": [
+    {
+      "cookie": "__ckguid=xxxxxx"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "TIEBA": [
+    {
+      "cookie": "BIDUPSID=xxxxxx; PSTM=xxxxxx; BAIDUID=xxxxxx; BAIDUID_BFESS=xxxxxx; delPer=xxxxxx; PSINO=xxxxxx; H_PS_PSSID=xxxxxx; BA_HECTOR=xxxxxx; BDORZ=xxxxxx; TIEBA_USERTYPE=xxxxxx; st_key_id=xxxxxx; BDUSS=xxxxxx; BDUSS_BFESS=xxxxxx; STOKEN=xxxxxx; TIEBAUID=xxxxxx; ab_sr=xxxxxx; st_data=xxxxxx; st_sign=xxxxxx;"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ],
+  "V2EX": [
+    {
+      "cookie": "_ga=xxxxxx; __cfduid=xxxxxx; PB3_SESSION=xxxxxx; A2=xxxxxx; V2EXSETTINGS=xxxxxx; V2EX_REFERRER=xxxxxx; V2EX_LANG=xxxxxx; _gid=xxxxxx; V2EX_TAB=xxxxxx;",
+      "proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）",
+      "proxy": "使用代理的信息，无密码例子: http://127.0.0.1:1080 有密码例子: http://username:password@127.0.0.1:1080"
+    }
+  ],
+  "YOUDAO": [
+    {
+      "cookie": "JSESSIONID=xxxxxx; __yadk_uid=xxxxxx; OUTFOX_SEARCH_USER_ID_NCOO=xxxxxx; YNOTE_SESS=xxxxxx; YNOTE_PERS=xxxxxx; YNOTE_LOGIN=xxxxxx; YNOTE_CSTK=xxxxxx; _ga=xxxxxx; _gid=xxxxxx; _gat=xxxxxx; PUBLIC_SHARE_18a9dde3de846b6a69e24431764270c4=xxxxxx;"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ]
+}
+```
+
+## 通知平台配置
+
+<Callout type="info">
+  第一步：选择适合自己的通知平台，点进对应的通知平台，配置相关的参数，填入
+  `config.json` 文件中。
+</Callout>
+
+<Callout
+  type="warning"
+  emoji="⚠️"
+>
+  请务必到 [https://www.json.cn/](https://www.json.cn/) 网站检查 `config.json`
+  文件格式是否正确！
+</Callout>
+
+<Cards>
+  <Card
+    title="BARK"
+    href="/settings/notify/bark"
+  />
+  <Card
+    title="CoolPush"
+    href="/settings/notify/coolpush"
+  />
+  <Card
+    title="钉钉"
+    href="/settings/notify/dingtalk"
+  />
+  <Card
+    title="飞书"
+    href="/settings/notify/feishu"
+  />
+  <Card
+    title="PushPlus"
+    href="/settings/notify/pushplus"
+  />
+  <Card
+    title="Qmsg 酱"
+    href="/settings/notify/qmsg"
+  />
+  <Card
+    title="企业微信应用消息"
+    href="/settings/notify/qywx"
+  />
+  <Card
+    title="企业微信群机器人"
+    href="/settings/notify/qywxrobot"
+  />
+  <Card
+    title="Server 酱"
+    href="/settings/notify/server"
+  />
+  <Card
+    title="Telegram"
+    href="/settings/notify/telegram"
+  />
+  <Card
+    title="Server 酱 TURBO"
+    href="/settings/notify/turbo"
+  />
+</Cards>
+
+## 签到平台配置
+
+<Callout type="info">
+  第二步：配置需要签到的平台，点进对应的签到平台，配置相关的参数，填入
+  `config.json` 文件中。
+</Callout>
+
+<Callout
+  type="warning"
+  emoji="⚠️"
+>
+  请务必到 [https://www.json.cn/](https://www.json.cn/) 网站检查 `config.json`
+  文件格式是否正确！
+</Callout>
+
+<Cards>
+  <Card
+    title="AcFun"
+    href="/settings/acfun"
+  />
+  <Card
+    title="阿里云盘"
+    href="/settings/aliyun"
+  />
+  <Card
+    title="奥拉星"
+    href="/settings/aolaxing"
+  />
+  <Card
+    title="Baidu 站点提交"
+    href="/settings/baidu"
+  />
+  <Card
+    title="Bilibili"
+    href="/settings/bilibili"
+  />
+  <Card
+    title="恩山无线论坛"
+    href="/settings/enshan"
+  />
+  <Card
+    title="i茅台"
+    href="/settings/imaotai"
+  />
+  <Card
+    title="爱奇艺"
+    href="/settings/iqiyi"
+  />
+  <Card
+    title="全民 K 歌"
+    href="/settings/kgqq"
+  />
+  <Card
+    title="小米运动"
+    href="/settings/mimotion"
+  />
+  <Card
+    title="什么值得买"
+    href="/settings/smzdm"
+  />
+  <Card
+    title="百度贴吧"
+    href="/settings/tieba"
+  />
+  <Card
+    title="V2EX"
+    href="/settings/v2ex"
+  />
+  <Card
+    title="有道云笔记"
+    href="/settings/youdao"
+  />
+</Cards>
+---
+
+<Callout type="info">
+  配置完成后，根据部署方法中的「运行」教程执行程序，进行签到
+</Callout>

@@ -1,0 +1,13 @@
+{
+  "bark": "Bark",
+  "coolpush": "CoolPush",
+  "dingtalk": "钉钉",
+  "feishu": "飞书",
+  "pushplus": "PushPlus",
+  "qmsg": "QMSG",
+  "qywx": "企业微信应用消息",
+  "qywxrobot": "企业微信群机器人",
+  "telegram": "Telegram",
+  "server": "Server 酱",
+  "turbo": "Server 酱 Turbo"
+}

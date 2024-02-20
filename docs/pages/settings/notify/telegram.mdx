@@ -1,0 +1,70 @@
+import { Cards, Card } from 'nextra/components'
+
+<Cards>
+  <Card
+    title="BARK"
+    href="/settings/notify/bark"
+  />
+  <Card
+    title="CoolPush"
+    href="/settings/notify/coolpush"
+  />
+  <Card
+    title="钉钉"
+    href="/settings/notify/dingtalk"
+  />
+  <Card
+    title="飞书"
+    href="/settings/notify/feishu"
+  />
+  <Card
+    title="PushPlus"
+    href="/settings/notify/pushplus"
+  />
+  <Card
+    title="Qmsg 酱"
+    href="/settings/notify/qmsg"
+  />
+  <Card
+    title="企业微信应用消息"
+    href="/settings/notify/qywx"
+  />
+  <Card
+    title="企业微信群机器人"
+    href="/settings/notify/qywxrobot"
+  />
+  <Card
+    title="Server 酱"
+    href="/settings/notify/server"
+  />
+  <Card
+    title="Telegram"
+    href="/settings/notify/telegram"
+  />
+  <Card
+    title="Server 酱 TURBO"
+    href="/settings/notify/turbo"
+  />
+</Cards>
+
+# Telegram
+
+### 配置示例
+
+```json filename="config.json" copy
+{
+  "TG_API_HOST": "",
+  "TG_BOT_TOKEN": "",
+  "TG_PROXY": "",
+  "TG_USER_ID": "",
+  "MERGE_PUSH": ""
+}
+```
+
+|        Name        |                                                                         说明                                                                         |
+| :----------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+| _**TG_BOT_TOKEN**_ |                                                             telegram 推送 `TG_BOT_TOKEN`                                                             |
+|  _**TG_USER_ID**_  |                                                              telegram 推送 `TG_USER_ID`                                                              |
+| _**TG_API_HOST**_  | Telegram api 自建的反向代理地址 例子：反向代理地址 http://aaa.bbb.ccc 则填写 aaa.bbb.ccc [简略搭建教程](https://shimo.im/docs/JD38CJDQtYy3yTd8/read) |
+|   _**TG_PROXY**_   |                                                   Telegram 代理的信息，例子: http://127.0.0.1:1080                                                   |
+|  _**MERGE_PUSH**_  |                                                    **true**: 将推送消息合并；**false**: 分开推送                                                     |

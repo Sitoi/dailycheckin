@@ -1,0 +1,32 @@
+name: Deploy
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+defaults:
+  run:
+    shell: bash
+    working-directory: ./docs
+
+jobs:
+  github_pages_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+      - uses: actions/checkout@v3
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - name: Install dependencies
+        run: |
+          npm install
+          npm run export
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

@@ -1,0 +1,63 @@
+import { Cards, Card } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+<Cards>
+  <Card
+    title="Docker 部署"
+    href="/install/docker"
+  />
+  <Card
+    title="青龙部署"
+    href="/install/qinglong"
+  />
+  <Card
+    title="群晖部署"
+    href="/install/synology"
+  />
+</Cards>
+
+# 手动部署
+
+## 一、安装
+
+```bash copy
+pip install dailycheckin --user
+```
+
+## 二、配置
+
+<Callout
+  type="warning"
+  emoji="⚠️"
+>
+  请务必到 [https://www.json.cn/](https://www.json.cn/) 网站检查 `config.json`
+  文件格式是否正确！
+</Callout>
+
+在项目目录下新建并编写 `config.json` 配置文件，参考[配置说明文档](/settings/config) ，并修改 `config.json`
+
+## 三、运行
+
+1. 运行全部脚本
+
+   ```bash copy
+   dailycheckin
+   ```
+
+2. 运行指定脚本（包含），可以同时选择多个，用「空格」分开
+
+   ```bash copy
+   dailycheckin --include MUSIC163 BAIDU
+   ```
+
+3. 运行指定脚本（排除），可以同时选择多个，用「空格」分开
+
+   ```bash copy
+   dailycheckin --exclude MUSIC163 BAIDU
+   ```
+
+## 四、更新
+
+```bash copy
+pip install dailycheckin --user --upgrade
+```

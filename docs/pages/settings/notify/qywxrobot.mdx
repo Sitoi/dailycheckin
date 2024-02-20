@@ -1,0 +1,69 @@
+import { Cards, Card } from 'nextra/components'
+
+<Cards>
+  <Card
+    title="BARK"
+    href="/settings/notify/bark"
+  />
+  <Card
+    title="CoolPush"
+    href="/settings/notify/coolpush"
+  />
+  <Card
+    title="钉钉"
+    href="/settings/notify/dingtalk"
+  />
+  <Card
+    title="飞书"
+    href="/settings/notify/feishu"
+  />
+  <Card
+    title="PushPlus"
+    href="/settings/notify/pushplus"
+  />
+  <Card
+    title="Qmsg 酱"
+    href="/settings/notify/qmsg"
+  />
+  <Card
+    title="企业微信应用消息"
+    href="/settings/notify/qywx"
+  />
+  <Card
+    title="企业微信群机器人"
+    href="/settings/notify/qywxrobot"
+  />
+  <Card
+    title="Server 酱"
+    href="/settings/notify/server"
+  />
+  <Card
+    title="Telegram"
+    href="/settings/notify/telegram"
+  />
+  <Card
+    title="Server 酱 TURBO"
+    href="/settings/notify/turbo"
+  />
+</Cards>
+
+# 企业微信群机器人
+
+### 配置示例
+
+```json filename="config.json" copy
+{
+  "QYWX_AGENTID": "",
+  "QYWX_CORPID": "",
+  "QYWX_CORPSECRET": "",
+  "QYWX_KEY": "",
+  "QYWX_MEDIA_ID": "",
+  "QYWX_TOUSER": "",
+  "MERGE_PUSH": ""
+}
+```
+
+|       参数       |                                                        说明                                                        |
+| :--------------: | :----------------------------------------------------------------------------------------------------------------: |
+|  _**QYWX_KEY**_  | 密钥，企业微信推送 `webhook` 后面的 `key` 详见[官方说明文档](https://work.weixin.qq.com/api/doc/90000/90136/91770) |
+| _**MERGE_PUSH**_ |                                   **true**: 将推送消息合并；**false**: 分开推送                                    |

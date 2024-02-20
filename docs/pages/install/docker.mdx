@@ -1,0 +1,153 @@
+import { Cards, Card } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import { FileTree } from 'nextra/components'
+
+<Cards>
+  <Card
+    title="手动部署"
+    href="/install/local"
+  />
+  <Card
+    title="青龙部署"
+    href="/install/qinglong"
+  />
+  <Card
+    title="群晖部署"
+    href="/install/synology"
+  />
+</Cards>
+# Docker 使用教程
+
+## 一、安装
+
+运行如下命令一键启动并创建服务
+
+```bash copy
+curl https://cdn.jsdelivr.net/gh/sitoi/dailycheckin@main/docker_start.sh | bash
+```
+
+> 运行成功会自动创建如下目录结构, 并成功启动 docker 服务。
+
+<FileTree>
+  <FileTree.Folder
+    name="."
+    defaultOpen
+  >
+    <FileTree.Folder
+      name="config"
+      defaultOpen
+    >
+      <FileTree.File name="config.json" />
+    </FileTree.Folder>
+    <FileTree.Folder
+      name="cron"
+      defaultOpen
+    >
+      <FileTree.File name="crontab_list.sh" />
+    </FileTree.Folder>
+    <FileTree.Folder
+      name="logs"
+      defaultOpen
+    >
+      <FileTree.File name="default_task.log" />
+    </FileTree.Folder>
+    <FileTree.File name="docker-compose.yml" />
+
+  </FileTree.Folder>
+</FileTree>
+
+- `./config/config.json`: 配置文件
+- `./cron/crontab_list.sh`: 配置定时任务的文件
+- `./logs`: 日志文件
+- `./docker-compose.yml`: docker 启动文件（只在有 docker-compose 的情况下创建）
+
+## 二、配置
+
+<Callout
+  type="warning"
+  emoji="⚠️"
+>
+  请务必到 [https://www.json.cn/](https://www.json.cn/) 网站检查 `config.json`
+  文件格式是否正确！
+</Callout>
+
+文件路径: `./config/config.json`
+
+参考[配置说明文档](/settings/config) ，并修改 `config.json`
+
+## 三、定时
+
+修改 `./cron/crontab_list.sh` 文件, 根据实际情况修改下面的默认文件。
+
+```bash filename="crontab_list.sh" copy
+##############默认任务##############
+# 每 12 小时更新 Pipy 包，如果不需要更新 pypi 包请注释掉下面这行
+0 */12 * * * echo "定时任务更新依赖..." && pip install dailycheckin --upgrade --user >> /dailycheckin/logs/update-pypi.log 2>&1
+# 每天的 23:50 分清理一次日志
+50 23 */2 * * rm -rf /dailycheckin/logs/*.log
+
+##############每日签到一次任务##############
+# 每日签到(9:00 执行全部签到)
+0 9 * * * cd /dailycheckin && dailycheckin >> /dailycheckin/logs/dailycheckin.log 2>&1
+```
+
+## 四、运行
+
+#### 运行全部脚本
+
+```bash copy
+docker exec -it dailycheckin dailycheckin
+```
+
+#### 运行指定脚本（包含），可以同时选择多个，用「空格」分开
+
+```bash copy
+docker exec -it dailycheckin dailycheckin --include MUSIC163 BAIDU
+```
+
+#### 运行指定脚本（排除），可以同时选择多个，用「空格」分开
+
+```bash copy
+docker exec -it dailycheckin dailycheckin --exclude MUSIC163 BAIDU
+```
+
+## 更新 Pypi
+
+```bash copy
+docker exec dailycheckin sh /dailycheckin/default_task.sh
+```
+
+## 升级 Docker Image
+
+```bash copy
+curl https://cdn.jsdelivr.net/gh/sitoi/dailycheckin@main/docker_start.sh | bash
+```
+
+## 附录
+
+### docker-compose 安装
+
+##### 方式一（Python 环境）
+
+```bash copy
+pip3 install docker-compose
+```
+
+##### 方式二
+
+```bash copy
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+通过 `docker-compose version` 查看 `docker-compose` 版本，确认是否安装成功。
+
+### docker-compose 常用命令
+
+- `docker-compose logs` 打印日志
+- `docker-compose pull` 更新镜像
+- `docker-compose stop` 停止容器
+- `docker-compose restart` 重启容器
+- `docker-compose down` 停止并删除容器
+- `docker exec -it dailycheckin sh` 进入 docker

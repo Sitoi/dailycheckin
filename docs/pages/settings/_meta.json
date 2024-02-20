@@ -1,0 +1,18 @@
+{
+  "config": "config.json 配置",
+  "notify": "通知配置",
+  "acfun":"AcFun",
+  "aolaxing":"奥拉星",
+  "aliyun":"阿里云盘",
+  "baidu":"百度站点提交",
+  "bilibili":"BiliBili",
+  "enshan":"恩山无线论坛",
+  "imaotai":"i茅台",
+  "iqiyi":"爱奇艺",
+  "kgqq":"全民K歌",
+  "mimotion":"小米运动",
+  "smzdm":"什么值得买",
+  "tieba":"百度贴吧",
+  "v2ex":"V2EX",
+  "youdao":"有道云笔记"
+}
