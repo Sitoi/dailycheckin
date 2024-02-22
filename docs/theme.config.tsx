@@ -25,11 +25,11 @@ const config: DocsThemeConfig = {
           >
             <stop
               offset="0%"
-              stop-color="#2AABEE"
+              stopColor="#2AABEE"
             />
             <stop
               offset="100%"
-              stop-color="#229ED9"
+              stopColor="#229ED9"
             />
           </linearGradient>
         </defs>
@@ -63,13 +63,13 @@ const config: DocsThemeConfig = {
     }
   },
   banner: {
-    key: '2024.2.20-release',
+    key: '2024.2.22-release',
     text: (
       <a
-        href="/dailycheckin/history/2024-02-20/"
+        href="/dailycheckin/history/2024-02-22/"
         target="_blank"
       >
-        🎉 DailyCheckIn 2024.2.20 is released. Read more →
+        🎉 DailyCheckIn 2024.2.22 is released. Read more →
       </a>
     ),
   },
