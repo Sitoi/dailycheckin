@@ -9,12 +9,6 @@
 <!-- SHIELD GROUP -->
 <div id="shield">
 
-<style>
-#shield img {
-    display: inline-block;
-}
-</style>
-
 [![][github-releases-shield]][github-releases-link]
 [![][pypi-version-shield]][pypi-version-link]
 [![][github-release-date-shield]][github-release-date-link]
