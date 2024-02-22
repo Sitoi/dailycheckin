@@ -7,6 +7,13 @@
 基于「Docker」/「青龙面板」/「群晖」/「本地」的每日签到脚本
 
 <!-- SHIELD GROUP -->
+<div id="shield">
+
+<style>
+#shield img {
+    display: inline-block;
+}
+</style>
 
 [![][github-releases-shield]][github-releases-link]
 [![][pypi-version-shield]][pypi-version-link]
@@ -22,6 +29,8 @@
 [![][pypi-dm-shield]][pypi-dm-link]
 [![][github-license-shield]][github-license-link]
 
+<!-- SHIELD GROUP -->
+</div>
 </div>
 
 ## ✨ 特性
