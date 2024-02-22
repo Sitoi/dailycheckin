@@ -19,7 +19,7 @@ class AliYun(CheckIn):
         url = "https://auth.aliyundrive.com/v2/account/token"
         data = {"grant_type": "refresh_token", "refresh_token": refresh_token}
         response = requests.post(url=url, json=data).json()
-        access_token = response["access_token"]
+        access_token = response.get("access_token")
         return access_token
 
     def sign(self, access_token):
@@ -62,6 +62,8 @@ class AliYun(CheckIn):
     def main(self):
         refresh_token = self.check_item.get("refresh_token")
         access_token = self.update_token(refresh_token)
+        if not access_token:
+            return [{"name": "阿里云盘", "value": "token 过期"}]
         msg = self.sign(access_token)
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
