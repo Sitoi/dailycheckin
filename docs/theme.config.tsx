@@ -44,6 +44,15 @@ const config: DocsThemeConfig = {
       </svg>
     ),
   },
+  head: (
+    <>
+      <script
+        async
+        src="https://umami.sitoi.cn/script.js"
+        data-website-id="93cd32e8-03fb-4896-9420-6d9bff2d2359"
+      ></script>
+    </>
+  ),
   footer: {
     text: 'DailyCheckin Docs © 2024',
   },
