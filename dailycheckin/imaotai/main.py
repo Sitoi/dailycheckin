@@ -247,16 +247,27 @@ userId: 2
             "https://app.moutai519.com.cn/xhr/front/mall/reservation/add",
             json=params,
             headers=self.headers,
-        )
-        msg = {
-            "name": "申购结果",
-            "value": responses.json().get("data", {}).get("successDesc"),
-        }
+        ).json()
+        if responses.get("code") == 401:
+            msg = {
+                "name": "申购结果",
+                "value": "token失效, 请重新抓包获取",
+            }
+        elif responses.get("code") != 2000:
+            msg = {
+                "name": "申购结果",
+                "value": responses.get("message"),
+            }
+        else:
+            msg = {
+                "name": "申购结果",
+                "value": responses.get("data", {}).get("successDesc"),
+            }
         return msg
 
     def getUserEnergyAward(self):
         """
-        领取耐力和小茅运
+        耐力值
         """
         cookies = {
             "MT-Device-ID-Wap": self.headers["MT-Device-ID"],
@@ -268,11 +279,18 @@ userId: 2
             cookies=cookies,
             headers=self.headers,
             json={},
-        )
-        return {
-            "name": "小茅运",
-            "value": response.json().get("message"),
-        }
+        ).json()
+        if response.get("code") == 200:
+            msg = {
+                "name": "耐力",
+                "value": "✅领取耐力成功",
+            }
+        else:
+            msg = {
+                "name": "耐力",
+                "value": response.get("message"),
+            }
+        return msg
 
     def main(self):
         msg = []
@@ -314,6 +332,7 @@ userId: 2
                     continue
                 reservation_params = self.act_params(max_shop_id, item)
                 reservation_msg = self.reservation(reservation_params)
+                time.sleep(10)
                 award_msg = self.getUserEnergyAward()
                 msg.append(reservation_msg)
                 msg.append(award_msg)
