@@ -44,12 +44,6 @@ repos:
       - id: isort
         args: ['--profile', 'black', '--filter-files']
 
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.13
-    hooks:
-      - id: ruff
-        args: ['--fix', '--ignore', 'E722']
-
   - repo: https://github.com/psf/black
     rev: 23.9.1
     hooks:
