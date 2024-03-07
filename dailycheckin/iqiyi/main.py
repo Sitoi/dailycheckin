@@ -106,9 +106,7 @@ class IQIYI(CheckIn):
                 msg = [{"name": "签到天数", "value": _msg}]
             else:
                 try:
-                    msg = [
-                        {"name": "签到天数", "value": res["data"]["data"]["signDays"]}
-                    ]
+                    msg = [{"name": "签到天数", "value": res["data"]["data"]["signDays"]}]
                 except Exception as e:
                     msg = [{"name": "签到天数", "value": str(e)}]
         else:
@@ -265,12 +263,7 @@ class IQIYI(CheckIn):
             url="https://act.vip.iqiyi.com/level-right/receive", data=data
         ).json()
         msg = res["msg"]
-        return [
-            {
-                "name": "V7 免费升级星钻",
-                "value": msg,
-            }
-        ]
+        return [{"name": "V7 免费升级星钻", "value": msg}]
 
     def start_watch(self, p00001, p00003, dfp):
         total_time = self.get_watch_time(p00001=p00001)
