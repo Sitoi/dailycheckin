@@ -67,9 +67,8 @@ class SMZDM(CheckIn):
         url2 = "https://user-api.smzdm.com/checkin/all_reward"
         resp = requests.post(url=url2, headers=headers, data=data)
         result = resp.json()
-        normal_reward = result["data"]["normal_reward"]
         msgs = []
-        if normal_reward:
+        if normal_reward := result["data"]["normal_reward"]:
             msgs = [
                 {
                     "name": "签到奖励",
