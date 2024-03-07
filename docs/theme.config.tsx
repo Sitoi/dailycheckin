@@ -72,13 +72,13 @@ const config: DocsThemeConfig = {
     }
   },
   banner: {
-    key: '2024.2.27-release',
+    key: '2024.3.7-release',
     text: (
       <a
-        href="/dailycheckin/history/2024-02-27/"
+        href="/dailycheckin/history/2024-03-07/"
         target="_blank"
       >
-        🎉 DailyCheckIn 2024.2.27 is released. Read more →
+        🎉 DailyCheckIn 2024.3.7 is released. Read more →
       </a>
     ),
   },
