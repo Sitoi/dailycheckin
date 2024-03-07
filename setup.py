@@ -7,7 +7,7 @@ FOLDER = "dailycheckin"
 DESCRIPTION = "dailycheckin"
 EMAIL = "133397418@qq.com"
 AUTHOR = "Sitoi"
-REQUIRES_PYTHON = ">=3.6.0"
+REQUIRES_PYTHON = ">=3.9.0"
 VERSION = None
 
 
@@ -73,10 +73,8 @@ setup(
     entry_points={"console_scripts": ["dailycheckin = dailycheckin.main:checkin"]},
     classifiers=[
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
