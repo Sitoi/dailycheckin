@@ -125,8 +125,11 @@ def message2qywxapp(
     qywx_corpid, qywx_agentid, qywx_corpsecret, qywx_touser, qywx_media_id, qywx_origin, content
 ):
     print("企业微信应用消息推送开始")
+    bastUrl = "https://qyapi.weixin.qq.com"
+    if qywx_origin:
+        bastUrl = qywx_origin;
     res = requests.get(
-        f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
+        f"{bastUrl}/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
     )
     token = res.json().get("access_token", False)
     if qywx_media_id:
@@ -159,16 +162,10 @@ def message2qywxapp(
                 "btntxt": "开源项目",
             },
         }
-    if qywx_origin:
-        requests.post(
-            url=f"{qywx_origin}/cgi-bin/message/send?access_token={token}",
-            data=json.dumps(data),
-        )
-    else:
-        requests.post(
-            url=f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={token}",
-            data=json.dumps(data),
-        )
+    requests.post(
+        url=f"{bastUrl}/cgi-bin/message/send?access_token={token}",
+        data=json.dumps(data),
+    )
     return
 
 
