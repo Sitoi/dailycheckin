@@ -127,9 +127,7 @@ def login(mobile: str, v_code: str):
 
 def get_location():
     while 1:
-        location = input(
-            "请输入精确小区位置，例如[小区名称]，为你自动预约附近的门店:"
-        ).strip()
+        location = input("请输入精确小区位置，例如[小区名称]，为你自动预约附近的门店:").strip()
         selects = select_geo(location)
 
         a = 0
