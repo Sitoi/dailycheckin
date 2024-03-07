@@ -3,7 +3,7 @@ import hashlib
 import hmac
 import json
 import time
-import urllib.parse
+from urllib.parse import quote_plus
 
 import requests
 
@@ -90,7 +90,7 @@ def message2dingtalk(dingtalk_secret, dingtalk_access_token, content):
     hmac_code = hmac.new(
         secret_enc, string_to_sign_enc, digestmod=hashlib.sha256
     ).digest()
-    sign = urllib.parse.quote_plus(base64.b64encode(hmac_code))
+    sign = quote_plus(base64.b64encode(hmac_code))
     send_data = {"msgtype": "text", "text": {"content": content}}
     requests.post(
         url="https://oapi.dingtalk.com/robot/send?access_token={}&timestamp={}&sign={}".format(
@@ -106,6 +106,7 @@ def message2bark(bark_url: str, content):
     print("Bark 推送开始")
     if not bark_url.endswith("/"):
         bark_url += "/"
+    content = quote_plus(content)
     url = f"{bark_url}{content}"
     headers = {"Content-type": "application/x-www-form-urlencoded"}
     requests.get(url=url, headers=headers)
