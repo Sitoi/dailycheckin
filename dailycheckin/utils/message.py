@@ -3,7 +3,7 @@ import hashlib
 import hmac
 import json
 import time
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus,quote
 
 import requests
 
@@ -25,7 +25,7 @@ def send2jenkins(url, token, content):
     print("send to jenkins")
     token=quote(token)
     url = f"{url}&token={token}&text={content}"
-    requests.get(url).content
+    requests.get(url)
     return
 
 def message2coolpush(
