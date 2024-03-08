@@ -41,6 +41,8 @@ notice_map = {
     "TG_PROXY": "",
     "TG_USER_ID": "",
     "MERGE_PUSH": "",
+    "JENKINS_TOKEN": "",
+    "JENKINS_URL": ""
 }
 
 

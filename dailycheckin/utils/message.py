@@ -21,6 +21,12 @@ def message2server_turbo(sendkey, content):
     requests.post(url=f"https://sctapi.ftqq.com/{sendkey}.send", data=data)
     return
 
+def send2jenkins(url, token, content):
+    print("send to jenkins")
+    token=quote(token)
+    url = f"{url}&token={token}&text={content}"
+    requests.get(url).content
+    return
 
 def message2coolpush(
     coolpushskey,
@@ -232,6 +238,8 @@ def push_message(content_list: list, notice_info: dict):
     pushplus_token = notice_info.get("pushplus_token")
     pushplus_topic = notice_info.get("pushplus_topic")
     merge_push = notice_info.get("merge_push")
+    jenkins_url = notice_info.get("jenkins_url")
+    jenkins_token = notice_info.get("jenkins_token")
     content_str = "\n————————————\n\n".join(content_list)
     message_list = [content_str]
     try:
@@ -257,6 +265,11 @@ def push_message(content_list: list, notice_info: dict):
     if not merge_push:
         message_list = content_list
     for message in message_list:
+        if jenkins_token:
+            try:
+                send2jenkins(jenkins_url, jenkins_token, message)
+            except Exception as e:
+                print("send to jenkins error", e)
         if qmsg_key:
             try:
                 message2qmsg(qmsg_key=qmsg_key, qmsg_type=qmsg_type, content=message)
