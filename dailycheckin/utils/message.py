@@ -123,14 +123,20 @@ def message2qywxrobot(qywx_key, content):
 
 
 def message2qywxapp(
-    qywx_corpid, qywx_agentid, qywx_corpsecret, qywx_touser, qywx_media_id, qywx_origin, content
+    qywx_corpid,
+    qywx_agentid,
+    qywx_corpsecret,
+    qywx_touser,
+    qywx_media_id,
+    qywx_origin,
+    content,
 ):
     print("企业微信应用消息推送开始")
-    bastUrl = "https://qyapi.weixin.qq.com"
+    bast_url = "https://qyapi.weixin.qq.com"
     if qywx_origin:
-        bastUrl = qywx_origin;
+        bast_url = qywx_origin
     res = requests.get(
-        f"{bastUrl}/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
+        f"{bast_url}/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
     )
     token = res.json().get("access_token", False)
     if qywx_media_id:
@@ -164,7 +170,7 @@ def message2qywxapp(
             },
         }
     requests.post(
-        url=f"{bastUrl}/cgi-bin/message/send?access_token={token}",
+        url=f"{bast_url}/cgi-bin/message/send?access_token={token}",
         data=json.dumps(data),
     )
     return
