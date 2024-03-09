@@ -132,11 +132,11 @@ def message2qywxapp(
     content,
 ):
     print("企业微信应用消息推送开始")
-    bast_url = "https://qyapi.weixin.qq.com"
+    base_url = "https://qyapi.weixin.qq.com"
     if qywx_origin:
-        bast_url = qywx_origin
+        base_url = qywx_origin
     res = requests.get(
-        f"{bast_url}/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
+        f"{base_url}/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
     )
     token = res.json().get("access_token", False)
     if qywx_media_id:
@@ -170,7 +170,7 @@ def message2qywxapp(
             },
         }
     requests.post(
-        url=f"{bast_url}/cgi-bin/message/send?access_token={token}",
+        url=f"{base_url}/cgi-bin/message/send?access_token={token}",
         data=json.dumps(data),
     )
     return
