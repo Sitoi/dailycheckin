@@ -27,7 +27,7 @@ if [ $? -ne 0 ];then
   echo "未安装 docker ，请先安装 docker 再运行脚本。"
 else
   echo "docker 环境存在，检测 docker-compose 环境是否安装..."
-  docker-compose --version
+  docker-compose --version || docker compose version && alias docker-compose="docker compose"
   if [ $? -ne 0 ];then
     echo "未安装 docker-compose，将使用 docker 命令启动容器..."
     echo "开始通过 docker 命令创建容器"
