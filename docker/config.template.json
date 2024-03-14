@@ -1,5 +1,10 @@
 {
   "BARK_URL":"",
+  "BARK_TITLE":"dailycheckin",
+  "BARK_GROUP":"dailycheckin",
+  "BARK_ICON":"https://cdn.jsdelivr.net/gh/Sitoi/Sitoi.github.io/medias/avatars/avatar.jpg",
+  "BARK_SOUND":"",
+  "BARK_URL_JUMP":"",
   "COOLPUSHEMAIL":true,
   "COOLPUSHQQ":true,
   "COOLPUSHSKEY":"",

@@ -23,11 +23,11 @@ def message2server_turbo(sendkey, content):
 
 
 def message2coolpush(
-    coolpushskey,
-    content,
-    coolpushqq: bool = True,
-    coolpushwx: bool = False,
-    coolpushemail: bool = False,
+        coolpushskey,
+        content,
+        coolpushqq: bool = True,
+        coolpushwx: bool = False,
+        coolpushemail: bool = False,
 ):
     print("Cool Push 推送开始")
     params = {"c": content, "t": "每日签到"}
@@ -102,15 +102,25 @@ def message2dingtalk(dingtalk_secret, dingtalk_access_token, content):
     return
 
 
-def message2bark(bark_url: str, content):
+def message2bark(bark_url: str, content, title: str = None, sound: str = None, group: str = None,
+                 icon: str = None,
+                 url_jump: str = None):
     print("Bark 推送开始")
+    parms = {"sound": sound, "group": group, "icon": icon, "url": url_jump}
     if not bark_url.endswith("/"):
         bark_url += "/"
     content = quote_plus(content)
     url = f"{bark_url}{content}"
+    if title:
+        url = f"{bark_url}{title}/{content}?"
+    for k, v in parms.items():
+        if v:
+            url += f"{k}={v}&"
+    if url.endswith("&"):
+        url = url[:-1]
     headers = {"Content-type": "application/x-www-form-urlencoded"}
-    requests.get(url=url, headers=headers)
-    return
+    resp = requests.get(url=url, headers=headers)
+    return resp
 
 
 def message2qywxrobot(qywx_key, content):
@@ -123,13 +133,13 @@ def message2qywxrobot(qywx_key, content):
 
 
 def message2qywxapp(
-    qywx_corpid,
-    qywx_agentid,
-    qywx_corpsecret,
-    qywx_touser,
-    qywx_media_id,
-    qywx_origin,
-    content,
+        qywx_corpid,
+        qywx_agentid,
+        qywx_corpsecret,
+        qywx_touser,
+        qywx_media_id,
+        qywx_origin,
+        content,
 ):
     print("企业微信应用消息推送开始")
     base_url = "https://qyapi.weixin.qq.com"
@@ -210,6 +220,11 @@ def push_message(content_list: list, notice_info: dict):
     dingtalk_access_token = notice_info.get("dingtalk_access_token")
     fskey = notice_info.get("fskey")
     bark_url = notice_info.get("bark_url")
+    bark_title = notice_info.get("bark_title")
+    bark_icon = notice_info.get("bark_icon")
+    bark_group = notice_info.get("bark_group")
+    bark_sound = notice_info.get("bark_sound")
+    bark_url_jump = notice_info.get("bark_url_jump")  # 收到通知后点击打开的链接
     sckey = notice_info.get("sckey")
     sendkey = notice_info.get("sendkey")
     qmsg_key = notice_info.get("qmsg_key")
@@ -243,13 +258,13 @@ def push_message(content_list: list, notice_info: dict):
         print("获取重要通知失败:", e)
     if merge_push is None:
         if (
-            qmsg_key
-            or coolpushskey
-            or qywx_touser
-            or qywx_corpsecret
-            or qywx_agentid
-            or bark_url
-            or pushplus_token
+                qmsg_key
+                or coolpushskey
+                or qywx_touser
+                or qywx_corpsecret
+                or qywx_agentid
+                or bark_url
+                or pushplus_token
         ):
             merge_push = False
         else:
@@ -288,7 +303,15 @@ def push_message(content_list: list, notice_info: dict):
                 print("企业微信应用消息推送失败", e)
         if bark_url:
             try:
-                message2bark(bark_url=bark_url, content=message)
+                resp = message2bark(bark_url=bark_url, content=message, icon=bark_icon, group=bark_group,title=bark_title,
+                                    sound=bark_sound,
+                                    url_jump=bark_url_jump)
+                error_msg=["414","431","large","long"]
+                # 如果列表中的字符串存在于resp.text中，则分批发送
+                if any(x in resp.text.lower() for x in error_msg):
+                    notice_info["merge_push"] = False
+                    print("Bark 推送内容过长，已自动切换为单条推送")
+                    push_message(content_list=content_list, notice_info=notice_info)
             except Exception as e:
                 print("Bark 推送失败", e)
         if dingtalk_access_token and dingtalk_secret:
