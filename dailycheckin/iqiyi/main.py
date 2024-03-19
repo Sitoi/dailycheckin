@@ -187,6 +187,23 @@ class IQIYI(CheckIn):
             "lotteryType": "0",
             "actCode": "0k9GkUcjqqj4tne8",
         }
+        params = {
+            "P00001": p00001,
+            "deviceID": str(uuid4()),
+            "version": "15.3.0",
+            "platform": str(uuid4())[:16],
+            "lotteryType": "0",
+            "actCode": "0k9GkUcjqqj4tne8",
+            "extendParams": json.dumps(
+                {
+                    "appIds": "iqiyi_pt_vip_iphone_video_autorenew_12m_348yuan_v2",
+                    "supportSk2Identity": True,
+                    "testMode": "0",
+                    "iosSystemVersion": "17.4",
+                    "bundleId": "com.qiyi.iphone",
+                }
+            ),
+        }
         res = requests.get(url, params=params).json()
         msgs = []
         if res.get("code") == "A00000":
