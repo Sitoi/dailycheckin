@@ -332,7 +332,7 @@ userId: 2
                     continue
                 reservation_params = self.act_params(max_shop_id, item)
                 reservation_msg = self.reservation(reservation_params)
-                time.sleep(10)
+                time.sleep(20)
                 award_msg = self.getUserEnergyAward()
                 msg.append(reservation_msg)
                 msg.append(award_msg)
