@@ -17,6 +17,11 @@ checkin_map = checkin_map()
 
 notice_map = {
     "BARK_URL": "",
+    "BARK_TITLE":"",
+    "BARK_GROUP":"",
+    "BARK_ICON":"",
+    "BARK_SOUND":"",
+    "BARK_URL_JUMP":"",
     "COOLPUSHEMAIL": "",
     "COOLPUSHQQ": "",
     "COOLPUSHSKEY": "",
