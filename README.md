@@ -68,8 +68,12 @@
 - [PushDeer](https://www.pushdeer.com/)
 - [wxPusher](https://wxpusher.zjiecode.com/docs/#/)
 
+> [PushDeer预览](https://pic2.ziyuan.wang/user/fansir/2024/05/1715593565981_39b4eff978354.png)
+>
+> [wxPusher预览](https://pic2.ziyuan.wang/user/fansir/2024/05/1715593114657_e53ec9acf7e1e.png)
+>
 > 新增以上渠道配置如下
-> 
+
 ```json
 {
     "PUSHKEY": "", //PushDeer 的 pushkey
