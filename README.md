@@ -65,6 +65,23 @@
 
 ## 💬 通知列表
 
+- [PushDeer](https://www.pushdeer.com/)
+- [wxPusher](https://wxpusher.zjiecode.com/docs/#/)
+
+> 新增以上渠道配置如下
+> 
+```json
+{
+    "PUSHKEY": "", //PushDeer 的 pushkey
+    "WXPUSHER_TK": "", //wxpusher_token
+    "WXPUSHER_UID": "", //wxpusher_uid
+    //以上是新增内容
+    "BARK_URL": "",
+    ...
+}
+```
+
+
 - dingtalk（钉钉）
 - 企业微信群机器人（企业微信）
 - 企业微信应用消息（企业微信）
