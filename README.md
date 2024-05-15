@@ -28,6 +28,38 @@
 </div>
 </div>
 
+
+## 如何使用本仓库内容
+
+在青龙创建一个订阅
+
+拉库命令 `ql repo https://github.com/Fansirsqi/dailycheckin.git null null null main`
+
+配置执行后运行的命令
+`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && pip install requests pycrypto pycryptodome && cd /ql/data/repo/Fansirsqi_dailycheckin_main && python setup.py develop`
+
+在脚本管理根目录创建`config.json`配置文件可以参考官方配置，这里只是增加了一段
+
+[配置示例](https://gist.githubusercontent.com/Fansirsqi/9e238bb3e432fdb7bee1caa46da81519/raw/5a7d599b526564c68b0120e9a275ce6f414757df/config.json)
+
+```
+,
+    "TESTNOTICE": [
+      {
+        "test1": "test1mesg"
+      }
+    ]
+```
+强烈建议您在`https://www.json.cn/`这个网站检查您的配置
+
+最后在定时任务里创建一个测试任务
+
+`task dailycheckin --include TESTNOTICE`运行并查看日志
+
+![1715763862230.png](https://pic2.ziyuan.wang/user/fansir/2024/05/1715763862230_5344cb6724871.png)
+
+![1715763931708.png](https://pic2.ziyuan.wang/user/fansir/2024/05/1715763931708_ec7c766df87c4.png)
+
 ## ✨ 特性
 
 - 📦 支持 Pypi 包安装
@@ -64,6 +96,27 @@
 | 🟢️  | BAIDU    | [百度站点](https://ziyuan.baidu.com/site/index#/)          | 24.02.20 | 提交网站页面供百度收录                                                                                                                         |
 
 ## 💬 通知列表
+
+- [PushDeer](https://www.pushdeer.com/)
+- [wxPusher](https://wxpusher.zjiecode.com/docs/#/)
+
+> [PushDeer预览](https://pic2.ziyuan.wang/user/fansir/2024/05/1715593565981_39b4eff978354.png)
+>
+> [wxPusher预览](https://pic2.ziyuan.wang/user/fansir/2024/05/1715593114657_e53ec9acf7e1e.png)
+>
+> 新增以上渠道配置如下
+
+```json
+{
+    "PUSHKEY": "", //PushDeer 的 pushkey
+    "WXPUSHER_TK": "", //wxpusher_token
+    "WXPUSHER_UID": "", //wxpusher_uid
+    //以上是新增内容
+    "BARK_URL": "",
+    ...
+}
+```
+
 
 - dingtalk（钉钉）
 - 企业微信群机器人（企业微信）

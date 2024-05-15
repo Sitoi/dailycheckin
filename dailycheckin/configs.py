@@ -16,6 +16,9 @@ def checkin_map():
 checkin_map = checkin_map()
 
 notice_map = {
+    "PUSHKEY": "",
+    "WXPUSHER_TK": "",
+    "WXPUSHER_UID": "",
     "BARK_URL": "",
     "COOLPUSHEMAIL": "",
     "COOLPUSHQQ": "",
