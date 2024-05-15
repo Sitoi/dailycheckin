@@ -40,7 +40,13 @@ class IQIYI(CheckIn):
             if re.findall(r"__dfp=(.*?);", cookie)
             else ""
         )
-        return p00001, p00002, p00003, __dfp
+        __dfp = __dfp.split("@")[0]
+        qyid = (
+            re.findall(r"QC005=(.*?);", cookie)[0]
+            if re.findall(r"QC005=(.*?);", cookie)
+            else ""
+        )
+        return p00001, p00002, p00003, __dfp, qyid
 
     @staticmethod
     def user_information(p00001):
@@ -76,29 +82,47 @@ class IQIYI(CheckIn):
             ]
         return msg
 
-    def sign(self, p00001, p00003):
+    def k(self, secret_key, data, split="|"):
+        result_string = split.join(f"{key}={data[key]}" for key in sorted(data))
+        return md5((result_string + split + secret_key).encode("utf-8")).hexdigest()
+
+    def sign(self, p00001, p00003, dfp, qyid):
         """
         VIP 签到
         """
-        qyid = uuid4().hex[:16]
         time_stamp = int(time.time() * 1000)
-        data = f"agentType=1|agentversion=1|appKey=basic_pcw|authCookie={p00001}|qyid={qyid}|task_code=natural_month_sign|timestamp={time_stamp}|typeCode=point|userId={p00003}|UKobMjDMsDoScuWOfp6F"
-        sign = md5(data.encode(encoding="utf-8")).hexdigest()
-        url = f"https://community.iqiyi.com/openApi/task/execute?agentType=1&agentversion=1&appKey=basic_pcw&authCookie={p00001}&qyid={qyid}&sign={sign}&task_code=natural_month_sign&timestamp={time_stamp}&typeCode=point&userId={p00003}"
-        body = {
+        sign_date = {
+            "agenttype": 20,
+            "agentversion": "15.4.6",
+            "appKey": "lequ_rn",
+            "appver": "15.4.6",
+            "authCookie": p00001,
+            "qyid": qyid,
+            "srcplatform": 20,
+            "task_code": "natural_month_sign",
+            "timestamp": time_stamp,
+            "userId": p00003,
+        }
+        sign = self.k("cRcFakm9KSPSjFEufg3W", sign_date)
+        sign_date["sign"] = sign
+        data = {
             "natural_month_sign": {
+                "verticalCode": "iQIYI",
                 "taskCode": "iQIYI_mofhr",
-                "agentType": 1,
-                "agentversion": 1,
                 "authCookie": p00001,
                 "qyid": qyid,
-                "verticalCode": "iQIYI",
+                "agentType": 20,
+                "agentVersion": "15.4.6",
+                "dfp": dfp,
+                "signFrom": 1,
             }
         }
+        url = "https://community.iqiyi.com/openApi/task/execute"
         res = requests.post(
             url=url,
-            data=json.dumps(body),
-            headers={"Cookie": f"P00001={p00001}", "Content-Type": "application/json"},
+            params=sign_date,
+            data=json.dumps(data),
+            headers={"Content-Type": "application/json"},
         ).json()
         if res["code"] == "A00000":
             _msg = res["data"]["msg"]
@@ -407,7 +431,9 @@ class IQIYI(CheckIn):
             return [{"name": "白金抽奖", "value": "未中奖"}]
 
     def main(self):
-        p00001, p00002, p00003, dfp = self.parse_cookie(self.check_item.get("cookie"))
+        p00001, p00002, p00003, dfp, qyid = self.parse_cookie(
+            self.check_item.get("cookie")
+        )
         try:
             user_info = json.loads(unquote(p00002, encoding="utf-8"))
             user_name = user_info.get("user_name")
@@ -417,7 +443,7 @@ class IQIYI(CheckIn):
             print(f"获取账号信息失败，错误信息: {e}")
             nickname = "未获取到，请检查 Cookie 中 P00002 字段"
             user_name = "未获取到，请检查 Cookie 中 P00002 字段"
-        sign_msg = self.sign(p00001=p00001, p00003=p00003)
+        sign_msg = self.sign(p00001=p00001, p00003=p00003, dfp=dfp, qyid=qyid)
         _user_msg = self.user_information(p00001=p00001)
         lotto_lottery_msg = self.lotto_lottery(p00001=p00001)
         if _user_msg[4].get("value") != "非 VIP 用户":
