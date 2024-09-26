@@ -34,6 +34,29 @@ def check_config(task_list):
             config_path = os.path.normpath(_config_path)
             break
         config_path_list.append(os.path.normpath(os.path.dirname(_config_path)))
+    if not config_path:
+        data = json.loads(os.environ["CONFIG"])
+    if data:
+      try:
+            notice_info = get_notice_info(data=data)
+            _check_info = get_checkin_info(data=data)
+            check_info = {}
+            for one_check, _ in checkin_map.items():
+                if one_check in task_list:
+                    if _check_info.get(one_check.lower()):
+                        for _, check_item in enumerate(
+                            _check_info.get(one_check.lower(), [])
+                        ):
+                            if "xxxxxx" not in str(check_item) and "多账号" not in str(
+                                check_item
+                            ):
+                                if one_check.lower() not in check_info.keys():
+                                    check_info[one_check.lower()] = []
+                                check_info[one_check.lower()].append(check_item)
+            return notice_info, check_info
+        except Exception as e:
+            print(e)
+            return False, False
     if config_path:
         print("使用配置文件路径:", config_path)
         with open(config_path, encoding="utf-8") as f:
