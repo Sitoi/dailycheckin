@@ -4,13 +4,12 @@
 name: Python application
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+  schedule:
+    - cron: '7 9 * * *'
 
 jobs:
   build:
@@ -28,5 +27,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install git+https://github.com/Icy-Cat/dailycheckin.git
     - name: Test
+      env:
+          CONFIG: ${{ secrets.CONFIG }}
       run: |
         python dailycheckin/main.py
