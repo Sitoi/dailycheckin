@@ -9,6 +9,11 @@ import requests
 from dailycheckin import CheckIn
 
 
+def fake_ip():
+    # 随便找的国内IP段：223.64.0.0 - 223.117.255.255
+    return f"{223}.{random.randint(64, 117)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+
+
 class MiMotion(CheckIn):
     name = "小米运动"
 
@@ -17,6 +22,7 @@ class MiMotion(CheckIn):
         self.headers = {
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; MI 6 MIUI/20.6.18)"
         }
+        # self.fake_ip_addr =
 
     def get_time(self):
         url = "https://acs.m.taobao.com/gw/mtop.common.getTimestamp/"
@@ -30,6 +36,8 @@ class MiMotion(CheckIn):
         app_token = response["token_info"]["app_token"]
         return app_token
 
+    # 虚拟ip地址
+
     @staticmethod
     def login(phone, password):
         if "@" in phone:
@@ -39,7 +47,8 @@ class MiMotion(CheckIn):
         url1 = f"https://api-user.huami.com/registrations/{phone}/tokens"
         headers = {
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-            "User-Agent": "MiFit/4.6.0 (iPhone; iOS 14.0.1; Scale/2.00)",
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2",
+            "X-Forwarded-For": fake_ip(),
         }
         data1 = {
             "client_id": "HuaMi",
@@ -122,5 +131,5 @@ if __name__ == "__main__":
         encoding="utf-8",
     ) as f:
         datas = json.loads(f.read())
-    _check_item = datas.get("MIMOTION", [])[0]
+    _check_item = datas.get("MIMOTION", [])[10]
     print(MiMotion(check_item=_check_item).main())
