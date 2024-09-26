@@ -29,4 +29,4 @@ jobs:
         pip install git+https://github.com/Icy-Cat/dailycheckin.git
     - name: Test
       run: |
-        python main.py
+        python dailycheckin/main.py
