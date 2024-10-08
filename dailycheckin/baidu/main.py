@@ -17,14 +17,14 @@ class Baidu(CheckIn):
     def url_submit(data_url: str, submit_url: str, times: int = 100) -> str:
         site = parse.parse_qs(parse.urlsplit(submit_url).query).get("site")[0]
         urls_data = requests.get(url=data_url)
-        remian = 100000
+        remain = 100000
         success_count = 0
         error_count = 0
         for one in range(times):
             try:
                 response = requests.post(url=submit_url, data=urls_data)
                 if response.json().get("success"):
-                    remian = response.json().get("remain")
+                    remain = response.json().get("remain")
                     success_count += response.json().get("success")
                 else:
                     error_count += 1
@@ -33,7 +33,7 @@ class Baidu(CheckIn):
                 error_count += 1
         msg = [
             {"name": "站点地址", "value": site},
-            {"name": "剩余条数", "value": remian},
+            {"name": "剩余条数", "value": remain},
             {"name": "成功条数", "value": success_count},
             {"name": "成功次数", "value": times - error_count},
             {"name": "失败次数", "value": error_count},
