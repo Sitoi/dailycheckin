@@ -49,12 +49,8 @@ def check_config(task_list):
             for one_check, _ in checkin_map.items():
                 if one_check in task_list:
                     if _check_info.get(one_check.lower()):
-                        for _, check_item in enumerate(
-                            _check_info.get(one_check.lower(), [])
-                        ):
-                            if "xxxxxx" not in str(check_item) and "多账号" not in str(
-                                check_item
-                            ):
+                        for _, check_item in enumerate(_check_info.get(one_check.lower(), [])):
+                            if "xxxxxx" not in str(check_item) and "多账号" not in str(check_item):
                                 if one_check.lower() not in check_info.keys():
                                     check_info[one_check.lower()] = []
                                 check_info[one_check.lower()].append(check_item)
@@ -63,16 +59,13 @@ def check_config(task_list):
             print(e)
             return False, False
     else:
-        print(
-            "未找到 config.json 配置文件\n请在下方任意目录中添加「config.json」文件:\n"
-            + "\n".join(config_path_list)
-        )
+        print("未找到 config.json 配置文件\n请在下方任意目录中添加「config.json」文件:\n" + "\n".join(config_path_list))
         return False, False
 
 
 def checkin():
     start_time = time.time()
-    utc_time = (datetime.utcnow() + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
+    utc_time = (datetime.now() + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")  # update: Deprecated since version 3.12: Use datetime.now() with UTC instead.
     print(f"当前时间: {utc_time}\n当前版本: {__version__}")
     args = parse_arguments()
     include = args.include
@@ -88,12 +81,7 @@ def checkin():
     task_list = list(set(include) - set(exclude))
     notice_info, check_info = check_config(task_list)
     if check_info:
-        task_name_str = "\n".join(
-            [
-                f"「{checkin_map.get(one.upper())[0]}」账号数 : {len(value)}"
-                for one, value in check_info.items()
-            ]
-        )
+        task_name_str = "\n".join([f"「{checkin_map.get(one.upper())[0]}」账号数 : {len(value)}" for one, value in check_info.items()])
         print(f"\n---------- 本次执行签到任务如下 ----------\n\n{task_name_str}\n\n")
         content_list = []
         for one_check, check_list in check_info.items():
@@ -111,18 +99,13 @@ def checkin():
         try:
             url = "https://pypi.org/pypi/dailycheckin/json"
             latest_version = requests.get(url=url, timeout=30).json()["info"]["version"]
-        except:
+        except:  # noqa: E722
             print("获取最新版本失败")
             latest_version = "0.0.0"
-        content_list.append(
-            f"开始时间: {utc_time}\n"
-            f"任务用时: {int(time.time() - start_time)} 秒\n"
-            f"当前版本: {__version__}\n"
-            f"最新版本: {latest_version}\n"
-            f"项目地址: https://github.com/Sitoi/dailycheckin"
-        )
+        content_list.append(f"开始时间: {utc_time}\n" f"任务用时: {int(time.time() - start_time)} 秒\n" f"当前版本: {__version__}\n" f"最新版本: {latest_version}\n" f"项目地址: https://github.com/Sitoi/dailycheckin")
         push_message(content_list=content_list, notice_info=notice_info)
         return
+    # push_message(content_list=content_list, notice_info=notice_info)
 
 
 if __name__ == "__main__":
