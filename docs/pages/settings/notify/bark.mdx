@@ -51,7 +51,7 @@ import { Callout } from 'nextra/components'
 # BARK
 
 <Callout type="warning">
-  通知消息在 Bark 有长度限制，如果没收到推送，请将 MERGE_PUSH 改为 false
+  通知消息在 Bark 有长度限制，如果内容过长导致推送失败，会自动切换为单条推送。
 </Callout>
 
 ### 配置示例
@@ -59,11 +59,22 @@ import { Callout } from 'nextra/components'
 ```json filename="config.json" copy
 {
   "BARK_URL": "",
-  "MERGE_PUSH": ""
+  "BARK_TITLE": "",
+  "BARK_GROUP": "",
+  "BARK_ICON": "",
+  "BARK_SOUND": "",
+  "BARK_URL_JUMP": "",
+
+  "MERGE_PUSH": true
 }
 ```
 
 |       参数       |                                              说明                                              |
 | :--------------: | :--------------------------------------------------------------------------------------------: |
 |  _**BARK_URL**_  | [BARK](https://bark.day.app/#/) ,填写 `BARK_URL` 例: `https://api.day.app/DxHcxxxxxRxxxxxxcm/` |
+| _**BARK_TITLE(可选)**_ |                                      推送标题，例:`dailycheckin`                                 |
+| _**BARK_GROUP(可选)**_ |                                      Bark中消息分组，例:`dailycheckin`                            |
+|  _**BARK_ICON(可选)**_ |                                      推送图标，例:`https://example.com/icon.png`                 |
+| _**BARK_SOUND(可选)**_ |                                      推送铃声，请在app中查看铃声列表，例:`bell`                       |
+| _**BARK_URL_JUMP(可选)**_ |                                  推送消息点击跳转链接，例:`https://example.com`           |
 | _**MERGE_PUSH**_ |                         **true**: 将推送消息合并；**false**: 分开推送                          |
