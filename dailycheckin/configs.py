@@ -34,6 +34,7 @@ notice_map = {
     "QYWX_KEY": "",
     "QYWX_TOUSER": "",
     "QYWX_MEDIA_ID": "",
+    "QYWX_ORIGIN": "",
     "SCKEY": "",
     "SENDKEY": "",
     "TG_API_HOST": "",
