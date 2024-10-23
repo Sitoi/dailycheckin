@@ -300,6 +300,7 @@ def push_message(content_list: list, notice_info: dict):
             or qywx_agentid
             or bark_url
             or pushplus_token
+            or ntfy_topic
         ):
             merge_push = False
         else:
