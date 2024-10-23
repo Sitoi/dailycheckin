@@ -301,6 +301,7 @@ def push_message(content_list: list, notice_info: dict):
             or bark_url
             or pushplus_token
             or ntfy_topic
+            or (gotify_url and gotify_token)
         ):
             merge_push = False
         else:
