@@ -19,9 +19,9 @@ class MiMotion(CheckIn):
         }
 
     def get_time(self):
-        url = "http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp"
+        url = "https://f.m.suning.com/api/ct.do"
         response = requests.get(url, headers=self.headers).json()
-        t = response["data"]["t"]
+        t = response["currentTime"]
         return t
 
     def get_app_token(self, login_token):

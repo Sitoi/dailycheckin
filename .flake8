@@ -1,5 +1,5 @@
 [flake8]
-max-line-length = 120
+max-line-length = 88
 max-complexity = 24
 ignore = F401, W503, E203, E501, F841, E722, C901
 exclude =
