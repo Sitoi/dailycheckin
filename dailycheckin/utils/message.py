@@ -22,7 +22,7 @@ def message2server_turbo(sendkey, content):
     if match:
         sc3uid = match.group(1)
         print("Server 酱³ 推送开始")
-        url = f"https://{sc3uid}.push.ft07.com/send/{sendkey}.send"
+        url = f"https://{sc3uid}.push.ft07.com/send/{sendkey}.send?tags=DailyCheckin"
     else:
         print("server 酱 Turbo 推送开始")
         url = f"https://sctapi.ftqq.com/{sendkey}.send"
