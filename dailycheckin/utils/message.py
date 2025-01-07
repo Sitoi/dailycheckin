@@ -3,6 +3,7 @@ import hashlib
 import hmac
 import json
 import time
+import re
 from urllib.parse import quote_plus
 
 import requests
@@ -16,9 +17,16 @@ def message2server(sckey, content):
 
 
 def message2server_turbo(sendkey, content):
-    print("server 酱 Turbo 推送开始")
+    match = re.match(r'^sctp(\d+)t', sendkey)
     data = {"text": "每日签到", "desp": content.replace("\n", "\n\n")}
-    requests.post(url=f"https://sctapi.ftqq.com/{sendkey}.send", data=data)
+    if match:
+        sc3uid = match.group(1)
+        print("Server 酱³ 推送开始")
+        url = f"https://{sc3uid}.push.ft07.com/send/{sendkey}.send?tags=DailyCheckin"
+    else:
+        print("server 酱 Turbo 推送开始")
+        url = f"https://sctapi.ftqq.com/{sendkey}.send"
+    requests.post(url=url, data=data)
     return
 
 
