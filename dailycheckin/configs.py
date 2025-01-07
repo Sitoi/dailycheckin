@@ -42,6 +42,12 @@ notice_map = {
     "TG_PROXY": "",
     "TG_USER_ID": "",
     "MERGE_PUSH": "",
+    'GOTIFY_URL': "",                   # gotify地址,如https://push.example.de:8080
+    'GOTIFY_TOKEN': "",                 # gotify的消息应用token
+    'GOTIFY_PRIORITY': "",              # 推送消息优先级,默认为0
+    'NTFY_URL': "",                     # ntfy地址,如https://ntfy.sh
+    'NTFY_TOPIC': "",                   # ntfy的消息应用topic
+    'NTFY_PRIORITY': "",                # 推送消息优先级,默认为3
 }
 
 
