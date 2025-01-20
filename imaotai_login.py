@@ -168,7 +168,7 @@ if __name__ == "__main__":
             "token": str(token),
             "userid": str(userId),
             "reserve_rule": 0,
-            "item_codes": ["10941", "10942"],
+            "item_codes": ["11318", "11319"],
         }
         items.append(item)
         condition = input("是否继续添加账号[y/n]:").strip()

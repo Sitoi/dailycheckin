@@ -77,7 +77,7 @@ import { Steps } from 'nextra/components'
       "token": "eyJxxxxxx",
       "userid": "1xxxxxx4",
       "reserve_rule": 0,
-      "item_codes": ["10941", "10942"]
+      "item_codes": ["11318", "11319"]
     },
     {
       "city": "多账号 城市",
@@ -88,7 +88,7 @@ import { Steps } from 'nextra/components'
       "token": "多账号 token",
       "userid": "多账号 用户 id",
       "reserve_rule": 0,
-      "item_codes": ["10941", "10942"]
+      "item_codes": ["11318", "11319"]
     }
   ]
 }
@@ -112,14 +112,15 @@ import { Steps } from 'nextra/components'
 
 ```json copy
 {
-  "10941": "53%vol 500ml贵州茅台酒（甲辰龙年）",
-  "10942": "53%vol 375ml×2贵州茅台酒（甲辰龙年）",
-  "10056": "53%vol 500ml茅台1935",
-  "2478": "53%vol 500ml贵州茅台酒（珍品）"
+  "11318": "53%vol 500ml贵州茅台酒（乙巳蛇年）",
+  "11317": "53%vol 500ml贵州茅台酒（笙乐飞天）",
+  "11319": "53%vol 375mlx2贵州茅台酒（乙巳蛇年）",
+  "2478": "53%vol 500ml贵州茅台酒（珍品）",
+  "11240": "53%vol 500ml 茅台1935·中国国家地理文创酒（喜逢大运河）"
 }
 ```
 
-默认配置申购 `["10941", "10942"]`
+默认配置申购 `["11318", "11319"]`
 
 ## 获取方式
 
@@ -344,7 +345,7 @@ if __name__ == "__main__":
             "token": str(token),
             "userid": str(userId),
             "reserve_rule": 0,
-            "item_codes": ["10941", "10942"],
+            "item_codes": ["11318", "11319"],
         }
         items.append(item)
         condition = input("是否继续添加账号[y/n]:").strip()
