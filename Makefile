@@ -11,6 +11,3 @@ clean:
 
 pre-commit:
 	pre-commit run --all-files
-
-mkdocs:
-	mkdocs gh-deploy --force
