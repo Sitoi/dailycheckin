@@ -81,6 +81,8 @@
 - Cool Push（QQ,微信,邮箱）
 - qmsg 酱（QQ）
 - 飞书（飞书）
+- ntfy（安卓）
+- gotify（安卓）
 
 ## 🤝 参与贡献
 

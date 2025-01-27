@@ -110,4 +110,8 @@ gcc g++ make libffi-dev openssl-dev
 
 ## 四、更新
 
+添加一个定时任务，名称为 更新Dailycheckin（可自定义），命令为 `task pip3 install dailycheckin --upgrade`，定时规则为 0 0 * * *。
+
+国内机器如无法完成更新，可为命令设置镜像，将命令改为 `task pip3 install dailycheckin --upgrade -i https://pypi.mirrors.ustc.edu.cn/simple/` 后再更新。
+
 ![定时更新](../img/qinglong/18.png)

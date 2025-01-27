@@ -52,12 +52,13 @@ class IMAOTAI(CheckIn):
         self.RESERVE_RULE = 0
         self.mt_r = "clips_OlU6TmFRag5rCXwbNAQ/Tz1SKlN8THcecBp/"
         self.ITEM_MAP = {
-            "10941": "53%vol 500ml贵州茅台酒（甲辰龙年）",
-            "10942": "53%vol 375ml×2贵州茅台酒（甲辰龙年）",
-            "10056": "53%vol 500ml茅台1935",
+            "11318": "53%vol 500ml贵州茅台酒（乙巳蛇年）",
+            "11317": "53%vol 500ml贵州茅台酒（笙乐飞天）",
+            "11319": "53%vol 375mlx2贵州茅台酒（乙巳蛇年）",
             "2478": "53%vol 500ml贵州茅台酒（珍品）",
+            "11240": "53%vol 500ml 茅台1935·中国国家地理文创酒（喜逢大运河）",
         }
-        self.ITEM_CODES = ["10941", "10942"]
+        self.ITEM_CODES = ["11318", "11319"]
         AES_KEY = "qbhajinldepmucsonaaaccgypwuvcjaa"
         AES_IV = "2018534749963515"
         self.encrypt = Encrypt(key=AES_KEY, iv=AES_IV)

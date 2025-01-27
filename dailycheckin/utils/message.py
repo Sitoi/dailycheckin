@@ -2,6 +2,7 @@ import base64
 import hashlib
 import hmac
 import json
+import re
 import time
 from urllib.parse import quote_plus,quote
 
@@ -16,9 +17,15 @@ def message2server(sckey, content):
 
 
 def message2server_turbo(sendkey, content):
-    print("server 酱 Turbo 推送开始")
     data = {"text": "每日签到", "desp": content.replace("\n", "\n\n")}
-    requests.post(url=f"https://sctapi.ftqq.com/{sendkey}.send", data=data)
+    if match := re.match(r"^sctp(\d+)t", sendkey):
+        sc3uid = match.group(1)
+        print("Server 酱³ 推送开始")
+        url = f"https://{sc3uid}.push.ft07.com/send/{sendkey}.send?tags=DailyCheckin"
+    else:
+        print("server 酱 Turbo 推送开始")
+        url = f"https://sctapi.ftqq.com/{sendkey}.send"
+    requests.post(url=url, data=data)
     return
 
 def send2jenkins(url, token, content):
@@ -196,6 +203,54 @@ def message2pushplus(pushplus_token, content, pushplus_topic=None):
     return
 
 
+def message2gotify(
+    gotify_url: str, gotify_token: str, gotify_priority: str, content: str
+) -> None:
+    print("Gotify 服务启动")
+    if not gotify_priority:
+        gotify_priority = "3"
+    url = f"{gotify_url}/message?token={gotify_token}"
+    data = {
+        "title": "Dailycheckin签到通知",
+        "message": content,
+        "priority": gotify_priority,
+    }
+    response = requests.post(url, data=data).json()
+
+    if response.get("id"):
+        print("Gotify 推送成功！")
+    else:
+        print("Gotify 推送失败！")
+    return
+
+
+def message2ntfy(
+    ntfy_url: str, ntfy_topic: str, ntfy_priority: str, content: str
+) -> None:
+    def encode_rfc2047(text: str) -> str:
+        """将文本编码为符合 RFC 2047 标准的格式"""
+        encoded_bytes = base64.b64encode(text.encode("utf-8"))
+        encoded_str = encoded_bytes.decode("utf-8")
+        return f"=?utf-8?B?{encoded_str}?="
+
+    print("Ntfy 服务启动")
+    if not ntfy_url:
+        ntfy_url = "https://ntfy.sh"
+    if not ntfy_priority:
+        ntfy_priority = "3"
+    # 使用 RFC 2047 编码 title
+    encoded_title = encode_rfc2047("Dailycheckin签到通知")
+
+    data = content.encode(encoding="utf-8")
+    headers = {"Title": encoded_title, "Priority": ntfy_priority}  # 使用编码后的 title
+    url = f"{ntfy_url}/{ntfy_topic}"
+    response = requests.post(url, data=data, headers=headers)
+    if response.status_code == 200:  # 使用 response.status_code 进行检查
+        print("Ntfy 推送成功！")
+    else:
+        print("Ntfy 推送失败！错误信息：", response.text)
+
+
 def important_notice():
     datas = requests.get(
         url="https://api.github.com/repos/Sitoi/dailycheckin/issues?state=open&labels=通知"
@@ -237,10 +292,16 @@ def push_message(content_list: list, notice_info: dict):
     qywx_origin = notice_info.get("qywx_origin")
     pushplus_token = notice_info.get("pushplus_token")
     pushplus_topic = notice_info.get("pushplus_topic")
+    gotify_url = notice_info.get("gotify_url")
+    gotify_token = notice_info.get("gotify_token")
+    gotify_priority = notice_info.get("gotify_priority")
+    ntfy_url = notice_info.get("ntfy_url")
+    ntfy_topic = notice_info.get("ntfy_topic")
+    ntfy_priority = notice_info.get("ntfy_priority")
+    content_str = "\n————————————\n\n".join(content_list)
     merge_push = notice_info.get("merge_push")
     jenkins_url = notice_info.get("jenkins_url")
     jenkins_token = notice_info.get("jenkins_token")
-    content_str = "\n————————————\n\n".join(content_list)
     message_list = [content_str]
     try:
         notice = important_notice()
@@ -258,6 +319,8 @@ def push_message(content_list: list, notice_info: dict):
             or qywx_agentid
             or bark_url
             or pushplus_token
+            or ntfy_topic
+            or (gotify_url and gotify_token)
         ):
             merge_push = False
         else:
@@ -353,6 +416,26 @@ def push_message(content_list: list, notice_info: dict):
                 )
             except Exception as e:
                 print("Telegram 推送失败", e)
+        if gotify_url and gotify_token:
+            try:
+                message2gotify(
+                    gotify_url=gotify_url,
+                    gotify_token=gotify_token,
+                    gotify_priority=gotify_priority,
+                    content=message,
+                )
+            except Exception as e:
+                print("Gotify 推送失败", e)
+        if ntfy_topic:
+            try:
+                message2ntfy(
+                    ntfy_url=ntfy_url,
+                    ntfy_topic=ntfy_topic,
+                    ntfy_priority=ntfy_priority,
+                    content=message,
+                )
+            except Exception as e:
+                print("Ntfy 推送失败", e)
 
 
 if __name__ == "__main__":

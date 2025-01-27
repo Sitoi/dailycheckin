@@ -1,4 +1,5 @@
 import { Cards, Card } from 'nextra/components'
+import { Callout } from 'nextra/components'
 
 <Cards>
   <Card
@@ -54,18 +55,22 @@ import { Cards, Card } from 'nextra/components'
     href="/settings/notify/gotify"
   />
 </Cards>
-# 飞书
+
+# GOTIFY
 
 ### 配置示例
 
 ```json filename="config.json" copy
 {
-  "FSKEY": "",
-  "MERGE_PUSH": ""
+  "GOTIFY_URL": "",
+  "GOTIFY_TOKEN": "",
+  "GOTIFY_PRIORITY": ""
 }
 ```
 
-|       参数       |                                           说明                                            |
-| :--------------: | :---------------------------------------------------------------------------------------: |
-|   _**FSKEY**_    | `https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxx` **xxxxxx** 部分就是需要填写的 FSKEY |
-| _**MERGE_PUSH**_ |                       **true**: 将推送消息合并；**false**: 分开推送                       |
+|         参数          |                     说明                      |
+| :-------------------: | :-------------------------------------------: |
+|   _**GOTIFY_URL**_    |          [GOTIFY] ,填写 `GOTIFY_URL`          |
+|  _**GOTIFY_TOKEN**_   |              填写 `GOTIFY_TOKEN`              |
+| _**GOTIFY_PRIORITY**_ |            填写 `GOTIFY_PRIORITY`             |
+|   _**MERGE_PUSH**_    | **true**: 将推送消息合并；**false**: 分开推送 |
