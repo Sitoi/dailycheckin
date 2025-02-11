@@ -32,7 +32,8 @@ def send2jenkins(url, token, content):
     print("send to jenkins")
     token=quote(token)
     url = f"{url}&token={token}&text={content}"
-    requests.get(url)
+    response = requests.get(url)
+    print("jenkins response is " + response.content)
     return
 
 def message2coolpush(
