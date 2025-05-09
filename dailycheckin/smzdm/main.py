@@ -69,16 +69,19 @@ class SMZDM(CheckIn):
         result = resp.json()
         msgs = []
         if normal_reward := result["data"]["normal_reward"]:
-            msgs = [
-                {
-                    "name": "签到奖励",
-                    "value": normal_reward["reward_add"]["content"],
-                },
-                {
-                    "name": "连续签到",
-                    "value": normal_reward["sub_title"],
-                },
-            ]
+            try:
+                msgs = [
+                    {
+                        "name": "签到奖励",
+                        "value": normal_reward["reward_add"]["content"],
+                    },
+                    {
+                        "name": "连续签到",
+                        "value": normal_reward["sub_title"],
+                    },
+                ]
+            except Exception as e:
+                print(e)
         return msgs
 
     def active(self, cookie):
