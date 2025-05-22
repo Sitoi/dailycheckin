@@ -2,8 +2,6 @@ import json
 import os
 import re
 import time
-from hashlib import md5
-from random import randint
 from urllib.parse import unquote
 from uuid import uuid4
 
@@ -80,128 +78,6 @@ class IQIYI(CheckIn):
             msg = [
                 {"name": "账号信息", "value": res.get("msg")},
             ]
-        return msg
-
-    def k(self, secret_key, data, split="|"):
-        result_string = split.join(f"{key}={data[key]}" for key in sorted(data))
-        return md5((result_string + split + secret_key).encode("utf-8")).hexdigest()
-
-    def sign(self, p00001, p00003, dfp, qyid):
-        """
-        VIP 签到
-        """
-        time_stamp = int(time.time() * 1000)
-        sign_date = {
-            "agenttype": 20,
-            "agentversion": "15.4.6",
-            "appKey": "lequ_rn",
-            "appver": "15.4.6",
-            "authCookie": p00001,
-            "qyid": qyid,
-            "srcplatform": 20,
-            "task_code": "natural_month_sign",
-            "timestamp": time_stamp,
-            "userId": p00003,
-        }
-        sign = self.k("cRcFakm9KSPSjFEufg3W", sign_date)
-        sign_date["sign"] = sign
-        data = {
-            "natural_month_sign": {
-                "verticalCode": "iQIYI",
-                "taskCode": "iQIYI_mofhr",
-                "authCookie": p00001,
-                "qyid": qyid,
-                "agentType": 20,
-                "agentVersion": "15.4.6",
-                "dfp": dfp,
-                "signFrom": 1,
-            }
-        }
-        url = "https://community.iqiyi.com/openApi/task/execute"
-        res = requests.post(
-            url=url,
-            params=sign_date,
-            data=json.dumps(data),
-            headers={"Content-Type": "application/json"},
-        ).json()
-        if res["code"] == "A00000":
-            _msg = res["data"]["msg"]
-            if _msg:
-                msg = [{"name": "签到天数", "value": _msg}]
-            else:
-                try:
-                    msg = [{"name": "签到天数", "value": res["data"]["data"]["signDays"]}]
-                except Exception as e:
-                    msg = [{"name": "签到天数", "value": str(e)}]
-        else:
-            msg = [{"name": "签到天数", "value": res.get("msg")}]
-        return msg
-
-    @staticmethod
-    def query_user_task(p00001):
-        """
-        获取 VIP 日常任务 和 taskCode(任务状态)
-        """
-        url = "https://tc.vip.iqiyi.com/taskCenter/task/queryUserTask"
-        params = {"P00001": p00001}
-        task_list = []
-        res = requests.get(url=url, params=params).json()
-        if res["code"] == "A00000":
-            for item in res["data"].get("tasks", {}).get("daily", []):
-                task_list.append(
-                    {
-                        "taskTitle": item["taskTitle"],
-                        "taskCode": item["taskCode"],
-                        "status": item["status"],
-                        "taskReward": item["taskReward"]["task_reward_growth"],
-                    }
-                )
-        return task_list
-
-    @staticmethod
-    def join_task(p00001, task_list):
-        """
-        遍历完成任务
-        """
-        url = "https://tc.vip.iqiyi.com/taskCenter/task/joinTask"
-        params = {
-            "P00001": p00001,
-            "taskCode": "",
-            "platform": "bb136ff4276771f3",
-            "lang": "zh_CN",
-        }
-        for item in task_list:
-            if item["status"] == 2:
-                params["taskCode"] = item["taskCode"]
-                requests.get(url=url, params=params)
-
-    @staticmethod
-    def get_task_rewards(p00001, task_list):
-        """
-        获取任务奖励
-        :return: 返回信息
-        """
-        url = "https://tc.vip.iqiyi.com/taskCenter/task/getTaskRewards"
-        params = {
-            "P00001": p00001,
-            "taskCode": "",
-            "platform": "bb136ff4276771f3",
-            "lang": "zh_CN",
-        }
-        growth_task = 0
-        for item in task_list:
-            if item["status"] == 0:
-                params["taskCode"] = item.get("taskCode")
-                requests.get(url=url, params=params)
-            elif item["status"] == 4:
-                params["taskCode"] = item.get("taskCode")
-                requests.get(
-                    url="https://tc.vip.iqiyi.com/taskCenter/task/notify", params=params
-                )
-                requests.get(url=url, params=params)
-            elif item["status"] == 1:
-                growth_task += item["taskReward"]
-        msg = {"name": "任务奖励", "value": f"+{growth_task}成长值"}
         return msg
 
     def lottery(self, p00001, award_list=[]):
@@ -285,19 +161,6 @@ class IQIYI(CheckIn):
                 msg = res["errorReason"]
         return {"status": False, "msg": msg, "chance": 0}
 
-    def get_watch_time(self, p00001):
-        url = "https://tc.vip.iqiyi.com/growthAgency/watch-film-duration"
-        data = requests.get(
-            url=url,
-            headers={
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0",
-                "Cookie": f"P00001={p00001}",
-                "Content-Type": "application/json",
-            },
-        ).json()
-        watch_time = data["data"]["viewtime"]["time"]
-        return watch_time
-
     def level_right(self, p00001):
         data = {"code": "k8sj74234c683f", "P00001": p00001}
         res = requests.post(
@@ -305,103 +168,6 @@ class IQIYI(CheckIn):
         ).json()
         msg = res["msg"]
         return [{"name": "V7 免费升级星钻", "value": msg}]
-
-    def start_watch(self, p00001, p00003, dfp):
-        total_time = self.get_watch_time(p00001=p00001)
-        print(f"现在已经刷到了 {total_time}秒, 数据同步有延迟, 仅供参考")
-        if total_time >= 7200:
-            return {
-                "name": "视频时长",
-                "value": f"已经刷了 {total_time}秒, 数据同步有延迟, 仅供参考",
-            }
-        for _ in range(150):
-            tm = randint(60, 120)
-            watch_time_url = "https://msg.qy.net/b"
-            params = {
-                "u": "f600a23f03c26507f5482e6828cfc6c5",
-                "pu": p00003,
-                "p1": "1_10_101",
-                "v": "5.2.66",
-                "ce": uuid4().hex,
-                "de": "1616773143.1639632721.1639653680.29",
-                "c1": "2",
-                "ve": uuid4().hex,
-                "ht": "0",
-                "pt": randint(1000000000, 9999999999) / 1000000,
-                "isdm": "0",
-                "duby": "0",
-                "ra": "5",
-                "clt": "",
-                "ps2": "DIRECT",
-                "ps3": "",
-                "ps4": "",
-                "br": "mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/96.0.4664.110 safari/537.36",
-                "mod": "cn_s",
-                "purl": "https://www.iqiyi.com/v_1eldg8u3r08.html?vfrm=pcw_home&vfrmblk=712211_cainizaizhui&vfrmrst=712211_cainizaizhui_image1&r_area=rec_you_like&r_source=62%40128&bkt=MBA_PW_T3_53&e=b3ec4e6c74812510c7719f7ecc8fbb0f&stype=2",
-                "tmplt": "2",
-                "ptid": "01010031010000000000",
-                "os": "window",
-                "nu": "0",
-                "vfm": "",
-                "coop": "",
-                "ispre": "0",
-                "videotp": "0",
-                "drm": "",
-                "plyrv": "",
-                "rfr": "https://www.iqiyi.com/",
-                "fatherid": f"{randint(1000000000000000, 9999999999999999)}",
-                "stauto": "1",
-                "algot": "abr_v12-rl",
-                "vvfrom": "",
-                "vfrmtp": "1",
-                "pagev": "playpage_adv_xb",
-                "engt": "2",
-                "ldt": "1",
-                "krv": "1.1.85",
-                "wtmk": "0",
-                "duration": f"{randint(1000000, 9999999)}",
-                "bkt": "",
-                "e": "",
-                "stype": "",
-                "r_area": "",
-                "r_source": "",
-                "s4": f"{randint(100000, 999999)}_dianshiju_tbrb_image2",
-                "abtest": "1707_B,1550_B",
-                "s3": f"{randint(100000, 999999)}_dianshiju_tbrb",
-                "vbr": f"{randint(100000, 999999)}",
-                "mft": "0",
-                "ra1": "2",
-                "wint": "3",
-                "s2": "pcw_home",
-                "bw": "10",
-                "ntwk": "18",
-                "dl": f"{randint(10, 999)}.27999999999997",
-                "rn": f"0.{randint(1000000000000000, 9999999999999999)}",
-                "dfp": dfp,
-                "stime": str(time.time() * 1000),
-                "r": f"{randint(1000000000000000, 9999999999999999)}",
-                "hu": "1",
-                "t": "2",
-                "tm": str(tm),
-                "_": str(time.time() * 1000),
-            }
-            requests.get(
-                url=watch_time_url,
-                headers={
-                    "User-Agent": "mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/96.0.4664.110 safari/537.36",
-                    "Cookie": f"P00001={p00001}",
-                    "Content-Type": "application/json",
-                },
-                params=params,
-            )
-            total_time += tm
-            print(f"现在已经刷到了 {total_time}秒, 数据同步有延迟, 仅供参考")
-            if total_time >= 7600:
-                break
-        return {
-            "name": "视频时长",
-            "value": f"已经刷了 {total_time}秒, 数据同步有延迟, 仅供参考",
-        }
 
     def give_times(self, p00001):
         url = "https://pcell.iqiyi.com/lotto/giveTimes"
@@ -412,8 +178,7 @@ class IQIYI(CheckIn):
                 "timesCode": times_code,
                 "P00001": p00001,
             }
-            response = requests.get(url, params=params)
-            print(response.json())
+            requests.get(url, params=params)
 
     def lotto_lottery(self, p00001):
         self.give_times(p00001=p00001)
@@ -443,14 +208,11 @@ class IQIYI(CheckIn):
             print(f"获取账号信息失败，错误信息: {e}")
             nickname = "未获取到，请检查 Cookie 中 P00002 字段"
             user_name = "未获取到，请检查 Cookie 中 P00002 字段"
-        sign_msg = self.sign(p00001=p00001, p00003=p00003, dfp=dfp, qyid=qyid)
         _user_msg = self.user_information(p00001=p00001)
         lotto_lottery_msg = self.lotto_lottery(p00001=p00001)
         if _user_msg[4].get("value") != "非 VIP 用户":
-            watch_msg = self.start_watch(p00001=p00001, p00003=p00003, dfp=dfp)
             level_right_msg = self.level_right(p00001=p00001)
         else:
-            watch_msg = {"name": "视频时长", "value": "非 VIP 用户"}
             level_right_msg = [
                 {
                     "name": "V7 免费升级星钻",
@@ -466,11 +228,6 @@ class IQIYI(CheckIn):
                 draw_msg += ret["msg"] + ";" if ret["status"] else ""
         else:
             draw_msg = "抽奖机会不足"
-        task_msg = ""
-        for _ in range(3):
-            task_list = self.query_user_task(p00001=p00001)
-            self.join_task(p00001=p00001, task_list=task_list)
-            task_msg = self.get_task_rewards(p00001=p00001, task_list=task_list)
 
         user_msg = self.user_information(p00001=p00001)
 
@@ -480,12 +237,9 @@ class IQIYI(CheckIn):
                 {"name": "用户昵称", "value": nickname},
             ]
             + user_msg
-            + sign_msg
             + [
-                task_msg,
                 {"name": "抽奖奖励", "value": draw_msg},
             ]
-            + [watch_msg]
             + lottery_msgs
             + level_right_msg
             + lotto_lottery_msg
