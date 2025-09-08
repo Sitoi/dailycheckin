@@ -1,0 +1,80 @@
+import { Cards, Card } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+<Cards>
+  <Card
+    title="BARK"
+    href="/settings/notify/bark"
+  />
+  <Card
+    title="CoolPush"
+    href="/settings/notify/coolpush"
+  />
+  <Card
+    title="钉钉"
+    href="/settings/notify/dingtalk"
+  />
+  <Card
+    title="飞书"
+    href="/settings/notify/feishu"
+  />
+  <Card
+    title="PushPlus"
+    href="/settings/notify/pushplus"
+  />
+  <Card
+    title="Qmsg 酱"
+    href="/settings/notify/qmsg"
+  />
+  <Card
+    title="企业微信应用消息"
+    href="/settings/notify/qywx"
+  />
+  <Card
+    title="企业微信群机器人"
+    href="/settings/notify/qywxrobot"
+  />
+  <Card
+    title="Server 酱"
+    href="/settings/notify/server"
+  />
+  <Card
+    title="Telegram"
+    href="/settings/notify/telegram"
+  />
+  <Card
+    title="Server 酱 TURBO"
+    href="/settings/notify/turbo"
+  />
+  <Card
+    title="Ntfy"
+    href="/settings/notify/ntfy"
+  />
+  <Card
+    title="Gotify"
+    href="/settings/notify/gotify"
+  />
+  <Card
+    title="Guten Email Notification"
+    href="/settings/notify/guten-email-notification"
+  />
+</Cards>
+
+# Guten Email Notification (邮箱)
+
+官网: https://github.com/gutenye/email-notification/blob/main/src/templates/DailyCheckIn.md
+
+### 配置示例
+
+```json filename="config.json" copy
+{
+  "NTFY_URL": "",
+  "NTFY_TOPIC": "",
+}
+```
+
+|        参数         |                                      说明                                       |
+| :-----------------: | :-----------------------------------------------------------------------------: |
+|   _**NTFY_URL**_    | 填写 `NTFY_URL` 例: `https://YOUR_DOMAIN.workers.dev`  |
+|  _**NTFY_TOPIC**_   |                      填写 `NTFY_TOPIC` 例: `YOUR_API_KEY?title=DailyCheckIn`                       |
+|  _**MERGE_PUSH**_   |                  **true**: 将推送消息合并；**false**: 分开推送                  |
