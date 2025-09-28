@@ -59,9 +59,7 @@ class V2ex(CheckIn):
             {"name": "帐号余额", "value": total},
         ]
         response = session.get(url="https://www.v2ex.com/mission/daily", verify=False)
-        data = re.findall(
-            pattern=r"<div class=\"cell\">(.*?)天</div>", string=response.text
-        )
+        data = re.findall(pattern=r"<div class=\"cell\">(.*?)天</div>", string=response.text)
         data = data[0] + "天" if data else "获取连续签到天数失败"
         msg += [
             {"name": "签到天数", "value": data},
@@ -69,10 +67,7 @@ class V2ex(CheckIn):
         return msg
 
     def main(self):
-        cookie = {
-            item.split("=")[0]: item.split("=")[1]
-            for item in self.check_item.get("cookie").split("; ")
-        }
+        cookie = {item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("cookie").split("; ")}
         session = requests.session()
         if self.check_item.get("proxy", ""):
             proxies = {

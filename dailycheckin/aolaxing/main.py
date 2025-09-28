@@ -19,16 +19,16 @@ class AoLaXing(CheckIn):
         user_data = user_json["jsonResult"]["data"]
         try:
             credit = user_data["credit"]
-            creditHistory = user_data["creditHistory"]
-            phoneNum = user_data["phoneNum"]
-            signInTotal = user_data["signInTotal"]
+            credit_history = user_data["creditHistory"]
+            phone_num = user_data["phoneNum"]
+            signin_total = user_data["signInTotal"]
         except Exception as e:
             return [{"name": "签到", "value": str(e)}]
         msgs = [
-            {"name": "用户", "value": phoneNum},
+            {"name": "用户", "value": phone_num},
             {"name": "当前积分", "value": credit},
-            {"name": "总共获得积分", "value": creditHistory},
-            {"name": "总签到", "value": signInTotal},
+            {"name": "总共获得积分", "value": credit_history},
+            {"name": "总签到", "value": signin_total},
         ]
         return msgs
 
@@ -37,7 +37,7 @@ class AoLaXing(CheckIn):
         task_json = requests.get(url, headers=headers).json()
         try:
             message = task_json["jsonResult"]["message"]
-        except:
+        except Exception:
             message = "NO"
         return message
 
@@ -53,12 +53,11 @@ class AoLaXing(CheckIn):
             if msg:
                 if status_desc == "已完成":
                     task_finish_count += 1
-            else:
-                if status_desc == "未完成":
-                    print(f"开始任务：{name}")
-                    res = self.practise(task_id=task_id, headers=headers)
-                    print(f"返回状态：{res}")
-                    time.sleep(2.5)
+            elif status_desc == "未完成":
+                print(f"开始任务：{name}")
+                res = self.practise(task_id=task_id, headers=headers)
+                print(f"返回状态：{res}")
+                time.sleep(2.5)
         msgs = [
             {"name": "今日任务总数", "value": len(task_data)},
             {"name": "今日任务完成数", "value": task_finish_count},

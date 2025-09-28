@@ -18,32 +18,12 @@ class IQIYI(CheckIn):
 
     @staticmethod
     def parse_cookie(cookie):
-        p00001 = (
-            re.findall(r"P00001=(.*?);", cookie)[0]
-            if re.findall(r"P00001=(.*?);", cookie)
-            else ""
-        )
-        p00002 = (
-            re.findall(r"P00002=(.*?);", cookie)[0]
-            if re.findall(r"P00002=(.*?);", cookie)
-            else ""
-        )
-        p00003 = (
-            re.findall(r"P00003=(.*?);", cookie)[0]
-            if re.findall(r"P00003=(.*?);", cookie)
-            else ""
-        )
-        __dfp = (
-            re.findall(r"__dfp=(.*?);", cookie)[0]
-            if re.findall(r"__dfp=(.*?);", cookie)
-            else ""
-        )
+        p00001 = re.findall(r"P00001=(.*?);", cookie)[0] if re.findall(r"P00001=(.*?);", cookie) else ""
+        p00002 = re.findall(r"P00002=(.*?);", cookie)[0] if re.findall(r"P00002=(.*?);", cookie) else ""
+        p00003 = re.findall(r"P00003=(.*?);", cookie)[0] if re.findall(r"P00003=(.*?);", cookie) else ""
+        __dfp = re.findall(r"__dfp=(.*?);", cookie)[0] if re.findall(r"__dfp=(.*?);", cookie) else ""
         __dfp = __dfp.split("@")[0]
-        qyid = (
-            re.findall(r"QC005=(.*?);", cookie)[0]
-            if re.findall(r"QC005=(.*?);", cookie)
-            else ""
-        )
+        qyid = re.findall(r"QC005=(.*?);", cookie)[0] if re.findall(r"QC005=(.*?);", cookie) else ""
         return p00001, p00002, p00003, __dfp, qyid
 
     @staticmethod
@@ -124,7 +104,7 @@ class IQIYI(CheckIn):
     def draw(draw_type, p00001, p00003):
         """
         查询抽奖次数(必),抽奖
-        :param draw_type: 类型。0 查询次数；1 抽奖
+        :param draw_type: 类型 0 查询次数 1 抽奖
         :param p00001: 关键参数
         :param p00003: 关键参数
         :return: {status, msg, chance}
@@ -163,9 +143,7 @@ class IQIYI(CheckIn):
 
     def level_right(self, p00001):
         data = {"code": "k8sj74234c683f", "P00001": p00001}
-        res = requests.post(
-            url="https://act.vip.iqiyi.com/level-right/receive", data=data
-        ).json()
+        res = requests.post(url="https://act.vip.iqiyi.com/level-right/receive", data=data).json()
         msg = res["msg"]
         return [{"name": "V7 免费升级星钻", "value": msg}]
 
@@ -196,9 +174,7 @@ class IQIYI(CheckIn):
             return [{"name": "白金抽奖", "value": "未中奖"}]
 
     def main(self):
-        p00001, p00002, p00003, dfp, qyid = self.parse_cookie(
-            self.check_item.get("cookie")
-        )
+        p00001, p00002, p00003, dfp, qyid = self.parse_cookie(self.check_item.get("cookie"))
         try:
             user_info = json.loads(unquote(p00002, encoding="utf-8"))
             user_name = user_info.get("user_name")
@@ -231,19 +207,15 @@ class IQIYI(CheckIn):
 
         user_msg = self.user_information(p00001=p00001)
 
-        msg = (
-            [
-                {"name": "用户账号", "value": user_name},
-                {"name": "用户昵称", "value": nickname},
-            ]
-            + user_msg
-            + [
-                {"name": "抽奖奖励", "value": draw_msg},
-            ]
-            + lottery_msgs
-            + level_right_msg
-            + lotto_lottery_msg
-        )
+        msg = [
+            {"name": "用户账号", "value": user_name},
+            {"name": "用户昵称", "value": nickname},
+            *user_msg,
+            {"name": "抽奖奖励", "value": draw_msg},
+            *lottery_msgs,
+            *level_right_msg,
+            *lotto_lottery_msg,
+        ]
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
 

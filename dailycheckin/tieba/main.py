@@ -43,19 +43,13 @@ class Tieba(CheckIn):
         if not cookie:
             raise ValueError("必须提供 BDUSS 或完整 Cookie")
 
-        cookie_dict = {
-            item.split("=")[0]: item.split("=")[1]
-            for item in cookie.split("; ")
-            if "=" in item
-        }
+        cookie_dict = {item.split("=")[0]: item.split("=")[1] for item in cookie.split("; ") if "=" in item}
         requests.utils.add_dict_to_cookiejar(self.session.cookies, cookie_dict)
         self.bduss = cookie_dict.get("BDUSS", "")
         if not self.bduss:
             raise ValueError("Cookie 中未找到 BDUSS")
 
-    def request(
-        self, url: str, method: str = "get", data: Optional[dict] = None, retry: int = 3
-    ) -> dict:
+    def request(self, url: str, method: str = "get", data: dict | None = None, retry: int = 3) -> dict:
         for i in range(retry):
             try:
                 if method.lower() == "get":
@@ -71,7 +65,7 @@ class Tieba(CheckIn):
 
             except Exception as e:
                 if i == retry - 1:
-                    raise Exception(f"请求失败: {str(e)}")
+                    raise Exception(f"请求失败: {e!s}")
 
                 wait_time = 1.5 * (2**i) + random.uniform(0, 1)
                 time.sleep(wait_time)
@@ -86,7 +80,7 @@ class Tieba(CheckIn):
         data.update({"sign": sign})
         return data
 
-    def get_user_info(self) -> tuple[Union[str, bool], str]:
+    def get_user_info(self) -> tuple[str | bool, str]:
         try:
             result = self.request(self.TBS_URL)
             if result.get("is_login", 0) == 0:
@@ -195,13 +189,11 @@ class Tieba(CheckIn):
                     print(f"{log_prefix} 贴吧已被屏蔽")
                 else:
                     error_count += 1
-                    print(
-                        f"{log_prefix} 签到失败，错误: {result.get('error_msg', '未知错误')}"
-                    )
+                    print(f"{log_prefix} 签到失败，错误: {result.get('error_msg', '未知错误')}")
 
             except Exception as e:
                 error_count += 1
-                print(f"{log_prefix} 签到异常: {str(e)}")
+                print(f"{log_prefix} 签到异常: {e!s}")
         return {
             "total": total,
             "success": success_count,

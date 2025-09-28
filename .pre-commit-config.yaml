@@ -1,9 +1,9 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
-        args: [--maxkb=10000]
+        args: [--maxkb=100000]
       - id: check-json
         exclude: .vscode
       - id: check-case-conflict
@@ -17,36 +17,19 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.1.0
+    rev: v3.20.0
     hooks:
       - id: pyupgrade
         args: [--py39-plus]
 
   - repo: https://github.com/MarcoGorelli/auto-walrus
-    rev: v0.2.2
+    rev: 0.3.4
     hooks:
       - id: auto-walrus
 
-  - repo: https://github.com/PyCQA/autoflake
-    rev: v2.2.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.1
     hooks:
-      - id: autoflake
-
-  - repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
-    hooks:
-      - id: flake8
-        exclude: ^migrations/|^uploads/|^scripts/|^logs/|^docs/|^dist/|^build/
-
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        args: ['--profile', 'black', '--filter-files']
-
-  - repo: https://github.com/psf/black
-    rev: 23.9.1
-    hooks:
-      - id: black
-        language_version: python3
-        exclude: ^migrations/|^uploads/|^scripts/|^logs/|^docs/|^dist/|^build/
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
