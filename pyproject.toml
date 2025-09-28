@@ -7,11 +7,13 @@ dependencies = [
     "rsa~=4.0",
     "urllib3~=1.26.2",
 ]
+dynamic = ["readme","requires-python","license","authors","classifiers","urls","scripts"]
+
 
 [tool.ruff]
 line-length = 120
 indent-width = 4
-target-version = "py310"
+target-version = "py39"
 
 [tool.ruff.lint]
 ignore-init-module-imports = false
