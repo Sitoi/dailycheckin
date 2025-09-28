@@ -1,14 +1,19 @@
+import json
+import os
 import re
 import time
+
 import requests
 
-class BaiduWangpan:
+
+class BaiduWP:
     """
     百度网盘会员成长值签到和答题功能。
-    传入cookie，自动完成签到、答题和会员信息查询。
+    传入cookie 自动完成签到、答题和会员信息查询。
     """
-    def __init__(self, cookie: str):
-        self.cookie = cookie
+
+    def __init__(self, check_item: dict):
+        self.cookie = check_item.get("cookie")
         self.session = requests.Session()
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36",
@@ -90,17 +95,12 @@ class BaiduWangpan:
         msg = f"签到获得{sign_point or ''}{signin_error_msg}\n答题获得{answer_score or ''}{answer_msg}\n当前会员等级{current_level or ''}，成长值{current_value or ''}"
         return msg
 
+
 if __name__ == "__main__":
-    import os, json
-    # 支持从环境变量或config.json读取cookie
-    cookie = os.environ.get("BAIDUWP_COOKIE")
-    if not cookie:
-        config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json")
-        if os.path.exists(config_path):
-            with open(config_path, encoding="utf-8") as f:
-                datas = json.loads(f.read())
-            cookie = datas.get("BAIDUWP", [{}])[0].get("cookie")
-    if not cookie:
-        print("请配置BAIDUWP_COOKIE环境变量或config.json中的BAIDUWP/cookie")
-    else:
-        print(BaiduWangpan(cookie).run())
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"),
+        encoding="utf-8",
+    ) as f:
+        datas = json.loads(f.read())
+    _check_item = datas.get("BAIDUWP", [])[0]
+    print(BaiduWP(check_item=_check_item).run())

@@ -48,20 +48,22 @@
 
 | 状态 | 任务名称 | 名称网站                                                   | 检查日期 | 备注                                                                         |
 | ---- | -------- | ---------------------------------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| 🟢️  | KGQQ     | [全民 K 歌](https://kg.qq.com/index-pc.html)               | 24.02.20 | 每日签到获取鲜花 每日大约 120 鲜花左右                                       |
-| 🟢️  | YOUDAO   | [有道云笔记](https://note.youdao.com/web/)                 | 24.02.20 | 每日签到获取存储空间                                                         |
-| 🟢️  | TIEBA    | [百度贴吧](https://tieba.baidu.com/index.html)             | 24.02.20 | 贴吧每日签到                                                                 |
-| 🟢️  | BILIBILI | [BiliBili](https://www.bilibili.com/)                      | 24.02.20 | 直播签到，漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能               |
-| 🟢️  | V2EX     | [V2EX](https://www.v2ex.com/)                              | 24.02.20 | 铜币奖励                                                                     |
-| 🟢️  | ACFUN    | [AcFun](https://www.acfun.cn/)                             | 24.02.20 | 每日签到香蕉                                                                 |
-| 🟢️  | IQIYI    | [爱奇艺](https://www.iqiyi.com/)                           | 24.02.20 | ① VIP7 每月免费领白金会员；② 抽白金会员 5 次；③ 摇一摇抽奖 3 次；④ 抽奖 3 次 |
+| 🟢️  | KGQQ     | [全民 K 歌](https://kg.qq.com/index-pc.html)               | 25.09.28 | 每日签到获取鲜花 每日大约 120 鲜花左右                                       |
+| 🟢️  | YOUDAO   | [有道云笔记](https://note.youdao.com/web/)                 | 25.09.28 | 每日签到获取存储空间                                                         |
+| 🟢️  | TIEBA    | [百度贴吧](https://tieba.baidu.com/index.html)             | 25.09.28 | 贴吧每日签到                                                                 |
+| 🟢️  | BAIDUWP  | [百度网盘](https://pan.baidu.com/wap/svip/growth/task)     | 25.09.28 | 百度网盘会员签到和答题功能                                                   |
+| 🟢️  | BILIBILI | [BiliBili](https://www.bilibili.com/)                      | 25.09.28 | 漫画签到，每日经验任务，自动投币，银瓜子换硬币等功能                         |
+| 🟢️  | V2EX     | [V2EX](https://www.v2ex.com/)                              | 25.09.28 | 铜币奖励                                                                     |
+| 🟢️  | ACFUN    | [AcFun](https://www.acfun.cn/)                             | 25.09.28 | 每日签到香蕉                                                                 |
+| 🟢️  | IQIYI    | [爱奇艺](https://www.iqiyi.com/)                           | 25.09.28 | ① VIP7 每月免费领白金会员；② 抽白金会员 5 次；③ 摇一摇抽奖 3 次；④ 抽奖 3 次 |
 | 🟢️  | SMZDM    | [什么值得买](https://www.smzdm.com/)                       | 24.02.20 | 签到和抽奖                                                                   |
 | 🟢️  | ALIYUN   | [阿里云盘](https://www.aliyundrive.com/drive/)             | 24.02.20 | 签到获取免费会员和空间                                                       |
 | 🟢️  | ENSHAN   | [恩山无线论坛](https://www.right.com.cn/forum/)            | 24.02.20 | 签到获取硬币和积分                                                           |
 | 🟢️  | AOLAXING | [奥拉星](http://www.100bt.com/m/creditMall/?gameId=2#task) | 24.02.20 | 签到获取积分                                                                 |
-| 🟢️  | IMAOTAI  | i 茅台                                                     | 24.02.20 | 申购生肖茅台                                                                 |
-| 🟤   | MIMOTION | 小米运动                                                   | 24.02.20 | 每日小米运动刷步数                                                           |
-| 🟢️  | BAIDU    | [百度站点](https://ziyuan.baidu.com/site/index#/)          | 24.02.20 | 提交网站页面供百度收录                                                       |
+| 🟢️  | IMAOTAI  | i 茅台                                                     | 25.09.28 | 申购生肖茅台                                                                 |
+| 🟤   | MIMOTION | 小米运动                                                   | 25.09.28 | 每日小米运动刷步数                                                           |
+| 🟢️  | BAIDU    | [百度站点](https://ziyuan.baidu.com/site/index#/)          | 25.09.28 | 提交网站页面供百度收录                                                       |
+|      |
 
 ## 💬 通知列表
 

@@ -1,6 +1,6 @@
 {
   "name": "dailycheckin-docs",
-  "version": "2024-01-14",
+  "version": "2025-09-28",
   "description": "DailyCheckIn docs",
   "scripts": {
     "dev": "next dev",
@@ -21,8 +21,8 @@
   "homepage": "https://github.com/Sitoi/dailycheckin#readme",
   "dependencies": {
     "next": "14.1.0",
-    "nextra": "latest",
-    "nextra-theme-docs": "latest",
+    "nextra": "2.13.3",
+    "nextra-theme-docs": "2.13.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
