@@ -15,9 +15,7 @@ class YouDao(CheckIn):
     @staticmethod
     def sign(cookies):
         ad_space = 0
-        refresh_cookies_res = requests.get(
-            "http://note.youdao.com/login/acc/pe/getsess?product=YNOTE", cookies=cookies
-        )
+        refresh_cookies_res = requests.get("http://note.youdao.com/login/acc/pe/getsess?product=YNOTE", cookies=cookies)
         cookies = dict(refresh_cookies_res.cookies)
         url = "https://note.youdao.com/yws/api/daupromotion?method=sync"
         res = requests.post(url=url, cookies=cookies)
@@ -44,10 +42,7 @@ class YouDao(CheckIn):
         return youdao_message
 
     def main(self):
-        youdao_cookie = {
-            item.split("=")[0]: item.split("=")[1]
-            for item in self.check_item.get("cookie").split("; ")
-        }
+        youdao_cookie = {item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("cookie").split("; ")}
         try:
             ynote_pers = youdao_cookie.get("YNOTE_PERS", "")
             uid = ynote_pers.split("||")[-2]

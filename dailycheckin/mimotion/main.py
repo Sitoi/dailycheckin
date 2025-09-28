@@ -1,4 +1,3 @@
-# -*- coding: utf8 -*-
 import json
 import os
 import random
@@ -18,7 +17,7 @@ class MiMotion(CheckIn):
         self.headers = {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
             "User-Agent": "MiFit/6.12.0 (MCE16; Android 16; Density/1.5)",
-            "app_name": "com.xiaomi.hm.health"
+            "app_name": "com.xiaomi.hm.health",
         }
 
     def get_time(self):
@@ -32,8 +31,8 @@ class MiMotion(CheckIn):
             return str(int(time.time() * 1000))
 
     def login(self, phone, password):
-        PHONE_PATTERN = r"(^(1)\d{10}$)"
-        if re.match(PHONE_PATTERN, phone):
+        phone_pattern = r"(^(1)\d{10}$)"
+        if re.match(phone_pattern, phone):
             user = f"+86{phone}"
             third_name = "huami_phone"
         else:
@@ -98,7 +97,10 @@ class MiMotion(CheckIn):
             data_json = re.sub(finddate.findall(data_json)[0], today, str(data_json))
             data_json = re.sub(findstep.findall(data_json)[0], step, str(data_json))
             url = f"https://api-mifit-cn.huami.com/v1/data/band_data.json?&t={t}"
-            headers = {"apptoken": app_token, "Content-Type": "application/x-www-form-urlencoded"}
+            headers = {
+                "apptoken": app_token,
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
             data = f"userid={userid}&last_sync_data_time=1628256960&device_type=0&last_deviceid=C4BDB6FFFE2BCA4C&data_json={data_json}"
             response = requests.post(url=url, data=data, headers=headers).json()
             msg = [
@@ -109,8 +111,12 @@ class MiMotion(CheckIn):
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
 
-    if __name__ == "__main__":
-        with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"), "r", encoding="utf-8") as f:
-            datas = json.loads(f.read())
-        _check_item = datas.get("MIMOTION", [])[0]
-        print(MiMotion(check_item=_check_item).main())
+
+if __name__ == "__main__":
+    with open(
+        os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.json"),
+        encoding="utf-8",
+    ) as f:
+        datas = json.loads(f.read())
+    _check_item = datas.get("MIMOTION", [])[0]
+    print(MiMotion(check_item=_check_item).main())
