@@ -1,6 +1,6 @@
 version = 1
 revision = 2
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 
 [[package]]
 name = "certifi"
@@ -22,7 +22,7 @@ wheels = [
 
 [[package]]
 name = "dailycheckin"
-version = "0.1.0"
+version = "25.9.29"
 source = { virtual = "." }
 dependencies = [
     { name = "pycryptodome" },
@@ -73,6 +73,10 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/bc/14/c37136acac4aa4fa3980bdbae5d167b36b039775eeeef6cd61529840f2bf/pycryptodome-3.17-cp35-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:909e36a43fe4a8a3163e9c7fc103867825d14a2ecb852a63d3905250b308a4e5", size = 2152287, upload-time = "2023-01-28T07:39:56.495Z" },
     { url = "https://files.pythonhosted.org/packages/72/86/d2e3f764fc0c646bbf6d6ca61ea51546c97cd98430a602501fa9ec0a40ca/pycryptodome-3.17-cp35-abi3-win32.whl", hash = "sha256:a3228728a3808bc9f18c1797ec1179a0efb5068c817b2ffcf6bcd012494dffb2", size = 1714693, upload-time = "2023-01-28T07:40:00.044Z" },
     { url = "https://files.pythonhosted.org/packages/14/7a/f764564dceaf131e7a740c618d6bdfc30e2ca264e9de410ca757f6c4c3e3/pycryptodome-3.17-cp35-abi3-win_amd64.whl", hash = "sha256:9ec565e89a6b400eca814f28d78a9ef3f15aea1df74d95b28b7720739b28f37f", size = 1733537, upload-time = "2023-01-28T07:40:03.723Z" },
+    { url = "https://files.pythonhosted.org/packages/0a/ac/4e53706aa59841b0d0840862cb424a92057922638d58e5d03cc9fa56f2f0/pycryptodome-3.17-pp39-pypy39_pp73-macosx_10_9_x86_64.whl", hash = "sha256:3a232474cd89d3f51e4295abe248a8b95d0332d153bf46444e415409070aae1e", size = 1543136, upload-time = "2023-01-28T07:40:29.928Z" },
+    { url = "https://files.pythonhosted.org/packages/ec/c1/22f08e3e29b9e63e366624129ad6b1cb0226a6bc1e136590dddefdec9986/pycryptodome-3.17-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4992ec965606054e8326e83db1c8654f0549cdb26fce1898dc1a20bc7684ec1c", size = 1586150, upload-time = "2023-01-28T07:40:32.862Z" },
+    { url = "https://files.pythonhosted.org/packages/3d/7f/0cc8b6f606f2b5e728e196ad1e5781f5cc7eb0739cd9b801dbb971540384/pycryptodome-3.17-pp39-pypy39_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:53068e33c74f3b93a8158dacaa5d0f82d254a81b1002e0cd342be89fcb3433eb", size = 1619056, upload-time = "2023-01-28T07:40:35.971Z" },
+    { url = "https://files.pythonhosted.org/packages/9d/98/93da5981fea934be5bd60d87e4bdee1e157b565b7b730e09766b478fd0ba/pycryptodome-3.17-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:74794a2e2896cd0cf56fdc9db61ef755fa812b4a4900fa46c49045663a92b8d0", size = 1715439, upload-time = "2023-01-28T07:40:38.814Z" },
 ]
 
 [[package]]

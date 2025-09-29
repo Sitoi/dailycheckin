@@ -3,7 +3,7 @@ import json
 import os
 import random
 import time
-from typing import Optional, Union
+from typing import Optional
 
 import requests
 
@@ -49,7 +49,7 @@ class Tieba(CheckIn):
         if not self.bduss:
             raise ValueError("Cookie 中未找到 BDUSS")
 
-    def request(self, url: str, method: str = "get", data: dict | None = None, retry: int = 3) -> dict:
+    def request(self, url: str, method: str = "get", data: Optional[dict] = None, retry: int = 3) -> dict:
         for i in range(retry):
             try:
                 if method.lower() == "get":
@@ -80,7 +80,7 @@ class Tieba(CheckIn):
         data.update({"sign": sign})
         return data
 
-    def get_user_info(self) -> tuple[str | bool, str]:
+    def get_user_info(self):
         try:
             result = self.request(self.TBS_URL)
             if result.get("is_login", 0) == 0:
