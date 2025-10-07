@@ -5,8 +5,9 @@ import time
 
 import requests
 
+from dailycheckin import CheckIn
 
-class BaiduWP:
+class BaiduWP(CheckIn):
     """
     百度网盘会员成长值签到和答题功能。
     传入cookie 自动完成签到、答题和会员信息查询。
