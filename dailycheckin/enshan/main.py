@@ -19,7 +19,7 @@ class EnShan(CheckIn):
     @staticmethod
     def get_formhash_from_page(session):
         """GET 签到页面并提取 formhash（Discuz 常见的 CSRF 字段）"""
-        response = session.get("https://www.right.com.cn/forum/erling_qd-sign_in.html", timeout=15)
+        response = session.get("https://www.right.com.cn/forum/forum.php", timeout=15)
         response.raise_for_status()
         html = response.text
         # 常见两种位置：隐藏 input name="formhash" value="..." 或 js var formhash = '...'
@@ -102,9 +102,9 @@ class EnShan(CheckIn):
         cookie = self.check_item.get("cookie")
         session = requests.Session()
         session.headers.update({
-            "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.5359.125 Safari/537.36",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
             "Accept": "application/json, text/javascript, */*; q=0.01",
-            "Referer": "https://www.right.com.cn/forum/erling_qd-sign_in.html",
+            "Referer": "https://www.right.com.cn/forum/",
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
             "Cookie": cookie,
         })
