@@ -15,6 +15,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--include", nargs="+", help="任务执行包含的任务列表")
     parser.add_argument("--exclude", nargs="+", help="任务执行排除的任务列表")
+    parser.add_argument("--accounts", help="账号索引范围,格式: start-end (例如: 0-1 表示运行前两个账号)")  
     return parser.parse_args()
 
 
@@ -70,6 +71,7 @@ def checkin():
     args = parse_arguments()
     include = args.include
     exclude = args.exclude
+    account_range = args.accounts
     if not include:
         include = list(checkin_map.keys())
     else:
@@ -89,6 +91,9 @@ def checkin():
         for one_check, check_list in check_info.items():
             check_name, check_func = checkin_map.get(one_check.upper())
             print(f"----------开始执行「{check_name}」签到----------")
+            if account_range:  
+                start, end = map(int, account_range.split('-'))  
+                check_list = check_list[start:end+1]  # 切片获取指定范围的账号
             for index, check_item in enumerate(check_list):
                 try:
                     msg = check_func(check_item).main()
