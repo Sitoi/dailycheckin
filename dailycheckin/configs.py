@@ -34,6 +34,7 @@ notice_map = {
     "QYWX_KEY": "",
     "QYWX_TOUSER": "",
     "QYWX_MEDIA_ID": "",
+    "QYWX_ORIGIN": "",
     "SCKEY": "",
     "SENDKEY": "",
     "TG_API_HOST": "",
@@ -41,15 +42,19 @@ notice_map = {
     "TG_PROXY": "",
     "TG_USER_ID": "",
     "MERGE_PUSH": "",
+    "GOTIFY_URL": "",
+    "GOTIFY_TOKEN": "",
+    "GOTIFY_PRIORITY": "",
+    "NTFY_URL": "",
+    "NTFY_TOPIC": "",
+    "NTFY_PRIORITY": "",
 }
 
 
 def env2list(key):
     try:
         value = json.loads(os.getenv(key, []).strip()) if os.getenv(key) else []
-        if isinstance(value, list):
-            value = value
-        else:
+        if not isinstance(value, list):
             value = []
     except Exception as e:
         print(e)
@@ -63,7 +68,7 @@ def env2str(key):
         if isinstance(value, str):
             value = value.strip()
         elif isinstance(value, bool):
-            value = value
+            pass
         else:
             value = None
     except Exception as e:

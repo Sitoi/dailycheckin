@@ -19,7 +19,7 @@ class SMZDM(CheckIn):
         self.check_item = check_item
 
     def robot_token(self, headers):
-        ts = int(round(time.time() * 1000))
+        ts = round(time.time() * 1000)
         url = "https://user-api.smzdm.com/robot/token"
         data = {
             "f": "android",
@@ -41,17 +41,17 @@ class SMZDM(CheckIn):
         return token
 
     def sign(self, headers, token):
-        Timestamp = int(round(time.time() * 1000))
+        time_stamp = round(time.time() * 1000)
         data = {
             "f": "android",
             "v": "10.4.1",
             "sk": "ierkM0OZZbsuBKLoAgQ6OJneLMXBQXmzX+LXkNTuKch8Ui2jGlahuFyWIzBiDq/L",
             "weixin": 1,
-            "time": Timestamp,
+            "time": time_stamp,
             "token": token,
             "sign": hashlib.md5(
                 bytes(
-                    f"f=android&sk=ierkM0OZZbsuBKLoAgQ6OJneLMXBQXmzX+LXkNTuKch8Ui2jGlahuFyWIzBiDq/L&time={Timestamp}&token={token}&v=10.4.1&weixin=1&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC",
+                    f"f=android&sk=ierkM0OZZbsuBKLoAgQ6OJneLMXBQXmzX+LXkNTuKch8Ui2jGlahuFyWIzBiDq/L&time={time_stamp}&token={token}&v=10.4.1&weixin=1&key=apr1$AwP!wRRT$gJ/q.X24poeBInlUJC",
                     encoding="utf-8",
                 )
             )
@@ -69,16 +69,19 @@ class SMZDM(CheckIn):
         result = resp.json()
         msgs = []
         if normal_reward := result["data"]["normal_reward"]:
-            msgs = [
-                {
-                    "name": "签到奖励",
-                    "value": normal_reward["reward_add"]["content"],
-                },
-                {
-                    "name": "连续签到",
-                    "value": normal_reward["sub_title"],
-                },
-            ]
+            try:
+                msgs = [
+                    {
+                        "name": "签到奖励",
+                        "value": normal_reward["reward_add"]["content"],
+                    },
+                    {
+                        "name": "连续签到",
+                        "value": normal_reward["sub_title"],
+                    },
+                ]
+            except Exception as e:
+                print(e)
         return msgs
 
     def active(self, cookie):

@@ -9,5 +9,7 @@
   "qywxrobot": "企业微信群机器人",
   "telegram": "Telegram",
   "server": "Server 酱",
-  "turbo": "Server 酱 Turbo"
+  "turbo": "Server 酱 Turbo",
+  "ntfy": "Ntfy",
+  "gotify": "Gotify"
 }

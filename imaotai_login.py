@@ -16,9 +16,7 @@ CURRENT_TIME = str(int(time.time() * 1000))
 headers = {}
 
 
-mt_version = json.loads(
-    requests.get("https://itunes.apple.com/cn/lookup?id=1600482450").text
-)["results"][0]["version"]
+mt_version = json.loads(requests.get("https://itunes.apple.com/cn/lookup?id=1600482450").text)["results"][0]["version"]
 
 
 header_context = """
@@ -48,9 +46,7 @@ userId: 2
 
 
 # 初始化请求头
-def init_headers(
-    user_id: str = "1", token: str = "2", lat: str = "29.83826", lng: str = "119.74375"
-):
+def init_headers(user_id: str = "1", token: str = "2", lat: str = "29.83826", lng: str = "119.74375"):
     for k in header_context.strip().split("\n"):
         temp_l = k.split(": ")
         dict.update(headers, {temp_l[0]: temp_l[1]})
@@ -67,9 +63,7 @@ def select_geo(i: str):
     if AMAP_KEY is None:
         print("!!!!请配置 AMAP_KEY (高德地图的MapKey)")
         raise ValueError
-    resp = requests.get(
-        f"https://restapi.amap.com/v3/geocode/geo?key={AMAP_KEY}&output=json&address={i}"
-    )
+    resp = requests.get(f"https://restapi.amap.com/v3/geocode/geo?key={AMAP_KEY}&output=json&address={i}")
     geocodes: list = resp.json()["geocodes"]
     return geocodes
 
@@ -90,9 +84,7 @@ def signature(data: dict):
 def get_vcode(mobile: str):
     params = {"mobile": mobile}
     md5 = signature(params)
-    dict.update(
-        params, {"md5": md5, "timestamp": CURRENT_TIME, "MT-APP-Version": mt_version}
-    )
+    dict.update(params, {"md5": md5, "timestamp": CURRENT_TIME, "MT-APP-Version": mt_version})
     responses = requests.post(
         "https://app.moutai519.com.cn/xhr/front/user/register/vcode",
         json=params,
@@ -108,18 +100,14 @@ def get_vcode(mobile: str):
 def login(mobile: str, v_code: str):
     params = {"mobile": mobile, "vCode": v_code, "ydToken": "", "ydLogId": ""}
     md5 = signature(params)
-    dict.update(
-        params, {"md5": md5, "timestamp": CURRENT_TIME, "MT-APP-Version": mt_version}
-    )
+    dict.update(params, {"md5": md5, "timestamp": CURRENT_TIME, "MT-APP-Version": mt_version})
     responses = requests.post(
         "https://app.moutai519.com.cn/xhr/front/user/register/login",
         json=params,
         headers=headers,
     )
     if responses.status_code != 200:
-        print(
-            f"login : params : {params}, response code : {responses.status_code}, response body : {responses.text}"
-        )
+        print(f"login : params : {params}, response code : {responses.status_code}, response body : {responses.text}")
     dict.update(headers, {"MT-Token": responses.json()["data"]["token"]})
     dict.update(headers, {"userId": responses.json()["data"]["userId"]})
     return responses.json()["data"]["token"], responses.json()["data"]["userId"]
@@ -158,7 +146,7 @@ if __name__ == "__main__":
         mobile = input("输入手机号[18888888888]:").strip()
         get_vcode(mobile)
         code = input(f"输入 [{mobile}] 验证码[8888]:").strip()
-        token, userId = login(mobile, code)
+        token, user_id = login(mobile, code)
         item = {
             "province": province,
             "city": str(city),
@@ -166,9 +154,9 @@ if __name__ == "__main__":
             "lng": location.split(",")[0],
             "mobile": str(mobile),
             "token": str(token),
-            "userid": str(userId),
+            "userid": str(user_id),
             "reserve_rule": 0,
-            "item_codes": ["10941", "10942"],
+            "item_codes": ["11318", "11319"],
         }
         items.append(item)
         condition = input("是否继续添加账号[y/n]:").strip()

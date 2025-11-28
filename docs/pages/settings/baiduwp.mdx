@@ -1,0 +1,39 @@
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import CardList from '../../components/CardList'
+
+<CardList />
+
+# 百度网盘会员
+
+## 配置示例
+
+```json filename="config.json" copy
+{
+  "BAIDUWP": [
+    {
+      "cookie": "BDUSS=xxxxxx; STOKEN=xxxxxx; ..."
+    }
+  ]
+}
+```
+
+## 配置说明
+
+|  参数  |            说明            |
+| :----: | :------------------------: |
+| cookie | 百度网盘账号的 cookie 信息 |
+
+- cookie 获取后请完整粘贴。
+
+## cookie 获取方式
+
+<Steps>
+
+### 1. 访问 [成长值任务页面](https://pan.baidu.com/wap/svip/growth/task)
+
+### 2. 复制完整的 Cookie 内容，粘贴到 config.json 的对应位置
+
+</Steps>
+
+> 建议使用 PC 浏览器操作，获取 cookie 时请确保账号已登录。

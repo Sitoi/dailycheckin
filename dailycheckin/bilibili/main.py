@@ -66,13 +66,13 @@ class BiliBili(CheckIn):
             url = "https://api.live.bilibili.com/xlive/web-ucenter/v1/sign/DoSign"
             ret = session.get(url=url).json()
             if ret["code"] == 0:
-                msg = f'签到成功，{ret["data"]["text"]}，特别信息:{ret["data"]["specialText"]}，本月已签到{ret["data"]["hadSignDays"]}天'
+                msg = f"签到成功，{ret['data']['text']}，特别信息:{ret['data']['specialText']}，本月已签到{ret['data']['hadSignDays']}天"
             elif ret["code"] == 1011040:
                 msg = "今日已签到过,无法重复签到"
             else:
-                msg = f'签到失败，信息为: {ret["message"]}'
+                msg = f"签到失败，信息为: {ret['message']}"
         except Exception as e:
-            msg = f"签到异常，原因为{str(e)}"
+            msg = f"签到异常，原因为{e!s}"
             print(msg)
         return msg
 
@@ -90,10 +90,10 @@ class BiliBili(CheckIn):
             elif ret["msg"] == "clockin clockin is duplicate":
                 msg = "今天已经签到过了"
             else:
-                msg = f'签到失败，信息为({ret["msg"]})'
+                msg = f"签到失败，信息为({ret['msg']})"
                 print(msg)
         except Exception as e:
-            msg = f"签到异常,原因为: {str(e)}"
+            msg = f"签到异常,原因为: {e!s}"
             print(msg)
         return msg
 
@@ -101,7 +101,7 @@ class BiliBili(CheckIn):
     def vip_privilege_receive(session, bili_jct, receive_type: int = 1) -> dict:
         """
         领取B站大会员权益
-        receive_type int 权益类型，1为B币劵，2为优惠券
+        receive_type int 权益类型 1为B币劵 2为优惠券
         """
         url = "https://api.bilibili.com/x/vip/privilege/receive"
         post_data = {"type": receive_type, "csrf": bili_jct}
@@ -150,11 +150,11 @@ class BiliBili(CheckIn):
     ) -> dict:
         """
         获取指定用户关注的up主
-        uid int 账户uid，默认为本账户，非登录账户只能获取20个*5页
-        pn int 页码，默认第一页
-        ps int 每页数量，默认50
-        order str 排序方式，默认desc
-        order_type 排序类型，默认attention
+        uid int 账户uid 默认为本账户 非登录账户只能获取20个*5页
+        pn int 页码 默认第一页
+        ps int 每页数量 默认50
+        order str 排序方式 默认desc
+        order_type 排序类型 默认attention
         """
         params = {
             "vmid": uid,
@@ -179,12 +179,12 @@ class BiliBili(CheckIn):
     ) -> dict:
         """
         获取指定up主空间视频投稿信息
-        uid int 账户uid，默认为本账户
-        pn int 页码，默认第一页
-        ps int 每页数量，默认50
+        uid int 账户uid 默认为本账户
+        pn int 页码 默认第一页
+        ps int 每页数量 默认50
         tid int 分区 默认为0(所有分区)
-        order str 排序方式，默认pubdate
-        keyword str 关键字，默认为空
+        order str 排序方式 默认pubdate
+        keyword str 关键字 默认为空
         """
         params = {
             "mid": uid,
@@ -227,9 +227,7 @@ class BiliBili(CheckIn):
         return ret
 
     @staticmethod
-    def coin_add(
-        session, bili_jct, aid: int, num: int = 1, select_like: int = 1
-    ) -> dict:
+    def coin_add(session, bili_jct, aid: int, num: int = 1, select_like: int = 1) -> dict:
         """
         给指定 av 号视频投币
         aid int 视频av号
@@ -271,12 +269,7 @@ class BiliBili(CheckIn):
         rid int 分区号
         num int 获取视频数量
         """
-        url = (
-            "https://api.bilibili.com/x/web-interface/dynamic/region?ps="
-            + str(num)
-            + "&rid="
-            + str(rid)
-        )
+        url = "https://api.bilibili.com/x/web-interface/dynamic/region?ps=" + str(num) + "&rid=" + str(rid)
         ret = session.get(url=url).json()
         data_list = [
             {
@@ -298,10 +291,7 @@ class BiliBili(CheckIn):
         return ret
 
     def main(self):
-        bilibili_cookie = {
-            item.split("=")[0]: item.split("=")[1]
-            for item in self.check_item.get("cookie").split("; ")
-        }
+        bilibili_cookie = {item.split("=")[0]: item.split("=")[1] for item in self.check_item.get("cookie").split("; ")}
         bili_jct = bilibili_cookie.get("bili_jct")
         coin_num = self.check_item.get("coin_num", 0)
         coin_type = self.check_item.get("coin_type", 1)
@@ -317,9 +307,7 @@ class BiliBili(CheckIn):
             }
         )
         success_count = 0
-        uname, uid, is_login, coin, vip_type, current_exp = self.get_nav(
-            session=session
-        )
+        uname, uid, is_login, coin, vip_type, current_exp = self.get_nav(session=session)
         if is_login:
             manhua_msg = self.manga_sign(session=session)
             live_msg = self.live_sign(session=session)
@@ -350,9 +338,7 @@ class BiliBili(CheckIn):
                 for following in following_list.get("data", {}).get("list"):
                     mid = following.get("mid")
                     if mid:
-                        tmplist, tmpcount = self.space_arc_search(
-                            session=session, uid=mid
-                        )
+                        tmplist, tmpcount = self.space_arc_search(session=session, uid=mid)
                         aid_list += tmplist
                         count += tmpcount
                         if count > coin_num:
@@ -364,33 +350,27 @@ class BiliBili(CheckIn):
                     print(one)
             if coin_num > 0:
                 for aid in aid_list[::-1]:
-                    ret = self.coin_add(
-                        session=session, aid=aid.get("aid"), bili_jct=bili_jct
-                    )
+                    ret = self.coin_add(session=session, aid=aid.get("aid"), bili_jct=bili_jct)
                     if ret["code"] == 0:
                         coin_num -= 1
-                        print(f'成功给{aid.get("title")}投一个币')
+                        print(f"成功给{aid.get('title')}投一个币")
                         success_count += 1
                     elif ret["code"] == 34005:
-                        print(f'投币{aid.get("title")}失败，原因为{ret["message"]}')
+                        print(f"投币{aid.get('title')}失败，原因为{ret['message']}")
                         continue
                         # -104 硬币不够了 -111 csrf 失败 34005 投币达到上限
                     else:
-                        print(f'投币{aid.get("title")}失败，原因为{ret["message"]}，跳过投币')
+                        print(f"投币{aid.get('title')}失败，原因为{ret['message']}，跳过投币")
                         break
                     if coin_num <= 0:
                         break
                 coin_msg = f"今日成功投币{success_count + coins_av_count}/{self.check_item.get('coin_num', 5)}个"
             else:
-                coin_msg = (
-                    f"今日成功投币{coins_av_count}/{self.check_item.get('coin_num', 5)}个"
-                )
+                coin_msg = f"今日成功投币{coins_av_count}/{self.check_item.get('coin_num', 5)}个"
             aid = aid_list[0].get("aid")
             cid = aid_list[0].get("cid")
             title = aid_list[0].get("title")
-            report_ret = self.report_task(
-                session=session, bili_jct=bili_jct, aid=aid, cid=cid
-            )
+            report_ret = self.report_task(session=session, bili_jct=bili_jct, aid=aid, cid=cid)
             if report_ret.get("code") == 0:
                 report_msg = f"观看《{title}》300秒"
             else:
@@ -410,12 +390,8 @@ class BiliBili(CheckIn):
                 else:
                     s2c_msg = ""
             live_stats = self.live_status(session=session)
-            uname, uid, is_login, new_coin, vip_type, new_current_exp = self.get_nav(
-                session=session
-            )
-            today_exp = sum(
-                map(lambda x: x["delta"], self.get_today_exp(session=session))
-            )
+            uname, uid, is_login, new_coin, vip_type, new_current_exp = self.get_nav(session=session)
+            today_exp = sum(map(lambda x: x["delta"], self.get_today_exp(session=session)))
             update_data = (28800 - new_current_exp) // (today_exp if today_exp else 1)
             msg = [
                 {"name": "帐号信息", "value": uname},
@@ -429,7 +405,8 @@ class BiliBili(CheckIn):
                 {"name": "今日经验", "value": today_exp},
                 {"name": "当前经验", "value": new_current_exp},
                 {"name": "升级还需", "value": f"{update_data}天"},
-            ] + live_stats
+                *live_stats,
+            ]
             msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
             return msg
 

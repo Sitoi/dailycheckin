@@ -134,3 +134,5 @@ config.json
 
 .next
 node_modules
+
+.DS_Store

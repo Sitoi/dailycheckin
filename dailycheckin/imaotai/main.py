@@ -52,19 +52,20 @@ class IMAOTAI(CheckIn):
         self.RESERVE_RULE = 0
         self.mt_r = "clips_OlU6TmFRag5rCXwbNAQ/Tz1SKlN8THcecBp/"
         self.ITEM_MAP = {
-            "10941": "53%vol 500ml贵州茅台酒（甲辰龙年）",
-            "10942": "53%vol 375ml×2贵州茅台酒（甲辰龙年）",
-            "10056": "53%vol 500ml茅台1935",
+            "11318": "53%vol 500ml贵州茅台酒（乙巳蛇年）",
+            "11317": "53%vol 500ml贵州茅台酒（笙乐飞天）",
+            "11319": "53%vol 375mlx2贵州茅台酒（乙巳蛇年）",
             "2478": "53%vol 500ml贵州茅台酒（珍品）",
+            "11240": "53%vol 500ml 茅台1935·中国国家地理文创酒（喜逢大运河）",
         }
-        self.ITEM_CODES = ["10941", "10942"]
-        AES_KEY = "qbhajinldepmucsonaaaccgypwuvcjaa"
-        AES_IV = "2018534749963515"
-        self.encrypt = Encrypt(key=AES_KEY, iv=AES_IV)
+        self.ITEM_CODES = ["11318", "11319"]
+        aes_key = "qbhajinldepmucsonaaaccgypwuvcjaa"
+        aes_iv = "2018534749963515"
+        self.encrypt = Encrypt(key=aes_key, iv=aes_iv)
 
-        self.mt_version = json.loads(
-            requests.get("https://itunes.apple.com/cn/lookup?id=1600482450").text
-        )["results"][0]["version"]
+        self.mt_version = json.loads(requests.get("https://itunes.apple.com/cn/lookup?id=1600482450").text)["results"][
+            0
+        ]["version"]
         self.headers = {}
         self.header_context = """
 MT-Lat: 28.499562
@@ -140,14 +141,14 @@ userId: 2
         urls = mtshops.get("url")
         r = requests.get(urls)
         for k, v in dict(r.json()).items():
-            provinceName = v.get("provinceName")
-            cityName = v.get("cityName")
-            if not p_c_map.get(provinceName):
-                p_c_map[provinceName] = {}
-            if not p_c_map[provinceName].get(cityName, None):
-                p_c_map[provinceName][cityName] = [k]
+            province_name = v.get("provinceName")
+            city_name = v.get("cityName")
+            if not p_c_map.get(province_name):
+                p_c_map[province_name] = {}
+            if not p_c_map[province_name].get(city_name, None):
+                p_c_map[province_name][city_name] = [k]
             else:
-                p_c_map[provinceName][cityName].append(k)
+                p_c_map[province_name][city_name].append(k)
 
         return p_c_map, dict(r.json())
 
@@ -156,20 +157,18 @@ userId: 2
         max_shop_id = "0"
         shop_ids = p_c_map[province][city]
         for shop in shops:
-            shopId = shop["shopId"]
+            shop_id = shop["shopId"]
             items = shop["items"]
 
-            if shopId not in shop_ids:
+            if shop_id not in shop_ids:
                 continue
             for item in items:
                 if item["itemId"] != str(item_code):
                     continue
                 if item["inventory"] > max_count:
                     max_count = item["inventory"]
-                    max_shop_id = shopId
-        print(
-            f"item code {item_code}, max shop id : {max_shop_id}, max count : {max_count}"
-        )
+                    max_shop_id = shop_id
+        print(f"item code {item_code}, max shop id : {max_shop_id}, max count : {max_count}")
         return max_shop_id
 
     def distance_shop(
@@ -182,17 +181,14 @@ userId: 2
     ):
         temp_list = []
         for shop in shops:
-            shopId = shop["shopId"]
+            shop_id = shop["shopId"]
             items = shop["items"]
             item_ids = [i["itemId"] for i in items]
             if str(item_code) not in item_ids:
                 continue
-            shop_info = source_data.get(shopId)
-            d = math.sqrt(
-                (float(lat) - shop_info["lat"]) ** 2
-                + (float(lng) - shop_info["lng"]) ** 2
-            )
-            temp_list.append((d, shopId))
+            shop_info = source_data.get(shop_id)
+            d = math.sqrt((float(lat) - shop_info["lat"]) ** 2 + (float(lng) - shop_info["lng"]) ** 2)
+            temp_list.append((d, shop_id))
 
         temp_list = sorted(temp_list, key=lambda x: x[0])
         if len(temp_list) > 0:
@@ -229,11 +225,11 @@ userId: 2
 
     def act_params(self, shop_id: str, item_id: str):
         session_id = self.headers["current_session_id"]
-        userId = self.headers["userId"]
+        user_id = self.headers["userId"]
         params = {
             "itemInfoList": [{"count": 1, "itemId": item_id}],
             "sessionId": int(session_id),
-            "userId": userId,
+            "userId": user_id,
             "shopId": shop_id,
         }
         s = json.dumps(params)
@@ -298,7 +294,7 @@ userId: 2
         province = self.check_item.get("province")
         city = self.check_item.get("city")
         token = self.check_item.get("token")
-        userId = self.check_item.get("userid")
+        user_id = self.check_item.get("userid")
         lat = self.check_item.get("lat")
         lng = self.check_item.get("lng")
         item_codes = self.check_item.get("item_codes", self.ITEM_CODES)
@@ -315,7 +311,7 @@ userId: 2
         ]
         p_c_map, source_data = self.get_map(lat=lat, lng=lng)
         self.get_current_session_id()
-        self.init_headers(user_id=userId, token=token, lng=lng, lat=lat)
+        self.init_headers(user_id=user_id, token=token, lng=lng, lat=lat)
         try:
             for item in item_codes:
                 max_shop_id = self.get_location_count(

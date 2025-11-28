@@ -2,6 +2,7 @@ import base64
 import hashlib
 import hmac
 import json
+import re
 import time
 from urllib.parse import quote_plus
 
@@ -12,14 +13,18 @@ def message2server(sckey, content):
     print("server 酱推送开始")
     data = {"text": "每日签到", "desp": content.replace("\n", "\n\n")}
     requests.post(url=f"https://sc.ftqq.com/{sckey}.send", data=data)
-    return
 
 
 def message2server_turbo(sendkey, content):
-    print("server 酱 Turbo 推送开始")
     data = {"text": "每日签到", "desp": content.replace("\n", "\n\n")}
-    requests.post(url=f"https://sctapi.ftqq.com/{sendkey}.send", data=data)
-    return
+    if match := re.match(r"^sctp(\d+)t", sendkey):
+        sc3uid = match.group(1)
+        print("Server 酱³ 推送开始")
+        url = f"https://{sc3uid}.push.ft07.com/send/{sendkey}.send?tags=DailyCheckin"
+    else:
+        print("server 酱 Turbo 推送开始")
+        url = f"https://sctapi.ftqq.com/{sendkey}.send"
+    requests.post(url=url, data=data)
 
 
 def message2coolpush(
@@ -37,7 +42,6 @@ def message2coolpush(
         requests.post(url=f"https://push.xuthus.cc/wx/{coolpushskey}", params=params)
     if coolpushemail:
         requests.post(url=f"https://push.xuthus.cc/email/{coolpushskey}", params=params)
-    return
 
 
 def message2qmsg(qmsg_key, qmsg_type, content):
@@ -47,7 +51,6 @@ def message2qmsg(qmsg_key, qmsg_type, content):
         requests.get(url=f"https://qmsg.zendee.cn/group/{qmsg_key}", params=params)
     else:
         requests.get(url=f"https://qmsg.zendee.cn/send/{qmsg_key}", params=params)
-    return
 
 
 def message2telegram(tg_api_host, tg_proxy, tg_bot_token, tg_user_id, content):
@@ -69,16 +72,12 @@ def message2telegram(tg_api_host, tg_proxy, tg_bot_token, tg_user_id, content):
     else:
         proxies = None
     requests.post(url=url, data=send_data, proxies=proxies)
-    return
 
 
 def message2feishu(fskey, content):
     print("飞书 推送开始")
     data = {"msg_type": "text", "content": {"text": content}}
-    requests.post(
-        url=f"https://open.feishu.cn/open-apis/bot/v2/hook/{fskey}", json=data
-    )
-    return
+    requests.post(url=f"https://open.feishu.cn/open-apis/bot/v2/hook/{fskey}", json=data)
 
 
 def message2dingtalk(dingtalk_secret, dingtalk_access_token, content):
@@ -87,19 +86,14 @@ def message2dingtalk(dingtalk_secret, dingtalk_access_token, content):
     secret_enc = dingtalk_secret.encode("utf-8")
     string_to_sign = f"{timestamp}\n{dingtalk_secret}"
     string_to_sign_enc = string_to_sign.encode("utf-8")
-    hmac_code = hmac.new(
-        secret_enc, string_to_sign_enc, digestmod=hashlib.sha256
-    ).digest()
+    hmac_code = hmac.new(secret_enc, string_to_sign_enc, digestmod=hashlib.sha256).digest()
     sign = quote_plus(base64.b64encode(hmac_code))
     send_data = {"msgtype": "text", "text": {"content": content}}
     requests.post(
-        url="https://oapi.dingtalk.com/robot/send?access_token={}&timestamp={}&sign={}".format(
-            dingtalk_access_token, timestamp, sign
-        ),
+        url=f"https://oapi.dingtalk.com/robot/send?access_token={dingtalk_access_token}&timestamp={timestamp}&sign={sign}",
         headers={"Content-Type": "application/json", "Charset": "UTF-8"},
         data=json.dumps(send_data),
     )
-    return
 
 
 def message2bark(bark_url: str, content):
@@ -110,7 +104,6 @@ def message2bark(bark_url: str, content):
     url = f"{bark_url}{content}"
     headers = {"Content-type": "application/x-www-form-urlencoded"}
     requests.get(url=url, headers=headers)
-    return
 
 
 def message2qywxrobot(qywx_key, content):
@@ -119,7 +112,6 @@ def message2qywxrobot(qywx_key, content):
         url=f"https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key={qywx_key}",
         data=json.dumps({"msgtype": "text", "text": {"content": content}}),
     )
-    return
 
 
 def message2qywxapp(
@@ -135,9 +127,7 @@ def message2qywxapp(
     base_url = "https://qyapi.weixin.qq.com"
     if qywx_origin:
         base_url = qywx_origin
-    res = requests.get(
-        f"{base_url}/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}"
-    )
+    res = requests.get(f"{base_url}/cgi-bin/gettoken?corpid={qywx_corpid}&corpsecret={qywx_corpsecret}")
     token = res.json().get("access_token", False)
     if qywx_media_id:
         data = {
@@ -173,7 +163,6 @@ def message2qywxapp(
         url=f"{base_url}/cgi-bin/message/send?access_token={token}",
         data=json.dumps(data),
     )
-    return
 
 
 def message2pushplus(pushplus_token, content, pushplus_topic=None):
@@ -187,13 +176,53 @@ def message2pushplus(pushplus_token, content, pushplus_topic=None):
     if pushplus_topic:
         data["topic"] = pushplus_topic
     requests.post(url="http://www.pushplus.plus/send", data=json.dumps(data))
-    return
+
+
+def message2gotify(gotify_url: str, gotify_token: str, gotify_priority: str, content: str) -> None:
+    print("Gotify 服务启动")
+    if not gotify_priority:
+        gotify_priority = "3"
+    url = f"{gotify_url}/message?token={gotify_token}"
+    data = {
+        "title": "Dailycheckin签到通知",
+        "message": content,
+        "priority": gotify_priority,
+    }
+    response = requests.post(url, data=data).json()
+
+    if response.get("id"):
+        print("Gotify 推送成功！")
+    else:
+        print("Gotify 推送失败！")
+
+
+def message2ntfy(ntfy_url: str, ntfy_topic: str, ntfy_priority: str, content: str) -> None:
+    def encode_rfc2047(text: str) -> str:
+        """将文本编码为符合 RFC 2047 标准的格式"""
+        encoded_bytes = base64.b64encode(text.encode("utf-8"))
+        encoded_str = encoded_bytes.decode("utf-8")
+        return f"=?utf-8?B?{encoded_str}?="
+
+    print("Ntfy 服务启动")
+    if not ntfy_url:
+        ntfy_url = "https://ntfy.sh"
+    if not ntfy_priority:
+        ntfy_priority = "3"
+    # 使用 RFC 2047 编码 title
+    encoded_title = encode_rfc2047("Dailycheckin签到通知")
+
+    data = content.encode(encoding="utf-8")
+    headers = {"Title": encoded_title, "Priority": ntfy_priority}  # 使用编码后的 title
+    url = f"{ntfy_url}/{ntfy_topic}"
+    response = requests.post(url, data=data, headers=headers)
+    if response.status_code == 200:  # 使用 response.status_code 进行检查
+        print("Ntfy 推送成功！")
+    else:
+        print("Ntfy 推送失败！错误信息：", response.text)
 
 
 def important_notice():
-    datas = requests.get(
-        url="https://api.github.com/repos/Sitoi/dailycheckin/issues?state=open&labels=通知"
-    ).json()
+    datas = requests.get(url="https://api.github.com/repos/Sitoi/dailycheckin/issues?state=open&labels=通知").json()
     if datas:
         data = datas[0]
         title = data.get("title")
@@ -231,8 +260,14 @@ def push_message(content_list: list, notice_info: dict):
     qywx_origin = notice_info.get("qywx_origin")
     pushplus_token = notice_info.get("pushplus_token")
     pushplus_topic = notice_info.get("pushplus_topic")
-    merge_push = notice_info.get("merge_push")
+    gotify_url = notice_info.get("gotify_url")
+    gotify_token = notice_info.get("gotify_token")
+    gotify_priority = notice_info.get("gotify_priority")
+    ntfy_url = notice_info.get("ntfy_url")
+    ntfy_topic = notice_info.get("ntfy_topic")
+    ntfy_priority = notice_info.get("ntfy_priority")
     content_str = "\n————————————\n\n".join(content_list)
+    merge_push = notice_info.get("merge_push")
     message_list = [content_str]
     try:
         notice = important_notice()
@@ -250,6 +285,8 @@ def push_message(content_list: list, notice_info: dict):
             or qywx_agentid
             or bark_url
             or pushplus_token
+            or ntfy_topic
+            or (gotify_url and gotify_token)
         ):
             merge_push = False
         else:
@@ -340,6 +377,26 @@ def push_message(content_list: list, notice_info: dict):
                 )
             except Exception as e:
                 print("Telegram 推送失败", e)
+        if gotify_url and gotify_token:
+            try:
+                message2gotify(
+                    gotify_url=gotify_url,
+                    gotify_token=gotify_token,
+                    gotify_priority=gotify_priority,
+                    content=message,
+                )
+            except Exception as e:
+                print("Gotify 推送失败", e)
+        if ntfy_topic:
+            try:
+                message2ntfy(
+                    ntfy_url=ntfy_url,
+                    ntfy_topic=ntfy_topic,
+                    ntfy_priority=ntfy_priority,
+                    content=message,
+                )
+            except Exception as e:
+                print("Ntfy 推送失败", e)
 
 
 if __name__ == "__main__":

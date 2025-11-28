@@ -17,11 +17,7 @@ def read_file(filename):
 
 
 def read_requirements(filename):
-    return [
-        line.strip()
-        for line in read_file(filename).splitlines()
-        if not line.startswith("#")
-    ]
+    return [line.strip() for line in read_file(filename).splitlines() if not line.startswith("#")]
 
 
 REQUIRED = read_requirements("requirements.txt")
@@ -48,7 +44,7 @@ def package_files(directories):
         if os.path.isfile(item):
             paths.append(os.path.join("..", item))
             continue
-        for path, directories, filenames in os.walk(item):
+        for path, _, filenames in os.walk(item):
             for filename in filenames:
                 paths.append(os.path.join("..", path, filename))
     return paths
