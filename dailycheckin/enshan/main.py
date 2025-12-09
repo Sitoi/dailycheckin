@@ -18,7 +18,7 @@ class EnShan(CheckIn):
 
     @staticmethod
     def get_formhash_from_page(session):
-        """GET 签到页面并提取 formhash（Discuz 常见的 CSRF 字段）"""
+        """GET 签到页面并提取 formhash Discuz 常见的 CSRF 字段"""
         response = session.get("https://www.right.com.cn/forum/forum.php", timeout=15)
         response.raise_for_status()
         html = response.text
@@ -38,7 +38,9 @@ class EnShan(CheckIn):
     def sign(session, form_hash):
         msg = []
         payload = {"formhash": form_hash}
-        response = session.post("https://www.right.com.cn/forum/plugin.php?id=erling_qd:action&action=sign", data=payload, timeout=15)
+        response = session.post(
+            "https://www.right.com.cn/forum/plugin.php?id=erling_qd:action&action=sign", data=payload, timeout=15
+        )
         try:
             data = response.json()
             if data.get("success"):
@@ -50,7 +52,7 @@ class EnShan(CheckIn):
                     },
                     {
                         "name": "连续签到",
-                        "value": f'已连续签到{continuous_days}天',
+                        "value": f"已连续签到{continuous_days}天",
                     },
                 ]
             else:
@@ -64,7 +66,7 @@ class EnShan(CheckIn):
             msg = [
                 {
                     "name": "签到结果",
-                    "value": f'签到异常：{response.status_code}',
+                    "value": f"签到异常：{response.status_code}",
                 }
             ]
             # print(f'status_code: {response.status_code}, text: {response.text[:2000]}')
@@ -101,16 +103,18 @@ class EnShan(CheckIn):
     def main(self):
         cookie = self.check_item.get("cookie")
         session = requests.Session()
-        session.headers.update({
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-            "Accept": "application/json, text/javascript, */*; q=0.01",
-            "Referer": "https://www.right.com.cn/forum/",
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "Cookie": cookie,
-        })
-        form_hash = self.get_formhash_from_page(session = session)
-        msg = self.sign(session = session, form_hash = form_hash)
-        msg += self.get_info(session = session)
+        session.headers.update(
+            {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+                "Accept": "application/json, text/javascript, */*; q=0.01",
+                "Referer": "https://www.right.com.cn/forum/",
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                "Cookie": cookie,
+            }
+        )
+        form_hash = self.get_formhash_from_page(session=session)
+        msg = self.sign(session=session, form_hash=form_hash)
+        msg += self.get_info(session=session)
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
 

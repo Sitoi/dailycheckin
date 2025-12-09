@@ -7,6 +7,7 @@ import requests
 
 from dailycheckin import CheckIn
 
+
 class BaiduWP(CheckIn):
     name = "百度网盘"
     """
