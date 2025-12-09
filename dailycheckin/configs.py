@@ -48,6 +48,8 @@ notice_map = {
     "NTFY_URL": "",
     "NTFY_TOPIC": "",
     "NTFY_PRIORITY": "",
+    "JENKINS_TOKEN": "",
+    "JENKINS_URL": ""
 }
 
 
