@@ -46,15 +46,11 @@ def check_config(task_list):
             notice_info = get_notice_info(data=data)
             _check_info = get_checkin_info(data=data)
             check_info = {}
-            for one_check, _ in checkin_map.items():
+            for one_check in checkin_map.keys():
                 if one_check in task_list:
                     if _check_info.get(one_check.lower()):
-                        for _, check_item in enumerate(
-                            _check_info.get(one_check.lower(), [])
-                        ):
-                            if "xxxxxx" not in str(check_item) and "多账号" not in str(
-                                check_item
-                            ):
+                        for _, check_item in enumerate(_check_info.get(one_check.lower(), [])):
+                            if "xxxxxx" not in str(check_item) and "多账号" not in str(check_item):
                                 if one_check.lower() not in check_info.keys():
                                     check_info[one_check.lower()] = []
                                 check_info[one_check.lower()].append(check_item)
@@ -63,10 +59,7 @@ def check_config(task_list):
             print(e)
             return False, False
     else:
-        print(
-            "未找到 config.json 配置文件\n请在下方任意目录中添加「config.json」文件:\n"
-            + "\n".join(config_path_list)
-        )
+        print("未找到 config.json 配置文件\n请在下方任意目录中添加「config.json」文件:\n" + "\n".join(config_path_list))
         return False, False
 
 
@@ -89,10 +82,7 @@ def checkin():
     notice_info, check_info = check_config(task_list)
     if check_info:
         task_name_str = "\n".join(
-            [
-                f"「{checkin_map.get(one.upper())[0]}」账号数 : {len(value)}"
-                for one, value in check_info.items()
-            ]
+            [f"「{checkin_map.get(one.upper())[0]}」账号数 : {len(value)}" for one, value in check_info.items()]
         )
         print(f"\n---------- 本次执行签到任务如下 ----------\n\n{task_name_str}\n\n")
         content_list = []
@@ -111,7 +101,7 @@ def checkin():
         try:
             url = "https://pypi.org/pypi/dailycheckin/json"
             latest_version = requests.get(url=url, timeout=30).json()["info"]["version"]
-        except:
+        except Exception:
             print("获取最新版本失败")
             latest_version = "0.0.0"
         content_list.append(

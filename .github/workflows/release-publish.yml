@@ -12,26 +12,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
       - name: Set up Python 3.9
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v6
         with:
           python-version: 3.9
+
       - name: Install pypa/build
-        run: >-
-          python -m
-          pip install
-          build
-          --user
+        run: python -m pip install build --user
+
       - name: Build a binary wheel and a source tarball
-        run: >-
-          python -m
-          build
-          --sdist
-          --wheel
-          --outdir dist/
-          .
+        run: python -m build --sdist --wheel --outdir dist/ .
+
       - name: Publish distribution 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@master
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}

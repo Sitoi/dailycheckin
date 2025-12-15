@@ -56,9 +56,7 @@ notice_map = {
 def env2list(key):
     try:
         value = json.loads(os.getenv(key, []).strip()) if os.getenv(key) else []
-        if isinstance(value, list):
-            value = value
-        else:
+        if not isinstance(value, list):
             value = []
     except Exception as e:
         print(e)
@@ -72,7 +70,7 @@ def env2str(key):
         if isinstance(value, str):
             value = value.strip()
         elif isinstance(value, bool):
-            value = value
+            pass
         else:
             value = None
     except Exception as e:

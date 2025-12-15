@@ -1,0 +1,44 @@
+[project]
+name = "dailycheckin"
+version = "25.9.29"
+dependencies = [
+    "pycryptodome==3.17",
+    "requests~=2.25.1",
+    "rsa~=4.0",
+    "urllib3~=1.26.2",
+]
+dynamic = ["readme","requires-python","license","authors","classifiers","urls","scripts"]
+
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py39"
+
+[tool.ruff.lint]
+ignore-init-module-imports = false
+select = [
+    "F",
+    "E",
+    "W",
+    "UP",
+    "N",
+    "PL",
+    "PERF",
+    "RUF",
+]
+ignore = [
+    "F401",
+    "PLR0913",
+    "N802",
+    "N805",
+    "PLR2004",
+    "RUF001",
+    "PLW1508",
+    "PERF401",
+    "RUF003",
+    "PLR0912",
+    "E501",
+    "PLR0915",
+    "PERF203"
+]
