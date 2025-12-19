@@ -69,28 +69,40 @@ class EnShan(CheckIn):
                     "value": f"签到异常：{response.status_code}",
                 }
             ]
-            # print(f'status_code: {response.status_code}, text: {response.text[:2000]}')
         return msg
 
     @staticmethod
     def get_info(session):
         msg = []
-        response = session.get("https://www.right.com.cn/FORUM/home.php?mod=spacecp&ac=credit&showcredit=1", timeout=15)
-        response.raise_for_status()
-        html = response.text
         try:
-            coin = re.findall("恩山币: </em>(.*?)&nbsp;", html)[0]
-            point = re.findall("<em>积分: </em>(.*?)<span", html)[0]
-            msg = [
-                {
-                    "name": "恩山币",
-                    "value": coin,
-                },
-                {
-                    "name": "积分",
-                    "value": point,
-                },
-            ]
+            # 将请求放入 try 块中，防止 521 等状态码导致脚本直接中断
+            response = session.get("https://www.right.com.cn/FORUM/home.php?mod=spacecp&ac=credit&showcredit=1", timeout=15)
+            # 移除 raise_for_status，避免非 200 状态码抛出异常
+            html = response.text
+            
+            # 使用列表安全访问，防止 index out of range
+            coin_match = re.findall("恩山币: </em>(.*?)&nbsp;", html)
+            point_match = re.findall("<em>积分: </em>(.*?)<span", html)
+            
+            if coin_match and point_match:
+                msg = [
+                    {
+                        "name": "恩山币",
+                        "value": coin_match[0],
+                    },
+                    {
+                        "name": "积分",
+                        "value": point_match[0],
+                    },
+                ]
+            else:
+                # 即使匹配不到（被WAF拦截），也返回温和的提示，而不是报错
+                msg = [
+                    {
+                        "name": "资产信息",
+                        "value": "获取失败(可能被WAF拦截)",
+                    }
+                ]
         except Exception as e:
             msg = [
                 {
@@ -112,7 +124,11 @@ class EnShan(CheckIn):
                 "Cookie": cookie,
             }
         )
-        form_hash = self.get_formhash_from_page(session=session)
+        try:
+            form_hash = self.get_formhash_from_page(session=session)
+        except Exception as e:
+            return f"获取Formhash失败: {e}"
+
         msg = self.sign(session=session, form_hash=form_hash)
         msg += self.get_info(session=session)
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
