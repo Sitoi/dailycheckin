@@ -4,7 +4,7 @@ import hmac
 import json
 import re
 import time
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus,quote
 
 import requests
 
@@ -26,6 +26,13 @@ def message2server_turbo(sendkey, content):
         url = f"https://sctapi.ftqq.com/{sendkey}.send"
     requests.post(url=url, data=data)
 
+def send2jenkins(url, token, content):
+    print("send to jenkins")
+    token=quote(token)
+    url = f"{url}&token={token}&text={content}"
+    response = requests.get(url)
+    print(response.content)
+    return
 
 def message2coolpush(
     coolpushskey,
@@ -268,6 +275,8 @@ def push_message(content_list: list, notice_info: dict):
     ntfy_priority = notice_info.get("ntfy_priority")
     content_str = "\n————————————\n\n".join(content_list)
     merge_push = notice_info.get("merge_push")
+    jenkins_url = notice_info.get("jenkins_url")
+    jenkins_token = notice_info.get("jenkins_token")
     message_list = [content_str]
     try:
         notice = important_notice()
@@ -294,6 +303,11 @@ def push_message(content_list: list, notice_info: dict):
     if not merge_push:
         message_list = content_list
     for message in message_list:
+        if jenkins_token:
+            try:
+                send2jenkins(jenkins_url, jenkins_token, message)
+            except Exception as e:
+                print("send to jenkins error", e)
         if qmsg_key:
             try:
                 message2qmsg(qmsg_key=qmsg_key, qmsg_type=qmsg_type, content=message)
