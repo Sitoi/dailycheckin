@@ -1,0 +1,54 @@
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import CardList from '../../components/CardList'
+
+<CardList />
+
+# 飞牛 NAS
+
+### 配置示例
+
+```json filename="config.json" copy
+{
+  "FNNASCLUB": [
+    {
+      "cookie": "xxxxxx;"
+    },
+    {
+      "cookie": "多账号 cookie 填写，请参考上面，cookie 以实际获取为准（遇到特殊字符如双引号\" 请加反斜杠转义）"
+    }
+  ]
+}
+```
+
+### 配置说明
+
+|          参数          |      说明       |
+| :--------------------: | :-------------: |
+| _**FNNASCLUB**_.cookie | 飞牛 NAS cookie |
+
+## 获取方式
+
+> 参考「爱奇艺」获取方式
+
+![获取 cookie 教程](../img/iqiyi_cookie.png)
+
+<Steps>
+
+### 打开官网
+
+进入[飞牛 NAS](https://club.fnnas.com/)
+
+### 打开开发者工具
+
+按 `F12` 打开开发者工具，刷新页面
+
+### 点击 Network 标签
+
+### 选择 Doc 标签
+
+### 选中 https://club.fnnas.com/
+
+### 下滑找到 cookie 全选复制即可
+
+</Steps>

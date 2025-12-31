@@ -5,8 +5,11 @@ import time
 
 import requests
 
+from dailycheckin import CheckIn
 
-class BaiduWP:
+
+class BaiduWP(CheckIn):
+    name = "百度网盘"
     """
     百度网盘会员成长值签到和答题功能。
     传入cookie 自动完成签到、答题和会员信息查询。
@@ -84,7 +87,7 @@ class BaiduWP:
                 current_level = m2.group(1)
         return current_level, current_value
 
-    def run(self):
+    def main(self):
         sign_point, signin_error_msg = self.signin()
         time.sleep(3)
         ask_id, answer = self.get_question()
@@ -103,4 +106,4 @@ if __name__ == "__main__":
     ) as f:
         datas = json.loads(f.read())
     _check_item = datas.get("BAIDUWP", [])[0]
-    print(BaiduWP(check_item=_check_item).run())
+    print(BaiduWP(check_item=_check_item).main())
