@@ -75,7 +75,8 @@ class EnShan(CheckIn):
     @staticmethod
     def get_info(session):
         msg = []
-        response = session.get("https://www.right.com.cn/FORUM/home.php?mod=spacecp&ac=credit&showcredit=1", timeout=15)
+        session.headers['Referer'] = "https://www.right.com.cn/forum/"
+        response = session.get("https://www.right.com.cn/forum/home.php?mod=spacecp&ac=credit", timeout=15)
         response.raise_for_status()
         html = response.text
         try:
@@ -103,18 +104,33 @@ class EnShan(CheckIn):
     def main(self):
         cookie = self.check_item.get("cookie")
         session = requests.Session()
-        session.headers.update(
-            {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-                "Accept": "application/json, text/javascript, */*; q=0.01",
-                "Referer": "https://www.right.com.cn/forum/",
-                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                "Cookie": cookie,
-            }
-        )
-        form_hash = self.get_formhash_from_page(session=session)
-        msg = self.sign(session=session, form_hash=form_hash)
-        msg += self.get_info(session=session)
+        session.headers.update({
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/121.0.0.0 Safari/537.36"
+            ),
+            "Accept": (
+                "text/html,application/xhtml+xml,application/xml;q=0.9,"
+                "image/avif,image/webp,image/apng,*/*;q=0.8,"
+                "application/signed-exchange;v=b3;q=0.7"
+            ),
+            "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+            "Upgrade-Insecure-Requests": "1",
+            "Connection": "keep-alive",
+            "Referer": "https://www.right.com.cn/forum/",
+        })
+
+        for part in cookie.split(";"):
+            part = part.strip()
+            if not part or "=" not in part:
+                continue
+            k, v = part.split("=", 1)
+            session.cookies.set(k, v, domain=".right.com.cn", path="/")
+
+        form_hash = self.get_formhash_from_page(session = session)
+        msg = self.sign(session = session, form_hash = form_hash)
+        msg += self.get_info(session = session)
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
         return msg
 
