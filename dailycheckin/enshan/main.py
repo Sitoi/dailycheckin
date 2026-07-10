@@ -13,13 +13,21 @@ urllib3.disable_warnings()
 class EnShan(CheckIn):
     name = "恩山无线论坛"
 
+    # 说明：right.com.cn 站点存在 WAF；在实测中，部分 Chrome/Windows UA 会触发 521。
+    # 因此这里避免在 Session 级别强行覆盖请求头；GET 页面时尽量使用浏览器常见的 Accept(text/html)。
+    _HTML_ACCEPT = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+
     def __init__(self, check_item):
         self.check_item = check_item
 
     @staticmethod
     def get_formhash_from_page(session):
         """GET 签到页面并提取 formhash Discuz 常见的 CSRF 字段"""
-        response = session.get("https://www.right.com.cn/forum/forum.php", timeout=15)
+        response = session.get(
+            "https://www.right.com.cn/forum/forum.php",
+            headers={"Accept": EnShan._HTML_ACCEPT},
+            timeout=15,
+        )
         response.raise_for_status()
         html = response.text
         # 常见两种位置：隐藏 input name="formhash" value="..." 或 js var formhash = '...'
@@ -39,7 +47,12 @@ class EnShan(CheckIn):
         msg = []
         payload = {"formhash": form_hash}
         response = session.post(
-            "https://www.right.com.cn/forum/plugin.php?id=erling_qd:action&action=sign", data=payload, timeout=15
+            "https://www.right.com.cn/forum/plugin.php?id=erling_qd:action&action=sign",
+            headers={
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            data=payload,
+            timeout=15,
         )
         try:
             data = response.json()
@@ -75,7 +88,11 @@ class EnShan(CheckIn):
     @staticmethod
     def get_info(session):
         msg = []
-        response = session.get("https://www.right.com.cn/FORUM/home.php?mod=spacecp&ac=credit&showcredit=1", timeout=15)
+        response = session.get(
+            "https://www.right.com.cn/forum/home.php?mod=spacecp&ac=credit&showcredit=1",
+            headers={"Accept": EnShan._HTML_ACCEPT},
+            timeout=15,
+        )
         response.raise_for_status()
         html = response.text
         try:
@@ -105,10 +122,7 @@ class EnShan(CheckIn):
         session = requests.Session()
         session.headers.update(
             {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-                "Accept": "application/json, text/javascript, */*; q=0.01",
                 "Referer": "https://www.right.com.cn/forum/",
-                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
                 "Cookie": cookie,
             }
         )
