@@ -48,6 +48,7 @@ notice_map = {
     "NTFY_URL": "",
     "NTFY_TOPIC": "",
     "NTFY_PRIORITY": "",
+    "XXTUI_KEY": "",
 }
 
 
