@@ -136,5 +136,5 @@ This project is [MIT](https://github.com/Sitoi/dailycheckin/blob/main/LICENSE) l
 [python-version-shield]: https://img.shields.io/pypi/pyversions/dailycheckin?labelColor=black&style=flat-square
 [pypi-version-shield]: https://img.shields.io/pypi/v/dailycheckin?labelColor=black&style=flat-square
 [pypi-version-link]: https://pypi.org/project/dailycheckin/
-[starchart-shield]: https://api.star-history.com/svg?repos=sitoi/dailycheckin&type=Date
-[starchart-link]: https://star-history.com/#sitoi/dailycheckin&Date
+[starchart-shield]: https://star-history.dera.page/svg?repos=sitoi/dailycheckin&type=Date
+[starchart-link]: https://star-history.dera.page/#sitoi/dailycheckin&Date
