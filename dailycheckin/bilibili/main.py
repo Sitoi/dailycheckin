@@ -269,7 +269,7 @@ class BiliBili(CheckIn):
         rid int 分区号
         num int 获取视频数量
         """
-        url = "https://api.bilibili.com/x/web-interface/dynamic/region?ps=" + str(num) + "&rid=" + str(rid)
+        url = "https://api.bilibili.com/x/web-interface/newlist?ps=" + str(num) + "&rid=" + str(rid)
         ret = session.get(url=url).json()
         data_list = [
             {
