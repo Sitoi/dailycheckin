@@ -81,6 +81,7 @@
 - server 酱（微信）
 - server 酱 TURBO（微信）
 - pushplus（微信）
+- WPUSH（微信等）
 - Cool Push（QQ,微信,邮箱）
 - qmsg 酱（QQ）
 - 飞书（飞书）
