@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+__pycache__
+*.py[cod]
+*.log
+config.json
+config/
+logs
+docs/node_modules
+docs/.next
+docs/out

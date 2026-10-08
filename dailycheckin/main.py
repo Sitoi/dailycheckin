@@ -41,7 +41,7 @@ def check_config(task_list):
                 data = json.load(f)
             except Exception:
                 print("Json 格式错误，请检查 config.json 文件格式是否正确！")
-                return False, False
+                return False, False, config_path, None
         try:
             notice_info = get_notice_info(data=data)
             _check_info = get_checkin_info(data=data)
@@ -54,13 +54,32 @@ def check_config(task_list):
                                 if one_check.lower() not in check_info.keys():
                                     check_info[one_check.lower()] = []
                                 check_info[one_check.lower()].append(check_item)
-            return notice_info, check_info
+            return notice_info, check_info, config_path, data
         except Exception as e:
             print(e)
-            return False, False
+            return False, False, config_path, data
     else:
         print("未找到 config.json 配置文件\n请在下方任意目录中添加「config.json」文件:\n" + "\n".join(config_path_list))
-        return False, False
+        return False, False, None, None
+
+
+def save_config(config_path, data) -> bool:
+    """Atomically persist runtime credential refreshes to config.json."""
+    temp_path = f"{config_path}.tmp"
+    try:
+        with open(temp_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        os.replace(temp_path, config_path)
+        return True
+    except Exception as e:
+        try:
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+        except OSError:
+            pass
+        print(f"更新 config.json 失败: {e}")
+        return False
 
 
 def checkin():
@@ -79,7 +98,7 @@ def checkin():
     else:
         exclude = [one for one in exclude if one in checkin_map.keys()]
     task_list = list(set(include) - set(exclude))
-    notice_info, check_info = check_config(task_list)
+    notice_info, check_info, config_path, config_data = check_config(task_list)
     if check_info:
         task_name_str = "\n".join(
             [f"「{checkin_map.get(one.upper())[0]}」账号数 : {len(value)}" for one, value in check_info.items()]
@@ -90,6 +109,7 @@ def checkin():
             check_name, check_func = checkin_map.get(one_check.upper())
             print(f"----------开始执行「{check_name}」签到----------")
             for index, check_item in enumerate(check_list):
+                check_item_before = json.dumps(check_item, ensure_ascii=False, sort_keys=True)
                 try:
                     msg = check_func(check_item).main()
                     content_list.append(f"「{check_name}」\n{msg}")
@@ -97,6 +117,11 @@ def checkin():
                 except Exception as e:
                     content_list.append(f"「{check_name}」\n{e}")
                     print(f"第 {index + 1} 个账号: ❌❌❌❌❌\n{e}")
+                finally:
+                    check_item_after = json.dumps(check_item, ensure_ascii=False, sort_keys=True)
+                    if check_item_after != check_item_before and config_path and config_data:
+                        if save_config(config_path, config_data):
+                            print("已将服务器更新的 Cookie 写回 config.json")
         print("\n\n")
         try:
             url = "https://pypi.org/pypi/dailycheckin/json"

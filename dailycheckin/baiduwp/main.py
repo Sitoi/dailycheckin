@@ -16,22 +16,75 @@ class BaiduWP(CheckIn):
     """
 
     def __init__(self, check_item: dict):
-        self.cookie = check_item.get("cookie")
+        self.check_item = check_item
+        self.cookie = check_item.get("cookie", "")
+        self.cookie_values = self._parse_cookie(self.cookie)
         self.session = requests.Session()
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36",
-            "Referer": "https://pan.baidu.com/wap/svip/growth/task",
-            "Accept": "application/json, text/plain, */*",
-            "X-Requested-With": "XMLHttpRequest",
-            "Connection": "keep-alive",
-            "Accept-Encoding": "gzip, deflate",
-            "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Cookie": self.cookie,
-        }
+        self.session.headers.update(
+            {
+                "User-Agent": "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36",
+                "Referer": "https://pan.baidu.com/wap/svip/growth/task",
+                "Accept": "application/json, text/plain, */*",
+                "X-Requested-With": "XMLHttpRequest",
+                "Connection": "keep-alive",
+                "Accept-Encoding": "gzip, deflate",
+                "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+            }
+        )
+        # Let Session build the Cookie header. This allows cookies returned in
+        # Set-Cookie to take effect on the following request.
+        for name, value in self.cookie_values.items():
+            self.session.cookies.set(name, value, domain=".baidu.com", path="/")
+
+    @staticmethod
+    def _parse_cookie(cookie_header: str) -> dict:
+        result = {}
+        for item in cookie_header.split(";"):
+            name, separator, value = item.strip().partition("=")
+            if separator and name:
+                result[name] = value
+        return result
+
+    def _get(self, url: str):
+        resp = self.session.get(url)
+        cookie_changed = False
+        now = time.time()
+
+        # requests can retain both the old and new cookie when their domains or
+        # paths differ. A browser resolves this using its persistent cookie jar;
+        # normalize cookies with the same name before the next request instead.
+        for updated_cookie in resp.cookies:
+            for current_cookie in list(self.session.cookies):
+                if current_cookie.name == updated_cookie.name:
+                    self.session.cookies.clear(
+                        domain=current_cookie.domain,
+                        path=current_cookie.path,
+                        name=current_cookie.name,
+                    )
+
+            expired = updated_cookie.expires is not None and updated_cookie.expires <= now
+            if expired:
+                if updated_cookie.name in self.cookie_values:
+                    self.cookie_values.pop(updated_cookie.name)
+                    cookie_changed = True
+                continue
+
+            self.session.cookies.set_cookie(updated_cookie)
+            if self.cookie_values.get(updated_cookie.name) != updated_cookie.value:
+                self.cookie_values[updated_cookie.name] = updated_cookie.value
+                cookie_changed = True
+
+        if cookie_changed:
+            self.cookie = "; ".join(f"{name}={value}" for name, value in self.cookie_values.items())
+            # check_item is the same dict loaded from config.json. The main
+            # runner persists it atomically after this account finishes.
+            self.check_item["cookie"] = self.cookie
+
+        return resp
 
     def signin(self):
         url = "https://pan.baidu.com/rest/2.0/membership/level?app_id=250528&web=5&method=signin"
-        resp = self.session.get(url, headers=self.headers)
+        resp = self._get(url)
         sign_point = None
         signin_error_msg = ""
         if resp.status_code == 200:
@@ -42,12 +95,12 @@ class BaiduWP(CheckIn):
             if m2:
                 signin_error_msg = m2.group(1)
         else:
-            signin_error_msg = f"签到请求失败: {resp.status_code} {self.cookie}"
+            signin_error_msg = f"签到请求失败: {resp.status_code}"
         return sign_point, signin_error_msg
 
     def get_question(self):
         url = "https://pan.baidu.com/act/v2/membergrowv2/getdailyquestion?app_id=250528&web=5"
-        resp = self.session.get(url, headers=self.headers)
+        resp = self._get(url)
         answer = None
         ask_id = None
         if resp.status_code == 200:
@@ -61,7 +114,7 @@ class BaiduWP(CheckIn):
 
     def answer_question(self, ask_id, answer):
         url = f"https://pan.baidu.com/act/v2/membergrowv2/answerquestion?app_id=250528&web=5&ask_id={ask_id}&answer={answer}"
-        resp = self.session.get(url, headers=self.headers)
+        resp = self._get(url)
         answer_score = None
         answer_msg = ""
         if resp.status_code == 200:
@@ -75,7 +128,7 @@ class BaiduWP(CheckIn):
 
     def get_userinfo(self):
         url = "https://pan.baidu.com/rest/2.0/membership/user?app_id=250528&web=5&method=query"
-        resp = self.session.get(url, headers=self.headers)
+        resp = self._get(url)
         current_value = None
         current_level = None
         if resp.status_code == 200:

@@ -1,0 +1,17 @@
+services:
+  dailycheckin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dailycheckin:source
+    restart: always
+    init: true
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      # 必须可写：部分任务会刷新 Cookie 并回写配置文件。
+      - ./config:/app/config
+      - ./cron/crontab_list.sh:/app/cron/crontab_list.sh:ro
+    dns:
+      - 223.5.5.5
+      - 119.29.29.29
